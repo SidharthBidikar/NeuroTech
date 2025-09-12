@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background: #CBF6FF;
+  background: linear-gradient(145deg, #e6f7ff 0%, #cce7ff 100%);
 /*   background: linear-gradient(145deg, #e6fffa 0%, #a7f3d0 100%); */
   min-height: 100vh;
   margin: 0;

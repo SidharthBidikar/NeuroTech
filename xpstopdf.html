@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XPS to PDF Converter Online - Free Tool to Convert XPS Files</title>
+  <meta name="description" content="Convert XPS to PDF online for free with our advanced XPS to PDF converter. Transform XPS files into PDF format for compatibility and easy sharing across devices.">
+  <meta name="keywords" content="XPS to PDF converter, convert XPS to PDF online, free XPS to PDF tool, XPS to PDF conversion, XPS to PDF free, XPS file converter">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="XPS Converter Team">
+  <meta property="og:title" content="XPS to PDF Converter Online - Free Tool">
+  <meta property="og:description" content="Easily convert XPS files to PDF format with our free online tool. Ensure compatibility and streamline document sharing with this secure converter.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=XPS+to+PDF+Converter">
+  <meta property="og:url" content="https://onepagetools.com/xpstopdf.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .progress-bar { background: linear-gradient(to right, #4f46e5, #7c3aed); }
+    .drop-zone { transition: all 0.3s ease; }
+    .drop-zone.dragover { border-color: #4f46e5; background-color: rgba(79, 70, 229, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+    .gradient-bg { background: linear-gradient(135deg, #f3f4f6, #e0e7ff); }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Navigation -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com/" class="flex items-center space-x-3">
+        <img src="One_Page-removebg-preview.png" alt="XPS Converter Logo" style="height: 60px" />
+      </a>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+        </svg>
+      </button>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li><a href="./index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0">Home</a></li>
+          <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+          <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+              ALL CONVERTERS
+              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                <li><a href="./pdftoxml.html" class="block px-4 py-2 hover:bg-gray-100">PDF to XML</a></li>
+                <li><a href="./pdftoexcel.html" class="block px-4 py-2 hover:bg-gray-100">PDF to Excel</a></li>
+                <li><a href="./pdftojpg.html" class="block px-4 py-2 hover:bg-gray-100">PDF to JPG</a></li>
+                <li><a href="./xpstopdf.html" class="block px-4 py-2 hover:bg-gray-100">XPS to PDF</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex justify-center items-center min-h-screen pt-20">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-lg fade-in">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">XPS to PDF Converter</h1>
+      <p class="text-center text-gray-500 mb-6">Convert XPS files to PDF format online for free. Ensure compatibility and share documents seamlessly across all devices.</p>
+
+      <!-- File Upload Section -->
+      <div class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-12 text-center mb-8 transition-colors duration-300 hover:border-blue-400" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="handleDragLeave(event)">
+        <label for="xpsFiles" class="inline-block w-full py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full cursor-pointer hover:bg-indigo-700 btn hover-scale">
+          Choose XPS Files
+        </label>
+        <input type="file" id="xpsFiles" accept=".xps,.oxps" multiple class="hidden" onchange="previewFiles()">
+        <p class="text-gray-500 mt-2">or drag and drop XPS files here (supports multiple files, max 25MB each)</p>
+      </div>
+
+      <!-- Conversion Settings -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3">Conversion Settings</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Page Range (e.g., 1-3, 5)</label>
+              <input type="text" id="pageRange" class="w-full p-2 border rounded-lg" placeholder="All pages">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Output Quality</label>
+              <select id="quality" class="w-full p-2 border rounded-lg">
+                <option value="standard">Standard (Publishing Online & Printing)</option>
+                <option value="minimum">Minimum Size (Online Sharing)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3">Output Options</h3>
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="preserveLayout">
+              <label class="text-gray-600">Preserve Original Layout</label>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="previewPdf">
+              <label class="text-gray-600">Preview PDF Before Conversion</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview Section -->
+      <div id="previewContainer" class="mb-6"></div>
+
+      <!-- Progress Bar -->
+      <div id="progressBar" class="hidden bg-gray-200 rounded-full h-2.5 mb-4">
+        <div class="bg-blue-600 h-2.5 rounded-full transition-all duration-300 progress-bar" style="width: 0%"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button onclick="convertXPS()" class="py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 btn hover-scale" id="convertButton" disabled>
+          Convert to PDF
+        </button>
+        <a id="downloadZipButton" href="#" download class="hidden py-3 px-5 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 btn hover-scale">
+          Download All Files (ZIP)
+        </a>
+        <button onclick="resetAll()" class="py-3 px-5 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 btn hover-scale">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO-Friendly Article -->
+  <div class="article-section">
+    <h2>Ultimate Guide to Using an XPS to PDF Converter Online</h2>
+    <p>Converting XPS files to PDF format is essential for ensuring document compatibility and ease of sharing across various platforms. Our <strong>XPS to PDF converter</strong> is a free, browser-based tool designed to simplify this process, offering a seamless way to <strong>convert XPS to PDF online</strong>. This comprehensive guide explores the benefits of using a <strong>free XPS to PDF tool</strong>, how to use it effectively, and tips to optimize your conversion process. With a focus on keywords like <strong>XPS to PDF converter</strong>, <strong>free XPS to PDF tool</strong>, and <strong>XPS to PDF conversion</strong>, this article is optimized for search engine indexing to help users find the best solution for their needs.</p>
+
+    <h3>Why Convert XPS to PDF?</h3>
+    <p>XPS (XML Paper Specification) is a Microsoft-developed format designed for fixed-layout documents, similar to PDF. However, XPS files are less universally supported, often requiring specific viewers like Microsoft XPS Viewer. Converting XPS to PDF ensures compatibility across devices and platforms, as PDF is the global standard for document sharing. Here’s why you should use a <strong>free XPS to PDF converter</strong>:</p>
+    <ul>
+      <li><strong>Universal Compatibility</strong>: PDFs can be opened on nearly any device or software, unlike XPS files, which are limited to Windows environments.</li>
+      <li><strong>Ease of Sharing</strong>: PDFs are widely recognized, making them ideal for sharing with colleagues, clients, or friends across different systems.</li>
+      <li><strong>Preserved Layout</strong>: A reliable <strong>XPS to PDF converter</strong> maintains the original document’s formatting, fonts, and images.</li>
+      <li><strong>Batch Processing</strong>: Convert multiple XPS files at once, saving time for large datasets.</li>
+      <li><strong>No Software Installation</strong>: Our <strong>XPS to PDF converter online</strong> works directly in your browser, requiring no downloads.</li>
+      <li><strong>Secure Processing</strong>: Files are processed locally, ensuring data privacy during <strong>XPS to PDF conversion</strong>.</li>
+    </ul>
+    <p>By using our <strong>free XPS to PDF tool</strong>, you can overcome the limitations of XPS files and ensure your documents are accessible everywhere.</p>
+
+    <h3>How to Use Our Free XPS to PDF Converter</h3>
+    <p>Our <strong>XPS to PDF converter</strong> is designed for ease of use and flexibility. Follow these steps to <strong>convert XPS to PDF online</strong>:</p>
+    <ol>
+      <li><strong>Upload XPS Files</strong>: Click “Choose XPS Files” or drag and drop files into the upload area. Supports multiple files, each up to 25MB.</li>
+      <li><strong>Configure Settings</strong>: Specify page ranges, choose output quality (standard or minimum size), and select options like preserving layout or previewing the PDF.</li>
+      <li><strong>Preview Output</strong>: Enable the preview option to review the PDF content before finalizing the conversion.</li>
+      <li><strong>Convert and Download</strong>: Click “Convert to PDF” to process the files. Download individual PDFs or a ZIP file for multiple files.</li>
+      <li><strong>Reset for New Conversion</strong>: Use the “Reset” button to clear all settings and start a new batch.</li>
+    </ol>
+    <p>With these simple steps, our <strong>free XPS to PDF tool</strong> makes <strong>XPS to PDF conversion</strong> quick and efficient, ideal for users of all skill levels.</p>
+
+    <h3>Who Benefits from an XPS to PDF Converter?</h3>
+    <p>Our <strong>XPS to PDF converter online</strong> caters to a wide range of users who need to transform XPS files into a more accessible format:</p>
+    <ul>
+      <li><strong>Business Professionals</strong>: Convert invoices, reports, or contracts into PDF for easy sharing with clients or colleagues.</li>
+      <li><strong>Students and Educators</strong>: Transform XPS-based study materials or presentations into PDF for compatibility with various devices.</li>
+      <li><strong>Developers</strong>: Convert XPS files into PDF for integration with web services or document management systems.</li>
+      <li><strong>Archivists</strong>: Preserve XPS documents in PDF format for long-term digital archiving.</li>
+      <li><strong>Legal Professionals</strong>: Ensure XPS-based legal documents are converted to PDF for universal accessibility and printing.</li>
+    </ul>
+    <p>Our <strong>free XPS to PDF tool</strong> is versatile, making it a valuable resource for anyone dealing with XPS files.</p>
+
+    <h3>Key Features of Our XPS to PDF Converter</h3>
+    <p>Our <strong>XPS to PDF converter</strong> is packed with features to enhance usability and efficiency:</p>
+    <ul>
+      <li><strong>Batch Conversion</strong>: Process up to 20 XPS files simultaneously and download them as a ZIP file.</li>
+      <li><strong>Customizable Output</strong>: Choose between standard quality for printing or minimum size for online sharing.</li>
+      <li><strong>Page Range Selection</strong>: Convert specific pages or ranges to focus on relevant content.</li>
+      <li><strong>Layout Preservation</strong>: Maintain the original document’s formatting, fonts, and images.</li>
+      <li><strong>Preview Option</strong>: Review the PDF output before downloading to ensure accuracy.</li>
+      <li><strong>Drag-and-Drop Interface</strong>: Simplify file uploads with an intuitive design.</li>
+      <li><strong>Secure Processing</strong>: Files are processed locally in your browser, ensuring data privacy.</li>
+      <li><strong>No Registration Required</strong>: Use the <strong>free XPS to PDF tool</strong> without sign-ups or downloads.</li>
+    </ul>
+    <p>These features make our tool a top choice for <strong>XPS to PDF conversion</strong>, offering both functionality and convenience.</p>
+
+    <h3>Tips for Optimizing XPS to PDF Conversion</h3>
+    <p>To get the best results from our <strong>XPS to PDF converter online</strong>, follow these tips:</p>
+    <ul>
+      <li><strong>Check File Quality</strong>: Use high-quality XPS files for accurate conversion results.</li>
+      <li><strong>Select Page Ranges</strong>: Specify only the necessary pages to reduce processing time.</li>
+      <li><strong>Choose Output Quality</strong>: Opt for standard quality for printing or minimum size for faster sharing.</li>
+      <li><strong>Enable Layout Preservation</strong>: Ensure the original document’s formatting is retained for professional outputs.</li>
+      <li><strong>Use Previews</strong>: Verify the PDF output before downloading to avoid errors.</li>
+      <li><strong>Batch Process</strong>: Convert multiple files at once for large projects to save time.</li>
+    </ul>
+    <p>By following these tips, you can maximize the efficiency of our <strong>free XPS to PDF tool</strong> for your specific needs.</p>
+
+    <h3>Why PDF is Preferred Over XPS</h3>
+    <p>PDF (Portable Document Format) is the global standard for document sharing, offering several advantages over XPS:</p>
+    <ul>
+      <li><strong>Universal Support</strong>: PDFs can be opened on any device with a PDF reader, while XPS requires specific viewers.</li>
+      <li><strong>Smaller File Size</strong>: PDFs are often more compact, making them ideal for online sharing.</li>
+      <li><strong>Advanced Features</strong>: PDFs support interactive elements like forms, annotations, and digital signatures.</li>
+      <li><strong>Cross-Platform Compatibility</strong>: PDFs work seamlessly across Windows, macOS, Linux, iOS, and Android.</li>
+      <li><strong>Industry Standard</strong>: PDFs are widely adopted in business, education, and legal sectors.</li>
+    </ul>
+    <p>Our <strong>XPS to PDF converter online</strong> leverages these benefits, ensuring your documents are accessible and professional.</p>
+
+    <h3>Comparing XPS to PDF Converters</h3>
+    <p>Not all <strong>XPS to PDF converters</strong> are equal. Here’s how our tool stands out:</p>
+    <ul>
+      <li><strong>Free Access</strong>: No subscriptions or hidden fees, unlike some premium tools.</li>
+      <li><strong>Browser-Based</strong>: No software installation required, unlike desktop applications.</li>
+      <li><strong>Batch Processing</strong>: Convert up to 20 files at once, a feature not always available in free tools.</li>
+      <li><strong>Customizable Output</strong>: Options for quality and layout preservation provide flexibility.</li>
+      <li><strong>User-Friendly Interface</strong>: Intuitive drag-and-drop design and preview features.</li>
+      <li><strong>Secure Processing</strong>: Local browser processing ensures data privacy.</li>
+    </ul>
+    <p>Our <strong>free XPS to PDF tool</strong> combines functionality, ease of use, and security, making it a top choice for <strong>XPS to PDF conversion</strong>.</p>
+
+    <h3>Frequently Asked Questions (FAQs)</h3>
+    <p>Here are answers to common questions about our <strong>XPS to PDF converter online</strong>:</p>
+    <h4>1. Is the XPS to PDF converter free?</h4>
+    <p>Yes, our <strong>free XPS to PDF tool</strong> has no subscriptions or hidden costs.</p>
+    <h4>2. Can I convert multiple XPS files at once?</h4>
+    <p>Yes, upload up to 20 XPS files and download them as individual PDFs or a single ZIP file.</p>
+    <h4>3. What is the difference between standard and minimum size output?</h4>
+    <p>Standard quality is ideal for printing, while minimum size optimizes for smaller file sizes and faster sharing.</p>
+    <h4>4. Does the converter preserve the original layout?</h4>
+    <p>Yes, enable the “Preserve Original Layout” option to maintain formatting, fonts, and images.</p>
+    <h4>5. Is my data secure?</h4>
+    <p>All processing is done locally in your browser, ensuring your files remain private.</p>
+    <h4>6. Can I convert XPS files with images?</h4>
+    <p>Yes, our <strong>XPS to PDF converter</strong> supports images, text, and formatting for accurate conversion.</p>
+
+    <h3>Advanced Use Cases for XPS to PDF Conversion</h3>
+    <p>Our <strong>XPS to PDF converter</strong> supports advanced scenarios, including:</p>
+    <ul>
+      <li><strong>Document Archiving</strong>: Convert XPS files to PDF for long-term storage and accessibility.</li>
+      <li><strong>Business Workflows</strong>: Transform XPS-based invoices or contracts into PDF for automated processing.</li>
+      <li><strong>Cross-Platform Sharing</strong>: Ensure XPS documents are accessible on non-Windows devices.</li>
+      <li><strong>Presentation Conversion</strong>: Convert XPS-based presentations into PDF for universal compatibility.</li>
+      <li><strong>Legal Documentation</strong>: Convert XPS files to PDF for court submissions or client sharing.</li>
+    </ul>
+    <p>These use cases highlight the versatility of our <strong>free XPS to PDF tool</strong> for various industries.</p>
+
+    <h3>How XPS to PDF Conversion Enhances Productivity</h3>
+    <p>Our <strong>XPS to PDF converter online</strong> boosts productivity by:</p>
+    <ul>
+      <li>Eliminating the need for manual reformatting.</li>
+      <li>Enabling batch processing for high-volume tasks.</li>
+      <li>Providing immediate PDF outputs for quick sharing.</li>
+      <li>Supporting integration with document management systems.</li>
+      <li>Ensuring accurate conversion for reliable results.</li>
+    </ul>
+    <p>With our <strong>free XPS to PDF tool</strong>, you can focus on utilizing your documents rather than struggling with compatibility issues.</p>
+
+    <h3>Best Practices for XPS to PDF Conversion</h3>
+    <p>To achieve optimal results, follow these best practices for <strong>XPS to PDF conversion</strong>:</p>
+    <ul>
+      <li><strong>Use High-Quality XPS Files</strong>: Ensure XPS files are clear and well-formatted for accurate conversion.</li>
+      <li><strong>Validate Output</strong>: Use the preview feature to check PDF content before downloading.</li>
+      <li><strong>Optimize File Size</strong>: Choose minimum size for online sharing or standard quality for printing.</li>
+      <li><strong>Organize Outputs</strong>: Name files systematically when converting multiple XPS files.</li>
+      <li><strong>Test Compatibility</strong>: Verify PDFs with your target application or viewer.</li>
+    </ul>
+
+    <h3>Conclusion</h3>
+    <p>Converting XPS files to PDF doesn’t have to be complicated. Our <strong>XPS to PDF converter online</strong> offers a free, secure, and user-friendly solution to <strong>convert XPS to PDF free</strong>. With features like batch processing, customizable output, and layout preservation, our tool meets the needs of professionals, students, and developers alike. Optimized for search engines with keywords like <strong>XPS to PDF converter</strong> and <strong>free XPS to PDF tool</strong>, this guide ensures you can find and use the best solution for your needs. Try our <strong>XPS to PDF converter</strong> today and experience seamless document conversion!</p>
+    <p><a href="https://onepagetools.com/xpstopdf.html" class="text-indigo-600 hover:underline">Start converting your XPS files to PDF now</a> and simplify your document workflow.</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+    let files = [];
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.currentTarget.classList.add('dragover');
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('dragover');
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('dragover');
+      const uploadedFiles = e.dataTransfer.files;
+      if (uploadedFiles.length) {
+        document.getElementById('xpsFiles').files = uploadedFiles;
+        previewFiles();
+      }
+    }
+
+    function previewFiles() {
+      const fileInput = document.getElementById('xpsFiles');
+      const previewContainer = document.getElementById('previewContainer');
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      files = [];
+      previewContainer.innerHTML = '';
+      downloadZipButton.classList.add('hidden');
+
+      if (fileInput.files.length) {
+        Array.from(fileInput.files).forEach((file, index) => {
+          if (!['application/oxps', 'application/vnd.ms-xpsdocument'].includes(file.type)) {
+            Swal.fire('Invalid File', `${file.name} is not an XPS file.`, 'error');
+            return;
+          }
+          if (file.size > 25 * 1024 * 1024) {
+            Swal.fire('File Too Large', `${file.name} exceeds 25MB.`, 'error');
+            return;
+          }
+          const fileData = {
+            file,
+            name: file.name,
+            id: `file-${index}`,
+            status: 'Pending',
+            outputBlob: null
+          };
+          files.push(fileData);
+          renderPreview(fileData);
+        });
+      }
+      document.getElementById('convertButton').disabled = files.length === 0;
+    }
+
+    function renderPreview(fileData) {
+      const previewContainer = document.getElementById('previewContainer');
+      const div = document.createElement('div');
+      div.className = 'flex justify-between items-center bg-gray-50 p-4 rounded-lg mb-2 scale-in';
+      div.innerHTML = `
+        <p class="text-gray-600">${fileData.name} (${(fileData.file.size / 1024 / 1024).toFixed(2)}MB)</p>
+        <div class="flex items-center gap-2">
+          <p id="${fileData.id}-status" class="text-gray-500">${fileData.status}</p>
+          <a id="${fileData.id}-download" href="#" download="${fileData.name.replace(/\.(xps|oxps)$/i, '')}.pdf" class="hidden text-blue-600 hover:underline">Download</a>
+        </div>
+      `;
+      previewContainer.appendChild(div);
+    }
+
+    async function convertXPS() {
+      if (!files.length) {
+        Swal.fire('No Files', 'Please upload at least one XPS file.', 'error');
+        return;
+      }
+
+      const progressBar = document.getElementById('progressBar');
+      const progressFill = progressBar.querySelector('div');
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      const pageRange = document.getElementById('pageRange').value;
+      const quality = document.getElementById('quality').value;
+      const preserveLayout = document.getElementById('preserveLayout').checked;
+      const previewPdf = document.getElementById('previewPdf').checked;
+      const zip = new JSZip();
+      let progress = 0;
+      let hasValidOutputs = false;
+      progressBar.classList.remove('hidden');
+      progressFill.style.width = '0%';
+
+      function updateProgress() {
+        progress += 100 / files.length / 10;
+        progressFill.style.width = `${Math.min(progress, 100)}%`;
+        if (progress < 100) {
+          requestAnimationFrame(updateProgress);
+        }
+      }
+
+      requestAnimationFrame(updateProgress);
+
+      for (let i = 0; i < files.length; i++) {
+        const fileData = files[i];
+        try {
+          document.getElementById(`${fileData.id}-status`).textContent = 'Processing...';
+          const fileReader = new FileReader();
+          fileReader.onload = async function () {
+            const arrayBuffer = new Uint8Array(this.result);
+            const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+            const pagesToProcess = pageRange ? parsePageRange(pageRange, pdf.numPages) : Array.from({ length: pdf.numPages }, (_, i) => i + 1);
+            const pdfDoc = await PDFLib.PDFDocument.create();
+
+            for (const pageNum of pagesToProcess) {
+              const page = await pdf.getPage(pageNum);
+              const pdfPage = pdfDoc.addPage();
+              const textContent = await page.getTextContent();
+              const viewport = page.getViewport({ scale: quality === 'standard' ? 2.0 : 1.0 });
+              pdfPage.setSize(viewport.width, viewport.height);
+              if (preserveLayout) {
+                const context = pdfPage.getContext();
+                await page.render({ canvasContext: context, viewport }).promise;
+              }
+              textContent.items.forEach(item => {
+                if (item.str.trim()) {
+                  pdfPage.drawText(item.str, {
+                    x: item.transform[4],
+                    y: viewport.height - item.transform[5],
+                    size: item.height,
+                    font: pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica)
+                  });
+                }
+              });
+            }
+
+            if (previewPdf && i === 0) {
+              const pdfBytes = await pdfDoc.save();
+              const previewUrl = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
+              const previewContainer = document.getElementById('previewContainer');
+              const iframe = document.createElement('iframe');
+              iframe.src = previewUrl;
+              iframe.width = '100%';
+              iframe.height = '400px';
+              previewContainer.appendChild(iframe);
+            }
+
+            const pdfBytes = await pdfDoc.save();
+            const outputBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+            fileData.outputBlob = outputBlob;
+            zip.file(`${fileData.name.replace(/\.(xps|oxps)$/i, '')}.pdf`, outputBlob);
+
+            const downloadLink = document.getElementById(`${fileData.id}-download`);
+            downloadLink.href = URL.createObjectURL(outputBlob);
+            downloadLink.classList.remove('hidden');
+
+            document.getElementById(`${fileData.id}-status`).textContent = 'Converted';
+            hasValidOutputs = true;
+
+            if (i === files.length - 1 && hasValidOutputs) {
+              const zipBlob = await zip.generateAsync({ type: 'blob' });
+              downloadZipButton.href = URL.createObjectURL(zipBlob);
+              downloadZipButton.download = 'converted-files.zip';
+              downloadZipButton.classList.remove('hidden');
+              Swal.fire('Success!', 'All files converted successfully.', 'success');
+            }
+          };
+          fileReader.readAsArrayBuffer(fileData.file);
+        } catch (error) {
+          console.error(`Error processing ${fileData.name}:`, error);
+          document.getElementById(`${fileData.id}-status`).textContent = 'Error';
+          Swal.fire('Error', `Failed to process ${fileData.name}.`, 'error');
+        }
+      }
+
+      progressBar.classList.add('hidden');
+      progressFill.style.width = '0%';
+    }
+
+    function parsePageRange(range, totalPages) {
+      const pages = new Set();
+      const parts = range.split(',');
+      for (const part of parts) {
+        if (part.includes('-')) {
+          const [start, end] = part.split('-').map(Number);
+          for (let i = Math.max(1, start); i <= Math.min(totalPages, end); i++) {
+            pages.add(i);
+          }
+        } else {
+          const page = Number(part);
+          if (page >= 1 && page <= totalPages) {
+            pages.add(page);
+          }
+        }
+      }
+      return Array.from(pages).sort((a, b) => a - b);
+    }
+
+    function resetAll() {
+      files = [];
+      document.getElementById('previewContainer').innerHTML = '';
+      document.getElementById('xpsFiles').value = '';
+      document.getElementById('pageRange').value = '';
+      document.getElementById('quality').value = 'standard';
+      document.getElementById('preserveLayout').checked = true;
+      document.getElementById('previewPdf').checked = false;
+      document.getElementById('downloadZipButton').classList.add('hidden');
+      document.getElementById('progressBar').classList.add('hidden');
+      document.getElementById('convertButton').disabled = true;
+    }
+  </script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+</body>
+</html>

@@ -467,7 +467,7 @@
       </div>
 
       <!-- START: Search Bar -->
-      <div class="mx-auto max-w-3xl py-8 px-4 sm:px-6 lg:px-8">
+    <!--  <div class="mx-auto max-w-3xl py-8 px-4 sm:px-6 lg:px-8">
         <label for="toolSearch" class="sr-only">Search Tools</label>
         <input
           type="text"
@@ -477,7 +477,18 @@
           aria-label="Search for PDF tools"
         />
         <p id="noResultsMessage" class="mt-4 text-lg text-gray-600 text-center hidden">No tools found matching your search.</p>
-      </div>
+      </div> -->
+      <!-- START: Search Bar -->
+<div class="flex justify-center">
+  <input
+    type="text"
+    id="toolSearch"
+    placeholder="Search for a tool (e.g., PDF to Word, Merge PDF, Image Resizer...)"
+    class="w-1/2 p-4 text-lg border border-gray-300 rounded-2xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+    aria-label="Search for PDF tools"
+  />
+</div>
+<!-- END: Search Bar -->
       <!-- END: Search Bar -->
 
       <div class="toollist" id="toollists">

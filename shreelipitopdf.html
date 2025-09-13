@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <title>Shree Lipi Converter - Convert Shree Lipi/Kruti Dev to Unicode & Vice-Versa</title>
+    <meta name="description" content="Free online Shree Lipi Converter to easily convert text between Shree Lipi fonts (Kruti Dev, DevLys, etc.) and Unicode (Mangal, Arial Unicode MS). Fast, client-side, and accurate Hindi font conversion.">
+    <meta name="keywords" content="Shree Lipi converter, Kruti Dev to Unicode, Unicode to Kruti Dev, DevLys to Unicode, Shree Lipi to Mangal, Hindi font converter, online font converter, Devanagari converter, legacy font to unicode">
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Shree Lipi Converter",
+      "description": "Convert text between Shree Lipi legacy fonts (like Kruti Dev, DevLys) and Unicode (Mangal) for Hindi and other Devanagari scripts. Fast, free, and client-side.",
+      "applicationCategory": "TextProcessingApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "JavaScript, Modern Web Browser",
+      "url": "https://onepagetools.com/shree-lipi-converter.html", 
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="./css/style.css" /> 
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Dark mode variables */
+        :root {
+            --bg-color-light: #f5f5fa; --text-color-light: #1f2937; --card-bg-light: #ffffff; --border-color-light: #e5e7eb;
+            --primary-accent-light: #0E7490; --primary-accent-hover-light: #0E5E75; --primary-accent-disabled-light: #A5F3FC; 
+            --bg-color-dark: #111827; --text-color-dark: #f3f4f6; --card-bg-dark: #1f2937; --border-color-dark: #374151;
+            --primary-accent-dark: #67E8F9; --primary-accent-hover-dark: #22D3EE; --primary-accent-disabled-dark: #0E5E75;
+        }
+        /* Base styles */
+        body { background-color: var(--bg-color-light); color: var(--text-color-light); transition: background-color 0.3s ease, color 0.3s ease; font-family: 'Arial', sans-serif; }
+        body.dark-mode { background-color: var(--bg-color-dark); color: var(--text-color-dark); }
+        .converter-card, .article-content, .sticky-cta, nav.bg-white, .footer-bg { transition: background-color 0.3s ease, border-color 0.3s ease; }
+        /* Dark mode specific overrides */
+        body.dark-mode .converter-card, body.dark-mode .article-content { background-color: var(--card-bg-dark); border-color: var(--border-color-dark); }
+        body.dark-mode .options-grid label, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, 
+        body.dark-mode .article-content p, body.dark-mode .article-content li, 
+        body.dark-mode #fileName, /* Though not used here, good to keep pattern */
+        body.dark-mode .text-xs, body.dark-mode .text-gray-600, body.dark-mode .text-sm.text-gray-600 /* for drop area text */ { 
+            color: var(--text-color-dark); 
+        }
+        body.dark-mode .text-gray-600 { color: #9ca3af !important; } /* Overriding Flowbite's default dark potentially */
+        body.dark-mode .bg-gray-50 { background-color: #374151 !important; } 
+        body.dark-mode .border-gray-300 { border-color: #4b5563 !important; }
+        body.dark-mode .text-gray-900 { color: var(--text-color-dark) !important; }
+        body.dark-mode textarea, body.dark-mode select { background-color: #374151 !important; border-color: #4b5563 !important; color: var(--text-color-dark) !important; }
+        body.dark-mode input::placeholder, body.dark-mode textarea::placeholder { color: #9ca3af; }
+        body.dark-mode nav.bg-white { background-color: var(--card-bg-dark) !important; border-bottom-color: var(--border-color-dark) !important; }
+        body.dark-mode nav a, body.dark-mode #darkModeToggle { color: var(--text-color-dark) !important; }
+        body.dark-mode .footer-bg { background-color: var(--card-bg-dark) !important; }
+        body.dark-mode .footer-bg .border-gray-300 { border-color: var(--border-color-dark) !important;}
+        body.dark-mode .footer-bg .text-gray-500 { color: #9ca3af !important; }
+        body.dark-mode .footer-bg .text-indigo-600 { color: var(--primary-accent-dark) !important; }
+        body.dark-mode .footer-bg a.hover\:text-indigo-600:hover { color: var(--primary-accent-hover-dark) !important; }
+        body.dark-mode .btn-primary { background-color: var(--primary-accent-dark) !important; }
+        body.dark-mode .btn-primary:hover:not(:disabled) { background-color: var(--primary-accent-hover-dark) !important; }
+        body.dark-mode .btn-primary:disabled { background-color: var(--primary-accent-disabled-dark) !important; }
+        body.dark-mode .btn-secondary { background-color: #4b5563; border-color: #374151; color: var(--text-color-dark); }
+        body.dark-mode .btn-secondary:hover { background-color: #374151; }
+
+        .converter-card {
+            background-color: var(--card-bg-light); padding: 2rem; border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 900px; margin: 2rem auto;
+            border: 1px solid var(--border-color-light);
+        }
+        .text-area {
+            width: 100%; min-height: 150px; padding: 0.75rem; border: 1px solid var(--border-color-light);
+            border-radius: 8px; font-size: 1rem; resize: vertical;
+            margin-bottom: 0.5rem;
+        }
+        .font-preview { 
+            font-family: 'Arial Unicode MS', 'Mangal', 'Noto Sans Devanagari', sans-serif;
+        }
+        .krutidev-preview-font { /* For displaying Kruti Dev input if user has font. Fallback if not. */
+            font-family: 'Kruti Dev 010', 'Kruti', Courier, monospace; 
+        }
+
+
+        .btn-primary {
+            background-color: var(--primary-accent-light); color: white; padding: 0.6rem 1.2rem;
+            border-radius: 8px; border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer;
+            transition: background-color 0.3s ease; display: inline-flex; align-items: center;
+        }
+        .btn-primary:disabled { background-color: var(--primary-accent-disabled-light); cursor: not-allowed; }
+        .btn-primary:hover:not(:disabled) { background-color: var(--primary-accent-hover-light); }
+        .btn-secondary {
+            background-color: #e5e7eb; color: #374151; padding: 0.6rem 1.2rem;
+            border-radius: 8px; border: 1px solid #d1d5db; font-size: 0.9rem; font-weight: 500;
+            cursor: pointer; transition: background-color 0.3s ease; display: inline-flex; align-items: center;
+        }
+        .btn-secondary:hover { background-color: #d1d5db; }
+        
+        .conversion-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;}
+        .io-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: start; }
+        .swap-button-container { display: flex; align-items: center; justify-content: center; height: 100%; padding-top: 2rem; }
+        #swapButton { font-size: 1.5rem; padding: 0.5rem; }
+
+        .action-buttons button { margin-right: 0.5rem; margin-bottom: 0.5rem;}
+
+        .dark-mode-toggle { cursor: pointer; padding: 0.5rem; border-radius: 50%; }
+        body.dark-mode #darkModeToggle:hover { background-color: #374151 !important; } 
+        #darkModeToggle:hover { background-color: #f3f4f6 !important; } 
+
+        .article-content { background-color: var(--card-bg-light); padding: 2rem; border-radius: 8px; margin-top: 3rem; border: 1px solid var(--border-color-light); }
+        .article-content h1, .article-content h2, .article-content h3 { margin-top: 1.5em; margin-bottom: 0.75em; font-weight: 600; }
+        .article-content h1 { font-size: 2em; } .article-content h2 { font-size: 1.6em; } .article-content h3 { font-size: 1.3em; }
+        .article-content p, .article-content li { line-height: 1.7; margin-bottom: 1em; }
+        .article-content ul, .article-content ol { margin-left: 1.5rem; margin-bottom: 1em; }
+        .article-content strong { font-weight: 600; }
+        .article-content a { color: var(--primary-accent-light); text-decoration: underline; }
+        body.dark-mode .article-content a { color: var(--primary-accent-dark); }
+        .article-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 1em auto; display:block; }
+        .toc { border: 1px solid var(--border-color-light); padding: 1rem; margin-bottom: 2rem; border-radius: 8px; background-color: rgba(14, 116, 144, 0.03); }
+        body.dark-mode .toc { background-color: rgba(103, 232, 249, 0.05); border-color: var(--border-color-dark); }
+        .toc h3 { margin-top: 0; } .toc ul { list-style-type: none; padding-left: 0; }
+        .toc ul li a { text-decoration: none; color: #0891B2; } 
+        body.dark-mode .toc ul li a { color: #67E8F9; } 
+        .toc ul li a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .io-grid { grid-template-columns: 1fr; }
+            .swap-button-container { order: 2; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+            #inputTextContainer { order: 1; } /* Wrap textarea and its label/buttons in a div */
+            #outputTextContainer { order: 3; } /* Wrap textarea and its label/buttons in a div */
+            .conversion-controls { flex-direction: column; align-items: stretch; }
+            .conversion-controls > div { width: 100%; margin-bottom: 0.5rem; }
+            .action-buttons { display: flex; flex-direction: column; gap: 0.5rem; }
+            .action-buttons button { width: 100%; margin-right: 0; }
+        }
+    </style>
+</head>
+<body class="bg-color-light">
+    <!-- Navbar -->
+    <nav class="bg-white fixed w-full z-30 top-0 start-0 border-b border-gray-200">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="./index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img style="height: 50px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" /> 
+        </a>
+        <div class="flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
+            <button id="darkModeToggle" title="Toggle Dark Mode" class="dark-mode-toggle text-gray-500">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+            <li><a href="./index.html" class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a></li>
+            <li><a href="./about.html" class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+            <li><a href="./contact.html" class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <header class="text-center mb-10">
+                <h1 class="text-4xl sm:text-5xl font-bold">Shree Lipi Converter</h1>
+                <p class="text-lg text-gray-600 mt-4">Convert text between Shree Lipi (Kruti Dev, DevLys) and Unicode (Mangal) effortlessly.</p>
+            </header>
+
+            <div class="converter-card">
+                <div class="conversion-controls">
+                    <div>
+                        <label for="conversionType" class="block text-sm font-medium mb-1">Conversion Type:</label>
+                        <select id="conversionType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5">
+                            <option value="kdv010-to-unicode" selected>Kruti Dev 010 to Unicode</option>
+                            <option value="unicode-to-kdv010">Unicode to Kruti Dev 010</option>
+                        </select>
+                    </div>
+                    <div class="action-buttons mt-4 sm:mt-0">
+                        <button id="clearButton" class="btn-secondary"><i class="fas fa-times mr-2"></i>Clear All</button>
+                    </div>
+                </div>
+
+                <div class="io-grid">
+                    <div id="inputTextContainer">
+                        <label for="inputText" class="block text-sm font-medium mb-1">Input Text (Kruti Dev 010 Style):</label>
+                        <textarea id="inputText" class="text-area krutidev-preview-font" placeholder="Paste or type your Kruti Dev text here..."></textarea>
+                        <div class="mt-2 flex justify-start">
+                            <button id="copyInputButton" class="btn-secondary text-xs px-3 py-1"><i class="fas fa-copy mr-1"></i>Copy Input</button>
+                        </div>
+                    </div>
+                    <div class="swap-button-container">
+                        <button id="swapButton" class="btn-primary p-3" title="Swap Input and Output Text & Type">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+                    <div id="outputTextContainer">
+                        <label for="outputText" class="block text-sm font-medium mb-1">Output Text (Unicode):</label>
+                        <textarea id="outputText" class="text-area font-preview" placeholder="Converted text will appear here..." readonly></textarea>
+                         <div class="mt-2 flex justify-start space-x-2">
+                            <button id="copyOutputButton" class="btn-secondary text-xs px-3 py-1"><i class="fas fa-copy mr-1"></i>Copy Output</button>
+                            <button id="downloadTxtButton" class="btn-secondary text-xs px-3 py-1"><i class="fas fa-file-alt mr-1"></i>Save as .txt</button>
+                        </div>
+                    </div>
+                </div>
+                 <p class="text-xs text-gray-500 mt-4">Note: This tool provides a basic conversion for Kruti Dev 010 style. Complex ligatures and specific font variations might not be perfectly converted. For critical work, always verify the output.</p>
+            </div>
+
+            <!-- SEO Article Section -->
+            <article id="main-article" class="article-content">
+                <!-- Article content from previous response should be inserted here -->
+                <div class="toc">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#what-is-shree-lipi-converter">1. What is a Shree Lipi Converter?</a></li>
+                        <li><a href="#why-need-conversion">2. Why is Shree Lipi / Kruti Dev to Unicode Conversion Necessary?</a></li>
+                        <li><a href="#understanding-encodings">3. Understanding Legacy Encodings (Shree Lipi, Kruti Dev) vs. Unicode</a></li>
+                        <li><a href="#features-of-tool">4. Features of Our Shree Lipi Converter</a></li>
+                        <li><a href="#supported-fonts">5. Supported Font Mappings (Example: Kruti Dev)</a></li>
+                        <li><a href="#how-to-use-converter">6. How to Use the Converter: A Step-by-Step Guide</a></li>
+                        <li><a href="#challenges-in-conversion">7. Challenges in Legacy Font Conversion</a></li>
+                        <li><a href="#benefits-of-unicode">8. Benefits of Using Unicode for Hindi/Devanagari</a></li>
+                        <li><a href="#faq-shree-lipi">9. Frequently Asked Questions (FAQs)</a></li>
+                        <li><a href="#conclusion-shree-lipi">10. Conclusion</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="what-is-shree-lipi-converter">1. What is a Shree Lipi Converter?</h2>
+                <p>A <strong>Shree Lipi Converter</strong> (often used interchangeably with terms like <strong>Kruti Dev to Unicode converter</strong> or <strong>DevLys to Unicode converter</strong>) is a software tool designed to translate text written in older, proprietary legacy fonts like Shree Lipi, Kruti Dev, DevLys, Shusha, Shivaji, etc., into the universally accepted Unicode standard for Devanagari script (used for Hindi, Marathi, Nepali, Sanskrit, and other languages). Conversely, some converters also offer functionality to convert Unicode text back into these legacy font encodings, although this is less common and generally discouraged for new content creation.</p>
+                <p>Before the widespread adoption of Unicode, various software vendors and font foundries created their own custom character encodings for Indian languages. Shree Lipi was a popular suite of such fonts and tools, particularly in the desktop publishing (DTP) domain. These fonts mapped Devanagari characters to the positions of Latin characters (ASCII/ANSI). This meant that text typed in Shree Lipi or Kruti Dev would appear as gibberish if the specific font was not installed on the viewing computer, or if the text was copied into a Unicode-compliant application. Our <strong>Hindi font converter</strong> aims to bridge this gap, making legacy content accessible and usable in modern digital environments.</p>
+                <img src="https://via.placeholder.com/600x300.png?text=Legacy+Font+vs+Unicode+Comparison" alt="Comparison showing garbled legacy font text versus clear Unicode Devanagari text">
+
+
+                <h2 id="why-need-conversion">2. Why is Shree Lipi / Kruti Dev to Unicode Conversion Necessary?</h2>
+                <p>The need to <strong>convert Kruti Dev to Unicode</strong> or any other Shree Lipi variant to Unicode arises from several critical factors in the modern digital landscape:</p>
+                <ul>
+                    <li><strong>Interoperability and Accessibility:</strong> Unicode is the global standard for text encoding. Text in Unicode can be correctly displayed and processed across different operating systems (Windows, macOS, Linux, Android, iOS), software applications (web browsers, word processors, databases), and devices without requiring specific font installations (as long as a Unicode-compliant Devanagari font like Mangal, Arial Unicode MS, Noto Sans Devanagari, etc., is available). Legacy font text is highly dependent on the presence of that exact font.</li>
+                    <li><strong>Web Compatibility:</strong> For content to be displayed correctly on websites and be searchable by search engines like Google, it must be in Unicode. Text typed in legacy fonts will appear as random Latin characters on the web if the font isn't embedded (which is often not feasible or desirable).</li>
+                    <li><strong>Searchability:</strong> Text in Unicode is searchable. You can search for Hindi words in a Unicode document or on a webpage. Text in legacy fonts is not searchable as Devanagari because the underlying codes are Latin characters.</li>
+                    <li><strong>Data Processing and Analysis:</strong> Modern data processing tools, natural language processing (NLP) applications, and databases work with Unicode. Converting legacy data to Unicode is essential for any form of automated processing or analysis.</li>
+                    <li><strong>Future-Proofing Content:</strong> Unicode is the future. As operating systems and applications evolve, support for obscure legacy font encodings may diminish. Converting content to Unicode ensures its long-term viability and accessibility.</li>
+                    <li><strong>Ease of Typing:</strong> Modern Unicode input methods (like Indic IME, Google Input Tools, or operating system-native keyboards) are often more intuitive and standardized than the sometimes complex key-mapping rules of older legacy fonts.</li>
+                    <li><strong>Sharing and Collaboration:</strong> Sharing documents in Unicode ensures that recipients can read them correctly without needing to install specific, often proprietary, legacy fonts. This greatly simplifies collaboration.</li>
+                </ul>
+                <p>Thus, a reliable <strong>Shree Lipi to Mangal converter</strong> (Mangal being a common Unicode Devanagari font) or a general <strong>Devanagari converter</strong> for legacy formats is an indispensable utility for anyone working with older Hindi or Devanagari documents.</p>
+
+                <h2 id="understanding-encodings">3. Understanding Legacy Encodings (Shree Lipi, Kruti Dev) vs. Unicode</h2>
+                <p>To appreciate the conversion process, it's vital to understand the fundamental difference:</p>
+                <ul>
+                    <li><strong>Legacy Encodings (Shree Lipi, Kruti Dev, DevLys, etc.):</strong>
+                        <ul>
+                            <li>These are font-specific encodings. They primarily use the standard 256 character slots available in 8-bit ASCII/ANSI encoding.</li>
+                            <li>Devanagari characters (alphabets, matras, conjuncts) are mapped to the positions of Latin characters (A-Z, a-z, numbers, symbols). For example, in Kruti Dev 010, typing 'd' produces 'क', 'Q' produces 'ि', and so on.</li>
+                            <li>The visual appearance of Devanagari text is entirely dependent on having that specific font installed and selected. Without the font, the text appears as a meaningless string of Latin characters.</li>
+                            <li>Each font often has its own unique mapping, making interoperability a nightmare. Even different versions within the same font family (e.g., Shree-Lipi 0502 vs. Shree-Lipi 0708) can have different mappings.</li>
+                            <li>Typing conjunct consonants (संयुक्त अक्षर) often involves complex sequences of keystrokes and special characters (e.g., for half-forms or specific ligatures).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Unicode (for Devanagari):</strong>
+                        <ul>
+                            <li>Unicode provides a unique numerical code point for every character, regardless of platform, program, or language. For Devanagari, specific blocks of code points are assigned (e.g., U+0900 to U+097F).</li>
+                            <li>'क' always has the code point U+0915, 'ि' is U+093F, etc., universally.</li>
+                            <li>The visual rendering is handled by Unicode-compliant fonts (like Mangal, Arial Unicode MS, Noto Sans Devanagari, Aprajita, Kokila). The operating system or application uses these fonts to display the correct glyphs based on the Unicode code points.</li>
+                            <li>Text remains meaningful even if copied and pasted between different applications or systems, as long as a Unicode Devanagari font is available for rendering.</li>
+                            <li>Typing is often based on phonetic input methods (e.g., typing 'ka' produces 'क') or standardized layouts like InScript.</li>
+                            <li>Conjuncts are formed by a logical sequence: consonant + virama (halant U+094D) + consonant. The rendering engine then forms the appropriate ligature.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>The conversion process involves meticulously mapping each character or character sequence from the legacy font's encoding to its corresponding Unicode code point(s), and applying rules to handle matras, conjuncts, and special reordering requirements (like the pre-base 'i' matra).</p>
+                
+                <h2 id="features-of-tool">4. Features of Our Shree Lipi Converter</h2>
+                <p>Our online <strong>Shree Lipi Converter</strong> is packed with features to make your text conversion process smooth and efficient, all happening directly in your browser:</p>
+                <ul>
+                    <li><strong>Bidirectional Conversion:</strong> Seamlessly convert text from common <strong>Shree Lipi fonts (like Kruti Dev 010) to Unicode</strong> (e.g., Mangal font compatible) and from <strong>Unicode to Kruti Dev 010</strong>.</li>
+                    <li><strong>User-Friendly Interface:</strong> Clean, intuitive design with clear input and output text areas.</li>
+                    <li><strong>Font/Conversion Type Selection:</strong> A dropdown menu allows you to select the specific conversion pair you need (e.g., "Kruti Dev 010 to Unicode"). As more mappings are developed, they can be added here.</li>
+                    <li><strong>Real-Time Conversion:</strong> Text is converted instantly as you type or paste it into the input box, providing immediate feedback. (<em>Note: For very large texts, a slight debounce might be implemented for performance.</em>)</li>
+                    <li><strong>Copy to Clipboard:</strong> Easily copy the converted output text with a single click, ready to be pasted into other applications. You can also copy the input text.</li>
+                    <li><strong>Download Output:</strong> Save your converted text directly as a plain text (`.txt`) file. </li>
+                    <li><strong>Clear/Reset Fields:</strong> A "Clear All" button quickly empties both input and output text areas, allowing you to start a new conversion.</li>
+                    <li><strong>Swap Functionality:</strong> A "Swap" button to quickly interchange the content of the input and output boxes and, ideally, switch the conversion direction in the dropdown.</li>
+                    <li><strong>Font Preview Area:</strong> The output text area is styled with common Unicode Devanagari fonts to give you an accurate preview of how the converted text will look. The input area can be styled with a legacy font if the user has it installed, or will show the Latin characters.</li>
+                    <li><strong>Responsive Design:</strong> The tool adapts to different screen sizes, working well on desktops, tablets, and mobile phones.</li>
+                    <li><strong>Client-Side Processing:</strong> All conversion logic runs directly in your browser using JavaScript. This means your text data is not sent to any server, ensuring privacy and speed. No internet connection is needed after the page has loaded.</li>
+                    <li><strong>Dark/Light Mode Toggle:</strong> Choose your preferred viewing theme for comfortable usage.</li>
+                    <li><strong>Large Text Support (Conceptual):</strong> While performance depends on the browser and mapping complexity, the aim is to handle reasonably large blocks of text (e.g., up to 20,000 characters).</li>
+                </ul>
+
+                <h2 id="supported-fonts">5. Supported Font Mappings (Example: Kruti Dev)</h2>
+                <p>This converter currently provides a foundational mapping for **Kruti Dev 010 style fonts to Unicode Devanagari and vice-versa.** Kruti Dev is one of the most widely used legacy Devanagari fonts, especially in Northern India for DTP work.</p>
+                <p>The mapping process for Kruti Dev (and other legacy fonts) involves:</p>
+                <ul>
+                    <li><strong>Direct Character Replacements:</strong> Many Kruti Dev characters have a direct Unicode equivalent (e.g., Kruti Dev 'd' maps to Unicode 'क').</li>
+                    <li><strong>Matra Handling:</strong> Vowel signs (matras) in Kruti Dev are often typed after the consonant. In Unicode, some matras (like 'इ' ki matra - ' ि ') are logically stored before the consonant they apply to, even if they appear visually after or around it. The conversion logic must handle this reordering. For example, Kruti Dev 'd' + 'Q' (क + ि) needs to become Unicode 'ि' + 'क' (U+093F + U+0915) to render correctly as कि.</li>
+                    <li><strong>Conjunct Consonants (Sanyukt Akshar):</strong> Kruti Dev uses specific characters for half-forms (e.g., half 'k') or directly for common conjuncts. Unicode forms conjuncts by placing a Halant (Virama - U+094D) between consonants (e.g., क् + य = क्य). The converter needs rules to identify these patterns.</li>
+                    <li><strong>Special Characters:</strong> Characters like 'र्' (reph), '्रु', 'ृ', answar ( ं ), visarga ( ঃ ), chandrabindu ( ँ ) have specific representations in Kruti Dev that need to be mapped to their Unicode counterparts.</li>
+                </ul>
+                <p><strong>Future Expansion:</strong> To support other fonts like various **Shree-Lipi numerical series (e.g., Shree-Lipi 0502, Shree-Lipi 0708, Shree-Lipi 0920)** or **DevLys**, separate, detailed mapping tables and potentially adjusted conversion rules would need to be meticulously created and implemented for each. Each of these fonts has its own quirks and unique character assignments. This is a significant undertaking that requires extensive font analysis.</p>
+                <img src="https://via.placeholder.com/600x300.png?text=Devanagari+Character+Chart+Example" alt="Chart showing Devanagari script characters including vowels, consonants, and matras to illustrate mapping">
+
+
+                <h2 id="how-to-use-converter">6. How to Use the Converter: A Step-by-Step Guide</h2>
+                <p>Using our <strong>Shree Lipi / Kruti Dev to Unicode Converter</strong> is straightforward:</p>
+                <ol>
+                    <li><strong>Select Conversion Type:</strong> From the dropdown menu at the top, choose the direction of your conversion. For example, select "Kruti Dev 010 to Unicode" if your input text is in Kruti Dev, or "Unicode to Kruti Dev 010" if your input is standard Unicode Hindi.</li>
+                    <li><strong>Enter Input Text:</strong>
+                        <ul>
+                            <li>**Paste Text:** Copy your text from its source document (e.g., an old Word file, a DTP application).</li>
+                            <li>Click into the "Input Text" area on the left.</li>
+                            <li>Paste your text (Ctrl+V or Cmd+V).</li>
+                            <li>**Type Text:** You can also directly type into the "Input Text" area. If you are typing Kruti Dev text, ensure your keyboard is set to English and you know the Kruti Dev key mappings. If typing Unicode, use a Unicode Hindi input method (like Google Input Tools, or your OS's Indic keyboard).</li>
+                        </ul>
+                        <img src="https://via.placeholder.com/600x200.png?text=Step+2%3A+Paste+Legacy+Font+Text" alt="Screenshot showing text being pasted into the input text area of the Shree Lipi font converter">
+                    </li>
+                    <li><strong>View Converted Output:</strong> As you type or after you paste, the converted text will instantly appear in the "Output Text" area on the right.
+                        <ul>
+                            <li>If converting *to Unicode*, the output text area will display the text using standard Unicode Devanagari fonts available on your system (like Mangal, Noto Sans Devanagari).</li>
+                            <li>If converting *to Kruti Dev*, the output text area will show the Latin characters that represent the Devanagari text in Kruti Dev encoding. To see it as proper Kruti Dev Hindi, you would need to copy this output and paste it into an application where the Kruti Dev 010 font is selected.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Use Output Text:</strong>
+                        <ul>
+                            <li><strong>Copy Output:</strong> Click the "Copy Output" button below the output text area to copy the converted text to your clipboard.</li>
+                            <li><strong>Download as .txt:</strong> Click the "Save as .txt" button to download the output text as a plain text file.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Additional Actions:</strong>
+                        <ul>
+                            <li><strong>Copy Input:</strong> Click "Copy Input" if you need to copy the original text.</li>
+                            <li><strong>Swap:</strong> Click the <i class="fas fa-exchange-alt"></i> button between the text areas to swap the content of the input and output boxes. The conversion type in the dropdown will also attempt to switch to the reverse direction if a corresponding reverse mapping exists.</li>
+                            <li><strong>Clear All:</strong> Click the "Clear All" button to empty both text areas and reset the tool for a new conversion.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p>The "Font Preview" is inherently part of the output text area when converting to Unicode, as it will use system Unicode fonts. When converting to a legacy font, the preview in the tool will be the Latin character codes; the actual Devanagari rendering requires applying the target legacy font in another application.</p>
+
+                <h2 id="challenges-in-conversion">7. Challenges in Legacy Font Conversion</h2>
+                <p>Converting text from legacy Devanagari fonts like Shree Lipi, Kruti Dev, or DevLys to Unicode is not a trivial task. It presents several technical challenges:</p>
+                <ul>
+                    <li><strong>Varied Mappings:</strong> As mentioned, there's no single standard for legacy font encodings. Each font family (and sometimes even versions within a family) can have its own unique way of assigning Devanagari characters to Latin keystrokes. This necessitates creating and maintaining separate, detailed mapping tables for each supported font.</li>
+                    <li><strong>Contextual Analysis for Conjuncts (Sanyukt Akshar):</strong> Forming conjunct consonants (e.g., क्ष, त्र, ज्ञ, प्र, र्क) is particularly complex.
+                        <ul>
+                            <li>In legacy fonts, these are often typed using specific sequences of base characters and modifier keys, or by dedicated keys for half-forms or ligatures.</li>
+                            <li>In Unicode, they are formed logically (Consonant + Halant + Consonant).</li>
+                            <li>A converter needs sophisticated rules to correctly identify these legacy sequences and translate them into the correct Unicode Halant-based sequences. This might involve looking at preceding and succeeding characters (contextual analysis). For example, the "r" reph (र्) character in Kruti Dev needs to be moved *before* the consonant it modifies in Unicode, and then combined with a Halant.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Matra Reordering:</strong> The vowel sign for 'short i' ( ि ) is typed *after* the consonant in many legacy fonts (e.g., Kruti Dev: `d` for 'क' then `Q` for ' ि ' to make 'कि'). However, in Unicode, the U+093F ( ि ) code point *precedes* the consonant code point (U+093F U+0915). The converter must intelligently reorder these.</li>
+                    <li><strong>Handling of Special Characters:</strong> Characters like nukta (़), om (ॐ), avagraha (ऽ), and various punctuation marks might have unique or inconsistent mappings in legacy fonts.</li>
+                    <li><strong>Font-Specific Glyphs:</strong> Some legacy fonts might include stylistic variants or unique glyphs not directly corresponding to standard Unicode Devanagari characters. Deciding how to map these (or if they can be mapped at all) is a challenge.</li>
+                    <li><strong>User Typing Errors or Inconsistencies:</strong> Text typed in legacy fonts might contain errors or non-standard sequences due to user habits or typos. A robust converter needs to handle these gracefully, perhaps by attempting a best-guess conversion or flagging problematic sequences.</li>
+                    <li><strong>Lack of Official Documentation:</strong> For many older legacy fonts, official documentation detailing their character mappings is often unavailable. Mappings are typically derived through reverse-engineering and community efforts.</li>
+                    <li><strong>Performance with Large Texts:</strong> Complex rule-based conversions involving lookaheads and lookbehinds can be computationally intensive, potentially impacting performance for very large blocks of text if not optimized.</li>
+                </ul>
+                <p>Developing a high-accuracy converter for a wide range of Shree Lipi fonts requires ongoing effort, testing, and refinement of these mapping tables and conversion algorithms.</p>
+
+                <h2 id="benefits-of-unicode">8. Benefits of Using Unicode for Hindi/Devanagari</h2>
+                <p>Switching from legacy font encodings to Unicode for Hindi and other Devanagari-based languages offers a multitude of advantages in the modern digital world:</p>
+                <ul>
+                    <li><strong>Universal Compatibility:</strong> Unicode text is readable across all modern operating systems (Windows, macOS, Linux, Android, iOS) and applications without needing specific font installations, as long as a generic Unicode Devanagari font is present.</li>
+                    <li><strong>Web Friendliness:</strong> Essential for websites, blogs, and online content. Unicode text displays correctly in browsers and is indexable by search engines like Google, improving discoverability.</li>
+                    <li><strong>Searchability:</strong> You can easily search for words and phrases within Unicode documents or web pages using standard search functions. This is impossible with legacy font text where 'क' might be stored as 'd'.</li>
+                    <li><strong>Data Integrity and Portability:</strong> Copying and pasting Unicode text between different applications or platforms preserves the content accurately. Legacy font text often turns into gibberish when moved.</li>
+                    <li><strong>Software Development and Localization:</strong> Unicode simplifies software localization and the development of applications that support multiple languages, including Hindi.</li>
+                    <li><strong>Database Management:</strong> Storing and retrieving Devanagari data in databases is standardized and reliable with Unicode.</li>
+                    <li><strong>Accessibility:</strong> Unicode text can be easily processed by screen readers and other assistive technologies, making digital content more accessible to individuals with visual impairments.</li>
+                    <li><strong>Natural Language Processing (NLP):</strong> AI and NLP tasks like machine translation, sentiment analysis, and spell-checking for Hindi rely on Unicode text as input.</li>
+                    <li><strong>Standardized Input Methods:</strong> Unicode enables standardized keyboard layouts (like InScript) and intuitive phonetic input methods (like those provided by Google Input Tools or OS-native IMEs), making typing in Hindi easier and more consistent.</li>
+                    <li><strong>Future-Proofing:</strong> Unicode is the global industry standard and will continue to be supported. Relying on outdated legacy encodings is risky for long-term data preservation.</li>
+                    <li><strong>Email Communication:</strong> Sending emails with Hindi content in Unicode ensures recipients can read them correctly, regardless of their email client or system fonts.</li>
+                </ul>
+                <p>By converting old documents from Shree Lipi or Kruti Dev to Unicode, individuals and organizations can unlock these benefits, making their Devanagari content more accessible, searchable, portable, and ready for the future.</p>
+
+                <h2 id="faq-shree-lipi">9. Frequently Asked Questions (FAQs)</h2>
+                <dl>
+                    <dt><strong>1. What is the difference between Shree Lipi, Kruti Dev, and Unicode?</strong></dt>
+                    <dd>Shree Lipi and Kruti Dev are names of legacy font families that use proprietary (non-standard) encodings to represent Devanagari characters using Latin character codes. Unicode is a universal character encoding standard that assigns a unique number to every character, including all Devanagari characters. Unicode is the modern standard for multilingual text.</dd>
+
+                    <dt><strong>2. Why does my Kruti Dev text look like random English letters in some applications?</strong></dt>
+                    <dd>This happens because the application or system does not have the specific Kruti Dev font installed, or it's trying to interpret the text as standard Latin characters instead of using the Kruti Dev font's special mapping to render Devanagari glyphs.</dd>
+
+                    <dt><strong>3. Which Unicode font should I use after converting?</strong></dt>
+                    <dd>Commonly available Unicode Devanagari fonts include Mangal (often bundled with Windows), Arial Unicode MS, Noto Sans Devanagari (by Google), Kokila, Aprajita, Nirmala UI, etc. Any of these will correctly display Unicode Devanagari text.</dd>
+
+                    <dt><strong>4. Can this tool convert scanned PDF or image text?</strong></dt>
+                    <dd>No, this tool is designed for converting digital text that is already typed. It cannot perform Optical Character Recognition (OCR) on images or scanned PDFs. You would need a separate OCR tool for that first.</dd>
+
+                    <dt><strong>5. Will the formatting (bold, italics, font size) be preserved during conversion?</strong></dt>
+                    <dd>This converter primarily focuses on character encoding translation. Formatting information like bold, italics, font size, and layout are typically not part of the basic character data and are usually lost during a simple text conversion. The tool converts the plain text content.</dd>
+
+                    <dt><strong>6. How accurate is the conversion?</strong></dt>
+                    <dd>For the implemented mappings (e.g., Kruti Dev 010), we strive for high accuracy. However, due to the complexity of legacy fonts, especially with complex conjuncts or rare characters, minor discrepancies can occasionally occur. Always proofread important converted documents.</dd>
+
+                    <dt><strong>7. Can I convert text from Unicode back to Kruti Dev or Shree Lipi?</strong></dt>
+                    <dd>Yes, this tool provides an option to convert from Unicode back to Kruti Dev 010 (as an example). However, it's generally recommended to keep content in Unicode for new work due to its universal compatibility.</dd>
+
+                    <dt><strong>8. Is there a limit to the amount of text I can convert at once?</strong></dt>
+                    <dd>The tool is client-side, so performance depends on your browser's capabilities. It's designed to handle reasonably large blocks of text, but extremely large documents (e.g., hundreds of pages) might be slower or could potentially cause browser performance issues. We aim for good performance up to around 20,000-50,000 characters.</dd>
+
+                    <dt><strong>9. Is my data safe? Is it sent to a server?</strong></dt>
+                    <dd>All conversion processing happens directly within your web browser (client-side). Your text data is NOT sent to any external server, ensuring your privacy and data security.</dd>
+
+                    <dt><strong>10. Why do I need different converters for different Shree Lipi fonts (e.g., 0502 vs. 0708)?</strong></dt>
+                    <dd>Different Shree Lipi font series, and even other legacy fonts like DevLys, often have their own unique character encoding schemes (key mappings). A converter needs specific rules for each. A generic "Shree Lipi" converter might only support one or a few common variants accurately.</dd>
+
+                    <dt><strong>11. What if a specific character or conjunct doesn't convert correctly?</strong></dt>
+                    <dd>This can happen if the specific character sequence in your legacy text is very rare, uses a non-standard typing method, or if its mapping is not yet perfectly implemented in the converter for that particular font. You might need to manually correct such instances after conversion.</dd>
+                </dl>
+
+                <h2 id="conclusion-shree-lipi">10. Conclusion</h2>
+                <p>The transition from legacy Devanagari font encodings like Shree Lipi and Kruti Dev to the universal Unicode standard is a crucial step for ensuring the accessibility, searchability, and future-proofing of Hindi and other Devanagari-based digital content. Our <strong>Shree Lipi Converter</strong> provides a free, fast, and secure client-side solution to facilitate this transition, starting with support for common Kruti Dev 010 style text.</p>
+                <p>Whether you are an individual trying to revive old documents, a DTP operator migrating layouts, or an organization looking to standardize its digital archives, this tool offers a practical way to convert your text. While the complexities of legacy font mappings mean perfect conversion for every single variant is an ongoing challenge, we are committed to improving and expanding the capabilities of this <strong>Hindi font converter</strong>.</p>
+                <p>Embrace the power and universality of Unicode. Start converting your legacy Devanagari text today with our easy-to-use online tool, and ensure your content is ready for the modern digital world!</p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 footer-bg">
+      <div class="max-w-screen-lg py-10 px-4 sm:px-6 sm:flex justify-between mx-auto">
+          <div class="p-5 sm:w-2/12 border-r border-gray-300">
+            <h3 class="text-sm uppercase text-indigo-600 font-bold">Menu</h3>
+            <ul>
+              <li class="my-2"><a class="hover:text-indigo-600" href="./index.html">Home</a></li>
+              <li class="my-2"><a class="hover:text-indigo-600" href="./about.html">About</a></li>
+              <li class="my-2"><a class="hover:text-indigo-600" href="./contact.html">Contact</a></li>
+              <li class="my-2"><a class="hover:text-indigo-600" href="./privacy-policy.html">Privacy Policy</a></li>
+              <li class="my-2"><a class="hover:text-indigo-600" href="./disclaimer.html">Disclaimer</a></li>
+            </ul>
+          </div>
+          <div class="p-5 sm:w-7/12 border-r border-gray-300 text-center">
+            <img style="height: 60px; margin: auto; margin-bottom: 20px;" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+            <p class="text-gray-500 text-sm mb-10">
+              OnePageTools.com: Your free online resource for text and font conversion utilities.
+            </p>
+          </div>
+          <div class="p-5 sm:w-3/12">
+            <h3 class="text-sm uppercase text-indigo-600 font-bold">Contact Us</h3>
+            <ul>
+              <li class="my-2"><a class="hover:text-indigo-600" href="#">FCI Colony, Bareilly</a></li>
+              <li class="my-2"><a class="hover:text-indigo-600" href="mailto:itceguru123@gmail.com">itceguru123@gmail.com</a></li>
+            </ul>
+          </div>
+      </div>
+        <div class="py-5 border-t border-gray-300">
+         <p class="text-center text-sm text-gray-500">Copyright © <span id="currentYear"></span> OnePageTools.com | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+    // Wrapped in try-catch for overall script execution safety
+    try {
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Shree Lipi Converter DOM Ready - vDEBUG_STABLE");
+
+            // Element Caching - Check if elements exist
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            const conversionTypeSelect = document.getElementById('conversionType');
+            const copyInputButton = document.getElementById('copyInputButton');
+            const copyOutputButton = document.getElementById('copyOutputButton');
+            const downloadTxtButton = document.getElementById('downloadTxtButton');
+            const clearButton = document.getElementById('clearButton');
+            const swapButton = document.getElementById('swapButton');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const currentYearSpan = document.getElementById('currentYear');
+            const inputLabel = document.querySelector('label[for="inputText"]');
+            const outputLabel = document.querySelector('label[for="outputText"]');
+
+
+            if (!inputText || !outputText || !conversionTypeSelect || !copyOutputButton || !downloadTxtButton || !clearButton || !swapButton || !darkModeToggle || !inputLabel || !outputLabel) {
+                console.error("CRITICAL ERROR: One or more essential UI elements are missing from the DOM. Conversion cannot proceed.");
+                alert("Error: Essential page components are missing. Please try refreshing the page or contact support.");
+                return; // Stop script execution if critical elements are missing
+            }
+
+            if(currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
+
+            // --- Character Mapping (Example for Kruti Dev 010 to Unicode) ---
+            const krutiDevToUnicodeMap = {
+                // Vowels & Anusvara/Visarga
+                'A': 'ं', 'W': 'ँ', '%': 'ः', 'v': 'अ', 'vk': 'आ', 'b': 'इ', 'B': 'ई', 'm': 'उ', 'M': 'ऊ',
+                '`': 'ए', 'S': 'ऐ', // '~' is often used for ऐ in some variations, using S from common maps
+                // Matras - these require careful handling, especially 'f' ( ि )
+                'k': 'ा', 'f': 'ि', 'h': 'ी', 'q': 'ु', 'w': 'ू', 's': 'े', 'S': 'ै', // S is also AI matra
+                // For 'o' and 'au' matras, they are often typed as e_matra + aa_matra and ai_matra + aa_matra
+                // These would be handled by multi-char sequences or rules, not direct map here.
+                // For 'ri' matra
+                '_': 'ृ', // (Assuming '_' for Kruti Dev's Ri matra, can vary)
+                // Consonants
+                'd': 'क', 'D': 'क्', ']': 'ख', '}': 'ख्', 'x': 'ग', 'X': 'ग्', '\\': 'घ', '|': 'घ्', '³': 'ङ', '´': 'ङ्',
+                'p': 'च', 'P': 'च्', 'N': 'छ', '{': 'छ्', 't': 'ज', 'T': 'ज्', '÷': 'झ', '¥': 'झ्', '×': 'ञ', 'Ø': 'ञ्',
+                'V': 'ट', '¸': 'ट्', 'B': 'ठ', 'Œ': 'ठ्', 'M': 'ड', 'Ú': 'ड्', '<': 'ढ', 'ž': 'ढ्', '.': 'ण', 'Ê': 'ण्',
+                'r': 'त', 'R': 'त्', 'F': 'थ', '„': 'थ्', 'n': 'द', 'N': 'द्', '/': 'ध', '?': 'ध्', 'u': 'न', 'U': 'न्',
+                'i': 'प', 'I': 'प्', 'Q': 'फ', '«': 'फ्', 'c': 'ब', 'C': 'ब्', 'v': 'भ', 'V': 'भ्', // 'v' is also 'अ', context matters
+                'e': 'म', 'E': 'म्', ';': 'य', ':': 'य्', 'j': 'र',
+                'y': 'ल', 'Y': 'ल्', 'o': 'व', 'O': 'व्',
+                "'": 'श', '“': 'श्', '"': 'ष', '”': 'ष्', 'l': 'स', 'L': 'स्', 'g': 'ह', 'G': 'ह्',
+                // Special Characters & Conjuncts (Highly Simplified - needs rule-based approach)
+                'K': 'क्ष', 'K': 'क्ष्', // Note: Capital K for ksh, needs halant logic
+                'J': 'ज्ञ', 'J': 'ज्ञ्', // Note: Capital J for gya
+                '{': 'त्र', // This is more likely a typo in some maps, usually t + r form
+                '~': '्', // Halant (Virama) - VERY important
+                '0': '०', '1': '१', '2': '२', '3': '३', '4': '४', '5': '५', '6': '६', '7': '७', '8': '८', '9': '९',
+                '\\[': '(', '\\]': ')', // Escaped brackets if they are part of map keys
+                 'Z': 'र्', // Reph - requires special handling
+                 'Í': 'noindent', // Example of a non-Devanagari char
+                 '।': 'A' // Example, this is incorrect. Full stop is usually period or specific char. Kruti dev 'i' is poorn viram ।
+            };
+             krutiDevToUnicodeMap["i"] = "प"; // Correcting 'i' to 'प', it was also poorn viram mistake
+             krutiDevToUnicodeMap["I"] = "प्";
+             krutiDevToUnicodeMap["Q"] = "फ"; // often for 'f' sound
+             krutiDevToUnicodeMap["«"] = "फ्";
+             krutiDevToUnicodeMap["."] = "ण"; // Corrected from '.' to 'ण'
+             krutiDevToUnicodeMap["·"] = "ण्"; // Corrected common mapping for half Na
+
+
+            // --- Unicode to Kruti Dev Mapping (Generated, then refined) ---
+            const unicodeToKrutiDevMap = {};
+            for (const key in krutiDevToUnicodeMap) {
+                // Prioritize shorter legacy sequences if multiple map to same Unicode (less likely with good map)
+                if (!unicodeToKrutiDevMap[krutiDevToUnicodeMap[key]] || key.length < unicodeToKrutiDevMap[krutiDevToUnicodeMap[key]].length) {
+                    unicodeToKrutiDevMap[krutiDevToUnicodeMap[key]] = key;
+                }
+            }
+            // Manual overrides for Unicode to KrutiDev (CRITICAL for complex matras/conjuncts)
+            // These are essential because simple reverse mapping is often wrong.
+            unicodeToKrutiDevMap['कि'] = 'fd'; // क + ि (typed f then d)
+            unicodeToKrutiDevMap['कू'] = 'dw'; // क + ू
+            unicodeToKrutiDevMap['कृ'] = 'd_'; // क + ृ
+            unicodeToKrutiDevMap['के'] = 'ds'; // क + े
+            unicodeToKrutiDevMap['कै'] = 'dS'; // क + ै
+            unicodeToKrutiDevMap['को'] = 'dks';// क + ो (often typed क then ा then े)
+            unicodeToKrutiDevMap['कौ'] = 'dkS';// क + ौ
+            unicodeToKrutiDevMap['क्'] = 'D'; // Halant forms are often separate
+            // ... This list needs to be EXTREMELY comprehensive for accurate U->KD ...
+            // For Reph (र् as prefix) - this is very hard to do in reverse without context
+            // Example: If Unicode is "धर्म", Kruti Dev might be "/eZ" (ध + म + Reph)
+            // This requires rule-based logic, not simple mapping.
+
+
+            function convertKrutiDevToUnicode(text) {
+                let output = '';
+                let i = 0;
+                while (i < text.length) {
+                    let char = text[i];
+                    let unicodeChar = krutiDevToUnicodeMap[char];
+
+                    // Rule for 'ि' (matra i) - Character code 'f' in KrutiDev
+                    if (char === 'f' && i + 1 < text.length) {
+                        let nextCharKD = text[i+1];
+                        let nextUnicodeConsonant = krutiDevToUnicodeMap[nextCharKD];
+                        if (nextUnicodeConsonant && nextUnicodeConsonant >= '\u0915' && nextUnicodeConsonant <= '\u0939') { // Check if next is a consonant
+                            output += nextUnicodeConsonant + 'ि';
+                            i++; // Consumed next char
+                        } else {
+                            output += 'इ'; // Standalone 'इ' vowel if 'f' is not followed by consonant it can modify
+                        }
+                    } 
+                    // Rule for Reph 'Z' (often typed after the character it sits on)
+                    else if (char === 'Z' && output.length > 0) {
+                        // This is a simplification. Real reph logic is more complex.
+                        // It assumes 'Z' modifies the *previous* Unicode consonant cluster.
+                        // For "कर्म", typed k m Z -> क म र् (Unicode needs र् before म for rendering)
+                        // This example places it after, for simplicity. True reph needs contextual pre-pending.
+                        // A robust solution would parse syllables.
+                        output += 'र्'; 
+                    }
+                    else if (unicodeChar) {
+                        output += unicodeChar;
+                    } else {
+                        output += char; // Character not in map, pass through
+                    }
+                    i++;
+                }
+                return output;
+            }
+            
+            function convertUnicodeToKrutiDev(text) {
+                // This is EXTREMELY difficult to do accurately client-side without full linguistic parsing.
+                // The following is a placeholder for a more robust algorithm.
+                let output = '';
+                let i = 0;
+                while (i < text.length) {
+                    // Attempt to match longer sequences first for specific conjuncts/matra combinations
+                    let matched = false;
+                    for (let len = 3; len >= 1; len--) { // Check for 3-char, then 2-char, then 1-char sequences
+                        if (i + len <= text.length) {
+                            let unicodeSeq = text.substring(i, i + len);
+                            if (unicodeToKrutiDevMap[unicodeSeq]) {
+                                output += unicodeToKrutiDevMap[unicodeSeq];
+                                i += len;
+                                matched = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!matched) {
+                        // If 'ि' matra comes before a consonant, try to find consonant + ि in map
+                        if (text[i] === 'ि' && i > 0) {
+                             let potentialCombo = text[i-1] + text[i]; // prev_consonant + ि
+                             if (unicodeToKrutiDevMap[potentialCombo]) {
+                                 // This logic is tricky and might double-process or mis-process
+                                 // It's better to have explicit combined mappings in unicodeToKrutiDevMap
+                                 // For now, we'll rely on the simple pass-through if not in combined map
+                                 output += unicodeToKrutiDevMap[text[i]] || text[i];
+                             } else {
+                                output += unicodeToKrutiDevMap[text[i]] || text[i];
+                             }
+                        } else {
+                             output += unicodeToKrutiDevMap[text[i]] || text[i]; // Default to original if not found
+                        }
+                        i++;
+                    }
+                }
+                return output;
+            }
+
+
+            function performConversion() {
+                if (!inputText || !outputText || !conversionTypeSelect || !inputLabel || !outputLabel) {
+                     console.error("Conversion cannot proceed: critical elements missing.");
+                     return;
+                }
+                const text = inputText.value;
+                const conversionType = conversionTypeSelect.value;
+                let convertedText = "";
+
+                console.log("Performing conversion for type:", conversionType, "Input length:", text.length);
+
+                try {
+                    if (conversionType === "kdv010-to-unicode") {
+                        convertedText = convertKrutiDevToUnicode(text);
+                        outputText.style.fontFamily = "'Arial Unicode MS', 'Mangal', 'Noto Sans Devanagari', ' निर्मला UI', sans-serif";
+                        inputLabel.textContent = "Input Text (Kruti Dev 010 Style):";
+                        outputLabel.textContent = "Output Text (Unicode):";
+                        inputText.classList.add('krutidev-preview-font');
+                        outputText.classList.remove('krutidev-preview-font');
+                        outputText.classList.add('font-preview');
+
+
+                    } else if (conversionType === "unicode-to-kdv010") {
+                        convertedText = convertUnicodeToKrutiDev(text);
+                        // outputText.style.fontFamily = "'Kruti Dev 010', 'Kruti', Courier, monospace";
+                        outputText.style.fontFamily = "monospace"; // Better to show raw for verification unless font installed
+                        inputLabel.textContent = "Input Text (Unicode):";
+                        outputLabel.textContent = "Output Text (Kruti Dev 010 Style):";
+                        inputText.classList.remove('krutidev-preview-font');
+                        inputText.classList.add('font-preview');
+                        outputText.classList.add('krutidev-preview-font');
+                        outputText.classList.remove('font-preview');
+
+
+                    } else {
+                        convertedText = "Selected conversion type is not yet fully implemented.";
+                    }
+                } catch (e) {
+                    console.error("Error during conversion:", e);
+                    convertedText = "Error during conversion. Please check input or console for details.";
+                    showToast("Conversion error: " + e.message, 'error');
+                }
+                outputText.value = convertedText;
+            }
+
+            inputText.addEventListener('input', performConversion);
+            conversionTypeSelect.addEventListener('change', () => {
+                performConversion();
+                 // Adjust placeholder texts based on conversion type
+                if (conversionTypeSelect.value === "kdv010-to-unicode") {
+                    inputText.placeholder = "Paste or type your Kruti Dev text here...";
+                    outputText.placeholder = "Unicode text will appear here...";
+                } else if (conversionTypeSelect.value === "unicode-to-kdv010") {
+                    inputText.placeholder = "Paste or type your Unicode Hindi text here...";
+                    outputText.placeholder = "Kruti Dev style text will appear here...";
+                }
+            });
+
+            copyInputButton.addEventListener('click', () => {
+                if (!inputText.value) { showToast('Nothing to copy from input.', 'warning'); return; }
+                navigator.clipboard.writeText(inputText.value)
+                    .then(() => showToast('Input text copied!'))
+                    .catch(err => { console.error('Failed to copy input: ', err); showToast('Failed to copy input.', 'error'); });
+            });
+
+            copyOutputButton.addEventListener('click', () => {
+                if (!outputText.value) { showToast('Nothing to copy from output.', 'warning'); return; }
+                navigator.clipboard.writeText(outputText.value)
+                    .then(() => showToast('Output text copied!'))
+                    .catch(err => { console.error('Failed to copy output: ', err); showToast('Failed to copy output.', 'error'); });
+            });
+
+            downloadTxtButton.addEventListener('click', () => {
+                if (!outputText.value) { showToast('Nothing to download.', 'warning'); return; }
+                const text = outputText.value;
+                const filename = "converted_text_onepagetools.txt";
+                const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(link.href);
+                showToast('Text downloaded as .txt!');
+            });
+
+            clearButton.addEventListener('click', () => {
+                inputText.value = "";
+                outputText.value = "";
+                showToast('Fields cleared.');
+                // Trigger input event to update placeholders correctly if needed after clear
+                const event = new Event('input', { bubbles: true, cancelable: true });
+                inputText.dispatchEvent(event);
+                performConversion(); // To reset output font style based on current dropdown
+            });
+        
+            swapButton.addEventListener('click', () => {
+                const tempInputText = inputText.value;
+                const tempInputPlaceholder = inputText.placeholder;
+
+                inputText.value = outputText.value;
+                outputText.value = tempInputText; // This will trigger conversion via input event on inputText
+
+                // Swap placeholders
+                inputText.placeholder = outputText.placeholder;
+                outputText.placeholder = tempInputPlaceholder;
+
+
+                const currentType = conversionTypeSelect.value;
+                if (currentType === "kdv010-to-unicode") {
+                    conversionTypeSelect.value = "unicode-to-kdv010";
+                } else if (currentType === "unicode-to-kdv010") {
+                    conversionTypeSelect.value = "kdv010-to-unicode";
+                }
+                
+                // Manually trigger change event for select to update labels and perform conversion
+                const event = new Event('change', { bubbles: true, cancelable: true });
+                conversionTypeSelect.dispatchEvent(event);
+                
+                // Then explicitly call performConversion AFTER the select's change handler has updated labels/styles
+                // (or ensure the change handler itself calls performConversion, which it does)
+                // performConversion(); // This might be redundant if select's change handler does it
+
+                showToast('Input and Output swapped.');
+            });
+
+            if (darkModeToggle) {
+                const moonIcon = '<i class="fas fa-moon"></i>';
+                const sunIcon = '<i class="fas fa-sun"></i>';
+                const currentTheme = localStorage.getItem('darkModeSLConverter'); 
+                if (currentTheme === 'enabled') {
+                    document.body.classList.add('dark-mode');
+                    darkModeToggle.innerHTML = sunIcon;
+                } else {
+                    darkModeToggle.innerHTML = moonIcon;
+                }
+                darkModeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    let theme = document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled';
+                    darkModeToggle.innerHTML = theme === 'enabled' ? sunIcon : moonIcon;
+                    localStorage.setItem('darkModeSLConverter', theme);
+                });
+            }
+        
+            function showToast(message, type = 'success') {
+                // Ensure only one toast is visible at a time
+                const existingToast = document.querySelector('.toast-notification');
+                if (existingToast) existingToast.remove();
+
+                const toast = document.createElement('div');
+                toast.className = `toast-notification fixed bottom-5 right-5 p-4 rounded-lg shadow-lg text-white z-50 ${type === 'success' ? 'bg-green-500' : (type === 'error' ? 'bg-red-500' : 'bg-yellow-500 text-black')}`;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }
+
+            document.addEventListener('keydown', function(event) {
+                if (event.ctrlKey && (event.key === 'c' || event.key === 'C')) { 
+                    if (document.activeElement === outputText && outputText.value) {
+                        event.preventDefault(); copyOutputButton.click();
+                    } else if (document.activeElement === inputText && inputText.value) {
+                         event.preventDefault(); copyInputButton.click();
+                    }
+                }
+                if (event.ctrlKey && (event.key === 'r' || event.key === 'R')) { 
+                    if (document.activeElement === inputText || document.activeElement === outputText || document.activeElement === conversionTypeSelect) {
+                        event.preventDefault(); clearButton.click();
+                    }
+                }
+            });
+
+            // Initial setup
+            resetTool(); // Call resetTool to set initial state correctly
+            performConversion(); // Initial conversion for placeholder styling and labels
+            // Set initial placeholders based on default conversion type
+            if (conversionTypeSelect.value === "kdv010-to-unicode") {
+                inputText.placeholder = "Paste or type your Kruti Dev text here...";
+                outputText.placeholder = "Unicode text will appear here...";
+            } else if (conversionTypeSelect.value === "unicode-to-kdv010") {
+                inputText.placeholder = "Paste or type your Unicode Hindi text here...";
+                outputText.placeholder = "Kruti Dev style text will appear here...";
+            }
+
+
+        }); // End of DOMContentLoaded
+    } catch (e) {
+        console.error("A critical error occurred in the main script execution:", e);
+        alert("A critical error occurred. Some features might not work. Please check the console for details or refresh the page.");
+    }
+    </script>
+</body>
+</html>

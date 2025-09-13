@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Free PDF to TIFF Converter - High-Quality & Lossless Conversion</title>
+    <meta name="description" content="Convert PDF files to high-quality, lossless TIFF images for free. Our online PDF to TIFF converter lets you select DPI and page range. Secure, browser-based, and perfect for printing, archiving, and graphic design.">
+    <meta name="keywords" content="pdf to tiff, convert pdf to tiff, pdf to tiff converter, free pdf to tiff, online pdf to tiff, pdf to tiff high quality, pdf to tiff 300 dpi, lossless image format, document archiving, tagged image file format">
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="./css/style.css" /> <!-- Aapki existing CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom professional design & animations */
+        :root {
+            --primary-color: #0891b2; /* Cyan-600 */
+            --primary-hover: #06b6d4; /* Cyan-500 */
+            --primary-light: #ecfeff; /* Cyan-50 */
+        }
+        #uploader {
+            transition: all 0.3s ease;
+            animation: pulse-border 2s infinite;
+        }
+        #uploader.ondragover {
+            border-color: var(--primary-hover);
+            background-color: var(--primary-light);
+            animation: none;
+        }
+        @keyframes pulse-border {
+            0% { border-color: #d1d5db; }
+            50% { border-color: var(--primary-color); }
+            100% { border-color: #d1d5db; }
+        }
+        .progress-bar {
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+        .preview-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .prose h2, .prose h3 {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation Bar (Aapke existing code se) -->
+    <nav class="bg-white fixed w-full z-30 top-0 start-0 border-b border-gray-200 shadow-sm">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+        </a>
+        <div class="flex md:order-2">
+          <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+            <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a></li>
+            <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+            <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-24">
+        <!-- Tool Section -->
+        <div class="max-w-5xl mx-auto p-6 md:p-8 bg-white rounded-xl shadow-lg mt-10">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800">PDF to TIFF Converter</h1>
+                <p class="text-lg text-gray-600 mt-3">Convert PDFs to high-quality, lossless TIFF images for professional use.</p>
+            </div>
+
+            <!-- Uploader -->
+            <div id="uploader" class="border-4 border-dashed border-gray-300 rounded-lg p-10 text-center cursor-pointer">
+                <input type="file" id="fileInput" class="hidden" accept="application/pdf">
+                <label for="fileInput" class="cursor-pointer">
+                    <svg class="mx-auto h-16 w-16 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" /></svg>
+                    <p class="mt-4 text-2xl font-semibold text-gray-700">Choose a PDF file or drag it here</p>
+                    <p class="mt-1 text-sm text-gray-500">Secure & Private: Your files are processed in your browser.</p>
+                </label>
+            </div>
+
+            <!-- Processing Options -->
+            <div id="options-container" class="hidden mt-6 p-4 bg-gray-50 rounded-lg space-y-4">
+                <div id="file-info" class="text-center font-semibold text-gray-800"></div>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 flex-wrap">
+                    <div>
+                        <label for="dpi-select" class="font-medium text-gray-700">Quality (DPI):</label>
+                        <select id="dpi-select" class="p-2 border border-gray-300 rounded-md">
+                            <option value="150" selected>150 DPI (Standard)</option>
+                            <option value="300">300 DPI (High Quality)</option>
+                            <option value="600">600 DPI (Archival)</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="from-page" class="font-medium text-gray-700">Pages:</label>
+                        <input type="number" id="from-page" min="1" class="w-20 p-2 border border-gray-300 rounded-md" placeholder="From">
+                        <span class="mx-1 text-gray-600">to</span>
+                        <input type="number" id="to-page" min="1" class="w-20 p-2 border border-gray-300 rounded-md" placeholder="To">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button id="startButton" class="w-full md:w-auto px-10 py-3 btn-primary text-white font-bold text-lg rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
+                        Convert to TIFF
+                    </button>
+                </div>
+            </div>
+
+            <!-- Processing View -->
+            <div id="processing" class="hidden mt-8 text-center">
+                <p id="status" class="text-lg font-semibold text-gray-700 mb-4">Initializing...</p>
+                <div class="w-full bg-gray-200 rounded-full h-5">
+                    <div id="progressBar" class="progress-bar h-5 rounded-full text-center color-white font-bold leading-5">0%</div>
+                </div>
+            </div>
+
+            <!-- Results View -->
+            <div id="results" class="hidden mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+                    <h2 class="text-3xl font-bold text-gray-800">Conversion Complete!</h2>
+                    <button id="downloadZipButton" class="w-full md:w-auto px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        Download All as .zip
+                    </button>
+                </div>
+                <div id="preview-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- TIFF previews will be injected here -->
+                </div>
+                 <div class="text-center mt-10">
+                    <button id="startOverButton" class="px-8 py-3 bg-gray-500 text-white font-bold text-lg rounded-lg hover:bg-gray-600 shadow-md">Convert Another PDF</button>
+                </div>
+            </div>
+            <div id="error-message" class="hidden mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center"></div>
+        </div>
+
+        <!-- SEO Article Section -->
+        <article class="max-w-4xl mx-auto p-6 md:p-8 mt-12 bg-white rounded-xl shadow-lg prose lg:prose-xl">
+            <h2 class="text-3xl md:text-4xl font-extrabold !border-l-4 !border-cyan-600 !pl-4">The Ultimate Guide to PDF to TIFF Conversion</h2>
+            <p>In the vast ecosystem of digital formats, choosing the right one for the job is critical. While PDF is the universal standard for document sharing, the **TIFF (Tagged Image File Format)** holds a special, vital place, especially in professional circles. The ability to **convert a PDF to TIFF** is more than just a file transformation; it's about unlocking superior quality, industry-standard compliance, and archival-grade longevity for your documents. Our free, high-quality **PDF to TIFF converter** is designed to make this essential process seamless and secure.</p>
+
+            <h3 class="text-2xl font-semibold">What Exactly is a TIFF File? A Deep Dive</h3>
+            <p>Created by the Aldus Corporation in the 1980s (and now owned by Adobe), the Tagged Image File Format was designed to be the definitive, high-quality format for scanned images. Unlike formats like JPEG, which use "lossy" compression (discarding data to reduce file size), TIFF's primary strength is its use of **lossless compression**. This means that no image quality is lost during the saving process, resulting in a perfect, pixel-for-pixel replica of the original. This core feature makes it the format of choice for professionals who cannot afford any compromise in quality.</p>
+            
+            <h3 class="text-2xl font-semibold">Why Convert PDF to TIFF? The Unbeatable Advantages</h3>
+            <p>You might wonder, "If my document is already a PDF, why should I convert it?" The answer lies in the specific requirements of your task. Here are the compelling reasons to use a **PDF to TIFF converter**:</p>
+            <ul>
+                <li><strong>Unmatched Image Quality:</strong> This is the number one reason. When you convert a PDF page to a <strong>high-quality 300 DPI TIFF</strong>, you are creating a file that is perfect for professional printing. The lossless nature ensures that every detail, every fine line, and every color nuance is preserved perfectly.</li>
+                <li><strong>The Gold Standard for Archiving:</strong> Libraries, museums, government agencies, and legal firms rely on TIFF for digital archiving. Its robust, uncompressed (or losslessly compressed) nature ensures that documents will be perfectly readable for decades to come, without any risk of digital degradation.</li>
+                <li><strong>Multi-Page Support:</strong> A single TIFF file can contain multiple pages, just like a PDF. This makes it incredibly convenient for storing and sharing multi-page scanned documents, like a contract or a manuscript, as a single, high-quality file.</li>
+                <li><strong>Industry-Wide Compatibility:</strong> From desktop publishing software (like Adobe InDesign) to medical imaging systems and fax machines, TIFF is a universally recognized and supported format in professional environments.</li>
+                <li><strong>Ideal for OCR:</strong> The clarity and sharpness of TIFF images make them the best source material for Optical Character Recognition (OCR) software, leading to more accurate text extraction.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold">TIFF vs. JPEG vs. PNG: A Clear Comparison</h3>
+            <p>Understanding the difference between formats is key. Here's a simple breakdown:</p>
+            <blockquote>
+                <p><strong>Use TIFF when:</strong> Quality is the absolute priority. For printing, scanning, archiving, or any professional task where every pixel matters.<br>
+                <strong>Use JPEG when:</strong> File size is the priority, and some quality loss is acceptable. Perfect for website photos and email attachments.<br>
+                <strong>Use PNG when:</strong> You need transparency (like for logos or web graphics) and good quality for web use. It's also lossless, but often results in larger files than TIFF for complex, multi-color images.</p>
+            </blockquote>
+
+            <h3 class="text-2xl font-semibold">How to Convert PDF to TIFF with Our High-Quality Tool</h3>
+            <p>We've engineered our tool for both power and simplicity. Here’s how you can get a perfect TIFF conversion in seconds:</p>
+            <ol>
+                <li><strong>Upload Your PDF:</strong> Drag and drop your file into the designated area or click to select it from your computer.</li>
+                <li><strong>Select Your Quality (DPI):</strong> This is a crucial step. Choose **150 DPI** for standard on-screen use, **300 DPI** for high-quality printing, or **600 DPI** for professional archival purposes. Higher DPI means better quality and larger file size.</li>
+                <li><strong>Choose Your Page Range:</strong> You can convert the entire document or specify a range of pages, giving you complete control over the output.</li>
+                <li><strong>Start the Conversion:</strong> Click the "Convert to TIFF" button. Our tool will process the file right in your browser, showing you a live progress bar.</li>
+                <li><strong>Download Your Files:</strong> Once complete, you'll see previews of each converted page. You can download them individually or grab them all in a single, convenient .zip file.</li>
+            </ol>
+
+            <h3 class="text-2xl font-semibold">Security First: A Truly Private Conversion</h3>
+            <p>Your document's privacy is non-negotiable. Many online tools upload your files to a server, creating a potential security risk. Our **free PDF to TIFF converter** operates differently. By using advanced JavaScript libraries like `pdf.js` and `UTIF.js`, the entire conversion process—from opening the PDF to generating the final TIFF files—happens locally on your machine. **Your files never leave your computer.** This browser-based approach guarantees complete privacy and security.</p>
+
+            <h3 class="text-2xl font-semibold">Frequently Asked Questions (FAQ)</h3>
+            <h4>Is it really free to convert a PDF to TIFF?</h4>
+            <p>Absolutely. Our tool is 100% free, with no file size limits, page limits, or watermarks. We believe in providing accessible, professional-grade tools for everyone.</p>
+            <h4>What is the best DPI for a PDF to TIFF conversion?</h4>
+            <p>It depends on your needs. For general screen viewing, 150 DPI is sufficient. For high-quality printing of photos and documents, **300 DPI is the industry standard**. For archival purposes or detailed line art, 600 DPI provides the maximum level of detail.</p>
+            <h4>Can a single TIFF file have multiple pages?</h4>
+            <p>Yes. The TIFF format natively supports multiple pages. However, our tool generates one TIFF file per page for maximum compatibility and flexibility. You can easily download all pages together in a single .zip file for convenience.</p>
+            <h4>Will this converter work on Mac, Windows, and Linux?</h4>
+            <p>Yes. Since our tool runs entirely in your web browser (like Chrome, Firefox, Safari, or Edge), it works on any operating system without any software installation.</p>
+
+            <h3 class="text-2xl font-semibold">Conclusion: Your Professional Solution for High-Fidelity Conversions</h3>
+            <p>Stop compromising on quality. Whether you're a designer preparing artwork for print, a researcher archiving important documents, or a professional needing industry-standard files, our **online PDF to TIFF converter** is the perfect solution. It offers the speed and convenience of an online tool with the security and quality of a desktop application. Bookmark this page and empower your workflow with flawless, high-resolution TIFF conversions today.</p>
+        </article>
+    </main>
+
+    <!-- Footer (Aapke existing code se) -->
+    <div class="bg-gray-200 mt-12">
+        <div class="max-w-screen-lg py-10 px-4 sm:px-6 text-gray-800 text-center mx-auto">
+             <img style="height: 60px; margin: auto; margin-bottom: 20px; mix-blend-mode: multiply;" src="./One_Page-removebg-preview.png" alt="OnePageTools Footer Logo" />
+            <p class="text-gray-500 text-sm mb-10">OnePageTools.com provides a suite of free, secure, and powerful online tools to manage your documents. All processing is done client-side for maximum privacy.</p>
+            <div class="my-5">
+                <center>Copyright © 2024 OnePageTools.com <br> All Rights Reserved</center>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript Libraries (Free & Client-Side) -->
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js`;
+
+        // DOM Elements
+        const uploader = document.getElementById('uploader');
+        const fileInput = document.getElementById('fileInput');
+        const optionsContainer = document.getElementById('options-container');
+        const fileInfo = document.getElementById('file-info');
+        const dpiSelect = document.getElementById('dpi-select');
+        const fromPageInput = document.getElementById('from-page');
+        const toPageInput = document.getElementById('to-page');
+        const startButton = document.getElementById('startButton');
+        const processing = document.getElementById('processing');
+        const statusEl = document.getElementById('status');
+        const progressBar = document.getElementById('progressBar');
+        const results = document.getElementById('results');
+        const previewGrid = document.getElementById('preview-grid');
+        const downloadZipButton = document.getElementById('downloadZipButton');
+        const startOverButton = document.getElementById('startOverButton');
+        const errorMessage = document.getElementById('error-message');
+
+        let currentFile = null;
+        let generatedTIFFs = [];
+
+        // Event Listeners
+        uploader.addEventListener('click', () => fileInput.click());
+        uploader.addEventListener('dragover', (e) => { e.preventDefault(); uploader.classList.add('ondragover'); });
+        uploader.addEventListener('dragleave', () => uploader.classList.remove('ondragover'));
+        uploader.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploader.classList.remove('ondragover');
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener('change', (e) => {
+             if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        });
+        
+        startButton.addEventListener('click', processFile);
+        downloadZipButton.addEventListener('click', downloadAsZip);
+        startOverButton.addEventListener('click', resetUI);
+
+        async function handleFile(file) {
+            if (file && file.type === 'application/pdf') {
+                currentFile = file;
+                errorMessage.classList.add('hidden');
+                uploader.classList.add('hidden');
+                
+                try {
+                    const loadingTask = pdfjsLib.getDocument(URL.createObjectURL(file));
+                    const pdf = await loadingTask.promise;
+                    fileInfo.textContent = `File: ${file.name} (${pdf.numPages} pages)`;
+                    fromPageInput.value = 1;
+                    fromPageInput.max = pdf.numPages;
+                    toPageInput.value = pdf.numPages;
+                    toPageInput.max = pdf.numPages;
+                    optionsContainer.classList.remove('hidden');
+                } catch (error) {
+                    console.error("Error loading PDF:", error);
+                    showError("Could not read PDF. It might be corrupted or password-protected.");
+                    resetUI();
+                }
+            } else {
+                showError('Please select a valid PDF file.');
+            }
+        }
+
+        async function processFile() {
+            if (!currentFile) return;
+
+            const fromPage = parseInt(fromPageInput.value);
+            const toPage = parseInt(toPageInput.value);
+            const dpi = parseInt(dpiSelect.value);
+            const scale = dpi / 96; // 96 is a standard screen DPI
+            
+            generatedTIFFs = [];
+            previewGrid.innerHTML = '';
+            
+            optionsContainer.classList.add('hidden');
+            processing.classList.remove('hidden');
+            results.classList.add('hidden');
+
+            try {
+                const loadingTask = pdfjsLib.getDocument(URL.createObjectURL(currentFile));
+                const pdf = await loadingTask.promise;
+                
+                if (fromPage < 1 || toPage > pdf.numPages || fromPage > toPage) {
+                    showError("Invalid page range selected.");
+                    processing.classList.add('hidden');
+                    optionsContainer.classList.remove('hidden');
+                    return;
+                }
+
+                const totalPagesToProcess = toPage - fromPage + 1;
+
+                for (let i = fromPage; i <= toPage; i++) {
+                    const progress = ((i - fromPage) / totalPagesToProcess) * 100;
+                    updateProgress(progress, `Converting page ${i} of ${toPage}...`);
+
+                    const page = await pdf.getPage(i);
+                    const viewport = page.getViewport({ scale: scale });
+                    
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    await page.render({ canvasContext: context, viewport: viewport }).promise;
+                    
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    const tiffBuffer = UTIF.encodeImage(imageData.data, imageData.width, imageData.height);
+                    
+                    generatedTIFFs.push({ 
+                        pageNum: i, 
+                        tiffData: new Blob([tiffBuffer], { type: 'image/tiff' }),
+                        previewUrl: canvas.toDataURL('image/png')
+                    });
+                }
+
+                updateProgress(100, 'Finalizing...');
+                displayResults();
+            } catch (err) {
+                console.error(err);
+                showError('An error occurred during conversion. The PDF may be invalid or too complex.');
+                resetUI();
+            }
+        }
+
+        function displayResults() {
+            processing.classList.add('hidden');
+            results.classList.remove('hidden');
+            generatedTIFFs.forEach((data, index) => {
+                const previewEl = document.createElement('div');
+                previewEl.className = 'preview-card bg-white rounded-lg shadow-md p-4 flex flex-col gap-4';
+                previewEl.innerHTML = `
+                    <h4 class="text-lg font-semibold text-center text-gray-700">Page ${data.pageNum}</h4>
+                    <img src="${data.previewUrl}" alt="Preview of Page ${data.pageNum}" class="w-full h-auto border border-gray-200 rounded-md">
+                    <button class="w-full px-4 py-2 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700" onclick="downloadIndividualTIFF(${index})">Download Page ${data.pageNum}.tiff</button>
+                `;
+                previewGrid.appendChild(previewEl);
+            });
+        }
+        
+        function updateProgress(percent, status) {
+            progressBar.style.width = `${percent}%`;
+            progressBar.textContent = `${Math.round(percent)}%`;
+            statusEl.textContent = status;
+        }
+
+        function downloadIndividualTIFF(index) {
+            const tiffData = generatedTIFFs[index];
+            const url = URL.createObjectURL(tiffData.tiffData);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentFile.name.replace(/\.pdf$/i, '')}_page_${tiffData.pageNum}.tiff`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        async function downloadAsZip() {
+            const zip = new JSZip();
+            generatedTIFFs.forEach(data => {
+                zip.file(`${currentFile.name.replace(/\.pdf$/i, '')}_page_${data.pageNum}.tiff`, data.tiffData);
+            });
+            
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            const url = URL.createObjectURL(zipBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentFile.name.replace(/\.pdf$/i, '')}_tiff.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+        }
+
+        function resetUI() {
+            currentFile = null;
+            generatedTIFFs = [];
+            fileInput.value = '';
+            previewGrid.innerHTML = '';
+            uploader.classList.remove('hidden');
+            optionsContainer.classList.add('hidden');
+            processing.classList.add('hidden');
+            results.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            updateProgress(0, 'Initializing...');
+        }
+    </script>
+</body>
+</html>

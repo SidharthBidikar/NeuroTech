@@ -2004,5 +2004,58 @@
       });
     </script>
     <!-- END: Search Script -->
-  </body>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('toolSearch');
+  const toolListContainer = document.getElementById('toollists'); // your container id
+  const noResultsMessage = document.getElementById('noResultsMessage');
+
+  if (!searchInput || !toolListContainer) {
+    console.warn('Search cannot be initialized: missing elements.');
+    return;
+  }
+
+  const tools = Array.from(toolListContainer.getElementsByClassName('singletools'));
+
+  // helper to normalize text for comparison
+  const normalize = s => s ? s.toString().toLowerCase().trim() : '';
+
+  searchInput.addEventListener('input', function () {
+    const q = normalize(searchInput.value);
+    let found = 0;
+
+    tools.forEach(tool => {
+      // look at the visible title and description
+      const title = normalize(tool.querySelector('h2')?.textContent);
+      const desc  = normalize(tool.querySelector('p')?.textContent);
+      // also check the anchor href filename (e.g. "./pdftoword.html")
+      const href  = normalize(tool.querySelector('a')?.getAttribute('href') || '');
+      let extra = '';
+
+      const m = href.match(/([^\/?#]+)\.(html?|htm)$/);
+      if (m) {
+        // convert "pdftoword" -> "pdf to word" to help matching
+        extra = m[1].replace(/to/g, ' to ').replace(/([A-Z])/g, ' $1');
+        extra = normalize(extra);
+      }
+
+      const hay = `${title} ${desc} ${extra}`;
+      if (q === '' || hay.includes(q)) {
+        tool.style.display = ''; // show
+        found++;
+      } else {
+        tool.style.display = 'none'; // hide
+      }
+    });
+
+    if (found === 0 && q !== '') {
+      noResultsMessage.style.display = '';
+    } else {
+      noResultsMessage.style.display = 'none';
+    }
+  });
+});
+</script>
+</body>
 </html>

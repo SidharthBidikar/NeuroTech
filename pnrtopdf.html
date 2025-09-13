@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PNR to PDF Converter - Instantly Get Your Indian Railway Ticket PDF</title>
+    <meta name="description" content="Instantly convert your Indian Railway PNR status to a downloadable PDF with our free PNR to PDF Converter. Check live PNR details & get your e-ticket in PDF format easily.">
+    <meta name="keywords" content="PNR to PDF Converter, convert PNR to PDF, PNR PDF download, Indian Railway PNR to PDF, online PNR converter, IRCTC PNR to PDF, PNR status to PDF, railway ticket PDF, check PNR PDF, free PNR to PDF, PNR details PDF, PNR to PDF online, download PNR as PDF">
+
+    <!-- Favicon (optional, replace with your own) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+
+    <!-- Google Fonts (Optional, for better typography) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PNR to PDF Converter",
+      "description": "Instantly convert your Indian Railway PNR status and details into a downloadable PDF. Fast, free, and easy to use. Check your PNR and get a PDF copy for offline access.",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+      "url": "YOUR_TOOL_URL_HERE",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "keywords": "PNR to PDF, convert PNR to PDF, PNR PDF download, Indian Railway PNR to PDF, online PNR converter, IRCTC PNR to PDF, PNR status, railway ticket PDF"
+    }
+    </script>
+
+    <style>
+        /* Basic Reset & Defaults */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6; /* Light grayish-green background */
+            padding-bottom: 20px; /* Space for footer or content */
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            color: #2c3e50; /* Dark blue */
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        header p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Tool Styling */
+        #pnr-converter-tool {
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #e9f5f1; /* Light mint green */
+            margin-bottom: 30px;
+        }
+        .pnr-input-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #pnrInput {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.1em;
+            min-width: 200px; /* For responsiveness */
+        }
+        #pnrInput:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+            outline: none;
+        }
+        #pnr-tooltip {
+            font-size: 0.9em;
+            color: #666;
+            margin-left: 5px;
+            cursor: help;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #pnr-tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tool-button {
+            padding: 12px 20px;
+            background-color: #007bff; /* Primary blue */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tool-button:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+        .tool-button.secondary {
+            background-color: #6c757d; /* Gray */
+        }
+        .tool-button.secondary:hover {
+            background-color: #545b62;
+        }
+        .tool-button.success {
+            background-color: #28a745; /* Green */
+        }
+        .tool-button.success:hover {
+            background-color: #1e7e34;
+        }
+        .tool-button.warning {
+            background-color: #ffc107; /* Yellow */
+            color: #212529;
+        }
+        .tool-button.warning:hover {
+            background-color: #d39e00;
+        }
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
+        }
+        #loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+            display: none; /* Hidden by default */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #messageArea {
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .message-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .message-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        #pnr-details-display {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        #pnr-details-display h3 {
+            color: #0056b3;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .pnr-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .pnr-info-item strong {
+            color: #333;
+        }
+        .pnr-info-item span {
+            color: #555;
+        }
+        .passengers-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .passengers-table th, .passengers-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .passengers-table th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: 500;
+        }
+        .status-confirmed { color: green; font-weight: bold; }
+        .status-rac { color: orange; font-weight: bold; }
+        .status-wl { color: red; font-weight: bold; }
+
+        /* Article Styling */
+        #pnr-tool-article {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        #pnr-tool-article h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        #pnr-tool-article h3 {
+            font-size: 1.5em;
+            color: #16a085; /* Teal color */
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        #pnr-tool-article h4 {
+            font-size: 1.2em;
+            color: #34495e; /* Wet asphalt */
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        #pnr-tool-article p, #pnr-tool-article li {
+            margin-bottom: 15px;
+            color: #444; /* Slightly lighter than default */
+            text-align: justify;
+        }
+        #pnr-tool-article ul, #pnr-tool-article ol {
+            margin-left: 25px;
+        }
+        #pnr-tool-article strong {
+            color: #000;
+        }
+        #pnr-tool-article a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        #pnr-tool-article a:hover {
+            text-decoration: underline;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .cta-button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            .container { width: 95%; padding: 15px; }
+            #pnr-converter-tool { padding: 15px; }
+            .pnr-input-area { flex-direction: column; align-items: stretch; }
+            #pnrInput { width: 100%; }
+            .tool-button { width: 100%; justify-content: center; margin-bottom: 10px; }
+            .action-buttons { flex-direction: column; }
+            .action-buttons .tool-button { width: 100%; }
+            .passengers-table th, .passengers-table td { font-size: 0.9em; padding: 8px; }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.8em; }
+            header p { font-size: 1em; }
+            #pnr-tool-article h2 { font-size: 1.6em; }
+            #pnr-tool-article h3 { font-size: 1.3em; }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #fff;
+                font-family: Arial, sans-serif; /* Common print font */
+                color: #000;
+            }
+            header, #pnr-converter-tool .pnr-input-area, #pnr-converter-tool .action-buttons, #pnr-tool-article, .cta-button, #loader, #messageArea, .no-print {
+                display: none !important;
+            }
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            #pnr-converter-tool {
+                border: none;
+                padding: 0;
+                background-color: #fff;
+            }
+            #pnr-details-display {
+                border: none;
+                margin-top: 0;
+                padding: 0;
+                box-shadow: none;
+                page-break-before: auto;
+                page-break-inside: avoid;
+            }
+            #pnr-details-display h3 {
+                text-align: center;
+                font-size: 1.5em;
+                margin-bottom: 10px;
+                color: #000;
+            }
+            .pnr-info-grid {
+                grid-template-columns: 1fr 1fr; /* Two columns for print */
+                gap: 10px;
+                font-size: 10pt;
+            }
+            .passengers-table {
+                font-size: 9pt;
+                margin-top: 15px;
+            }
+            .passengers-table th, .passengers-table td {
+                padding: 6px;
+                border: 1px solid #ccc;
+            }
+            .passengers-table th {
+                background-color: #eee !important; /* Override other styles */
+                -webkit-print-color-adjust: exact; /* Chrome, Safari */
+                color-adjust: exact; /* Standard */
+            }
+            .status-confirmed, .status-rac, .status-wl {
+                 color: #000 !important; /* Print in black, rely on text */
+            }
+             a[href]:after { content: none !important; } /* Don't show URLs */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PNR to PDF Converter</h1>
+            <p>Your one-stop solution to check Indian Railway PNR status and download details as a PDF.</p>
+        </header>
+
+        <section id="pnr-converter-tool">
+            <div class="pnr-input-area">
+                <input type="text" id="pnrInput" placeholder="Enter 10-digit PNR Number" maxlength="10" aria-label="PNR Number">
+                <button id="checkPnrBtn" class="tool-button">🔍 Check PNR Status</button>
+                <span id="pnr-tooltip" title="Enter your 10-digit Indian Railways PNR number.">ℹ️<span class="tooltip-text">Enter your 10-digit Indian Railways PNR.</span></span>
+            </div>
+            
+            <div id="loader"></div>
+            <div id="messageArea"></div>
+
+            <div id="pnr-details-display" style="display:none;">
+                <!-- PNR Details will be populated here -->
+            </div>
+
+            <div class="action-buttons" style="display:none;">
+                <button id="downloadPdfBtn" class="tool-button success">📄 Download as PDF</button>
+                <button id="printPnrBtn" class="tool-button warning">🖨️ Print Details</button>
+                <button id="sharePnrBtn" class="tool-button secondary">🔗 Share Link</button>
+            </div>
+            <p style="font-size:0.8em; text-align:center; margin-top:15px; color:#777;" class="no-print"><i>Note: PNR data is simulated for demonstration purposes. For official status, please use IRCTC website.</i></p>
+        </section>
+
+        <article id="pnr-tool-article">
+            <h2>Master Your Train Journey: The Ultimate PNR to PDF Converter Guide</h2>
+
+            <p>Travelling by Indian Railways is an experience millions undertake daily. Central to this journey is the PNR (Passenger Name Record) number. While checking PNR status online is common, having a portable, offline copy can be invaluable. This is where our <strong>PNR to PDF Converter</strong> tool comes in, offering a seamless way to convert your PNR details into a universally accessible PDF format. This comprehensive guide will explore everything you need to know about PNR numbers, the benefits of converting them to PDF, and how to use our user-friendly online tool.</p>
+
+            <h3>1. What is a PNR Number in Indian Railways?</h3>
+            <p>A PNR, or Passenger Name Record, is a unique 10-digit number assigned to every ticket booked on Indian Railways. It's more than just a random string of numbers; it's a digital fingerprint for your entire journey. The PNR number stores crucial information about your travel, including:</p>
+            <ul>
+                <li><strong>Passenger Details:</strong> Name, age, sex, and berth preference.</li>
+                <li><strong>Train Details:</strong> Train number, train name, origin station, destination station, and boarding station.</li>
+                <li><strong>Journey Details:</strong> Date of journey, class of travel (e.g., 1A, 2A, 3A, SL), quota (e.g., General, Tatkal, Ladies).</li>
+                <li><strong>Booking Status:</strong> Initial status at the time of booking (e.g., CNF for confirmed, WL for waiting list, RAC for Reservation Against Cancellation).</li>
+                <li><strong>Current Status:</strong> The real-time status of your ticket, which can change as other passengers cancel or charts are prepared.</li>
+                <li><strong>Coach and Seat/Berth Number:</strong> Assigned once the chart is prepared, usually a few hours before departure.</li>
+                <li><strong>Fare Details:</strong> Total fare paid, and sometimes concession details if applicable.</li>
+            </ul>
+            <p>The PNR number is generated by the Indian Railways' Computerized Reservation System (CRS) once a ticket is booked. It acts as a reference key for all interactions related to your booking, from checking status to lodging TDR (Ticket Deposit Receipt) for refunds. Understanding your PNR is the first step to a hassle-free train journey. Whether you need an "IRCTC PNR to PDF" or a general "Indian Railway PNR to PDF", this number is your key.</p>
+
+            <h3>2. Why Someone Might Want to Convert PNR to PDF</h3>
+            <p>In an increasingly digital world, why bother converting your PNR status to a PDF? The reasons are numerous and practical, enhancing convenience and preparedness for travelers:</p>
+            <ul>
+                <li><strong>Offline Access:</strong> Internet connectivity can be unreliable, especially in remote areas or during train travel. A PDF copy of your PNR details on your phone or laptop ensures you have all necessary information accessible anytime, anywhere, without needing data. This is a prime reason for seeking a "PNR PDF download".</li>
+                <li><strong>Easy Sharing:</strong> Need to share journey details with family, friends, or a pick-up person? A PDF is a universally readable format that can be easily shared via email, WhatsApp, or other messaging apps.</li>
+                <li><strong>Proof of Travel:</strong> While an e-ticket or SMS is often sufficient, a clearly formatted PDF can serve as a handy, organized proof of travel or booking, especially if you need to present details for official purposes or reimbursements.</li>
+                <li><strong>Record Keeping:</strong> For frequent travelers or those who need to maintain travel records for expense claims or other purposes, PDFs offer a neat and organized way to store journey information.</li>
+                <li><strong>Verification at Stations:</strong> In situations where your phone might run out of battery or you lose mobile network, a printed PDF (or the PDF on a device) can be a lifesaver for ticket checking or platform entry.</li>
+                <li><strong>Avoiding App Dependency:</strong> Instead of relying solely on the IRCTC app or website, which might require login or be slow at times, a PDF provides an independent copy of your "railway ticket PDF".</li>
+                <li><strong>Clarity and Readability:</strong> Sometimes, the PNR status displayed on websites can be cluttered with ads or other information. A clean PDF focuses solely on the essential journey details.</li>
+            </ul>
+            <p>Converting your PNR to PDF isn't just a preference; it's a smart travel hack that adds a layer of convenience and security to your Indian Railways journey.</p>
+
+            <h3>3. Benefits of Using This Online PNR to PDF Converter Tool</h3>
+            <p>Our <strong>PNR to PDF Converter</strong> tool is designed with the user in mind, offering several advantages over manual methods or other less streamlined options:</p>
+            <ul>
+                <li><strong>Instant Conversion:</strong> Get your PNR details converted to a PDF in seconds. No lengthy processes or waiting times.</li>
+                <li><strong>User-Friendly Interface:</strong> With a clean, modern, and intuitive UI, anyone can use the tool without needing technical expertise.</li>
+                <li><strong>No Login/Signup Required:</strong> We value your privacy and time. Use the tool instantly without the hassle of creating an account or remembering passwords.</li>
+                <li><strong>Real-Time (Simulated) Data:</strong> The tool fetches PNR status (simulated for this demo, but designed for real-time API in a live version), ensuring the PDF contains the most up-to-date information available at that moment.</li>
+                <li><strong>Comprehensive Details:</strong> The generated PDF includes all vital information: train name, number, journey date, class, booking status, current status, passenger details, coach/berth (if available), and chart status.</li>
+                <li><strong>Downloadable & Printable:</strong> Easily download the PDF to any device or print it directly for a physical copy.</li>
+                <li><strong>Mobile-Friendly:</strong> Access and use the tool seamlessly on your smartphone, tablet, or desktop. Its responsive design adapts to any screen size.</li>
+                <li><strong>Lightweight & Fast:</strong> The tool is optimized for speed, ensuring a quick loading time and smooth operation even on slower internet connections.</li>
+                <li><strong>Free to Use:</strong> This "online PNR converter" is completely free, with no hidden charges or limitations on usage.</li>
+                <li><strong>Secure & Private:</strong> We do not store your PNR numbers or any personal data (see Privacy & Safety section for more). Your information is processed in your browser.</li>
+                <li><strong>Error Handling:</strong> Proper validation and error messages guide you in case of an invalid PNR or if data cannot be fetched.</li>
+            </ul>
+            <p>By choosing our tool, you're opting for efficiency, convenience, and reliability for all your "convert PNR to PDF" needs.</p>
+
+            <h3>4. Step-by-Step Instructions to Use the Tool</h3>
+            <p>Using our <strong>PNR to PDF Converter</strong> is incredibly simple. Follow these easy steps to get your PNR details in PDF format:</p>
+            <ol>
+                <li><strong>Locate Your PNR Number:</strong> Find your 10-digit PNR number. It's usually printed on your train ticket (e-ticket or physical ticket) or available in the confirmation SMS/email from IRCTC.</li>
+                <li><strong>Enter the PNR Number:</strong> On our tool's webpage, you'll see an input field. Type your 10-digit PNR number accurately into this field. The tool has a validation check for the correct format (10 digits).</li>
+                <li><strong>Click "Check PNR Status":</strong> Once you've entered the PNR, click the "Check PNR Status" button (or similar, e.g., "🔍 Check PNR Status").</li>
+                <li><strong>View PNR Details:</strong> The tool will then (simulate) fetch the PNR status and display all relevant details on the screen. This includes train information, passenger status, journey date, etc. This display also acts as a preview of what your PDF will contain.</li>
+                <li><strong>Convert to PDF:</strong> If the details are correct and you're ready to convert, click the "📄 Download as PDF" button. Your browser will automatically download the PNR details as a PDF file, typically named something like `PNR_YourPNRNumber.pdf`.</li>
+                <li><strong>Optional - Print or Share:</strong>
+                    <ul>
+                        <li>To print the details, click the "🖨️ Print Details" button. This will open your browser's print dialog.</li>
+                        <li>To share a link to the PNR status (if you want someone else to view it using this tool), click the "🔗 Share Link" button. This may use your device's native share functionality or help you copy a link.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>That's it! In just a few clicks, you have a handy PDF of your Indian Railway PNR status, ready for offline use or sharing.</p>
+
+            <h3>5. Key Features and Advantages</h3>
+            <p>Our <strong>PNR to PDF Converter</strong> tool is packed with features designed to enhance your experience and provide maximum utility. Here’s a deeper look at its key features and the advantages they offer:</p>
+            <ul>
+                <li><strong>Clean and Modern UI:</strong> Aesthetically pleasing and easy to navigate, ensuring a positive user experience.
+                    <em>Advantage:</em> Reduces confusion and makes the tool accessible to users of all tech-savviness levels.</li>
+                <li><strong>Responsive Design:</strong> Fully functional and visually appealing on desktops, tablets, and smartphones.
+                    <em>Advantage:</em> Check your PNR and get a PDF on the go, from any device.</li>
+                <li><strong>PNR Format Validation:</strong> Automatically checks if the entered PNR is a 10-digit number.
+                    <em>Advantage:</em> Prevents errors and ensures you're querying a valid PNR structure, saving time.</li>
+                <li><strong>(Simulated) Real-Time Data Fetching:</strong> Designed to fetch current PNR status. (This version uses mock data).
+                    <em>Advantage:</em> Ensures the PDF reflects the latest booking status, coach, and seat information if the chart is prepared.</li>
+                <li><strong>Comprehensive PNR Details Display:</strong> Shows train name/number, journey date, class, booking status, current status, chart status, seat/berth numbers, and passenger details.
+                    <em>Advantage:</em> Provides a complete overview of your journey in one place.</li>
+                <li><strong>One-Click PDF Conversion:</strong> Instantly generates a downloadable PDF of the displayed PNR details.
+                    <em>Advantage:</em> Quick and efficient, no complex steps involved in getting your "PNR PDF download".</li>
+                <li><strong>Preview Before Download:</strong> The displayed PNR details act as an implicit preview, so you see what you get.
+                    <em>Advantage:</em> Ensures accuracy and satisfaction before downloading the PDF.</li>
+                <li><strong>Lightweight and Fast Loading:</strong> Optimized for performance, the tool loads quickly and operates smoothly.
+                    <em>Advantage:</em> Saves time and works well even with slower internet connections, crucial for travelers.</li>
+                <li><strong>Print Option:</strong> Direct button to print PNR details using your browser's print functionality, with print-optimized styling.
+                    <em>Advantage:</em> Easily get a hard copy if needed for verification or personal preference.</li>
+                <li><strong>Shareable Link Option:</strong> Generate a link to the PNR status page (if the PNR is included in URL parameters).
+                    <em>Advantage:</em> Conveniently share live PNR status with others without sending a static file.</li>
+                <li><strong>No Login/Signup:</strong> Completely anonymous usage.
+                    <em>Advantage:</em> Protects user privacy and offers immediate access without registration hurdles.</li>
+                <li><strong>User Instructions/Tooltip:</strong> Clear guidance on how to use the tool.
+                    <em>Advantage:</em> Helps first-time users understand the process quickly.</li>
+                <li><strong>Robust Error Handling:</strong> Provides clear messages for invalid PNRs, data not found, or other issues.
+                    <em>Advantage:</em> Informs users about problems and suggests possible reasons, improving troubleshooting.</li>
+                <li><strong>SEO-Friendly Structure:</strong> Built with clean HTML and proper meta tags for better discoverability. (More for the page itself).
+                    <em>Advantage:</em> Helps users find this valuable tool easily through search engines.</li>
+            </ul>
+            <p>These features collectively make our "online PNR converter" a superior choice for managing your Indian Railways PNR information.</p>
+
+            <h3>6. Real-World Use Cases</h3>
+            <p>The practical applications of converting PNR details to PDF are diverse, catering to various needs of railway passengers:</p>
+            <ul>
+                <li><strong>Individual Travelers:</strong>
+                    <ul>
+                        <li><strong>Offline Backup:</strong> A student traveling home might download their PNR PDF to avoid issues with patchy network in their hometown or during the journey.</li>
+                        <li><strong>Battery Saving:</strong> Instead of repeatedly opening an app, a traveler can quickly refer to the PDF, saving phone battery.</li>
+                    </ul>
+                </li>
+                <li><strong>Family Travel:</strong>
+                    <ul>
+                        <li><strong>Coordinating Pickups:</strong> A family member can share the PNR PDF with the person assigned to pick them up, providing exact train arrival times and coach positions.</li>
+                        <li><strong>Group Travel:</strong> When booking for multiple family members, a PDF with all passenger details and statuses is easy to circulate and verify.</li>
+                    </ul>
+                </li>
+                <li><strong>Business Travelers:</strong>
+                    <ul>
+                        <li><strong>Expense Reimbursement:</strong> Business professionals can use the PDF as a supporting document for travel expense claims, showing clear journey details and fare class.</li>
+                        <li><strong>Organized Records:</strong> Maintaining a folder of PNR PDFs helps in tracking business trips and related expenses.</li>
+                    </ul>
+                </li>
+                <li><strong>Ticket Verification:</strong>
+                    <ul>
+                        <li><strong>Alternative to SMS/E-ticket:</strong> If the SMS is accidentally deleted or the e-ticket email is hard to find, the PNR PDF serves as a readily available alternative for TTEs (Travelling Ticket Examiners).</li>
+                        <li><strong>Station Entry:</strong> Some railway stations require proof of journey for platform entry. A PNR PDF (printed or on device) can be used for this.</li>
+                    </ul>
+                </li>
+                <li><strong>Assisting Others:</strong>
+                    <ul>
+                        <li><strong>Helping Less Tech-Savvy Relatives:</strong> You can check the PNR for an elderly relative, convert it to PDF, and send it to them or their caregiver for easy reference.</li>
+                        <li><strong>Travel Agents (Small Scale):</strong> Small travel agents might use such a tool to provide clients with a neatly formatted PNR status summary.</li>
+                    </ul>
+                </li>
+                <li><strong>Contingency Planning:</strong>
+                    <ul>
+                        <li><strong>Phone Loss/Damage:</strong> If your phone is lost or damaged, having a printed PDF or a copy stored in the cloud (accessible from another device) can be invaluable.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>These use cases highlight how a simple "PNR to PDF" conversion can significantly streamline various aspects of train travel, making the journey smoother and more organized for everyone involved.</p>
+
+            <h3>7. Comparison with Manual PNR Checking</h3>
+            <p>While manually checking PNR status on official websites or apps is standard, our <strong>PNR to PDF Converter</strong> offers distinct advantages:</p>
+            <table class="passengers-table" style="margin-bottom: 20px;">
+                <thead>
+                    <tr>
+                        <th>Feature/Aspect</th>
+                        <th>Manual PNR Checking (e.g., IRCTC Website/App)</th>
+                        <th>PNR to PDF Converter Tool</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Offline Access</strong></td>
+                        <td>Requires internet connection for each check. No inherent offline copy unless manually saved (e.g., screenshot).</td>
+                        <td>Generates a PDF for easy offline access.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Portability</strong></td>
+                        <td>Data stays within the app or browser tab. Screenshots can be cumbersome.</td>
+                        <td>PDF is a highly portable, universal format.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sharing</strong></td>
+                        <td>Often involves taking screenshots or copying text, which can be messy.</td>
+                        <td>Clean PDF easily shareable. Option to share a live link via the tool.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clarity & Focus</strong></td>
+                        <td>Websites/apps may have ads, navigation menus, and other distracting elements.</td>
+                        <td>PDF contains only essential PNR details in a clean layout.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speed for Re-access</strong></td>
+                        <td>May need to re-enter PNR or navigate through app/website.</td>
+                        <td>Once PDF is downloaded, access is instant.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Login Requirement</strong></td>
+                        <td>Some official apps/features might require login.</td>
+                        <td>No login or signup needed for our tool.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Print-Friendliness</strong></td>
+                        <td>Web pages may not print cleanly without adjustments.</td>
+                        <td>Dedicated print option with optimized formatting. PDF itself is print-ready.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Record Keeping</strong></td>
+                        <td>Relies on user to manually organize screenshots or booking confirmations.</td>
+                        <td>Standardized PDFs are easier to file and manage.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>While official channels are authoritative for PNR status, our tool complements them by focusing on the "last mile" – making that information easily accessible, shareable, and storable in a user-friendly format like PDF. It enhances the utility of the PNR information obtained from official sources (or simulated, in this demo).</p>
+
+            <h3>8. Privacy & Safety of User Data</h3>
+            <p>We understand that privacy and data security are paramount, especially when dealing with travel information. Here's how our <strong>PNR to PDF Converter</strong> tool addresses these concerns:</p>
+            <ul>
+                <li><strong>No Server-Side Storage:</strong> Your PNR number is processed directly in your web browser (client-side). We do not store your PNR number or the details fetched on our servers. Once you close the browser tab, the information is gone from the session unless you've downloaded the PDF.</li>
+                <li><strong>Client-Side Operations:</strong> The core functionality, including fetching (simulated) data and generating the PDF, happens within your browser. This minimizes data transmission and exposure.</li>
+                <li><strong>No Personal Information Required:</strong> The tool only requires the 10-digit PNR number. We do not ask for your name, email, phone number, or any other personally identifiable information. No login or signup means no user accounts or associated data.</li>
+                <li><strong>Secure Connection (HTTPS Recommended):</strong> While this is a static HTML page with client-side JavaScript, if hosted, it should always be served over HTTPS. This encrypts the connection between your browser and the server, protecting the PNR number during its (potential, if not purely client-side lookup) transit to any API (though our current tool uses mock data client-side).</li>
+                <li><strong>Transparency:</strong> This tool operates transparently. What you see is what you get. The generated PDF contains only the PNR details you viewed on screen.</li>
+                <li><strong>User Control:</strong> You are in complete control. You decide whether to enter a PNR, download the PDF, or print the details. The downloaded PDF is stored on your device, under your control.</li>
+            </ul>
+            <p><strong>Disclaimer for Mock Data Version:</strong> Please remember, this specific version of the tool uses mock/simulated PNR data for demonstration. In a live environment connected to a real PNR API, the PNR number would be sent to that API to fetch data. Even then, our commitment would be to process it securely and not store it unnecessarily. Always ensure you are using trusted tools and check their privacy policies.</p>
+            <p>Our goal is to provide a useful utility while respecting your privacy. For "Indian Railway PNR to PDF" conversions, you can use our tool with confidence regarding data handling as described.</p>
+
+            <h3>9. Top 10 Frequently Asked Questions (FAQs)</h3>
+            <dl>
+                <dt><strong>1. Is this PNR to PDF Converter tool free to use?</strong></dt>
+                <dd>Yes, absolutely! Our online PNR to PDF Converter is completely free to use. There are no hidden charges or limits on the number of PNRs you can convert.</dd>
+
+                <dt><strong>2. Do I need to register or log in to use the tool?</strong></dt>
+                <dd>No, registration or login is not required. You can use the tool instantly. We prioritize your convenience and privacy.</dd>
+
+                <dt><strong>3. What PNR details are included in the PDF?</strong></dt>
+                <dd>The PDF will include comprehensive details such as Train Name and Number, Journey Date, From and To Stations, Boarding Point, Class, Passenger names, Ages, Booking Status, Current Status, Coach and Berth numbers (if chart is prepared), and Charting Status.</dd>
+
+                <dt><strong>4. Is the PNR data fetched in real-time?</strong></dt>
+                <dd>This demonstration version of the tool uses pre-set mock data to showcase functionality. A live production version would typically connect to a real-time API to fetch the latest PNR status. For official, real-time status, always refer to the IRCTC website or app.</dd>
+
+                <dt><strong>5. Can I use this tool on my mobile phone?</strong></dt>
+                <dd>Yes, our tool is fully responsive and designed to work seamlessly on all devices, including smartphones, tablets, and desktop computers. You can easily "convert PNR to PDF" on the go.</dd>
+
+                <dt><strong>6. What if I enter an incorrect PNR number?</strong></dt>
+                <dd>The tool validates the PNR format (10 digits). If you enter an invalid format, it will show an error. If the PNR is in the correct format but not found in our mock data (or a real API), it will display a "PNR not found" or similar message.</dd>
+
+                <dt><strong>7. Is it safe to enter my PNR number here?</strong></dt>
+                <dd>Yes. As explained in our Privacy & Safety section, your PNR number is processed client-side (in your browser) for this mock version. We do not store your PNR information on our servers. For any tool, ensure it's from a trusted source and ideally served over HTTPS.</dd>
+
+                <dt><strong>8. How do I download the PDF after checking the status?</strong></dt>
+                <dd>Once the PNR details are displayed, a "📄 Download as PDF" button will appear. Clicking this button will automatically generate and download the PDF file to your device.</dd>
+
+                <dt><strong>9. Can I print the PNR details directly from the tool?</strong></dt>
+                <dd>Yes, there is a "🖨️ Print Details" button. Clicking it will open your browser's print dialog, allowing you to print the PNR information. The printout is optimized for clarity.</dd>
+
+                <dt><strong>10. What is the difference between 'Booking Status' and 'Current Status'?</strong></dt>
+                <dd>'Booking Status' is the status of your ticket at the time you booked it (e.g., WL 10, RAC 5, CNF). 'Current Status' is the live, updated status of your ticket, which can change as other passengers cancel or when the chart is prepared (e.g., may move from WL to RAC or CNF).</dd>
+            </dl>
+
+            <h3>10. Troubleshooting Guide</h3>
+            <p>Encountering an issue? Here are some common problems and their solutions when using the <strong>PNR to PDF Converter</strong>:</p>
+            <ul>
+                <li><strong>Problem: "Invalid PNR format" error.</strong>
+                    <ul>
+                        <li><strong>Cause:</strong> The PNR number entered is not 10 digits long, or contains non-numeric characters.</li>
+                        <li><strong>Solution:</strong> Double-check your PNR number. It must be exactly 10 digits. Ensure there are no spaces or special characters.</li>
+                    </ul>
+                </li>
+                <li><strong>Problem: "PNR not found" or "No data found for this PNR".</strong>
+                    <ul>
+                        <li><strong>Cause (Mock Version):</strong> The PNR you entered doesn't match any of the pre-defined mock PNRs in the tool.</li>
+                        <li><strong>Cause (Live Version):</strong> The PNR might be incorrect, too old (journey already completed long ago), too new (journey very far in the future and not yet in active systems), or it might have been cancelled.</li>
+                        <li><strong>Solution:</strong> Verify the PNR number. If correct, try checking on the official IRCTC website to confirm its validity. For this demo tool, try one of the sample PNRs if provided.</li>
+                    </ul>
+                </li>
+                <li><strong>Problem: The PDF download doesn't start.</strong>
+                    <ul>
+                        <li><strong>Cause:</strong> Browser pop-up blockers might be interfering, or there could be a temporary browser issue. JavaScript might be disabled.</li>
+                        <li><strong>Solution:</strong> Ensure JavaScript is enabled in your browser. Check if your browser is blocking pop-ups or downloads from this site; you may need to allow it. Try refreshing the page and attempting the download again. Clearing browser cache or trying a different browser might also help.</li>
+                    </ul>
+                </li>
+                <li><strong>Problem: The displayed PNR details are incorrect or outdated.</strong>
+                    <ul>
+                        <li><strong>Cause (Mock Version):</strong> The data is static and for demonstration. It will not reflect real-time changes.</li>
+                        <li><strong>Cause (Live Version):</strong> There might be a slight delay in data synchronization with the railway servers, or the chart might not have been prepared yet.</li>
+                        <li><strong>Solution:</strong> For this demo tool, this is expected. For a live tool, wait a few minutes and try again, especially if it's close to chart preparation time. Always cross-verify critical information with the official IRCTC portal.</li>
+                    </ul>
+                </li>
+                <li><strong>Problem: The page is not loading correctly or buttons are not working.</strong>
+                    <ul>
+                        <li><strong>Cause:</strong> Slow internet connection, browser incompatibility, or JavaScript issues.</li>
+                        <li><strong>Solution:</strong> Check your internet connection. Ensure you are using a modern, updated web browser (like Chrome, Firefox, Safari, Edge). Make sure JavaScript is enabled. Try clearing your browser's cache and cookies or opening the tool in an incognito/private window.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>If you continue to experience issues not covered here, consider trying again later or using an alternative method for PNR checking if urgent. For this specific demo tool, functionality is based on the provided mock data and client-side scripts.</p>
+
+            <h3>11. Conclusion and Strong Call to Action</h3>
+            <p>Navigating the Indian Railways system can sometimes be complex, but managing your PNR information doesn't have to be. Our <strong>PNR to PDF Converter</strong> tool simplifies a crucial aspect of your journey preparation by providing a quick, easy, and free way to get a portable, offline-accessible copy of your PNR details. Whether you need a "PNR PDF download" for peace of mind, for sharing, or for record-keeping, our tool is designed to meet your needs efficiently.</p>
+            <p>With its user-friendly interface, robust features, and commitment to privacy, this "online PNR converter" stands out as an essential utility for every Indian Railways traveler. No more struggling with screenshots or relying solely on internet connectivity – empower your travel with a neat, organized PDF of your PNR status.</p>
+            <p><strong>Ready to experience the convenience?</strong></p>
+            <p>Enter your PNR number in the tool above and get your journey details in PDF format instantly. Bookmark this page for easy access on all your future train travels!</p>
+            <a href="#pnr-converter-tool" class="cta-button">Scroll Up & Try the PNR to PDF Converter Now!</a>
+            <p style="margin-top:15px;">Make your train journeys smoother and more organized. Convert your <strong>Indian Railway PNR to PDF</strong> today!</p>
+
+        </article>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        const pnrInput = document.getElementById('pnrInput');
+        const checkPnrBtn = document.getElementById('checkPnrBtn');
+        const loader = document.getElementById('loader');
+        const messageArea = document.getElementById('messageArea');
+        const pnrDetailsDisplay = document.getElementById('pnr-details-display');
+        const actionButtons = document.querySelector('.action-buttons');
+        const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+        const printPnrBtn = document.getElementById('printPnrBtn');
+        const sharePnrBtn = document.getElementById('sharePnrBtn');
+
+        const mockPnrData = {
+            "1234567890": {
+                pnr: "1234567890",
+                trainName: "Mumbai Express",
+                trainNumber: "12138",
+                journeyDate: "2024-08-15",
+                fromStation: "Firozpur Cantt Jn (FZR)",
+                toStation: "Mumbai CSM Terminus (CSMT)",
+                boardingPoint: "Firozpur Cantt Jn (FZR)",
+                reservationUpto: "Mumbai CSM Terminus (CSMT)",
+                class: "3A",
+                passengers: [
+                    { name: "Amit Kumar", age: 30, sex: "Male", bookingStatus: "CNF", currentStatus: "CNF", coach: "B2", berth: "35 (LB)", quota: "GN" },
+                    { name: "Priya Sharma", age: 28, sex: "Female", bookingStatus: "CNF", currentStatus: "CNF", coach: "B2", berth: "36 (UB)", quota: "GN" }
+                ],
+                chartStatus: "Chart Prepared",
+                cateringChoice: "Opted Out",
+                journeyTime: "33h 0m",
+                departureTime: "21:45",
+                arrivalTime: "06:45 (Day 3)"
+            },
+            "9876543210": {
+                pnr: "9876543210",
+                trainName: "Howrah Duronto",
+                trainNumber: "12274",
+                journeyDate: "2024-08-20",
+                fromStation: "New Delhi (NDLS)",
+                toStation: "Howrah Jn (HWH)",
+                boardingPoint: "New Delhi (NDLS)",
+                reservationUpto: "Howrah Jn (HWH)",
+                class: "1A",
+                passengers: [
+                    { name: "Rohan Mehra", age: 45, sex: "Male", bookingStatus: "WL 5", currentStatus: "WL 2", coach: "", berth: "", quota: "GN" }
+                ],
+                chartStatus: "Chart Not Prepared",
+                cateringChoice: "Included",
+                journeyTime: "17h 10m",
+                departureTime: "12:40",
+                arrivalTime: "05:50 (Day 2)"
+            },
+            "2468135790": {
+                pnr: "2468135790",
+                trainName: "Rajdhani Express",
+                trainNumber: "12302",
+                journeyDate: "2024-09-01",
+                fromStation: "New Delhi (NDLS)",
+                toStation: "Howrah Jn (HWH)",
+                boardingPoint: "New Delhi (NDLS)",
+                reservationUpto: "Howrah Jn (HWH)",
+                class: "2A",
+                passengers: [
+                    { name: "Sunita Singh", age: 35, sex: "Female", bookingStatus: "RAC 4", currentStatus: "RAC 2", coach: "A1", berth: "23 (SB)", quota: "GN" }
+                ],
+                chartStatus: "Chart Not Prepared",
+                cateringChoice: "Included",
+                journeyTime: "17h 00m",
+                departureTime: "16:50",
+                arrivalTime: "09:50 (Day 2)"
+            },
+            "1357924680": {
+                pnr: "1357924680",
+                trainName: "Poorva Express",
+                trainNumber: "12382",
+                journeyDate: "2024-08-25",
+                fromStation: "New Delhi (NDLS)",
+                toStation: "Howrah Jn (HWH)",
+                boardingPoint: "New Delhi (NDLS)",
+                reservationUpto: "Howrah Jn (HWH)",
+                class: "SL",
+                passengers: [
+                    { name: "Vikram Batra", age: 22, sex: "Male", bookingStatus: "WL 10", currentStatus: "CNF", coach: "S5", berth: "45 (LB)", quota: "GN" }
+                ],
+                chartStatus: "Chart Prepared",
+                cateringChoice: "Not Available",
+                journeyTime: "22h 50m",
+                departureTime: "17:40",
+                arrivalTime: "16:30 (Day 2)"
+            }
+        };
+
+        function fetchPnrDetailsFromMock(pnr) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (!/^\d{10}$/.test(pnr)) {
+                        reject({ type: "validation", message: "Invalid PNR format. PNR must be 10 digits." });
+                        return;
+                    }
+                    if (mockPnrData[pnr]) {
+                        resolve(mockPnrData[pnr]);
+                    } else {
+                        reject({ type: "not_found", message: `PNR ${pnr} not found or journey details are unavailable with mock data.` });
+                    }
+                }, 1000); // Simulate network delay
+            });
+        }
+
+        function displayMessage(message, type) {
+            messageArea.textContent = message;
+            messageArea.className = `message-${type}`; // 'message-error' or 'message-success'
+            messageArea.style.display = 'block';
+        }
+
+        function clearMessage() {
+            messageArea.textContent = '';
+            messageArea.style.display = 'none';
+        }
+        
+        function getStatusClass(status) {
+            if (!status) return '';
+            if (status.startsWith('CNF')) return 'status-confirmed';
+            if (status.startsWith('RAC')) return 'status-rac';
+            if (status.startsWith('WL')) return 'status-wl';
+            return '';
+        }
+
+        function displayPnrDetails(data) {
+            let html = `<h3>PNR Status: ${data.pnr}</h3>`;
+            html += `<div class="pnr-info-grid">
+                        <div class="pnr-info-item"><strong>Train:</strong> <span>${data.trainName} (${data.trainNumber})</span></div>
+                        <div class="pnr-info-item"><strong>Journey Date:</strong> <span>${new Date(data.journeyDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span></div>
+                        <div class="pnr-info-item"><strong>From:</strong> <span>${data.fromStation}</span></div>
+                        <div class="pnr-info-item"><strong>To:</strong> <span>${data.toStation}</span></div>
+                        <div class="pnr-info-item"><strong>Boarding Point:</strong> <span>${data.boardingPoint}</span></div>
+                        <div class="pnr-info-item"><strong>Reservation Upto:</strong> <span>${data.reservationUpto}</span></div>
+                        <div class="pnr-info-item"><strong>Class:</strong> <span>${data.class}</span></div>
+                        <div class="pnr-info-item"><strong>Chart Status:</strong> <span class="${data.chartStatus === 'Chart Prepared' ? 'status-confirmed' : 'status-wl'}">${data.chartStatus}</span></div>
+                        <div class="pnr-info-item"><strong>Departure:</strong> <span>${data.departureTime}</span></div>
+                        <div class="pnr-info-item"><strong>Arrival:</strong> <span>${data.arrivalTime}</span></div>
+                        <div class="pnr-info-item"><strong>Journey Time:</strong> <span>${data.journeyTime}</span></div>
+                        <div class="pnr-info-item"><strong>Catering:</strong> <span>${data.cateringChoice}</span></div>
+                     </div>`;
+
+            if (data.passengers && data.passengers.length > 0) {
+                html += `<h4>Passenger Details</h4>
+                         <div style="overflow-x:auto;">
+                         <table class="passengers-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Sex</th>
+                                    <th>Booking Status</th>
+                                    <th>Current Status</th>
+                                    <th>Coach</th>
+                                    <th>Berth</th>
+                                    <th>Quota</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+                data.passengers.forEach((p, index) => {
+                    html += `<tr>
+                                <td>${index + 1}</td>
+                                <td>${p.name}</td>
+                                <td>${p.age}</td>
+                                <td>${p.sex}</td>
+                                <td class="${getStatusClass(p.bookingStatus)}">${p.bookingStatus}</td>
+                                <td class="${getStatusClass(p.currentStatus)}">${p.currentStatus}</td>
+                                <td>${p.coach || '-'}</td>
+                                <td>${p.berth || '-'}</td>
+                                <td>${p.quota}</td>
+                             </tr>`;
+                });
+                html += `   </tbody>
+                         </table>
+                         </div>`;
+            }
+            pnrDetailsDisplay.innerHTML = html;
+            pnrDetailsDisplay.style.display = 'block';
+            actionButtons.style.display = 'flex';
+        }
+
+        checkPnrBtn.addEventListener('click', async () => {
+            const pnr = pnrInput.value.trim();
+            clearMessage();
+            pnrDetailsDisplay.style.display = 'none';
+            actionButtons.style.display = 'none';
+
+            if (!/^\d{10}$/.test(pnr)) {
+                displayMessage("Invalid PNR format. PNR must be 10 digits.", "error");
+                return;
+            }
+
+            loader.style.display = 'block';
+            try {
+                const data = await fetchPnrDetailsFromMock(pnr);
+                displayPnrDetails(data);
+                updateUrlWithPnr(pnr); // Update URL for sharing
+                displayMessage("PNR details fetched successfully.", "success");
+            } catch (error) {
+                displayMessage(error.message, "error");
+                pnrDetailsDisplay.style.display = 'none';
+                actionButtons.style.display = 'none';
+            } finally {
+                loader.style.display = 'none';
+            }
+        });
+
+        downloadPdfBtn.addEventListener('click', () => {
+            const pnr = pnrInput.value.trim();
+            const element = document.getElementById('pnr-details-display');
+            const opt = {
+                margin:       [0.5, 0.2, 0.5, 0.2], // top, left, bottom, right in inches
+                filename:     `PNR_${pnr || 'details'}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, logging: false, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        });
+
+        printPnrBtn.addEventListener('click', () => {
+            window.print();
+        });
+        
+        function updateUrlWithPnr(pnr) {
+            if (history.pushState) {
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?pnr=' + pnr;
+                window.history.pushState({path: newUrl}, '', newUrl);
+            }
+        }
+
+        sharePnrBtn.addEventListener('click', () => {
+            const pnr = pnrInput.value.trim();
+            const shareUrl = window.location.href; // URL already updated with PNR if fetch was successful
+            const shareData = {
+                title: `PNR Status: ${pnr}`,
+                text: `Check out the PNR status for ${pnr} using this PNR to PDF Converter:`,
+                url: shareUrl,
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('Shared successfully'))
+                    .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                prompt("Copy this link to share PNR status:", shareUrl);
+            }
+        });
+
+        // Auto-fetch PNR if present in URL on page load
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const pnrFromUrl = params.get('pnr');
+            if (pnrFromUrl && /^\d{10}$/.test(pnrFromUrl)) {
+                pnrInput.value = pnrFromUrl;
+                checkPnrBtn.click();
+            }
+        });
+
+    </script>
+</body>
+</html>

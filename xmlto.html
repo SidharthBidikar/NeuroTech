@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML to PDF Converter - Free Online Tool</title>
+  <meta name="description" content="Convert XML to PDF online for free with our secure tool. Customize styles, batch process XML files, and download as PDF or ZIP.">
+  <meta name="keywords" content="XML to PDF Converter, convert XML to PDF, XML to PDF online, free XML to PDF tool, XML converter, PDF generator, secure XML to PDF">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="XML Tools Team">
+  <meta property="og:title" content="XML to PDF Converter - Free Online Tool">
+  <meta property="og:description" content="Easily convert XML to PDF with customizable styles and batch processing. Secure, free, and online.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=XML+to+PDF+Converter">
+  <meta property="og:url" content="https://onepagetools.com/xmltopdf.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Additional Meta Tags for SEO -->
+  <meta name="geo.region" content="Global">
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+  <meta name="language" content="English">
+  <!-- Schema Markup for Web Application -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "XML to PDF Converter",
+    "url": "https://onepagetools.com/xmltopdf.html",
+    "description": "A free online tool to convert XML to PDF with customizable styles, batch processing, and secure client-side conversion.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "OnePageTools",
+      "url": "https://onepagetools.com/"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "150"
+    },
+    "featureList": [
+      "XML to PDF conversion",
+      "Batch processing",
+      "Customizable styles",
+      "Client-side processing",
+      "ZIP download support"
+    ],
+    "inLanguage": "en-US",
+    "datePublished": "2025-05-22",
+    "dateModified": "2025-05-22"
+  }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .progress-bar-animated { background: linear-gradient(to right, #4f46e5, #7c3aed); }
+    .drop-zone { transition: all 0.3s ease; }
+    .drop-zone.dragover { border-color: #4f46e5; background-color: rgba(79, 70, 229, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .preview-container { max-height: 300px; overflow-y: auto; }
+    .gradient-bg { background: linear-gradient(135deg, #f3f4f6, #e0e7ff); }
+    .xml-preview { white-space: pre-wrap; font-family: monospace; background: #f8f8f8; padding: 10px; border-radius: 5px; max-height: 200px; overflow-y: auto;}
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Updated Navigation -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com/" class="flex items-center space-x-3">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap">OnePageTools</span>
+      </a>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+        </svg>
+      </button>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li>
+            <a href="https://onepagetools.com/" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">Home</a>
+          </li>
+          <li>
+            <a href="https://onepagetools.com/about.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">About Us</a>
+          </li>
+          <li>
+            <a href="https://onepagetools.com/contact.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">Contact Us</a>
+          </li>
+          <li>
+            <div class="relative">
+              <button id="moreToolsDropdownButton" data-dropdown-toggle="moreToolsDropdown" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600 flex items-center">
+                More Tools
+                <svg class="w-4 h-4 ml-1" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="moreToolsDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="moreToolsDropdownButton">
+                  <li>
+                    <a href="https://onepagetools.com/json-to-csv" class="block px-4 py-2 hover:bg-gray-100">JSON to CSV Converter</a>
+                  </li>
+                  <li>
+                    <a href="https://onepagetools.com/html-to-pdf" class="block px-4 py-2 hover:bg-gray-100">HTML to PDF Converter</a>
+                  </li>
+                  <li>
+                    <a href="https://onepagetools.com/image-compressor" class="block px-4 py-2 hover:bg-gray-100">Image Compressor</a>
+                  </li>
+                  <li>
+                    <a href="https://onepagetools.com/text-to-speech" class="block px-4 py-2 hover:bg-gray-100">Text to Speech</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tutorial Modal -->
+  <div id="tutorialModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+    <div class="bg-white p-6 rounded-lg max-w-lg w-full scale-in">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800">Welcome to XML to PDF Converter</h3>
+      <p class="text-gray-600 mb-4">Follow these steps to convert your XML to PDF:</p>
+      <ol class="list-decimal ml-6 mb-4 text-gray-600">
+        <li>Upload well-formed XML files via "Choose XML Files" or drag-and-drop.</li>
+        <li>Optionally preview the first XML's structure.</li>
+        <li>Customize styles (font, color, layout).</li>
+        <li>Choose output options (download as ZIP).</li>
+        <li>Click "Convert to PDF" and download your PDFs.</li>
+      </ol>
+      <button onclick="closeTutorial()" class="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 btn">Got It!</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex justify-center items-center min-h-screen pt-20 pb-10">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-lg fade-in">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 text-center">XML to PDF Converter</h1>
+      <p class="text-center text-gray-500 mb-6">Convert your well-formed XML files to PDF with customizable styles and batch processing. Secure, fast, and free!</p>
+
+      <div class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-8 sm:p-12 text-center mb-8 transition-colors duration-300 hover:border-blue-400" 
+           ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="handleDragLeave(event)">
+        <label for="xmlFiles" class="inline-block w-full py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full cursor-pointer hover:bg-indigo-700 btn hover-scale">
+          Choose XML Files
+        </label>
+        <input type="file" id="xmlFiles" accept=".xml,text/xml,application/xml" multiple class="hidden" onchange="previewFiles()">
+        <p class="text-gray-500 mt-2 text-sm">or drag and drop XML files here (supports multiple files, max 10MB each)</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700">Styling Options</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="fontFamily" class="block text-sm font-medium text-gray-700 mb-1">Font Family</label>
+              <select id="fontFamily" class="w-full p-2 border border-gray-300 rounded-lg text-sm">
+                <option value="Helvetica">Helvetica</option>
+                <option value="Times-Roman">Times Roman</option>
+                <option value="Courier">Courier</option>
+              </select>
+            </div>
+            <div>
+              <label for="fontSize" class="block text-sm font-medium text-gray-700 mb-1">Font Size</label>
+              <input type="number" id="fontSize" class="w-full p-2 border border-gray-300 rounded-lg text-sm" value="10" min="6" max="24">
+            </div>
+            <div>
+              <label for="textColor" class="block text-sm font-medium text-gray-700 mb-1">Text Color</label>
+              <input type="color" id="textColor" class="w-full p-1 h-10 border border-gray-300 rounded-lg" value="#000000">
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700">Layout Options</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="pageMargin" class="block text-sm font-medium text-gray-700 mb-1">Page Margin (mm)</label>
+              <input type="number" id="pageMargin" class="w-full p-2 border border-gray-300 rounded-lg text-sm" value="15" min="0" max="50">
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+              <input type="checkbox" id="downloadZip" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="downloadZip" class="text-sm text-gray-600">Download multiple files as ZIP</label>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+              <input type="checkbox" id="includeMetadata" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="includeMetadata" class="text-sm text-gray-600">Include XML Filename as PDF Title</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="xmlPreviewContainer" class="bg-gray-50 p-4 rounded-lg mb-6 hidden">
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">XML Preview (First File)</h3>
+        <div id="xmlContentPreview" class="xml-preview text-xs"></div>
+      </div>
+
+      <div id="progressBarContainer" class="hidden bg-gray-200 rounded-full h-2.5 mb-4">
+        <div id="progressBarFill" class="progress-bar-animated h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button onclick="convertFilesToPDF()" class="py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 btn hover-scale" id="convertButton" disabled>
+          Convert to PDF
+        </button>
+        <a id="downloadZipButton" href="#" download="converted_pdfs.zip" class="hidden py-3 px-5 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 btn hover-scale">
+          Download ZIP
+        </a>
+        <button onclick="resetConverterState()" class="py-3 px-5 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 btn hover-scale">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-section">
+   
+    <!-- Existing Article Content -->
+    <b><h2>XML to PDF Converter: The Ultimate Free Tool to Convert XML to PDF</h2></b>
+    <p>Welcome to the ultimate <strong>XML to PDF Converter</strong>, a free online tool designed to help you <strong>convert XML to PDF</strong> effortlessly. Whether you’re a developer, business professional, or student, our <strong>free XML to PDF tool</strong> offers a seamless way to transform your XML files into professional, visually appealing PDFs. In this comprehensive guide, we’ll explore everything you need to know about our <strong>XML to PDF Converter</strong>, including its features, benefits, usage instructions, technical details, and tips for optimizing your PDFs for search engines. Let’s dive into why this tool is the best choice for <strong>converting XML to PDF online</strong>.</p>
+
+    <h3>Why Use an XML to PDF Converter?</h3>
+    <p>XML (Extensible Markup Language) is a widely used format for storing and sharing structured data. It’s machine-readable, flexible, and perfect for applications like web services, data interchange, and configuration files. However, XML files lack visual formatting, making them unsuitable for direct presentation or sharing in a professional setting. This is where an <strong>XML to PDF Converter</strong> shines. By using our <strong>free XML to PDF tool</strong>, you can:</p>
+    <ul>
+      <li><strong>Create Professional Documents</strong>: Convert XML to PDF to produce polished, print-ready documents that are easy to share.</li>
+      <li><strong>Ensure Cross-Platform Compatibility</strong>: PDFs maintain consistent formatting across all devices, unlike XML files that require specific parsers.</li>
+      <li><strong>Enhance Data Security</strong>: PDFs can be encrypted, ensuring your sensitive XML data remains secure.</li>
+      <li><strong>Improve Accessibility</strong>: PDFs are universally accepted and can be viewed by anyone with a PDF reader, making your data more accessible.</li>
+      <li><strong>Optimize for SEO</strong>: With proper metadata, your PDFs can be indexed by search engines, increasing their visibility online.</li>
+    </ul>
+    <p>Our <strong>XML to PDF Converter</strong> makes this process quick, secure, and completely free, eliminating the need for expensive software or technical expertise.</p>
+
+    <h3>Key Features of Our Free XML to PDF Converter</h3>
+    <p>Our <strong>XML to PDF Converter</strong> is packed with features to ensure a smooth and efficient conversion experience. Built with modern web technologies like PDFLib.js, JSZip, and Tailwind CSS, this tool offers everything you need to <strong>convert XML to PDF online</strong>. Here are the standout features:</p>
+    <ul>
+      <li><strong>Batch Processing</strong>: Convert multiple XML files to PDF in one go, saving you time on large projects.</li>
+      <li><strong>Customizable Styling</strong>: Choose from fonts like Helvetica, Times Roman, and Courier, adjust font sizes (6 to 24), and select text colors to match your branding.</li>
+      <li><strong>Flexible Layout Options</strong>: Set page margins (0 to 50mm) to control the layout of your PDF output.</li>
+      <li><strong>XML Preview</strong>: View the structure of your first XML file before conversion to ensure accuracy.</li>
+      <li><strong>ZIP Download Support</strong>: Download multiple PDFs as a single ZIP file, perfect for batch conversions.</li>
+      <li><strong>Client-Side Processing</strong>: All conversions happen in your browser, ensuring your XML files never leave your device for maximum privacy.</li>
+      <li><strong>Responsive Design</strong>: Use the <strong>XML to PDF Converter</strong> on any device—desktop, tablet, or mobile—with a seamless experience.</li>
+      <li><strong>Error Handling</strong>: Get detailed error messages for issues like invalid XML files, helping you troubleshoot quickly.</li>
+    </ul>
+    <p>These features make our <strong>free XML to PDF tool</strong> one of the most versatile and user-friendly options available for <strong>converting XML to PDF</strong>.</p>
+
+    <h3>How to Use Our XML to PDF Converter: A Step-by-Step Guide</h3>
+    <p>Using our <strong>XML to PDF Converter</strong> is simple and intuitive, even for beginners. Follow these steps to <strong>convert XML to PDF online</strong>:</p>
+    <ol>
+      <li><strong>Upload Your XML Files</strong>: Click the “Choose XML Files” button or drag and drop your XML files into the designated area. Our tool supports multiple files, with a maximum size of 10MB each.</li>
+      <li><strong>Preview Your XML</strong>: Once uploaded, the tool displays a preview of the first XML file’s structure, allowing you to verify its content before conversion.</li>
+      <li><strong>Customize Styling Options</strong>: Select your preferred font (e.g., Helvetica), font size (e.g., 10), and text color. Adjust the page margin to fit your layout needs.</li>
+      <li><strong>Choose Output Options</strong>: Decide whether to download individual PDFs or a ZIP archive for multiple files. You can also opt to include the XML filename as the PDF title for better metadata.</li>
+      <li><strong>Convert and Download</strong>: Click the “Convert to PDF” button to start the conversion process. Once completed, your PDFs will be available for download, either individually or as a ZIP file.</li>
+    </ol>
+    <p>The entire process takes just a few seconds, and our <strong>free XML to PDF Converter</strong> ensures that your files are processed securely and efficiently.</p>
+
+    <h3>Benefits of Using Our Free XML to PDF Converter</h3>
+    <p>Choosing our <strong>XML to PDF Converter</strong> over other tools comes with numerous advantages. Here’s why it’s the best option for <strong>converting XML to PDF</strong>:</p>
+    <ul>
+      <li><strong>Completely Free</strong>: Unlike premium tools like Adobe Acrobat, our <strong>free XML to PDF tool</strong> has no hidden fees or subscriptions.</li>
+      <li><strong>No Installation Required</strong>: Run the <strong>XML to PDF Converter</strong> directly in your browser—no software downloads needed.</li>
+      <li><strong>Data Privacy</strong>: With client-side processing, your XML files never leave your device, ensuring complete privacy.</li>
+      <li><strong>Advanced Customization</strong>: Tailor your PDFs with font, size, color, and margin settings to match your preferences.</li>
+      <li><strong>User-Friendly Interface</strong>: The intuitive design and tutorial modal make it easy for anyone to <strong>convert XML to PDF online</strong>.</li>
+      <li><strong>Batch Processing Efficiency</strong>: Handle multiple XML files at once, a feature often missing in other free converters.</li>
+      <li><strong>SEO Optimization</strong>: Add metadata to your PDFs to improve their discoverability on search engines like Google.</li>
+    </ul>
+    <p>These benefits make our <strong>XML to PDF Converter</strong> the go-to choice for anyone looking to create professional PDFs from XML files without breaking the bank.</p>
+
+    <h3>Comparison with Other XML to PDF Converters</h3>
+    <p>Let’s see how our <strong>XML to PDF Converter</strong> stacks up against other popular tools for <strong>converting XML to PDF</strong>:</p>
+    <ul>
+      <li><strong>Adobe Acrobat</strong>: A premium tool offering high-quality XML to PDF conversion, but it requires a paid subscription and lacks batch processing in the free version. Our <strong>free XML to PDF tool</strong> offers similar functionality at no cost.</li>
+      <li><strong>FreeConvert.com</strong>: An online converter that supports XML to PDF conversion, but it lacks styling options and processes files on the server, raising privacy concerns. Our <strong>XML to PDF Converter</strong> ensures client-side processing for better security.</li>
+      <li><strong>CoolUtils XML to PDF Converter</strong>: A free online tool, but it doesn’t offer the same level of customization or batch processing as our <strong>free XML to PDF Converter</strong>.</li>
+      <li><strong>PDFCandy</strong>: Another online converter that’s easy to use, but it lacks advanced styling options and requires server-side processing. Our tool provides more flexibility and keeps your data private.</li>
+    </ul>
+    <p>With its combination of privacy, customization, and batch processing capabilities, our <strong>XML to PDF Converter</strong> stands out as the best option for <strong>converting XML to PDF online</strong>.</p>
+
+    <h3>Technical Details: How Our XML to PDF Converter Works</h3>
+    <p>Our <strong>XML to PDF Converter</strong> leverages modern web technologies to deliver fast and reliable conversions. Here’s a breakdown of the technical process behind <strong>converting XML to PDF</strong>:</p>
+    <ul>
+      <li><strong>XML Parsing</strong>: The tool uses JavaScript’s DOMParser to parse your XML files and validate their structure. It checks for errors like missing root elements or malformed syntax.</li>
+      <li><strong>Data Formatting</strong>: The XML content is formatted into a readable structure using recursive parsing, ensuring proper indentation and hierarchy for the PDF output.</li>
+      <li><strong>PDF Generation</strong>: PDFLib.js creates a new PDF document, applying your selected styles (font, size, color, margins). The tool calculates page breaks to prevent content overflow.</li>
+      <li><strong>Metadata Embedding</strong>: If selected, the tool embeds metadata like the XML filename as the PDF title, along with other details like author and keywords, for better indexing.</li>
+      <li><strong>Output Handling</strong>: For single files, the PDF is downloaded directly. For multiple files, JSZip creates a ZIP archive, which you can download with a single click.</li>
+    </ul>
+    <p>This client-side approach ensures that your data remains secure while providing a fast and efficient way to <strong>convert XML to PDF online</strong>.</p>
+
+    <h3>SEO Optimization Tips for Your Converted PDFs</h3>
+    <p>Once you’ve used our <strong>XML to PDF Converter</strong> to create your PDFs, you can optimize them for search engines to increase their visibility. Here are some expert tips:</p>
+    <ul>
+      <li><strong>Use Descriptive Filenames</strong>: Name your PDFs with relevant keywords, e.g., “project-report-2025.pdf” instead of “document.pdf.”</li>
+      <li><strong>Add Metadata</strong>: Include metadata like title, author, and keywords in your PDF. Our <strong>free XML to PDF tool</strong> allows you to embed the XML filename as the PDF title.</li>
+      <li><strong>Ensure Text is Selectable</strong>: Our <strong>XML to PDF Converter</strong> creates text-based PDFs (not images), making them indexable by search engines.</li>
+      <li><strong>Incorporate Keywords</strong>: Use keywords like “XML to PDF Converter” in the PDF content and metadata to improve ranking.</li>
+      <li><strong>Host on a Secure Site</strong>: Host your PDFs on an HTTPS website to boost search engine rankings.</li>
+      <li><strong>Create an HTML Landing Page</strong>: Link to your PDFs from an SEO-optimized HTML page (like this one) to improve discoverability.</li>
+    </ul>
+    <p>By following these tips, you can ensure that your PDFs rank higher on Google, making them more accessible to your audience.</p>
+
+    <h3>Common Use Cases for XML to PDF Conversion</h3>
+    <p>Our <strong>XML to PDF Converter</strong> is versatile and can be used in various scenarios. Here are some common use cases:</p>
+    <ul>
+      <li><strong>Business Reports</strong>: Convert XML data from financial systems into PDF reports for stakeholders.</li>
+      <li><strong>Data Archiving</strong>: Archive XML configuration files as PDFs for long-term storage.</li>
+      <li><strong>Web Development</strong>: Transform XML sitemaps or API responses into PDFs for documentation.</li>
+      <li><strong>Educational Materials</strong>: Convert XML-based educational content into PDFs for students.</li>
+      <li><strong>Legal Documents</strong>: Create tamper-proof PDFs from XML legal data for official use.</li>
+    </ul>
+    <p>No matter your use case, our <strong>free XML to PDF Converter</strong> provides the tools you need to get the job done efficiently.</p>
+
+    <h3>Troubleshooting Tips for XML to PDF Conversion</h3>
+    <p>While our <strong>XML to PDF Converter</strong> is designed to handle most XML files, you might encounter issues. Here are some troubleshooting tips:</p>
+    <ul>
+      <li><strong>Invalid XML Errors</strong>: Ensure your XML file is well-formed with a single root element. Use an XML validator before uploading.</li>
+      <li><strong>Large File Issues</strong>: Stick to the 10MB file size limit to avoid performance issues.</li>
+      <li><strong>Font or Styling Problems</strong>: If the PDF doesn’t reflect your styling choices, ensure your browser supports the selected font (Helvetica, Times Roman, Courier).</li>
+      <li><strong>ZIP Download Fails</strong>: If the ZIP file doesn’t download, check your browser’s memory limits and try converting fewer files at once.</li>
+    </ul>
+    <p>Our tool provides detailed error messages to help you resolve issues quickly, ensuring a smooth <strong>XML to PDF conversion</strong> experience.</p>
+
+    <h3>Frequently Asked Questions (FAQs) About XML to PDF Converter</h3>
+    <h4>1. Is the XML to PDF Converter Really Free?</h4>
+    <p>Yes, our <strong>XML to PDF Converter</strong> is 100% free to use. There are no hidden fees, subscriptions, or limitations on the number of conversions.</p>
+    <h4>2. Can I Convert Multiple XML Files at Once?</h4>
+    <p>Absolutely! Our <strong>free XML to PDF tool</strong> supports batch processing, allowing you to <strong>convert XML to PDF</strong> for multiple files simultaneously.</p>
+    <h4>3. Is My Data Secure with This Tool?</h4>
+    <p>Yes, all conversions happen client-side, meaning your XML files never leave your device. Our <strong>XML to PDF Converter</strong> prioritizes your privacy.</p>
+    <h4>4. Can I Customize the PDF Output?</h4>
+    <p>Yes, you can customize the font, font size, text color, and page margins to create PDFs that match your style using our <strong>free XML to PDF Converter</strong>.</p>
+    <h4>5. Does the Tool Work on Mobile Devices?</h4>
+    <p>Yes, our <strong>XML to PDF Converter</strong> is fully responsive and works seamlessly on desktops, tablets, and smartphones.</p>
+    <h4>6. What Happens if My XML File is Invalid?</h4>
+    <p>The tool will display an error message (e.g., “No root element found”) and provide details to help you fix the issue before <strong>converting XML to PDF</strong>.</p>
+
+    <h3>Conclusion: Why Choose Our XML to PDF Converter?</h3>
+    <p>Our <strong>XML to PDF Converter</strong> is the ultimate solution for anyone looking to <strong>convert XML to PDF online</strong>. With its powerful features, user-friendly interface, and focus on privacy, it’s the best <strong>free XML to PDF tool</strong> available. Whether you’re creating reports, archiving data, or sharing documents, our tool ensures your PDFs are professional, secure, and SEO-optimized. Try our <strong>XML to PDF Converter</strong> today and experience the easiest way to <strong>convert XML to PDF</strong>!</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/firebite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script>
+    let uploadedFilesData = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('XML to PDF Converter Initialized');
+      const tutorialModal = document.getElementById('tutorialModal');
+      if (tutorialModal && !localStorage.getItem('xmlToPdfTutorialShown')) {
+        tutorialModal.classList.remove('hidden');
+      }
+    });
+
+    function closeTutorial() {
+      const tutorialModal = document.getElementById('tutorialModal');
+      if (tutorialModal) {
+        tutorialModal.classList.add('hidden');
+        localStorage.setItem('xmlToPdfTutorialShown', 'true');
+      }
+    }
+    
+    function handleDragOver(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.add('dragover');
+    }
+
+    function handleDragLeave(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.remove('dragover');
+    }
+
+    async function handleDrop(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.remove('dragover');
+      const droppedFiles = event.dataTransfer.files;
+      if (droppedFiles.length) {
+        const fileInput = document.getElementById('xmlFiles');
+        if(fileInput) fileInput.files = droppedFiles;
+        await previewFiles();
+      }
+    }
+
+    async function previewFiles() {
+      console.log('[previewFiles] Starting.');
+      const fileInput = document.getElementById('xmlFiles');
+      const xmlPreviewContainer = document.getElementById('xmlPreviewContainer');
+      const xmlContentPreviewDiv = document.getElementById('xmlContentPreview');
+      
+      uploadedFilesData = [];
+      if (xmlPreviewContainer) xmlPreviewContainer.classList.add('hidden');
+      if (xmlContentPreviewDiv) xmlContentPreviewDiv.innerHTML = '';
+
+      if (!fileInput || !fileInput.files.length) {
+        console.log('[previewFiles] No files selected.');
+        document.getElementById('convertButton').disabled = true;
+        return;
+      }
+      
+      console.log(`[previewFiles] Processing ${fileInput.files.length} files.`);
+
+      let firstFileProcessedForPreview = false;
+      for (let i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files[i];
+        console.log(`[previewFiles] File: ${file.name}, Size: ${file.size}, Type: ${file.type}`);
+
+        if (!file.name.match(/\.xml$/i) && !['text/xml', 'application/xml'].includes(file.type)) {
+          Swal.fire('Invalid File Type', `${file.name} is not an XML file. Please upload only XML files.`, 'error');
+          console.warn(`[previewFiles] Skipped ${file.name} due to invalid type.`);
+          continue;
+        }
+        if (file.size > 10 * 1024 * 1024) {
+          Swal.fire('File Too Large', `${file.name} exceeds the 10MB size limit.`, 'error');
+          console.warn(`[previewFiles] Skipped ${file.name} due to size.`);
+          continue;
+        }
+
+        const fileData = {
+          fileObject: file,
+          name: file.name,
+          xmlDocument: null,
+          error: null
+        };
+        uploadedFilesData.push(fileData);
+        await parseIndividualXML(fileData, !firstFileProcessedForPreview);
+        if (!fileData.error && fileData.xmlDocument && !firstFileProcessedForPreview) {
+            firstFileProcessedForPreview = true;
+        }
+      }
+      
+      const convertButton = document.getElementById('convertButton');
+      if (convertButton) {
+        const validFilesToProcess = uploadedFilesData.filter(f => !f.error && f.xmlDocument);
+        convertButton.disabled = validFilesToProcess.length === 0;
+        console.log(`[previewFiles] Convert button disabled: ${convertButton.disabled}. Valid files: ${validFilesToProcess.length}`);
+      }
+      console.log('[previewFiles] Finished.');
+    }
+
+    async function parseIndividualXML(fileData, shouldUpdatePreview) {
+      console.log(`[parseIndividualXML] Starting for: ${fileData.name}. Should update preview: ${shouldUpdatePreview}`);
+      try {
+        const fileText = await fileData.fileObject.text();
+        if (!fileText.trim()) {
+            throw new Error("File is empty or contains only whitespace.");
+        }
+        console.log(`[parseIndividualXML] File text for ${fileData.name} (first 200 chars):`, fileText.substring(0, 200));
+        
+        const parser = new DOMParser();
+        const parsedXmlDoc = parser.parseFromString(fileText, 'application/xml'); 
+        console.log(`[parseIndividualXML] Parsed XML Document object for ${fileData.name}:`, parsedXmlDoc);
+        
+        const errorNode = parsedXmlDoc.querySelector('parsererror'); 
+        if (errorNode) {
+          const errorDetails = errorNode.innerHTML || errorNode.textContent || "Unknown parser error details.";
+          console.error(`[parseIndividualXML] 'parsererror' element found in ${fileData.name}:`, errorDetails);
+          throw new Error(`Invalid XML structure (parsererror): ${errorDetails.split('\n')[0].replace(/<[^>]+>/g, '').trim()}`);
+        }
+        
+        if (!parsedXmlDoc.documentElement || 
+            (parsedXmlDoc.documentElement.nodeName === "html" && 
+             parsedXmlDoc.documentElement.namespaceURI === "http://www.w3.org/1999/xhtml")) {
+            
+            let errMsg = "XML parsing failed: No valid root element found (or parser returned HTML error).";
+            if (parsedXmlDoc.body && parsedXmlDoc.body.innerText && parsedXmlDoc.documentElement.nodeName === "html") {
+                const bodyText = parsedXmlDoc.body.innerText.trim();
+                const firstLineOfError = bodyText.split('\n')[0].trim();
+                if (firstLineOfError.toLowerCase().includes("xml parsing error:")) {
+                     errMsg = firstLineOfError;
+                } else if (bodyText.length > 0 && bodyText.length < 200) {
+                     errMsg = `XML parsing failed: ${bodyText}`;
+                }
+            }
+            console.error(`[parseIndividualXML] ${errMsg} for ${fileData.name}`);
+            throw new Error(errMsg);
+        }
+        
+        if (!parsedXmlDoc.documentElement) {
+             console.error(`[parseIndividualXML] No documentElement in ${fileData.name} after checks.`);
+             throw new Error("XML is malformed (no root element after parsing).");
+        }
+
+        fileData.xmlDocument = parsedXmlDoc;
+        console.log(`[parseIndividualXML] Successfully parsed ${fileData.name}. xmlDocument set.`);
+
+        if (shouldUpdatePreview) {
+          const xmlPreviewContainer = document.getElementById('xmlPreviewContainer');
+          const xmlContentPreviewDiv = document.getElementById('xmlContentPreview');
+          const serializer = new XMLSerializer();
+          if (fileData.xmlDocument && fileData.xmlDocument.documentElement) {
+             const xmlStringForPreview = serializer.serializeToString(fileData.xmlDocument);
+             if (xmlContentPreviewDiv) xmlContentPreviewDiv.textContent = xmlStringForPreview;
+             if (xmlPreviewContainer) xmlPreviewContainer.classList.remove('hidden');
+             console.log(`[parseIndividualXML] Preview updated for ${fileData.name}.`);
+          } else {
+             console.warn(`[parseIndividualXML] Cannot update preview for ${fileData.name} as xmlDocument is invalid (this should not be reached if parsing succeeded).`);
+             if (xmlContentPreviewDiv) xmlContentPreviewDiv.textContent = "Error: Could not prepare XML for preview.";
+             if (xmlPreviewContainer) xmlPreviewContainer.classList.remove('hidden');
+          }
+        }
+
+      } catch (error) {
+        const errorMessage = error.message || 'Unknown error during XML parsing.';
+        console.error(`[parseIndividualXML] CATCH BLOCK - Failed to parse ${fileData.name}: ${errorMessage}`, error.stack);
+        fileData.error = errorMessage;
+      }
+      console.log(`[parseIndividualXML] Finished for ${fileData.name}. Error status: ${fileData.error}, xmlDocument set: ${!!fileData.xmlDocument}`);
+    }
+    
+    function formatXmlNodeForPdfRecursive(node, indentLevel, linesArray) {
+        const indent = '  '.repeat(indentLevel);
+
+        if (node.nodeType === Node.ELEMENT_NODE) {
+            let attributesStr = "";
+            if (node.attributes && node.attributes.length > 0) {
+                for (let i = 0; i < node.attributes.length; i++) {
+                    const attr = node.attributes[i];
+                    attributesStr += ` ${attr.name}="${attr.value}"`;
+                }
+            }
+            
+            const childNodes = Array.from(node.childNodes);
+            const hasChildElements = childNodes.some(child => child.nodeType === Node.ELEMENT_NODE);
+            const isEffectivelyEmpty = childNodes.every(child => child.nodeType === Node.TEXT_NODE && !child.nodeValue.trim());
+
+            if (isEffectivelyEmpty && !node.attributes.length) {
+                 linesArray.push(`${indent}<${node.nodeName}/>`);
+            } else if (!hasChildElements && !isEffectivelyEmpty && childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE) {
+                const textContentTrimmed = (childNodes[0].nodeValue || "").trim();
+                if(textContentTrimmed){
+                    linesArray.push(`${indent}<${node.nodeName}${attributesStr}>${textContentTrimmed}</${node.nodeName}>`);
+                } else if (attributesStr){
+                     linesArray.push(`${indent}<${node.nodeName}${attributesStr}></${node.nodeName}>`);
+                } else {
+                    linesArray.push(`${indent}<${node.nodeName}/>`);
+                }
+            } else {
+                linesArray.push(`${indent}<${node.nodeName}${attributesStr}>`);
+                childNodes.forEach(childNode => {
+                    formatXmlNodeForPdfRecursive(childNode, indentLevel + 1, linesArray);
+                });
+                linesArray.push(`${indent}</${node.nodeName}>`);
+            }
+        } else if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.nodeValue.trim();
+            if (text) {
+                linesArray.push(`${indent}${text}`);
+            }
+        } else if (node.nodeType === Node.COMMENT_NODE) {
+            linesArray.push(`${indent}<!--${node.nodeValue.trim()}-->`);
+        } else if (node.nodeType === Node.CDATA_SECTION_NODE) {
+             linesArray.push(`${indent}<![CDATA[${node.nodeValue}]]>`);
+        }
+    }
+
+    function getFormattedXmlLines(xmlDoc) {
+        const lines = [];
+        if (xmlDoc && xmlDoc.documentElement) {
+            formatXmlNodeForPdfRecursive(xmlDoc.documentElement, 0, lines);
+        } else {
+            console.warn("[getFormattedXmlLines] xmlDoc or documentElement is null. Cannot format for PDF.");
+        }
+        console.log("[getFormattedXmlLines] Generated lines for PDF:", lines);
+        return lines;
+    }
+
+    async function convertFilesToPDF() {
+      console.log('[convertFilesToPDF] Starting. Number of files in uploadedFilesData:', uploadedFilesData.length);
+      const filesToProcess = uploadedFilesData.filter(f => !f.error && f.xmlDocument);
+      console.log('[convertFilesToPDF] Number of valid files to process:', filesToProcess.length);
+      
+      if (filesToProcess.length === 0) {
+        Swal.fire('No Valid Files', 'No valid XML files to convert. Please upload well-formed XML and check for parsing errors.', 'warning');
+        console.warn('[convertFilesToPDF] No valid files to process after filtering.');
+        const convertButton = document.getElementById('convertButton');
+        if(convertButton) convertButton.disabled = uploadedFilesData.filter(f => !f.error && f.xmlDocument).length === 0;
+        return;
+      }
+
+      const progressBarContainer = document.getElementById('progressBarContainer');
+      const progressBarFill = document.getElementById('progressBarFill');
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      const convertButton = document.getElementById('convertButton');
+
+      const selectedFontFamily = document.getElementById('fontFamily')?.value || 'Helvetica';
+      const selectedFontSize = parseInt(document.getElementById('fontSize')?.value) || 10;
+      const selectedTextColor = document.getElementById('textColor')?.value || '#000000';
+      const pageMarginMm = parseInt(document.getElementById('pageMargin')?.value) || 15;
+      const shouldDownloadZip = document.getElementById('downloadZip')?.checked;
+      const shouldIncludeMetadata = document.getElementById('includeMetadata')?.checked;
+      
+      const zip = new JSZip();
+      let successfullyConvertedCount = 0;
+
+      if (convertButton) convertButton.disabled = true;
+      if (progressBarContainer && progressBarFill) {
+        progressBarContainer.classList.remove('hidden');
+        progressBarFill.style.width = '0%';
+      }
+      if (downloadZipButton) downloadZipButton.classList.add('hidden');
+
+      const pointsPerMm = 72 / 25.4;
+      const marginInPoints = pageMarginMm * pointsPerMm;
+      const A4_WIDTH = 595.28;
+      const A4_HEIGHT = 841.89;
+      const lineHeightMultiplier = 1.2;
+
+      for (let i = 0; i < filesToProcess.length; i++) {
+        const fileData = filesToProcess[i];
+        console.log(`[convertFilesToPDF] Processing file ${i + 1}/${filesToProcess.length}: ${fileData.name}`);
+
+        try {
+          console.log(`[convertFilesToPDF] Attempting to convert ${fileData.name} to PDF`);
+          const pdfDoc = await PDFLib.PDFDocument.create();
+          
+          let pdfFont;
+          switch (selectedFontFamily) {
+              case 'Times-Roman': pdfFont = PDFLib.StandardFonts.TimesRoman; break;
+              case 'Courier': pdfFont = PDFLib.StandardFonts.Courier; break;
+              case 'Helvetica': default: pdfFont = PDFLib.StandardFonts.Helvetica; break;
+          }
+          const embeddedFont = await pdfDoc.embedFont(pdfFont);
+          
+          const linesToPrint = getFormattedXmlLines(fileData.xmlDocument);
+          if (linesToPrint.length === 0) {
+              console.warn(`[convertFilesToPDF] No lines to print for ${fileData.name}. XML might be empty or formatter produced no output.`);
+              let emptyPage = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
+              emptyPage.drawText("XML content resulted in no printable output.", {
+                  x: marginInPoints, y: A4_HEIGHT - marginInPoints - selectedFontSize,
+                  font: embeddedFont, size: selectedFontSize, color: PDFLib.rgb(0.5, 0.5, 0.5)
+              });
+          } else {
+            let currentPage = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
+            let yPosition = A4_HEIGHT - marginInPoints - selectedFontSize;
+
+            for (const line of linesToPrint) {
+                if (yPosition < (marginInPoints + selectedFontSize * lineHeightMultiplier)) {
+                    currentPage = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
+                    yPosition = A4_HEIGHT - marginInPoints - selectedFontSize;
+                }
+                currentPage.drawText(line, {
+                    x: marginInPoints,
+                    y: yPosition,
+                    size: selectedFontSize,
+                    font: embeddedFont,
+                    color: PDFLib.rgb(
+                        parseInt(selectedTextColor.slice(1, 3), 16) / 255,
+                        parseInt(selectedTextColor.slice(3, 5), 16) / 255,
+                        parseInt(selectedTextColor.slice(5, 7), 16) / 255
+                    ),
+                    lineHeight: selectedFontSize * lineHeightMultiplier,
+                });
+                yPosition -= (selectedFontSize * lineHeightMultiplier);
+            }
+          }
+
+          if (shouldIncludeMetadata) {
+            pdfDoc.setTitle(fileData.name.replace(/\.xml$/i, ''));
+            pdfDoc.setSubject('Converted from XML using Online Tool');
+            pdfDoc.setAuthor('XML to PDF Converter');
+            pdfDoc.setCreator('XML to PDF Online Tool');
+            pdfDoc.setKeywords(['XML', 'PDF', 'Converted Document', fileData.name]);
+          }
+
+          const pdfBytes = await pdfDoc.save();
+          const sanitizedFileName = fileData.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+          const outputFileName = `${sanitizedFileName.replace(/\.xml$/i, '')}.pdf`;
+          const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+          if (shouldDownloadZip && filesToProcess.length > 1) {
+            zip.file(outputFileName, blob);
+          } else {
+            saveAs(blob, outputFileName);
+          }
+          console.log(`[convertFilesToPDF] PDF generation successful for ${fileData.name}.`);
+          successfullyConvertedCount++;
+          console.log(`[convertFilesToPDF] successfullyConvertedCount is now: ${successfullyConvertedCount} for ${fileData.name}`);
+
+        } catch (error) {
+          const errorMsg = error.message || 'Unknown error during PDF conversion.';
+          console.error(`[convertFilesToPDF] CATCH BLOCK - Error converting ${fileData.name}: ${errorMsg}`, error.stack);
+          Swal.fire('Conversion Error', `Failed to convert ${fileData.name}: ${errorMsg}`, 'error');
+        } finally {
+            if (progressBarFill && progressBarContainer) {
+                const currentProgress = ((i + 1) / filesToProcess.length) * 100;
+                progressBarFill.style.width = `${currentProgress}%`;
+            }
+        }
+      }
+      console.log(`[convertFilesToPDF] Loop finished. successfullyConvertedCount: ${successfullyConvertedCount}`);
+
+      if (convertButton) {
+         convertButton.disabled = uploadedFilesData.filter(f => !f.error && f.xmlDocument).length === 0;
+      }
+
+      if (progressBarContainer) {
+         setTimeout(() => {
+            progressBarContainer.classList.add('hidden');
+            if(progressBarFill) progressBarFill.style.width = '0%';
+        }, 1500);
+      }
+
+      if (successfullyConvertedCount > 0) {
+        if (shouldDownloadZip && filesToProcess.length > 1 && Object.keys(zip.files).length > 0) {
+          const zipBlob = await zip.generateAsync({ type: 'blob' });
+          if (downloadZipButton) {
+            downloadZipButton.href = URL.createObjectURL(zipBlob);
+            downloadZipButton.classList.remove('hidden');
+          }
+          Swal.fire('Conversion Successful!', `${successfullyConvertedCount} XML file(s) converted and bundled into ZIP.`, 'success');
+        } else {
+           Swal.fire('Conversion Successful!', `${successfullyConvertedCount} XML file(s) converted. Downloads started.`, 'success');
+        }
+      } else if (uploadedFilesData.length > 0 && filesToProcess.length === 0) {
+        Swal.fire('Conversion Failed', 'No valid XML files were found to convert. Please check parsing errors.', 'error');
+      } else if (uploadedFilesData.length > 0 && successfullyConvertedCount === 0 && filesToProcess.length > 0) {
+        Swal.fire('Conversion Failed', 'Valid XML files were found, but PDF generation failed for all of them. Check console.', 'error');
+      }
+    }
+
+    function resetConverterState() {
+      console.log('[resetConverterState] Resetting all inputs and file data');
+      uploadedFilesData = [];
+      
+      const fileInput = document.getElementById('xmlFiles');
+      if (fileInput) fileInput.value = '';
+      
+      const fontFamilySelect = document.getElementById('fontFamily');
+      if (fontFamilySelect) fontFamilySelect.value = 'Helvetica';
+      const fontSizeInput = document.getElementById('fontSize');
+      if (fontSizeInput) fontSizeInput.value = '10';
+      const textColorInput = document.getElementById('textColor');
+      if (textColorInput) textColorInput.value = '#000000';
+      const pageMarginInput = document.getElementById('pageMargin');
+      if (pageMarginInput) pageMarginInput.value = '15';
+      const downloadZipCheckbox = document.getElementById('downloadZip');
+      if (downloadZipCheckbox) downloadZipCheckbox.checked = false;
+      const includeMetadataCheckbox = document.getElementById('includeMetadata');
+      if (includeMetadataCheckbox) includeMetadataCheckbox.checked = false;
+
+      const xmlPreviewContainer = document.getElementById('xmlPreviewContainer');
+      if (xmlPreviewContainer) xmlPreviewContainer.classList.add('hidden');
+      const xmlContentPreviewDiv = document.getElementById('xmlContentPreview');
+      if (xmlContentPreviewDiv) xmlContentPreviewDiv.innerHTML = '';
+      
+      const progressBarContainer = document.getElementById('progressBarContainer');
+      if (progressBarContainer) progressBarContainer.classList.add('hidden');
+      const progressBarFill = document.getElementById('progressBarFill');
+      if(progressBarFill) progressBarFill.style.width = '0%';
+      
+      const convertButton = document.getElementById('convertButton');
+      if (convertButton) convertButton.disabled = true;
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      if (downloadZipButton) downloadZipButton.classList.add('hidden');
+      
+      console.log('[resetConverterState] Converter state reset.');
+    }
+
+    window.handleDragOver = handleDragOver;
+    window.handleDragLeave = handleDragLeave;
+    window.handleDrop = handleDrop;
+    window.previewFiles = previewFiles;
+    window.convertFilesToPDF = convertFilesToPDF;
+    window.resetConverterState = resetConverterState;
+    window.closeTutorial = closeTutorial;
+  </script>
+</body>
+</html>

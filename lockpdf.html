@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lock PDF Online - Free Tool to Password Protect Your PDF Files</title>
+  <meta name="description" content="Secure your PDF files by adding password protection with our free online PDF locker. Encrypt PDFs with owner and user passwords, and set specific permissions. No uploads, completely client-side.">
+  <meta name="keywords" content="Lock PDF, password protect PDF, secure PDF, encrypt PDF, PDF security, free PDF locker, PDF owner password, PDF user password, PDF permissions, protect PDF online, add password to PDF">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="OnePageTools PDF Team">
+  <meta property="og:title" content="Lock PDF Online - Free & Secure PDF Protection Tool">
+  <meta property="og:description" content="Easily add strong password protection to your PDF documents. Set user and owner passwords, control permissions like printing and copying. Works in your browser, 100% free.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Lock+PDF+Online">
+  <meta property="og:url" content="https://onepagetools.com/lockpdf.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover:not(:disabled) { transform: scale(1.05); }
+    .progress-bar-animated { background: linear-gradient(to right, #10B981, #059669); }
+    .drop-zone { transition: all 0.3s ease; }
+    .drop-zone.dragover { border-color: #10B981; background-color: rgba(16, 185, 129, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover:not(:disabled) { transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+    .gradient-bg { background: linear-gradient(135deg, #f0fdf4, #d1fae5); }
+    .password-input-container { position: relative; }
+    .password-toggle { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none;}
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Navigation (जैसा पहले था) -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com/" class="flex items-center space-x-3">
+        <img src="One_Page-removebg-preview.png" alt="OnePageTools Logo" style="height: 60px" />
+      </a>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+      </button>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li><a href="./index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0">Home</a></li>
+          <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+          <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+              ALL PDF TOOLS
+              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" /></svg>
+            </button>
+            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                <li><a href="./lockpdf.html" class="block px-4 py-2 hover:bg-gray-100">Lock PDF</a></li>
+                <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100">PDF to Word</a></li>
+            
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content (जैसा पहले था) -->
+  <div class="flex justify-center items-center min-h-screen pt-20">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-xl fade-in">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">Lock PDF & Add Password</h1>
+      <p class="text-center text-gray-600 mb-8">Secure your PDF files with strong password encryption. Set user and owner passwords, and control document permissions like printing, copying, and editing. All processing is done securely in your browser.</p>
+
+      <div id="dropZone" class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-12 text-center mb-8 transition-colors duration-300 hover:border-green-400">
+        <label for="pdfFiles" class="inline-block w-full py-3 px-5 bg-green-600 text-white font-semibold rounded-full cursor-pointer hover:bg-green-700 btn hover-scale">
+          Choose PDF Files
+        </label>
+        <input type="file" id="pdfFiles" accept="application/pdf" multiple class="hidden">
+        <p class="text-gray-500 mt-2">or drag and drop PDF files here (max 50MB per file, multiple files supported)</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">Set Passwords</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="userPassword" class="block text-sm font-medium text-gray-700 mb-1">User Password (to open PDF)</label>
+              <div class="password-input-container">
+                <input type="password" id="userPassword" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="Optional: for opening">
+                <span class="password-toggle" onclick="togglePasswordVisibility('userPassword', this)">👁️</span>
+              </div>
+            </div>
+            <div>
+              <label for="confirmUserPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm User Password</label>
+              <div class="password-input-container">
+                <input type="password" id="confirmUserPassword" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="Confirm opening password">
+                 <span class="password-toggle" onclick="togglePasswordVisibility('confirmUserPassword', this)">👁️</span>
+              </div>
+            </div>
+            <div>
+              <label for="ownerPassword" class="block text-sm font-medium text-gray-700 mb-1">Owner Password (for permissions)</label>
+              <div class="password-input-container">
+                <input type="password" id="ownerPassword" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="Required for setting permissions">
+                 <span class="password-toggle" onclick="togglePasswordVisibility('ownerPassword', this)">👁️</span>
+              </div>
+              <p class="text-xs text-gray-500 mt-1">If only Owner Password is set, PDF opens without password but permissions are restricted.</p>
+            </div>
+             <div>
+              <label for="encryptionLevel" class="block text-sm font-medium text-gray-700 mb-1">Encryption Level</label>
+              <select id="encryptionLevel" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                <option value="128">AES 128-bit (Recommended)</option>
+                <option value="256">AES 256-bit (Strongest)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">Set Permissions (Requires Owner Password)</h3>
+          <div class="space-y-3">
+            <div class="flex items-center">
+              <input type="checkbox" id="allowPrinting" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500" checked>
+              <label for="allowPrinting" class="ml-2 block text-sm text-gray-900">Allow Printing</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="allowCopying" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
+              <label for="allowCopying" class="ml-2 block text-sm text-gray-900">Allow Copying Content</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="allowModifying" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
+              <label for="allowModifying" class="ml-2 block text-sm text-gray-900">Allow Modifying Document</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="allowAnnotations" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
+              <label for="allowAnnotations" class="ml-2 block text-sm text-gray-900">Allow Adding Annotations/Forms</label>
+            </div>
+             <p class="text-xs text-gray-500 mt-1">Uncheck to restrict. Permissions are only effective if an Owner Password is set.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="previewContainer" class="mb-6"></div>
+
+      <div id="progressBarContainer" class="hidden bg-gray-200 rounded-full h-3 mb-4">
+        <div id="progressBar" class="progress-bar-animated h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button id="lockButton" class="py-3 px-6 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 btn hover-scale" disabled>
+          <svg class="inline w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v7a2 2 0 002 2h10a2 2 0 002-2V11a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd"></path></svg>
+          Lock PDF(s)
+        </button>
+        <a id="downloadZipButton" href="#" download="locked-pdfs.zip" class="hidden py-3 px-6 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 btn hover-scale">
+          Download All as ZIP
+        </a>
+        <button id="resetButton" class="py-3 px-6 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 btn hover-scale">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO-Friendly Article (जैसा पहले था) -->
+  <div class="article-section px-4 sm:px-0">
+    <h2 class="text-gray-800">The Ultimate Guide to Locking Your PDF Files Online for Free</h2>
+    <p>In an increasingly digital world, the security of your documents is paramount. PDF (Portable Document Format) files are widely used for sharing information, from personal records to confidential business reports. However, not all PDFs are inherently secure. This is where the ability to <strong>lock PDF</strong> files becomes crucial. Our free online <strong>PDF locker</strong> tool empowers you to <strong>password protect PDF</strong> documents, ensuring that only authorized individuals can access or modify your sensitive information. This comprehensive guide will explore why you should <strong>secure PDF</strong> files, how to use our tool effectively, and best practices for PDF security.</p>
+    <h3>Why Should You Lock Your PDF Files?</h3>
+    <p>There are numerous reasons why adding a password to your PDF documents is a smart move. Whether you're an individual or a business, PDF security offers significant benefits:</p>
+    <ul>
+      <li><strong>Confidentiality:</strong> Protect sensitive personal or business information like financial statements, legal contracts, medical records, or proprietary research from unauthorized eyes. Using a <strong>PDF password protector</strong> ensures privacy.</li>
+      <li><strong>Integrity:</strong> Prevent unauthorized modifications to your documents. When you <strong>encrypt PDF</strong> files and set permissions, you can stop others from editing, copying, or printing the content, maintaining the document's original state.</li>
+      <li><strong>Compliance:</strong> Many industries (e.g., healthcare with HIPAA, finance with GDPR) have strict regulations regarding data protection. Locking PDFs helps meet these compliance requirements.</li>
+      <li><strong>Intellectual Property Protection:</strong> If you're sharing drafts, manuscripts, or design mockups, password protection can prevent unauthorized distribution or use of your intellectual property.</li>
+      <li><strong>Controlled Access:</strong> Share documents with specific individuals by providing them with a user password, while retaining greater control with an owner password for setting permissions.</li>
+    </ul>
+    <p>Our <strong>free PDF locker</strong> makes it easy to achieve all these benefits without needing expensive software.</p>
+    <h3>How to Use Our Free Online PDF Locker Tool</h3>
+    <p>Our tool is designed for simplicity and efficiency. Follow these steps to <strong>add password to PDF</strong> files and enhance their security:</p>
+    <ol>
+      <li><strong>Upload Your PDF(s):</strong> Click the "Choose PDF Files" button or simply drag and drop your PDF files into the designated area. You can upload multiple files to <strong>lock PDFs</strong> in batch.</li>
+      <li><strong>Set Passwords:</strong>
+        <ul>
+            <li><strong>User Password (Optional):</strong> Enter a password that users will need to open and view the PDF. Confirm this password in the next field.</li>
+            <li><strong>Owner Password (Recommended for Permissions):</strong> Enter a different, stronger password. This password allows you to set or change permissions and is required to apply restrictions. If only an owner password is set, the PDF can be opened without a password, but its usage will be restricted according to the permissions you define.</li>
+        </ul>
+      </li>
+      <li><strong>Configure Permissions (Requires Owner Password):</strong>
+        <ul>
+            <li><strong>Allow Printing:</strong> Check this if you want users to be able to print the PDF.</li>
+            <li><strong>Allow Copying Content:</strong> Check this to permit users to copy text and images from the PDF.</li>
+            <li><strong>Allow Modifying Document:</strong> If checked, users can edit the PDF (e.g., fill forms, add comments, if not further restricted by other settings).</li>
+            <li><strong>Allow Adding Annotations/Forms:</strong> Specifically controls adding comments or filling interactive form fields.</li>
+        </ul>
+        <p class="text-sm"><em>Note: To apply these permissions effectively, an Owner Password MUST be set. If no Owner Password is set, these permission checkboxes will be ignored.</em></p>
+      </li>
+      <li><strong>Choose Encryption Level:</strong> Select between AES 128-bit (good balance of security and compatibility) or AES 256-bit (strongest encryption, may not be supported by very old PDF readers). AES 128-bit is generally recommended.</li>
+      <li><strong>Lock Your PDFs:</strong> Click the "Lock PDF(s)" button. The tool will process your files directly in your browser. A progress bar will show the status.</li>
+      <li><strong>Download Secured PDFs:</strong> Once processed, download links for each locked PDF will appear. If you processed multiple files, a "Download All as ZIP" button will also be available.</li>
+      <li><strong>Reset (Optional):</strong> Click "Reset" to clear all files and settings to start over.</li>
+    </ol>
+    <p>With these straightforward steps, you can quickly and easily <strong>secure your PDF</strong> documents using our robust online tool.</p>
+    <h3>Understanding PDF Passwords: User vs. Owner</h3>
+    <p>When you <strong>password protect PDF</strong> files, you typically encounter two types of passwords:</p>
+    <ul>
+      <li><strong>User Password (Document Open Password):</strong> This password is required to open and view the PDF. Without it, the content remains inaccessible. This is the primary lock for restricting access.</li>
+      <li><strong>Owner Password (Permissions Password):</strong> This password controls the permissions for the PDF. If a PDF has an owner password, anyone opening it (even without a user password, if one isn't set) will be subject to the permissions set by the owner. To change these permissions or remove password protection entirely, the owner password is required. It's crucial to set a strong, unique owner password if you intend to restrict actions like printing or editing.</li>
+    </ul>
+    <p>Our tool allows you to set either or both. For maximum security and control, using both is often the best approach. If you only set an owner password, the PDF can be opened by anyone, but they won't be able to print, copy, or modify it if you've restricted those permissions.</p>
+    <h3>Granular Control: PDF Permissions Explained</h3>
+    <p>Beyond simply locking a PDF from being opened, our <strong>PDF security</strong> tool offers granular control over what users can do with the document once it's open (assuming they have the user password, or if no user password is set). These permissions are enforced if an <strong>owner password</strong> is set:</p>
+    <ul>
+      <li><strong>Printing:</strong> You can allow or disallow printing of the PDF. (Technically, you set if printing is *allowed*).</li>
+      <li><strong>Copying Content:</strong> This permission controls whether users can select and copy text or images from the PDF to their clipboard. Disabling this is vital for protecting sensitive written content.</li>
+      <li><strong>Modifying Document:</strong> This is a broad permission. If disallowed, users cannot make changes like editing text (if the PDF structure allows it and is not a scanned image), rotating pages, or deleting pages. This is controlled by `ModifyContents` and `AssembleDocument` flags in PDF specification. Our tool primarily focuses on `ModifyContents`.</li>
+      <li><strong>Adding Annotations and Filling Forms:</strong> This permission allows users to add comments, highlights, or fill in interactive form fields within the PDF. Disabling this is useful for finalized documents where no further input is desired.</li>
+    </ul>
+    <p>Carefully consider which permissions are necessary for your recipients. The principle of least privilege (granting only the necessary permissions) is a good security practice when you <strong>encrypt PDF</strong> files.</p>
+    <h3>The Power of Encryption: AES 128-bit vs. AES 256-bit</h3>
+    <p>When you <strong>lock PDF</strong> files with a password, the content is encrypted. Encryption is the process of converting data into a code to prevent unauthorized access. Our tool uses Advanced Encryption Standard (AES), a widely recognized and secure encryption algorithm.</p>
+    <ul>
+      <li><strong>AES 128-bit:</strong> This level of encryption uses a 128-bit key. It offers a very strong level of security, practically unbreakable by brute-force methods with current technology. It's widely supported by most PDF readers and provides an excellent balance between security and compatibility.</li>
+      <li><strong>AES 256-bit:</strong> This uses a 256-bit key, offering an even higher level of security. While theoretically stronger, the practical security difference for most use cases compared to AES 128-bit is marginal, as both are exceptionally robust. AES 256-bit might not be supported by very old PDF viewers (though most modern ones handle it fine).</li>
+    </ul>
+    <p>For most users, <strong>AES 128-bit encryption</strong> is more than sufficient to <strong>secure PDF</strong> documents effectively. If you are dealing with extremely sensitive data or have specific compliance requirements for higher encryption, AES 256-bit is available.</p>
+    <h3>Who Can Benefit from This Free PDF Locker?</h3>
+    <p>Our online <strong>PDF password protector</strong> is a versatile tool for various users:</p>
+    <ul>
+      <li><strong>Individuals:</strong> Protect personal documents like tax returns, bank statements, or personal correspondence before sharing them.</li>
+      <li><strong>Students & Educators:</strong> Secure research papers, theses, or sensitive academic materials. Educators can protect exam papers or copyrighted teaching materials.</li>
+      <li><strong>Businesses:</strong> Safeguard confidential business plans, financial reports, client contracts, employee records, and internal memos. An essential tool to <strong>lock PDF for business</strong>.</li>
+      <li><strong>Legal Professionals:</strong> Encrypt legal documents, case files, and client communications to maintain attorney-client privilege.</li>
+      <li><strong>Healthcare Providers:</strong> Protect patient records and sensitive medical information, aiding in HIPAA compliance.</li>
+      <li><strong>Freelancers & Creatives:</strong> Secure proposals, invoices, and creative work shared with clients.</li>
+    </ul>
+    <p>Essentially, anyone who needs to share PDF documents securely can benefit from this free tool to <strong>add password to PDF</strong>.</p>
+    <h3>Client-Side Processing: Your Privacy, Our Priority</h3>
+    <p>A significant advantage of our <strong>PDF locker</strong> is that all processing happens directly within your web browser. This is known as client-side processing. Here's why it matters for your privacy and security:</p>
+    <ul>
+      <li><strong>No File Uploads:</strong> Your PDF files are never uploaded to any server. They remain on your computer throughout the locking process.</li>
+      <li><strong>Enhanced Security:</strong> Since your files don't leave your device, the risk of interception or unauthorized access during transit or on a third-party server is eliminated.</li>
+      <li><strong>Instant Processing:</strong> Operations are generally faster as there's no upload/download time to a server.</li>
+      <li><strong>Offline Capability (Potentially):</strong> While this version requires an internet connection to load the page and scripts, tools built this way can often be adapted to work offline once loaded.</li>
+    </ul>
+    <p>Many online PDF tools require you to upload your files, which can be a privacy concern. Our commitment to client-side processing ensures that you can <strong>secure PDF</strong> files with peace of mind.</p>
+    <h3>Tips for Strong PDF Security</h3>
+    <p>While our tool provides the mechanism to <strong>lock PDF</strong> files, effective security also depends on your practices:</p>
+    <ul>
+      <li><strong>Use Strong, Unique Passwords:</strong> Avoid common words or easily guessable passwords. Combine uppercase and lowercase letters, numbers, and symbols. Use different passwords for user and owner access. A good owner password is especially important.</li>
+      <li><strong>Don't Share Passwords Insecurely:</strong> When you need to share a password, do so through a secure channel (e.g., encrypted message, phone call), not in the same email as the PDF.</li>
+      <li><strong>Apply the Principle of Least Privilege:</strong> Only grant the permissions that are absolutely necessary for the recipient. If they don't need to print or copy, ensure those permissions are not granted (by unchecking the boxes).</li>
+      <li><strong>Regularly Update PDF Reader Software:</strong> Encourage recipients to use up-to-date PDF reader software, as older versions might have security vulnerabilities or may not fully support modern encryption standards.</li>
+      <li><strong>Verify Recipient Identity:</strong> Before sending a password-protected PDF with sensitive information, be sure you are sending it to the correct, intended recipient.</li>
+      <li><strong>Remember Your Passwords:</strong> There's no "forgot password" option for locally encrypted PDFs. If you forget the owner or user password, accessing or modifying the PDF can become impossible. Consider using a password manager.</li>
+    </ul>
+    <h3>Frequently Asked Questions (FAQs) about Locking PDFs</h3>
+    <h4>1. Is this PDF locker tool completely free?</h4>
+    <p>Yes, our online tool to <strong>password protect PDF</strong> files is 100% free to use. There are no hidden charges or subscription fees.</p>
+    <h4>2. Are my files safe? Are they uploaded to your server?</h4>
+    <p>Your files are completely safe. All PDF locking operations are performed locally in your browser. Your PDF files are never uploaded to our or any third-party server, ensuring maximum privacy.</p>
+    <h4>3. What if I forget the password I set?</h4>
+    <p>Unfortunately, if you forget the password (either user or owner), there is no way to recover it for a securely encrypted PDF. The encryption is designed to be strong. Please store your passwords securely.</p>
+    <h4>4. Can I remove a password from a PDF using this tool?</h4>
+    <p>This specific tool is designed to <strong>lock PDF</strong> files. To remove a password, you would typically need the current owner password and use a PDF editor or an "unlock PDF" tool that supports password removal (which also requires the owner password).</p>
+    <h4>5. What's the difference between user and owner password again?</h4>
+    <p>A <strong>user password</strong> is needed to open the PDF. An <strong>owner password</strong> allows you to set restrictions (like no printing, no copying) and is needed to change these restrictions or remove passwords. If only an owner password is set, the PDF opens without a password but respects the restrictions you've configured.</p>
+    <h4>6. Will locking a PDF reduce its quality?</h4>
+    <p>No, adding password protection or encryption does not affect the visual quality or content of the PDF itself.</p>
+    <h4>7. Can I lock multiple PDF files at once?</h4>
+    <p>Yes, our tool supports batch processing. You can upload multiple PDF files and apply the same password and permission settings to all of them simultaneously. You can then download them individually or as a single ZIP file.</p>
+    <h4>8. Which PDF readers support these locked files?</h4>
+    <p>PDFs locked with AES 128-bit or AES 256-bit encryption are supported by most modern PDF readers, including Adobe Acrobat Reader, Foxit Reader, Google Chrome's built-in PDF viewer, and many others. Very old readers might have compatibility issues with AES 256-bit.</p>
+    <h3>Conclusion: Take Control of Your PDF Security Today</h3>
+    <p>In an era where data breaches and privacy violations are common, taking proactive steps to <strong>secure your PDF</strong> documents is not just advisable, but essential. Our free online <strong>PDF locker</strong> provides a powerful, user-friendly, and secure way to <strong>password protect PDF</strong> files, set granular permissions, and <strong>encrypt PDF</strong> content with strong AES encryption. By utilizing client-side processing, we ensure your sensitive information never leaves your computer.</p>
+    <p>Whether you're protecting personal information, confidential business data, or intellectual property, our tool gives you the control you need. <a href="#dropZone" class="text-green-600 hover:underline font-semibold">Start locking your PDFs now</a> and experience the peace of mind that comes with robust document security. It’s fast, free, and secure – the ideal solution for all your PDF protection needs.</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <script>
+    const { PDFDocument, PDFPermissionFlag, InvalidPDFError } = PDFLib;
+
+    let filesToProcess = [];
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('pdfFiles');
+    const previewContainer = document.getElementById('previewContainer');
+    const lockButton = document.getElementById('lockButton');
+    const resetButton = document.getElementById('resetButton');
+    const downloadZipButton = document.getElementById('downloadZipButton');
+    const progressBarContainer = document.getElementById('progressBarContainer');
+    const progressBar = document.getElementById('progressBar');
+    
+    const userPasswordInput = document.getElementById('userPassword');
+    const confirmUserPasswordInput = document.getElementById('confirmUserPassword');
+    const ownerPasswordInput = document.getElementById('ownerPassword');
+
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); e.stopPropagation(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', (e) => { e.preventDefault(); e.stopPropagation(); dropZone.classList.remove('dragover'); });
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault(); e.stopPropagation(); dropZone.classList.remove('dragover');
+      const droppedFiles = e.dataTransfer.files;
+      if (droppedFiles.length) { fileInput.files = droppedFiles; handleFileSelection(); }
+    });
+    fileInput.addEventListener('change', handleFileSelection);
+
+    function togglePasswordVisibility(inputId, eyeIcon) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") { input.type = "text"; eyeIcon.textContent = "🙈"; }
+        else { input.type = "password"; eyeIcon.textContent = "👁️"; }
+    }
+
+    function handleFileSelection() {
+      filesToProcess = [];
+      previewContainer.innerHTML = '';
+      downloadZipButton.classList.add('hidden');
+      progressBarContainer.classList.add('hidden');
+      progressBar.style.width = '0%';
+      lockButton.disabled = true;
+
+      const selectedFiles = Array.from(fileInput.files);
+      if (selectedFiles.length > 0) {
+        let validFilesFound = false;
+        selectedFiles.forEach((file, index) => {
+          if (file.type !== 'application/pdf') {
+            Swal.fire('Invalid File', `${file.name} is not a PDF. Please select PDF files only.`, 'error');
+            return;
+          }
+          if (file.size > 50 * 1024 * 1024) {
+            Swal.fire('File Too Large', `${file.name} exceeds the 50MB size limit.`, 'error');
+            return;
+          }
+          const fileData = { file, name: file.name, id: `file-${Date.now()}-${index}`, status: 'Pending' };
+          filesToProcess.push(fileData);
+          renderFilePreview(fileData);
+          validFilesFound = true;
+        });
+        lockButton.disabled = !validFilesFound;
+      }
+    }
+
+    function renderFilePreview(fileData) {
+      const div = document.createElement('div');
+      div.className = 'flex justify-between items-center bg-gray-100 p-3 rounded-lg mb-2 scale-in';
+      div.innerHTML = `
+        <div class="truncate w-3/4 pr-2">
+          <p class="text-gray-700 text-sm" title="${fileData.name}">${fileData.name} (${(fileData.file.size / 1024 / 1024).toFixed(2)}MB)</p>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <p id="${fileData.id}-status" class="text-sm text-gray-500">${fileData.status}</p>
+          <a id="${fileData.id}-download" href="#" download class="hidden text-blue-600 hover:underline text-sm">Download</a>
+        </div>
+      `;
+      previewContainer.appendChild(div);
+    }
+
+    lockButton.addEventListener('click', async () => {
+      if (filesToProcess.length === 0) {
+        Swal.fire('No Files', 'Please select PDF files to lock.', 'warning');
+        return;
+      }
+
+      const userPassword = userPasswordInput.value;
+      const confirmUserPassword = confirmUserPasswordInput.value;
+      const ownerPassword = ownerPasswordInput.value;
+      const encryptionLevel = parseInt(document.getElementById('encryptionLevel').value, 10);
+
+      if (userPassword && userPassword !== confirmUserPassword) {
+        Swal.fire('Password Mismatch', 'User passwords do not match.', 'error');
+        return;
+      }
+      if (!userPassword && !ownerPassword) {
+        Swal.fire('No Password Set', 'Please set either a User Password or an Owner Password (or both).', 'warning');
+        return;
+      }
+      
+      let grantedPermissions = [];
+      if (ownerPassword) {
+        if (document.getElementById('allowPrinting').checked) grantedPermissions.push(PDFPermissionFlag.Print);
+        if (document.getElementById('allowCopying').checked) {
+          grantedPermissions.push(PDFPermissionFlag.CopyContents);
+          grantedPermissions.push(PDFPermissionFlag.AccessibilityCopyContents);
+        }
+        if (document.getElementById('allowModifying').checked) {
+            grantedPermissions.push(PDFPermissionFlag.ModifyContents);
+        }
+        if (document.getElementById('allowAnnotations').checked) {
+          grantedPermissions.push(PDFPermissionFlag.ModifyAnnotations);
+          grantedPermissions.push(PDFPermissionFlag.FillForms);
+        }
+      }
+
+      lockButton.disabled = true;
+      resetButton.disabled = true;
+      progressBarContainer.classList.remove('hidden');
+      progressBar.style.width = '0%';
+      downloadZipButton.classList.add('hidden');
+
+      const zip = new JSZip();
+      let processedCount = 0;
+      let successfulLocks = 0;
+      let overallErrorMessages = []; 
+
+      for (const fileData of filesToProcess) {
+        const statusEl = document.getElementById(`${fileData.id}-status`);
+        const downloadEl = document.getElementById(`${fileData.id}-download`);
+        statusEl.textContent = 'Processing...';
+        downloadEl.classList.add('hidden');
+
+        try {
+          console.log(`Processing ${fileData.name}...`);
+          const existingPdfBytes = await fileData.file.arrayBuffer();
+          let pdfDoc;
+          try {
+            pdfDoc = await PDFDocument.load(existingPdfBytes, { 
+                updateMetadata: false, 
+                ignoreEncryption: true 
+            });
+            console.log(`${fileData.name} loaded successfully.`);
+          } catch (loadError) {
+            console.error(`Error loading ${fileData.name}:`, loadError);
+            let specificLoadErrorMessage = "Could not load PDF.";
+            if (loadError instanceof InvalidPDFError) {
+                 specificLoadErrorMessage = `Invalid PDF structure or already encrypted with an unknown password.`;
+            } else if (loadError.message && loadError.message.toLowerCase().includes('encrypted') ) {
+                 specificLoadErrorMessage = `PDF is already encrypted and requires a password to open/modify.`;
+            }
+            throw new Error(specificLoadErrorMessage); 
+          }
+
+          const options = {
+            ownerPassword: ownerPassword || undefined,
+            userPassword: userPassword || undefined,
+            permissions: ownerPassword ? grantedPermissions : undefined,
+            encryptMetadata: true, 
+            keyLength: encryptionLevel,
+          };
+          
+          const permissionNames = ownerPassword && grantedPermissions.length > 0 ? grantedPermissions.map(p => Object.keys(PDFPermissionFlag).find(key => PDFPermissionFlag[key] === p)) : 'None (if no owner pass) or All Restricted (if owner pass & no permissions checked)';
+          console.log(`Encrypting ${fileData.name} with options: UserPass: ${!!userPassword}, OwnerPass: ${!!ownerPassword}, KeyLength: ${encryptionLevel}, Permissions: [${permissionNames}]`);
+          
+          pdfDoc.encrypt(options);
+          console.log(`${fileData.name} encryption options applied.`);
+
+          const pdfBytes = await pdfDoc.save({ useObjectStreams: false }); 
+          console.log(`${fileData.name} saved successfully, size: ${pdfBytes.length} bytes.`);
+          
+          const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+          const lockedFileName = fileData.name.replace(/\.pdf$/i, '_locked.pdf');
+          downloadEl.href = URL.createObjectURL(blob);
+          downloadEl.download = lockedFileName;
+          downloadEl.classList.remove('hidden');
+          statusEl.textContent = 'Locked ✔️';
+          zip.file(lockedFileName, blob);
+          successfulLocks++;
+
+        } catch (error) {
+          console.error(`Error locking ${fileData.name}: ${error.message}`, error.stack ? error.stack : '');
+          statusEl.textContent = 'Error ❌';
+          overallErrorMessages.push(`Failed for ${fileData.name}: ${error.message}`);
+        }
+        processedCount++;
+        progressBar.style.width = `${(processedCount / filesToProcess.length) * 100}%`;
+      }
+
+      lockButton.disabled = filesToProcess.length === 0;
+      resetButton.disabled = false;
+
+      if (successfulLocks > 0) {
+        let successMessageText = `${successfulLocks} of ${filesToProcess.length} PDF(s) locked successfully.`;
+        if (successfulLocks < filesToProcess.length && overallErrorMessages.length > 0) {
+            const failedMessagesList = overallErrorMessages.map(msg => `<li>${msg}</li>`).join('');
+            successMessageText += `<br/><br/>${filesToProcess.length - successfulLocks} file(s) failed. Errors:<ul>${failedMessagesList}</ul>Check console for more details.`;
+        }
+        Swal.fire({
+            icon: 'success',
+            title: 'Processing Complete!',
+            html: successMessageText,
+        });
+        if (successfulLocks > 0) { // Show ZIP if any were successful
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            downloadZipButton.href = URL.createObjectURL(zipBlob);
+            downloadZipButton.classList.remove('hidden');
+        }
+      } else if (filesToProcess.length > 0) {
+         const failedMessagesList = overallErrorMessages.length > 0 ? overallErrorMessages.map(msg => `<li>${msg}</li>`).join('') : '<li>Unknown error. Please check console.</li>';
+         Swal.fire({
+            icon:'error',
+            title:'Locking Failed',
+            html: `No PDF files were locked successfully. <br/>Errors encountered:<ul>${failedMessagesList}</ul><br/>Please check console for more details.`,
+        });
+      }
+    });
+
+    resetButton.addEventListener('click', () => {
+      filesToProcess = [];
+      fileInput.value = ''; 
+      previewContainer.innerHTML = '';
+      lockButton.disabled = true;
+      downloadZipButton.classList.add('hidden');
+      progressBarContainer.classList.add('hidden');
+      progressBar.style.width = '0%';
+      userPasswordInput.value = '';
+      confirmUserPasswordInput.value = '';
+      ownerPasswordInput.value = '';
+      document.getElementById('allowPrinting').checked = true;
+      document.getElementById('allowCopying').checked = false;
+      document.getElementById('allowModifying').checked = false;
+      document.getElementById('allowAnnotations').checked = false;
+      document.getElementById('encryptionLevel').value = "128";
+      ['userPassword', 'confirmUserPassword', 'ownerPassword'].forEach(id => {
+        const input = document.getElementById(id);
+        const toggle = input.nextElementSibling;
+        if (input.type === 'text') {
+            input.type = 'password';
+            if(toggle && toggle.classList.contains('password-toggle')) toggle.textContent = "👁️";
+        }
+      });
+      console.clear();
+      Swal.fire('Reset', 'All settings and files cleared.', 'info');
+    });
+
+  </script>
+</body>
+</html>

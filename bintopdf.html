@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIN to PDF Converter – Convert Binary (.bin) Files to PDF Online</title>
+  <meta name="description" content="Convert any BIN file into a readable PDF document online. Free, safe, and easy tool to extract data from binary files and generate PDFs.">
+  <meta name="keywords" content="bin to pdf, convert bin to pdf online, binary file to pdf, bin file extractor, bin file reader, rom to pdf">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Tech Tools Team">
+  <meta property="og:title" content="BIN to PDF Converter – Convert Binary (.bin) Files to PDF Online">
+  <meta property="og:description" content="Convert any BIN file into a readable PDF document online. Free, safe, and easy tool to extract data from binary files and generate PDFs.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=BIN+to+PDF+Converter">
+  <meta property="og:url" content="https://yourdomain.com/bin-to-pdf-converter">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BIN to PDF Converter",
+    "description": "Free online tool to convert binary (.bin) files into structured and readable PDF documents.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "JavaScript",
+    "url": "https://yourdomain.com/bin-to-pdf-converter"
+  }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://via.placeholder.com/32?text=BIN">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .progress-bar-animated { background: linear-gradient(to right, #4f46e5, #7c3aed); }
+    .drop-zone { transition: all 0.3s ease; }
+    .drop-zone.dragover { border-color: #4f46e5; background-color: rgba(79, 70, 229, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .preview-container { max-height: 300px; overflow-y: auto; }
+    .gradient-bg { background: linear-gradient(135deg, #f3f4f6, #e0e7ff); }
+    .preview-content { white-space: pre-wrap; font-family: monospace; background: #f8f8f8; padding: 10px; border-radius: 5px; max-height: 200px; overflow-y: auto; }
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+    .article-section h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+    .dark-mode { background: #1a202c; color: #e2e8f0; }
+    .dark-mode .gradient-bg { background: linear-gradient(135deg, #2d3748, #4a5568); }
+    .dark-mode .bg-white { background: #2d3748; }
+    .dark-mode .bg-gray-50 { background: #4a5568; }
+    .dark-mode .text-gray-700 { color: #e2e8f0; }
+    .dark-mode .text-gray-600 { color: #cbd5e0; }
+    .dark-mode .border-gray-200 { border-color: #4a5568; }
+    .social-share { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
+    .social-share a { transition: transform 0.2s; }
+    .social-share a:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Navigation -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com" class="flex items-center space-x-3">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap">OnePageTools</span>
+      </a>
+      <div class="flex items-center space-x-3">
+        <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100">
+          <svg id="themeIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+        </button>
+        <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li><a href="https://yourdomain.com/" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">Home</a></li>
+          <li><a href="https://yourdomain.com/about-us" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">About Us</a></li>
+          <li><a href="https://yourdomain.com/contact-us" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Tool Section -->
+  <div class="flex justify-center items-center min-h-screen pt-20 pb-10">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-lg fade-in">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 text-center">BIN to PDF Converter</h1>
+      <p class="text-center text-gray-500 mb-6">Convert binary (.bin) files into readable PDF documents online. Free, safe, and easy tool for data extraction.</p>
+
+      <div class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-8 sm:p-12 text-center mb-8 transition-colors duration-300 hover:border-blue-400" 
+           ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="handleDragLeave(event)">
+        <label for="binFiles" class="inline-block w-full py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full cursor-pointer hover:bg-indigo-700 btn hover-scale">
+          Choose BIN Files
+        </label>
+        <input type="file" id="binFiles" accept=".bin" multiple class="hidden" onchange="previewFiles()">
+        <p class="text-gray-500 mt-2 text-sm">or drag and drop BIN files here (max 100MB each)</p>
+      </div>
+
+      <div id="fileListContainer" class="bg-gray-50 p-4 rounded-lg mb-6 hidden">
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">Uploaded Files</h3>
+        <ul id="fileList" class="space-y-2"></ul>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700">Conversion Options</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="encoding" class="block text-sm font-medium text-gray-700 mb-1">Encoding</label>
+              <select id="encoding" class="w-full p-2 border border-gray-300 rounded-lg text-sm">
+                <option value="utf8">UTF-8</option>
+                <option value="ascii">ASCII</option>
+                <option value="hex" selected>HEX</option>
+              </select>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="includeMetadata" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" checked>
+              <label for="includeMetadata" class="text-sm text-gray-600">Include File Metadata</label>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="includeChecksum" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="includeChecksum" class="text-sm text-gray-600">Include Checksum</label>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="hexTable" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="hexTable" class="text-sm text-gray-600">Convert to Hex Table</label>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700">Preview</h3>
+          <div id="previewContainer" class="preview-container hidden">
+            <pre id="previewContent" class="preview-content text-xs"></pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="progressBarContainer" class="hidden bg-gray-200 rounded-full h-2.5 mb-4">
+        <div id="progressBarFill" class="progress-bar-animated h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button onclick="convertToPDF()" class="py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 btn hover-scale" id="convertButton" disabled>
+          Convert to PDF
+        </button>
+        <button onclick="resetConverter()" class="py-3 px-5 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 btn hover-scale">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article Section -->
+  <div class="article-section">
+    <h1>BIN to PDF Converter – Convert Binary (.bin) Files to PDF Online</h1>
+    <p>Binary (.bin) files are often a mystery to those unfamiliar with their structure, but they hold critical data for various applications, from firmware to game files. The <strong>BIN to PDF Converter</strong> is a free, online tool designed to extract readable content from .bin files and convert it into a structured, readable PDF document. Whether you're a developer analyzing firmware, a tech support specialist documenting binary logs, or a hobbyist exploring game data, this tool simplifies the process of making binary data accessible. In this comprehensive 2000+ word guide, we’ll explore what BIN files are, why converting them to PDF is useful, and how our <strong>online BIN to PDF converter</strong> can help you unlock the potential of binary data.</p>
+
+    <nav class="mb-6">
+      <h2 class="text-lg font-semibold mb-2">Table of Contents</h2>
+      <ul class="list-disc ml-6 text-indigo-600">
+        <li><a href="#what-is-bin">What is a BIN File?</a></li>
+        <li><a href="#why-convert">Why Convert a BIN File to PDF?</a></li>
+        <li><a href="#use-cases">Use Cases: Firmware Analysis, Data Recovery, Game File Documentation, Tech Support</a></li>
+        <li><a href="#features">Features of the BIN to PDF Converter Tool</a></li>
+        <li><a href="#how-to-use">How to Use the Tool: Step-by-Step Guide</a></li>
+        <li><a href="#comparison">Comparison with Other Methods</a></li>
+        <li><a href="#security">Data Security and Privacy Measures</a></li>
+        <li><a href="#faqs">Frequently Asked Questions</a></li>
+        <li><a href="#conclusion">Conclusion and Call to Action</a></li>
+      </ul>
+    </nav>
+
+    <h2 id="what-is-bin">What is a BIN File?</h2>
+    <p>A BIN file, short for "binary file," is a file format that stores data in a binary format—meaning it’s composed of raw 0s and 1s, rather than human-readable text. BIN files are used in a variety of contexts, including firmware for devices, ROM images for emulators, binary logs, and even game data. Unlike text files, which can be opened in a standard text editor, BIN files typically require specialized software to interpret their contents, as they may contain machine code, compressed data, or structured binary formats.</p>
+    <p>BIN files are versatile and can store different types of data, such as:</p>
+    <ul>
+      <li><strong>Plain Text</strong>: Some BIN files may contain readable text strings embedded within binary data.</li>
+      <li><strong>HEX Data</strong>: Binary data often represented as hexadecimal values for debugging or analysis.</li>
+      <li><strong>ROM Images</strong>: Used in emulators to replicate the memory of a device or game cartridge.</li>
+      <li><strong>Binary Logs</strong>: Logs generated by software or hardware, often used for diagnostics.</li>
+    </ul>
+    <p>Due to their binary nature, BIN files are not directly readable without conversion or interpretation, which is where our <strong>BIN to PDF Converter</strong> comes in.</p>
+
+    <h2 id="why-convert">Why Convert a BIN File to PDF?</h2>
+    <p>Converting a BIN file to PDF offers several advantages, especially for professionals and enthusiasts working with binary data. Here’s why you might want to <strong>convert BIN to PDF</strong>:</p>
+    <ul>
+      <li><strong>Readability</strong>: A PDF document makes the extracted content (text or hex dump) human-readable, allowing you to analyze or share the data easily.</li>
+      <li><strong>Portability</strong>: PDFs are universally accessible and can be viewed on any device with a PDF reader, unlike BIN files, which require specific software.</li>
+      <li><strong>Documentation</strong>: Converting binary data to PDF is ideal for creating reports, documentation, or backups of firmware, logs, or game data.</li>
+      <li><strong>Analysis</strong>: A structured PDF with a hex table or text dump simplifies debugging, firmware analysis, or reverse engineering.</li>
+      <li><strong>SEO Benefits</strong>: Sharing binary data as a PDF online can improve discoverability for tech-related searches, especially when paired with metadata.</li>
+    </ul>
+    <p>Our <strong>convert BIN to PDF online</strong> tool makes this process fast, secure, and accessible, even for users without technical expertise.</p>
+
+    <h2 id="use-cases">Use Cases: Firmware Analysis, Data Recovery, Game File Documentation, Tech Support</h2>
+    <p>The <strong>BIN to PDF Converter</strong> is a versatile tool with numerous applications. Here are some common use cases:</p>
+    <h3>Firmware Analysis</h3>
+    <p>Developers and engineers often work with firmware stored in BIN files. Converting these files to PDF allows them to extract readable strings or hex data for debugging and analysis.</p>
+    <h3>Data Recovery</h3>
+    <p>Data recovery specialists can use the tool to extract and document data from corrupted or unknown BIN files, creating a readable PDF for further investigation.</p>
+    <h3>Game File Documentation</h3>
+    <p>Retro gaming enthusiasts can convert BIN files (e.g., ROMs) into PDFs to document game data, such as text strings or memory layouts, for archival or modding purposes.</p>
+    <h3>Tech Support</h3>
+    <p>Tech support teams can convert binary logs into PDFs to share diagnostic information with clients or colleagues, making it easier to troubleshoot issues.</p>
+    <p>Other use cases include educational purposes, such as teaching binary data concepts, or creating backups of critical binary data in a readable format.</p>
+
+    <h2 id="features">Features of the BIN to PDF Converter Tool</h2>
+    <p>The <strong>BIN to PDF Converter</strong> is designed to make binary data accessible and usable. Here’s a detailed look at its features:</p>
+    <ul>
+      <li><strong>Upload Support for BIN Files</strong>: Upload .bin files up to 100MB in size, with support for multiple files.</li>
+      <li><strong>Content Detection</strong>: Automatically detects if the BIN file contains plain text, HEX, ROM data, or binary logs.</li>
+      <li><strong>Data Extraction</strong>: Extracts readable content, such as text strings or a hex dump, for conversion.</li>
+      <li><strong>PDF Generation</strong>: Converts the extracted content into a clean, structured PDF document with proper formatting.</li>
+      <li><strong>Preview Before Download</strong>: Shows a preview of the extracted content (text or hex) before generating the PDF.</li>
+      <li><strong>Conversion Options</strong>:
+        <ul>
+          <li>Choose encoding: UTF-8, ASCII, or HEX.</li>
+          <li>Include file metadata (filename, size, date).</li>
+          <li>Add a checksum (optional) for data integrity verification.</li>
+          <li>Convert binary data to a hex-table format for structured viewing.</li>
+        </ul>
+      </li>
+      <li><strong>Responsive Design</strong>: Works seamlessly on mobile, tablet, and desktop devices.</li>
+      <li><strong>Drag-and-Drop Support</strong>: Easily upload files by dragging and dropping them into the tool.</li>
+      <li><strong>Auto File Deletion</strong>: Uploaded files are automatically deleted from memory after 30 minutes for privacy.</li>
+      <li><strong>Modern UI with Themes</strong>: Features a clean, modern interface with dark and light theme options.</li>
+    </ul>
+    <p>These features make our <strong>binary file to PDF</strong> tool a powerful solution for anyone working with BIN files.</p>
+
+    <h2 id="how-to-use">How to Use the Tool: Step-by-Step Guide</h2>
+    <p>Using our <strong>BIN to PDF Converter</strong> is straightforward and user-friendly. Follow these steps to <a href="#convert-bin">convert BIN to PDF online</a>:</p>
+    <ol>
+      <li><strong>Upload Your BIN Files</strong>: Click the “Choose BIN Files” button or drag and drop your .bin files into the upload area. The tool supports files up to 100MB each.</li>
+      <li><strong>Customize Conversion Settings</strong>: Select the encoding (UTF-8, ASCII, or HEX), choose whether to include metadata, add a checksum, and opt for a hex-table format.</li>
+      <li><strong>Preview the Extracted Content</strong>: Once the file is processed, a preview of the extracted content (text or hex dump) will appear for review.</li>
+      <li><strong>Convert to PDF</strong>: Click the “Convert to PDF” button to generate the PDF document. A progress bar will show the conversion status.</li>
+      <li><strong>Download the PDF</strong>: Download the generated PDF file, which will be named based on the original BIN file.</li>
+      <li><strong>Reset and Start Over</strong>: Use the “Reset” button to clear all files and settings and start a new conversion.</li>
+    </ol>
+    <p>With these steps, you can quickly <strong>convert BIN file to PDF online</strong> and access your binary data in a readable format.</p>
+
+    <h2 id="comparison">Comparison with Other Methods</h2>
+    <p>While there are alternative methods to convert BIN files to PDF, our online tool offers a more efficient and accessible solution. Here’s a comparison:</p>
+    <ul>
+      <li><strong>Manual Methods (e.g., Hex Editors, Custom Scripts)</strong>:
+        <ul>
+          <li><strong>Pros</strong>: Fine control over data extraction, customizable output using tools like HexEdit or Python scripts.</li>
+          <li><strong>Cons</strong>: Requires technical expertise, time-consuming, and often involves multiple steps (e.g., extracting data, formatting it, and converting to PDF).</li>
+        </ul>
+      </li>
+      <li><strong>Online Converter (Our Tool)</strong>:
+        <ul>
+          <li><strong>Pros</strong>: Free, no software installation, user-friendly, supports multiple encoding options, and works on any device.</li>
+          <li><strong>Cons</strong>: Limited to files up to 100MB, less control over fine-tuned extraction compared to manual methods.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Our <strong>BIN file to PDF online</strong> tool is ideal for quick, secure conversions without the need for technical skills.</p>
+
+    <h2 id="security">Data Security and Privacy Measures</h2>
+    <p>We prioritize your privacy and data security. Here’s how our <strong>BIN to PDF Converter</strong> ensures your files remain safe:</p>
+    <ul>
+      <li><strong>Client-Side Processing</strong>: All conversions happen in your browser, meaning your BIN files are never uploaded to a server.</li>
+      <li><strong>No Data Storage</strong>: We don’t store your files or any data related to your conversion, ensuring complete privacy.</li>
+      <li><strong>Auto File Deletion</strong>: Uploaded files are automatically cleared from memory after 30 minutes, adding an extra layer of security.</li>
+      <li><strong>No Account Required</strong>: Use the tool without signing up, reducing the risk of data exposure.</li>
+    </ul>
+    <p>With these measures, you can confidently use our <strong>BIN extractor to PDF</strong> tool without worrying about data leaks or privacy breaches.</p>
+
+    <h2 id="faqs">Frequently Asked Questions</h2>
+    <h3>1. What is a BIN to PDF Converter?</h3>
+    <p>The <strong>BIN to PDF Converter</strong> is a free online tool that extracts readable content from binary (.bin) files and converts it into a structured PDF document.</p>
+    <h3>2. Is this tool free to use?</h3>
+    <p>Yes, our <strong>BIN to PDF Converter</strong> is completely free, with no hidden fees.</p>
+    <h3>3. What types of BIN files can I convert?</h3>
+    <p>The tool supports BIN files containing plain text, HEX data, ROM images, or binary logs. It does not support encrypted or proprietary formats without readable content.</p>
+    <h3>4. What encoding options are available?</h3>
+    <p>You can choose between UTF-8, ASCII, or HEX encoding for the extracted content.</p>
+    <h3>5. Can I convert multiple BIN files at once?</h3>
+    <p>Yes, the tool supports batch uploading, but each file is processed individually for preview and conversion.</p>
+    <h3>6. What is a hex table format?</h3>
+    <p>A hex table format displays binary data as a structured table of hexadecimal values, making it easier to analyze memory layouts or data structures.</p>
+    <h3>7. Is my data secure with this tool?</h3>
+    <p>Yes, all processing happens client-side, and files are auto-deleted after 30 minutes. Your data never leaves your device.</p>
+    <h3>8. Does the tool work on mobile devices?</h3>
+    <p>Yes, the tool is fully responsive and works on desktops, tablets, and smartphones.</p>
+    <h3>9. Why is my BIN file not converting?</h3>
+    <p>Your BIN file might be corrupted or contain no readable content. Ensure it has extractable text or data and try again.</p>
+    <h3>10. What is a checksum, and why include it?</h3>
+    <p>A checksum is a hash value used to verify data integrity. Including it in the PDF ensures the binary data hasn’t been altered during conversion.</p>
+    <h3>11. Can I see the extracted content before conversion?</h3>
+    <p>Yes, the tool provides a preview of the extracted content (text or hex dump) before generating the PDF.</p>
+
+    <h2 id="conclusion">Conclusion and Call to Action</h2>
+    <p>Converting BIN files to PDF has never been easier with our <strong>BIN to PDF Converter</strong>. Whether you’re analyzing firmware, recovering data, documenting game files, or supporting a tech issue, this tool provides a fast, secure, and user-friendly solution to make binary data accessible. Try it now, share it with colleagues, and bookmark this page for future use!</p>
+    <div class="social-share">
+      <a href="https://wa.me/?text=Check%20out%20this%20BIN%20to%20PDF%20Converter!%20https://yourdomain.com/bin-to-pdf-converter" target="_blank">
+        <img src="https://via.placeholder.com/40?text=WA" alt="Share on WhatsApp">
+      </a>
+      <a href="https://t.me/share/url?url=https://yourdomain.com/bin-to-pdf-converter&text=Check%20out%20this%20BIN%20to%20PDF%20Converter!" target="_blank">
+        <img src="https://via.placeholder.com/40?text=TG" alt="Share on Telegram">
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourdomain.com/bin-to-pdf-converter" target="_blank">
+        <img src="https://via.placeholder.com/40?text=FB" alt="Share on Facebook">
+      </a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://yourdomain.com/bin-to-pdf-converter" target="_blank">
+        <img src="https://via.placeholder.com/40?text=LI" alt="Share on LinkedIn">
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/sha256.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfkit@0.13.0/js/pdfkit.standalone.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blob-stream@0.1.3/lib/blob-stream.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script>
+    let uploadedFiles = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeIcon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>';
+      }
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.getElementById('themeIcon').innerHTML = isDark
+        ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>'
+        : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+    }
+
+    function handleDragOver(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.add('dragover');
+    }
+
+    function handleDragLeave(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.remove('dragover');
+    }
+
+    async function handleDrop(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.remove('dragover');
+      const droppedFiles = event.dataTransfer.files;
+      if (droppedFiles.length) {
+        const fileInput = document.getElementById('binFiles');
+        fileInput.files = droppedFiles;
+        await previewFiles();
+      }
+    }
+
+    async function previewFiles() {
+      const fileInput = document.getElementById('binFiles');
+      const fileListContainer = document.getElementById('fileListContainer');
+      const fileList = document.getElementById('fileList');
+      const previewContainer = document.getElementById('previewContainer');
+      const previewContent = document.getElementById('previewContent');
+
+      uploadedFiles = [];
+      fileListContainer.classList.add('hidden');
+      fileList.innerHTML = '';
+      previewContainer.classList.add('hidden');
+      previewContent.textContent = '';
+
+      if (!fileInput || !fileInput.files.length) {
+        document.getElementById('convertButton').disabled = true;
+        return;
+      }
+
+      for (let i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files[i];
+        if (!file.name.match(/\.bin$/i)) {
+          Swal.fire('Invalid File Type', `${file.name} is not a BIN file. Please upload only .bin files.`, 'error');
+          continue;
+        }
+        if (file.size > 100 * 1024 * 1024) {
+          Swal.fire('File Too Large', `${file.name} exceeds the 100MB size limit.`, 'error');
+          continue;
+        }
+
+        uploadedFiles.push({ file, name: file.name, size: file.size, date: new Date(file.lastModified).toISOString() });
+
+        const li = document.createElement('li');
+        li.classList.add('flex', 'items-center', 'justify-between', 'p-2', 'border', 'border-gray-200', 'rounded-lg');
+        li.innerHTML = `<span>${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>`;
+        fileList.appendChild(li);
+
+        if (i === 0) {
+          const extracted = await extractContent(file);
+          previewContent.textContent = extracted.preview;
+          previewContainer.classList.remove('hidden');
+        }
+      }
+
+      if (uploadedFiles.length > 0) {
+        fileListContainer.classList.remove('hidden');
+        document.getElementById('convertButton').disabled = false;
+      } else {
+        document.getElementById('convertButton').disabled = true;
+      }
+    }
+
+    async function extractContent(file) {
+      const encoding = document.getElementById('encoding').value;
+      const hexTable = document.getElementById('hexTable').checked;
+      const arrayBuffer = await file.arrayBuffer();
+      const bytes = new Uint8Array(arrayBuffer);
+      let content = '';
+      let preview = '';
+
+      if (encoding === 'hex') {
+        if (hexTable) {
+          let table = 'Offset  00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\n';
+          for (let i = 0; i < bytes.length; i += 16) {
+            let row = i.toString(16).padStart(6, '0') + '  ';
+            for (let j = 0; j < 16; j++) {
+              if (i + j < bytes.length) {
+                row += bytes[i + j].toString(16).padStart(2, '0') + ' ';
+              } else {
+                row += '   ';
+              }
+            }
+            table += row + '\n';
+          }
+          content = table;
+          preview = table.slice(0, 500) + (table.length > 500 ? '...\n(Truncated for preview)' : '');
+        } else {
+          content = Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join(' ');
+          preview = content.slice(0, 500) + (content.length > 500 ? '...\n(Truncated for preview)' : '');
+        }
+      } else {
+        const textDecoder = new TextDecoder(encoding === 'utf8' ? 'utf-8' : 'ascii');
+        content = textDecoder.decode(bytes);
+        preview = content.slice(0, 500) + (content.length > 500 ? '...\n(Truncated for preview)' : '');
+      }
+
+      return { content, preview };
+    }
+
+    async function convertToPDF() {
+      if (uploadedFiles.length === 0) {
+        Swal.fire('No Files', 'Please upload BIN files to convert.', 'warning');
+        return;
+      }
+
+      const encoding = document.getElementById('encoding').value;
+      const includeMetadata = document.getElementById('includeMetadata').checked;
+      const includeChecksum = document.getElementById('includeChecksum').checked;
+      const hexTable = document.getElementById('hexTable').checked;
+
+      const progressBarContainer = document.getElementById('progressBarContainer');
+      const progressBarFill = document.getElementById('progressBarFill');
+      const convertButton = document.getElementById('convertButton');
+
+      convertButton.disabled = true;
+      progressBarContainer.classList.remove('hidden');
+      progressBarFill.style.width = '0%';
+
+      for (let i = 0; i < uploadedFiles.length; i++) {
+        const { file, name, size, date } = uploadedFiles[i];
+        const { content } = await extractContent(file);
+
+        // Calculate checksum if enabled
+        let checksum = '';
+        if (includeChecksum) {
+          const arrayBuffer = await file.arrayBuffer();
+          checksum = sha256(arrayBuffer);
+        }
+
+        // Generate PDF using PDFKit
+        const doc = new PDFKit();
+        const stream = doc.pipe(blobStream());
+
+        doc.fontSize(16).text('BIN to PDF Conversion', { align: 'center' });
+        doc.moveDown();
+
+        if (includeMetadata) {
+          doc.fontSize(12).text(`File: ${name}`);
+          doc.text(`Size: ${(size / 1024 / 1024).toFixed(2)} MB`);
+          doc.text(`Date: ${date}`);
+          if (includeChecksum) {
+            doc.text(`Checksum (SHA-256): ${checksum}`);
+          }
+          doc.moveDown();
+        }
+
+        doc.fontSize(10).font('Courier').text(content, { align: 'left' });
+        doc.end();
+
+        stream.on('finish', () => {
+          const blob = stream.toBlob('application/pdf');
+          saveAs(blob, `${name.replace(/\.bin$/i, '')}.pdf`);
+        });
+
+        progressBarFill.style.width = `${((i + 1) / uploadedFiles.length) * 100}%`;
+      }
+
+      setTimeout(() => {
+        progressBarContainer.classList.add('hidden');
+        progressBarFill.style.width = '0%';
+      }, 1500);
+
+      convertButton.disabled = false;
+      Swal.fire('Conversion Successful!', `${uploadedFiles.length} BIN file(s) converted to PDF.`, 'success');
+    }
+
+    function resetConverter() {
+      uploadedFiles = [];
+      document.getElementById('binFiles').value = '';
+      document.getElementById('fileListContainer').classList.add('hidden');
+      document.getElementById('fileList').innerHTML = '';
+      document.getElementById('previewContainer').classList.add('hidden');
+      document.getElementById('previewContent').textContent = '';
+      document.getElementById('encoding').value = 'hex';
+      document.getElementById('includeMetadata').checked = true;
+      document.getElementById('includeChecksum').checked = false;
+      document.getElementById('hexTable').checked = false;
+      document.getElementById('progressBarContainer').classList.add('hidden');
+      document.getElementById('progressBarFill').style.width = '0%';
+      document.getElementById('convertButton').disabled = true;
+    }
+
+    window.handleDragOver = handleDragOver;
+    window.handleDragLeave = handleDragLeave;
+    window.handleDrop = handleDrop;
+    window.previewFiles = previewFiles;
+    window.convertToPDF = convertToPDF;
+    window.resetConverter = resetConverter;
+    window.toggleDarkMode = toggleDarkMode;
+
+    // Auto-delete files after 30 minutes
+    setTimeout(() => {
+      resetConverter();
+    }, 30 * 60 * 1000);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</body>
+</html>

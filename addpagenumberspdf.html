@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Page Numbers to PDF - Free Online Tool</title>
+  <meta name="description" content="Add page numbers to PDFs online for free with our advanced tool. Customize formats, positions, fonts, and download as PDFs or ZIP archives.">
+  <meta name="keywords" content="Add Page Numbers to PDF, free PDF page numbering tool, online PDF pagination, PDF page numbers, custom PDF numbering">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="PDF Tools Team">
+  <meta property="og:title" content="Add Page Numbers to PDF Online - Free Tool">
+  <meta property="og:description" content="Easily add page numbers to PDFs with our free online tool. Customize formats, positions, and fonts for professional results.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Add+Page+Numbers+to+PDF">
+  <meta property="og:url" content="https://onepagetools.com/addpagenumbers">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .progress-bar { background: linear-gradient(to right, #4f46e5, #7c3aed); }
+    .drop-zone { transition: all 0.3s ease; }
+    .drop-zone.dragover { border-color: #4f46e5; background-color: rgba(79, 70, 229, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .preview-container { max-height: 300px; overflow-y: auto; }
+    .gradient-bg { background: linear-gradient(135deg, #f3f4f6, #e0e7ff); }
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Navigation -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com/" class="flex items-center space-x-3">
+        <img src="One_Page-removebg-preview.png" alt="PDF Tools Logo" style="height: 60px" />
+      </a>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+        </svg>
+      </button>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li><a href="./index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0">Home</a></li>
+          <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+          <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+              ALL PDF TOOLS
+              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                <li><a href="./pdfwatermark.html" class="block px-4 py-2 hover:bg-gray-100">PDF Watermark</a></li>
+                <li><a href="./excelto.html" class="block px-4 py-2 hover:bg-gray-100">Excel to PDF</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tutorial Modal -->
+  <div id="tutorialModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg max-w-lg w-full">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800">Welcome to Add Page Numbers Tool</h3>
+      <p class="text-gray-600 mb-4">Follow these steps to add page numbers to your PDFs:</p>
+      <ol class="list-decimal ml-6 mb-4">
+        <li>Upload PDFs via "Choose PDF Files" or drag-and-drop.</li>
+        <li>Customize page number format, position, font, and color.</li>
+        <li>Specify pages to number (all or custom range).</li>
+        <li>Preview the result on the first page.</li>
+        <li>Apply and download the numbered PDFs.</li>
+      </ol>
+      <button onclick="closeTutorial()" class="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 btn">Got It!</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex justify-center items-center min-h-screen pt-20">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-lg fade-in">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">Add Page Numbers to PDF</h1>
+      <p class="text-center text-gray-500 mb-6">Add page numbers to your PDFs with customizable formats, positions, and styles, perfect for reports, manuals, and professional documents.</p>
+
+      <!-- File Upload Section -->
+      <div class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-12 text-center mb-8 transition-colors duration-300 hover:border-blue-400" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="handleDragLeave(event)">
+        <label for="pdfFiles" class="inline-block w-full py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full cursor-pointer hover:bg-indigo-700 btn hover-scale">
+          Choose PDF Files
+        </label>
+        <input type="file" id="pdfFiles" accept=".pdf" multiple class="hidden" onchange="previewFiles()">
+        <p class="text-gray-500 mt-2">or drag and drop PDF files here (supports multiple files, max 25MB each)</p>
+      </div>
+
+      <!-- Page Number Settings -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3">Page Number Settings</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+              <select id="numberFormat" class="w-full p-2 border rounded-lg">
+                <option value="1">1, 2, 3...</option>
+                <option value="Page 1">Page 1, Page 2...</option>
+                <option value="1 of n">1 of n, 2 of n...</option>
+                <option value="1/n">1/n, 2/n...</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Font</label>
+              <select id="fontFamily" class="w-full p-2 border rounded-lg">
+                <option value="Helvetica">Helvetica</option>
+                <option value="TimesRoman">Times Roman</option>
+                <option value="Courier">Courier</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Font Size</label>
+              <input type="number" id="fontSize" class="w-full p-2 border rounded-lg" min="8" max="72" value="12">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Color</label>
+              <input type="color" id="textColor" class="w-full p-2 border rounded-lg" value="#000000">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Opacity (0-1)</label>
+              <input type="number" id="opacity" class="w-full p-2 border rounded-lg" min="0" max="1" step="0.1" value="1">
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3">Position & Pages</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Position</label>
+              <select id="position" class="w-full p-2 border rounded-lg">
+                <option value="bottom-right">Bottom Right</option>
+                <option value="bottom-left">Bottom Left</option>
+                <option value="top-right">Top Right</option>
+                <option value="top-left">Top Left</option>
+                <option value="custom">Custom</option>
+              </select>
+              <div id="customPosition" class="mt-2 hidden">
+                <label class="block text-sm font-medium text-gray-700 mb-2">X Position (px)</label>
+                <input type="number" id="xPosition" class="w-full p-2 border rounded-lg" value="50">
+                <label class="block text-sm font-medium text-gray-700 mb-2 mt-2">Y Position (px)</label>
+                <input type="number" id="yPosition" class="w-full p-2 border rounded-lg" value="50">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Pages</label>
+              <select id="pages" class="w-full p-2 border rounded-lg">
+                <option value="all">All Pages</option>
+                <option value="custom">Custom Range</option>
+              </select>
+              <input type="text" id="customPages" class="w-full p-2 border rounded-lg mt-2 hidden" placeholder="e.g., 1-5,7">
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="downloadZip">
+              <label class="text-gray-600">Download as ZIP Archive</label>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="compressOutput">
+              <label class="text-gray-600">Compress Output PDFs</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Presets -->
+      <div class="bg-gray-50 p-4 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-3">Presets</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Save Preset</label>
+            <input type="text" id="presetName" class="w-full p-2 border rounded-lg" placeholder="Preset Name">
+            <button onclick="savePreset()" class="mt-2 py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 btn">Save</button>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Load Preset</label>
+            <select id="presetSelect" class="w-full p-2 border rounded-lg">
+              <option value="">Select Preset</option>
+            </select>
+            <button onclick="loadPreset()" class="mt-2 py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 btn">Load</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview Section -->
+      <div id="previewContainer" class="preview-container bg-gray-50 p-4 rounded-lg mb-6"></div>
+      <div id="pagePreview" class="bg-gray-50 p-4 rounded-lg mb-6 hidden">
+        <h3 class="text-lg font-semibold mb-3">Page Number Preview</h3>
+        <canvas id="previewCanvas" class="border"></canvas>
+      </div>
+
+      <!-- Progress Bar -->
+      <div id="progressBar" class="hidden bg-gray-200 rounded-full h-2.5 mb-4">
+        <div class="bg-blue-600 h-2.5 rounded-full transition-all duration-300 progress-bar" style="width: 0%"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button onclick="addPageNumbers()" class="py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 btn hover-scale" id="convertButton" disabled>
+          Add Page Numbers
+        </button>
+        <a id="downloadZipButton" href="#" download class="hidden py-3 px-5 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 btn hover-scale">
+          Download ZIP
+        </a>
+        <button onclick="resetAll()" class="py-3 px-5 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 btn hover-scale">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO-Optimized Article -->
+  <div class="article-section">
+    <h2>Add Page Numbers to PDF: Free Online Tool and Ultimate Guide</h2>
+    <p>PDFs are widely used for sharing professional documents like reports, manuals, legal contracts, and academic papers. Adding page numbers to PDFs enhances their usability by improving navigation and giving them a polished look. Whether you’re preparing a business proposal or organizing study materials, a <strong>free PDF page numbering tool</strong> can make this task effortless. Our <strong>online tool to add page numbers to PDFs</strong> offers a robust, user-friendly solution without the need for expensive software.</p>
+    <p>This guide explores our <strong>free PDF page numbering tool</strong>, detailing its features, usage instructions, benefits, and comparisons with tools like PDF24, Adobe Acrobat, and Smallpdf. We’ll also share SEO optimization tips for PDFs and address common questions to help you master <strong>PDF pagination</strong>.</p>
+
+    <h3>Why Add Page Numbers to PDFs?</h3>
+    <p>Page numbers are essential for several reasons:</p>
+    <ul>
+      <li><strong>Enhanced Navigation</strong>: Easily locate specific pages in lengthy documents.</li>
+      <li><strong>Professional Look</strong>: Numbered pages make documents appear organized and credible.</li>
+      <li><strong>Legal Clarity</strong>: Page numbers prevent disputes in legal or archival documents.</li>
+      <li><strong>Collaboration</strong>: Teams can reference pages during reviews, improving efficiency.</li>
+    </ul>
+    <p>Our <strong>Add Page Numbers to PDF</strong> tool is designed to meet these needs with advanced customization and privacy-focused processing.</p>
+
+    <h3>Features of Our Free PDF Page Numbering Tool</h3>
+    <p>Built with free resources like PDFLib.js, Tailwind CSS, and JSZip, our tool offers a comprehensive set of features:</p>
+    <ul>
+      <li><strong>Batch Processing</strong>: Upload up to 10 PDFs (max 25MB each) and process them simultaneously.</li>
+      <li><strong>Customizable Page Number Formats</strong>: Choose formats like “1, 2, 3,” “Page 1,” “1 of n,” or “1/n.”</li>
+      <li><strong>Flexible Positioning</strong>: Place numbers at top-left, top-right, bottom-left, bottom-right, or custom positions.</li>
+      <li><strong>Page Range Selection</strong>: Number all pages or specify ranges (e.g., “1-5,7”) to skip cover pages.</li>
+      <li><strong>Real-Time Preview</strong>: Preview page numbers on the first page before applying changes.</li>
+      <li><strong>Drag-and-Drop Interface</strong>: Upload and reorder PDFs via drag-and-drop.</li>
+      <li><strong>Preset Management</strong>: Save and load settings for consistent numbering.</li>
+      <li><strong>Output Compression</strong>: Compress output PDFs to reduce file size.</li>
+      <li><strong>Client-Side Processing</strong>: All operations occur in the browser, ensuring data privacy.</li>
+      <li><strong>User-Friendly Design</strong>: Responsive interface with tutorial and accessibility features.</li>
+    </ul>
+
+    <h3>How to Use Our Free PDF Page Numbering Tool</h3>
+    <p>Using our <strong>Add Page Numbers to PDF</strong> tool is simple:</p>
+    <ol>
+      <li><strong>Upload PDFs</strong>: Click “Choose PDF Files” or drag-and-drop up to 10 PDFs (max 25MB each).</li>
+      <li><strong>Customize Settings</strong>: Select a page number format, font, size, color, and position.</li>
+      <li><strong>Specify Pages</strong>: Choose “All Pages” or “Custom Range” (e.g., “1-5,7”).</li>
+      <li><strong>Preview</strong>: View page number placement on the first page.</li>
+      <li><strong>Apply and Download</strong>: Click “Add Page Numbers” and download PDFs or a ZIP archive.</li>
+      <li><strong>Manage Presets</strong>: Save settings as presets for reuse.</li>
+    </ol>
+
+    <h3>Benefits of Our Free Tool</h3>
+    <p>Our <strong>free PDF page numbering tool</strong> offers distinct advantages:</p>
+    <ul>
+      <li><strong>Cost-Free</strong>: No subscriptions, unlike Adobe Acrobat Pro.</li>
+      <li><strong>No Installation</strong>: Browser-based, unlike PDFelement.</li>
+      <li><strong>Privacy</strong>: Client-side processing keeps files secure.</li>
+      <li><strong>Customization</strong>: More format and position options than Sejda.</li>
+      <li><strong>Batch Processing</strong>: Handles multiple PDFs, unlike some free tools.</li>
+      <li><strong>Ease of Use</strong>: Tutorial and intuitive design for beginners.</li>
+    </ul>
+
+    <h3>Comparison with Other Tools</h3>
+    <p>Here’s how our tool compares to alternatives:</p>
+    <ul>
+      <li><strong>PDF24 Tools</strong>: Free, batch processing, but server-based with fewer format options.</li>
+      <li><strong>Adobe Acrobat Online</strong>: High-quality, but limited free features and requires login.</li>
+      <li><strong>Smallpdf</strong>: Simple interface, but server-based with limited free tasks.</li>
+      <li><strong>Sejda</strong>: Free, but has a 200-page limit and basic features.</li>
+    </ul>
+    <p>Our tool excels in flexibility, privacy, and free access for <strong>PDF page numbering</strong>.</p>
+
+    <h3>SEO Optimization for PDFs</h3>
+    <p>To make your numbered PDFs search-friendly:</p>
+    <ul>
+      <li><strong>Descriptive File Names</strong>: Use names like “report-2025-numbered.pdf.”</li>
+      <li><strong>Metadata</strong>: Add title, author, and keywords using PDF tools.</li>
+      <li><strong>Text-Based PDFs</strong>: Ensure selectable text for indexing.</li>
+      <li><strong>Links</strong>: Embed links to boost PageRank.</li>
+      <li><strong>Alt Text</strong>: Add alt text for images in PDFs.</li>
+      <li><strong>Web Embedding</strong>: Host PDFs on pages with strong meta tags.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions (FAQs)</h3>
+    <h4>1. Is this tool free?</h4>
+    <p>Yes, our <strong>free PDF page numbering tool</strong> has no costs or subscriptions.</p>
+    <h4>2. Can I number multiple PDFs at once?</h4>
+    <p>Yes, process up to 10 PDFs and download as PDFs or a ZIP.</p>
+    <h4>3. Are my files secure?</h4>
+    <p>All processing is client-side, ensuring privacy.</p>
+    <h4>4. What page number formats are available?</h4>
+    <p>Choose from “1, 2, 3,” “Page 1,” “1 of n,” or “1/n” with custom fonts and colors.</p>
+    <h4>5. Can I skip certain pages?</h4>
+    <p>Yes, use custom ranges (e.g., “1-5,7”) to exclude pages.</p>
+    <h4>6. Does it work on mobile?</h4>
+    <p>Yes, the responsive design supports all devices.</p>
+
+    <h3>Conclusion</h3>
+    <p>Our <strong>free online tool to add page numbers to PDFs</strong> simplifies <strong>PDF pagination</strong> with advanced features, privacy, and ease of use. Whether for professional reports or personal projects, it delivers customized, high-quality results. Try it today and streamline your document organization!</p>
+    <p><a href="https://onepagetools.com/addpagenumbers" class="text-indigo-600 hover:underline">Start adding page numbers to your PDFs now</a> and enhance your document workflow.</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <script>
+    let files = [];
+    let pageNumberPresets = JSON.parse(localStorage.getItem('pageNumberPresets')) || [];
+
+    // Set pdf.js worker source
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const tutorialModal = document.getElementById('tutorialModal');
+      if (!localStorage.getItem('tutorialShown') && tutorialModal) {
+        tutorialModal.classList.remove('hidden');
+        localStorage.setItem('tutorialShown', 'true');
+      }
+
+      const position = document.getElementById('position');
+      if (position) {
+        position.addEventListener('change', (e) => {
+          const customPosition = document.getElementById('customPosition');
+          if (customPosition) customPosition.classList.toggle('hidden', e.target.value !== 'custom');
+        });
+      }
+
+      const pages = document.getElementById('pages');
+      if (pages) {
+        pages.addEventListener('change', (e) => {
+          const customPages = document.getElementById('customPages');
+          if (customPages) customPages.classList.toggle('hidden', e.target.value !== 'custom');
+        });
+      }
+
+      const inputs = ['numberFormat', 'fontFamily', 'fontSize', 'textColor', 'opacity', 'position', 'xPosition', 'yPosition', 'pages', 'customPages'];
+      inputs.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.addEventListener('input', updatePreview);
+      });
+
+      updatePresetSelect();
+    });
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.currentTarget.classList.add('dragover');
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('dragover');
+    }
+
+    async function handleDrop(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('dragover');
+      const uploadedFiles = e.dataTransfer.files;
+      if (uploadedFiles.length) {
+        document.getElementById('pdfFiles').files = uploadedFiles;
+        await previewFiles();
+      }
+    }
+
+    async function previewFiles() {
+      const fileInput = document.getElementById('pdfFiles');
+      const previewContainer = document.getElementById('previewContainer');
+      const pagePreview = document.getElementById('pagePreview');
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      files = [];
+      if (previewContainer) previewContainer.innerHTML = '';
+      if (pagePreview) pagePreview.classList.add('hidden');
+      if (downloadZipButton) downloadZipButton.classList.add('hidden');
+
+      if (fileInput?.files.length) {
+        for (const [index, file] of Array.from(fileInput.files).entries()) {
+          if (!file.name.match(/\.pdf$/i)) {
+            Swal.fire('Invalid File', `${file.name} is not a PDF file.`, 'error');
+            continue;
+          }
+          if (file.size > 25 * 1024 * 1024) {
+            Swal.fire('File Too Large', `${file.name} exceeds 25MB.`, 'error');
+            continue;
+          }
+          const fileData = {
+            file,
+            name: file.name,
+            id: `file-${index}`,
+            status: 'Pending',
+            pdfDoc: null
+          };
+          files.push(fileData);
+          renderPreview(fileData);
+          await parsePDF(fileData);
+        }
+      }
+      const convertButton = document.getElementById('convertButton');
+      if (convertButton) convertButton.disabled = files.length === 0;
+      updatePreview();
+    }
+
+    function renderPreview(fileData) {
+      const previewContainer = document.getElementById('previewContainer');
+      if (!previewContainer) return;
+      const div = document.createElement('div');
+      div.className = 'flex justify-between items-center bg-gray-50 p-4 rounded-lg mb-2 scale-in';
+      div.innerHTML = `
+        <p class="text-gray-600">${fileData.name} (${(fileData.file.size / 1024 / 1024).toFixed(2)}MB)</p>
+        <div class="flex items-center gap-2">
+          <p id="${fileData.id}-status" class="text-gray-500">${fileData.status}</p>
+        </div>
+      `;
+      previewContainer.appendChild(div);
+    }
+
+    async function parsePDF(fileData) {
+      try {
+        const arrayBuffer = await fileData.file.arrayBuffer();
+        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+        fileData.pdfDoc = pdfDoc;
+        document.getElementById(`${fileData.id}-status`).textContent = 'Loaded';
+      } catch (error) {
+        Swal.fire('Parsing Error', `Failed to parse ${fileData.name}: ${error.message}`, 'error');
+        document.getElementById(`${fileData.id}-status`).textContent = 'Error';
+      }
+    }
+
+    async function updatePreview() {
+      if (!files.length || !files[0].pdfDoc) return;
+      const canvas = document.getElementById('previewCanvas');
+      if (!canvas) return;
+      const context = canvas.getContext('2d');
+      const file = files[0].file;
+
+      try {
+        // Load PDF with pdf.js
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        const page = await pdf.getPage(1);
+        const viewport = page.getViewport({ scale: 0.5 });
+
+        // Set canvas dimensions
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        // Render PDF page
+        await page.render({
+          canvasContext: context,
+          viewport: viewport
+        }).promise;
+
+        // Get settings
+        const numberFormat = document.getElementById('numberFormat')?.value || '1';
+        const fontSize = parseInt(document.getElementById('fontSize')?.value) || 12;
+        const textColor = document.getElementById('textColor')?.value || '#000000';
+        const opacity = parseFloat(document.getElementById('opacity')?.value) || 1;
+        const fontFamily = document.getElementById('fontFamily')?.value || 'Helvetica';
+        const position = document.getElementById('position')?.value || 'bottom-right';
+        const pageCount = files[0].pdfDoc.getPageCount();
+
+        // Calculate position
+        let x = viewport.width - 50;
+        let y = 50;
+        if (position === 'top-left') { x = 50; y = viewport.height - 50; }
+        else if (position === 'top-right') { x = viewport.width - 50; y = viewport.height - 50; }
+        else if (position === 'bottom-left') { x = 50; y = 50; }
+        else if (position === 'custom') {
+          x = parseInt(document.getElementById('xPosition')?.value) || 50;
+          y = parseInt(document.getElementById('yPosition')?.value) || 50;
+        }
+
+        // Draw page number
+        context.globalAlpha = opacity;
+        context.textAlign = position.includes('left') ? 'left' : position.includes('right') ? 'right' : 'center';
+        context.fillStyle = textColor;
+        context.font = `${fontSize}px ${fontFamily === 'TimesRoman' ? 'Times' : fontFamily}`;
+        const text = numberFormat === '1' ? '1' :
+                     numberFormat === 'Page 1' ? 'Page 1' :
+                     numberFormat === '1 of n' ? `1 of ${pageCount}` :
+                     `1/${pageCount}`;
+        context.fillText(text, x, y);
+
+        // Show preview
+        const pagePreview = document.getElementById('pagePreview');
+        if (pagePreview) pagePreview.classList.remove('hidden');
+      } catch (error) {
+        console.error('Preview error:', error);
+        Swal.fire('Preview Error', 'Failed to render preview.', 'error');
+      }
+    }
+
+    async function addPageNumbers() {
+      if (!files.length) {
+        Swal.fire('No Files', 'Please upload at least one PDF file.', 'error');
+        return;
+      }
+      const progressBar = document.getElementById('progressBar');
+      const progressFill = progressBar?.querySelector('div');
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      const numberFormat = document.getElementById('numberFormat')?.value;
+      const fontSize = parseInt(document.getElementById('fontSize')?.value) || 12;
+      const textColor = document.getElementById('textColor')?.value || '#000000';
+      const opacity = parseFloat(document.getElementById('opacity')?.value) || 1;
+      const fontFamily = document.getElementById('fontFamily')?.value || 'Helvetica';
+      const position = document.getElementById('position')?.value;
+      const downloadZip = document.getElementById('downloadZip')?.checked;
+      const compressOutput = document.getElementById('compressOutput')?.checked;
+      const zip = new JSZip();
+      let progress = 0;
+      let hasValidOutputs = false;
+      if (progressBar && progressFill) {
+        progressBar.classList.remove('hidden');
+        progressFill.style.width = '0%';
+      }
+      function updateProgress() {
+        progress += 100 / files.length / 10;
+        if (progressFill) progressFill.style.width = `${Math.min(progress, 100)}%`;
+        if (progress < 100) requestAnimationFrame(updateProgress);
+      }
+      requestAnimationFrame(updateProgress);
+      for (const [i, fileData] of files.entries()) {
+        try {
+          document.getElementById(`${fileData.id}-status`).textContent = 'Processing...';
+          if (!fileData.pdfDoc) throw new Error('PDF not parsed.');
+          const pdfDoc = await PDFLib.PDFDocument.create();
+          const pages = await pdfDoc.copyPages(fileData.pdfDoc, fileData.pdfDoc.getPageIndices());
+          const font = await pdfDoc.embedFont(
+            fontFamily === 'Helvetica' ? PDFLib.StandardFonts.Helvetica :
+            fontFamily === 'TimesRoman' ? PDFLib.StandardFonts.TimesRoman :
+            PDFLib.StandardFonts.Courier
+          );
+          const rgb = hexToRgb(textColor);
+          const pagesToApply = getPagesToApply(fileData.pdfDoc);
+          for (const [index, page] of pages.entries()) {
+            if (pagesToApply.includes(index + 1)) {
+              const { width, height } = page.getSize();
+              let xPos = width - 50;
+              let yPos = 50;
+              if (position === 'top-left') { xPos = 50; yPos = height - 50; }
+              else if (position === 'top-right') { xPos = width - 50; yPos = height - 50; }
+              else if (position === 'bottom-left') { xPos = 50; yPos = 50; }
+              else if (position === 'custom') {
+                xPos = parseInt(document.getElementById('xPosition')?.value) || 50;
+                yPos = parseInt(document.getElementById('yPosition')?.value) || 50;
+              }
+              const text = numberFormat === '1' ? `${index + 1}` :
+                           numberFormat === 'Page 1' ? `Page ${index + 1}` :
+                           numberFormat === '1 of n' ? `${index + 1} of ${pages.length}` :
+                           `${index + 1}/${pages.length}`;
+              page.drawText(text, {
+                x: xPos,
+                y: yPos,
+                size: fontSize,
+                font,
+                color: PDFLib.rgb(rgb.r / 255, rgb.g / 255, rgb.b / 255),
+                opacity
+              });
+            }
+            pdfDoc.addPage(page);
+          }
+          const pdfBytes = await pdfDoc.save({ useObjectStreams: compressOutput });
+          const fileName = `${fileData.name.replace(/\.pdf$/i, '')}_numbered.pdf`;
+          const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+          if (downloadZip) {
+            zip.file(fileName, blob);
+          } else {
+            saveAs(blob, fileName);
+          }
+          const statusDiv = document.getElementById(`${fileData.id}-status`).parentElement;
+          statusDiv.innerHTML = `<p id="${fileData.id}-status" class="text-gray-500">Numbered</p>`;
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = fileName;
+          link.className = 'text-blue-600 hover:underline';
+          link.textContent = fileName;
+          statusDiv.appendChild(link);
+          document.getElementById(`${fileData.id}-status`).textContent = 'Numbered';
+          hasValidOutputs = true;
+          if (i === files.length - 1 && hasValidOutputs && downloadZip) {
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            if (downloadZipButton) {
+              downloadZipButton.href = URL.createObjectURL(zipBlob);
+              downloadZipButton.download = 'numbered_pdfs.zip';
+              downloadZipButton.classList.remove('hidden');
+            }
+            Swal.fire('Success!', 'All files processed successfully.', 'success');
+          } else if (i === files.length - 1 && hasValidOutputs) {
+            Swal.fire('Success!', 'All files processed successfully.', 'success');
+          }
+        } catch (error) {
+          console.error(`Error processing ${fileData.name}:`, error);
+          document.getElementById(`${fileData.id}-status`).textContent = 'Error';
+          Swal.fire('Error', `Failed to process ${fileData.name}.`, 'error');
+        }
+      }
+      if (progressBar && progressFill) {
+        progressBar.classList.add('hidden');
+        progressFill.style.width = '0%';
+      }
+    }
+
+    function savePreset() {
+      const presetName = document.getElementById('presetName')?.value;
+      if (!presetName) {
+        Swal.fire('Invalid Input', 'Please enter a preset name.', 'error');
+        return;
+      }
+      const preset = {
+        name: presetName,
+        numberFormat: document.getElementById('numberFormat')?.value,
+        fontSize: document.getElementById('fontSize')?.value,
+        textColor: document.getElementById('textColor')?.value,
+        opacity: document.getElementById('opacity')?.value,
+        fontFamily: document.getElementById('fontFamily')?.value,
+        position: document.getElementById('position')?.value,
+        xPosition: document.getElementById('xPosition')?.value,
+        yPosition: document.getElementById('yPosition')?.value
+      };
+      pageNumberPresets.push(preset);
+      localStorage.setItem('pageNumberPresets', JSON.stringify(pageNumberPresets));
+      updatePresetSelect();
+      Swal.fire('Success', 'Preset saved successfully.', 'success');
+    }
+
+    function updatePresetSelect() {
+      const presetSelect = document.getElementById('presetSelect');
+      if (!presetSelect) return;
+      presetSelect.innerHTML = '<option value="">Select Preset</option>';
+      pageNumberPresets.forEach(preset => {
+        const option = document.createElement('option');
+        option.value = preset.name;
+        option.textContent = preset.name;
+        presetSelect.appendChild(option);
+      });
+    }
+
+    function loadPreset() {
+      const presetSelect = document.getElementById('presetSelect');
+      const presetName = presetSelect?.value;
+      if (!presetName) return;
+      const preset = pageNumberPresets.find(p => p.name === presetName);
+      if (preset) {
+        if (document.getElementById('numberFormat')) document.getElementById('numberFormat').value = preset.numberFormat || '1';
+        if (document.getElementById('fontSize')) document.getElementById('fontSize').value = preset.fontSize || '12';
+        if (document.getElementById('textColor')) document.getElementById('textColor').value = preset.textColor || '#000000';
+        if (document.getElementById('opacity')) document.getElementById('opacity').value = preset.opacity || '1';
+        if (document.getElementById('fontFamily')) document.getElementById('fontFamily').value = preset.fontFamily || 'Helvetica';
+        if (document.getElementById('position')) document.getElementById('position').value = preset.position || 'bottom-right';
+        if (document.getElementById('xPosition')) document.getElementById('xPosition').value = preset.xPosition || '50';
+        if (document.getElementById('yPosition')) document.getElementById('yPosition').value = preset.yPosition || '50';
+        const customPosition = document.getElementById('customPosition');
+        if (customPosition) customPosition.classList.toggle('hidden', preset.position !== 'custom');
+        updatePreview();
+      }
+    }
+
+    function resetAll() {
+      files = [];
+      const elements = {
+        previewContainer: document.getElementById('previewContainer'),
+        pdfFiles: document.getElementById('pdfFiles'),
+        numberFormat: document.getElementById('numberFormat'),
+        fontSize: document.getElementById('fontSize'),
+        textColor: document.getElementById('textColor'),
+        opacity: document.getElementById('opacity'),
+        fontFamily: document.getElementById('fontFamily'),
+        position: document.getElementById('position'),
+        xPosition: document.getElementById('xPosition'),
+        yPosition: document.getElementById('yPosition'),
+        pages: document.getElementById('pages'),
+        customPages: document.getElementById('customPages'),
+        presetName: document.getElementById('presetName'),
+        presetSelect: document.getElementById('presetSelect'),
+        downloadZip: document.getElementById('downloadZip'),
+        compressOutput: document.getElementById('compressOutput'),
+        pagePreview: document.getElementById('pagePreview'),
+        progressBar: document.getElementById('progressBar'),
+        convertButton: document.getElementById('convertButton'),
+        downloadZipButton: document.getElementById('downloadZipButton')
+      };
+      if (elements.previewContainer) elements.previewContainer.innerHTML = '';
+      if (elements.pdfFiles) elements.pdfFiles.value = '';
+      if (elements.numberFormat) elements.numberFormat.value = '1';
+      if (elements.fontSize) elements.fontSize.value = '12';
+      if (elements.textColor) elements.textColor.value = '#000000';
+      if (elements.opacity) elements.opacity.value = '1';
+      if (elements.fontFamily) elements.fontFamily.value = 'Helvetica';
+      if (elements.position) elements.position.value = 'bottom-right';
+      if (elements.xPosition) elements.xPosition.value = '50';
+      if (elements.yPosition) elements.yPosition.value = '50';
+      if (elements.pages) elements.pages.value = 'all';
+      if (elements.customPages) {
+        elements.customPages.value = '';
+        elements.customPages.classList.add('hidden');
+      }
+      if (elements.presetName) elements.presetName.value = '';
+      if (elements.presetSelect) elements.presetSelect.value = '';
+      if (elements.downloadZip) elements.downloadZip.checked = false;
+      if (elements.compressOutput) elements.compressOutput.checked = false;
+      if (elements.pagePreview) elements.pagePreview.classList.add('hidden');
+      if (elements.progressBar) elements.progressBar.classList.add('hidden');
+      if (elements.convertButton) elements.convertButton.disabled = true;
+      if (elements.downloadZipButton) elements.downloadZipButton.classList.add('hidden');
+      updatePresetSelect();
+    }
+
+    function closeTutorial() {
+      const tutorialModal = document.getElementById('tutorialModal');
+      if (tutorialModal) tutorialModal.classList.add('hidden');
+    }
+
+    function getPagesToApply(pdfDoc) {
+      const pagesSelect = document.getElementById('pages');
+      const customPages = document.getElementById('customPages');
+      if (!pdfDoc || !pagesSelect || !customPages) return [];
+      if (pagesSelect.value === 'all') {
+        return Array.from({ length: pdfDoc.getPageCount() }, (_, i) => i + 1);
+      }
+      const ranges = customPages.value.split(',').map(r => r.trim());
+      const pages = [];
+      for (const range of ranges) {
+        if (range.includes('-')) {
+          const [start, end] = range.split('-').map(n => parseInt(n));
+          if (!isNaN(start) && !isNaN(end)) {
+            for (let i = Math.max(1, start); i <= Math.min(pdfDoc.getPageCount(), end); i++) {
+              pages.push(i);
+            }
+          }
+        } else {
+          const page = parseInt(range);
+          if (!isNaN(page) && page >= 1 && page <= pdfDoc.getPageCount()) {
+            pages.push(page);
+          }
+        }
+      }
+      return [...new Set(pages)].sort((a, b) => a - b);
+    }
+
+    function hexToRgb(hex) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return { r, g, b };
+    }
+
+    window.addPageNumbers = addPageNumbers;
+    window.savePreset = savePreset;
+    window.loadPreset = loadPreset;
+    window.resetAll = resetAll;
+    window.closeTutorial = closeTutorial;
+  </script>
+</body>
+</html>

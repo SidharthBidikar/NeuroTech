@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit PDF Metadata Online - Free PDF Meta Data Editor Tool</title>
+  <meta name="description" content="Easily edit PDF metadata online for free. Modify title, author, subject, keywords, creator, producer, and dates of your PDF files. Secure client-side processing, no uploads required.">
+  <meta name="keywords" content="Edit PDF metadata, PDF metadata editor, modify PDF metadata, change PDF properties, PDF author, PDF title, PDF subject, PDF keywords, PDF creator, PDF producer, PDF metadata tool, free PDF metadata editor, update PDF info">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="OnePageTools PDF Team">
+  <meta property="og:title" content="Edit PDF Metadata Online - Free & Secure PDF Info Editor">
+  <meta property="og:description" content="Modify and update PDF document properties like title, author, subject, keywords, and more with our free online tool. All changes are made securely in your browser.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Edit+PDF+Metadata">
+  <meta property="og:url" content="https://onepagetools.com/edit-pdf-metadata.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover:not(:disabled) { transform: scale(1.05); }
+    /* प्रगति बार का रंग बदला गया */
+    .progress-bar-animated { background: linear-gradient(to right, #3B82F6, #1D4ED8); } /* गहरा नीला ग्रेडिएंट */
+    .drop-zone { transition: all 0.3s ease; }
+    /* ड्रॉप ज़ोन होवर रंग बदला गया */
+    .drop-zone.dragover { border-color: #3B82F6; background-color: rgba(59, 130, 246, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover:not(:disabled) { transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+    .gradient-bg { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); } /* हल्का नीला ग्रेडिएंट */
+    .metadata-form label { margin-bottom: 0.25rem; display: block; font-size: 0.875rem; color: #4B5563; }
+    .metadata-form input[type="text"], .metadata-form textarea, .metadata-form input[type="datetime-local"] {
+        width: 100%;
+        padding: 0.625rem;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        color: #1F2937;
+        background-color: #F9FAFB;
+    }
+    .metadata-form input[type="text"]:focus, .metadata-form textarea:focus, .metadata-form input[type="datetime-local"]:focus {
+        outline: none;
+        /* फोकस रंग बदला गया */
+        border-color: #3B82F6; 
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    .metadata-form textarea { min-height: 80px; }
+    #currentFileName { font-style: italic; color: #4B5563; }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Navigation (जैसा पहले था) -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com/" class="flex items-center space-x-3">
+        <img src="One_Page-removebg-preview.png" alt="OnePageTools Logo" style="height: 60px" />
+      </a>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+      </button>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li><a href="./index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0">Home</a></li>
+          <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+          <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+              ALL PDF TOOLS
+              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" /></svg>
+            </button>
+            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                <li><a href="./lockpdf.html" class="block px-4 py-2 hover:bg-gray-100">Lock PDF</a></li>
+                <li><a href="./unlockpdf.html" class="block px-4 py-2 hover:bg-gray-100">Unlock PDF</a></li>
+                <li><a href="./edit-pdf-metadata.html" class="block px-4 py-2 hover:bg-gray-100">Edit PDF Metadata</a></li>
+                <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100">PDF to Word</a></li>
+            
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex justify-center items-center min-h-screen pt-20 pb-10">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-xl fade-in">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">Edit PDF Metadata</h1>
+      <p class="text-center text-gray-600 mb-8">View and modify the metadata of your PDF files, such as Title, Author, Subject, Keywords, Creator, Producer, and Dates. All changes are processed securely in your browser without uploading your files.</p>
+
+      <div id="dropZone" class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-12 text-center mb-8 transition-colors duration-300 hover:border-blue-400"> <!-- होवर रंग बदला गया -->
+        <label for="pdfFile" class="inline-block w-full py-3 px-5 bg-blue-600 text-white font-semibold rounded-full cursor-pointer hover:bg-blue-700 btn hover-scale"> <!-- बटन रंग बदला गया -->
+          Choose PDF File
+        </label>
+        <input type="file" id="pdfFile" accept="application/pdf" class="hidden">
+        <p class="text-gray-500 mt-2">or drag and drop a PDF file here (max 50MB)</p>
+        <p id="currentFileName" class="mt-2 text-sm"></p>
+      </div>
+
+      <div id="metadataFormContainer" class="hidden bg-gray-50 p-6 rounded-lg shadow mb-6 metadata-form">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">PDF Metadata Fields</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+            <div>
+              <label for="metaTitle">Title:</label>
+              <input type="text" id="metaTitle" placeholder="Document Title">
+            </div>
+            <div>
+              <label for="metaAuthor">Author:</label>
+              <input type="text" id="metaAuthor" placeholder="Document Author">
+            </div>
+            <div class="md:col-span-2">
+              <label for="metaSubject">Subject:</label>
+              <input type="text" id="metaSubject" placeholder="Document Subject">
+            </div>
+            <div class="md:col-span-2">
+              <label for="metaKeywords">Keywords (comma-separated):</label>
+              <textarea id="metaKeywords" placeholder="keyword1, keyword2, keyword3"></textarea>
+            </div>
+            <div>
+              <label for="metaCreator">Creator Application:</label>
+              <input type="text" id="metaCreator" placeholder="e.g., Microsoft Word, Adobe InDesign">
+            </div>
+            <div>
+              <label for="metaProducer">PDF Producer:</label>
+              <input type="text" id="metaProducer" placeholder="e.g., pdf-lib, Adobe PDF Library">
+            </div>
+            <div>
+              <label for="metaCreationDate">Creation Date:</label>
+              <input type="datetime-local" id="metaCreationDate" step="1">
+            </div>
+            <div>
+              <label for="metaModDate">Modification Date:</label>
+              <input type="datetime-local" id="metaModDate" step="1">
+            </div>
+            <div class="md:col-span-2">
+                <button type="button" id="clearDatesButton" class="text-sm text-blue-600 hover:text-blue-800 focus:outline-none">Clear Dates (use current time on save)</button> <!-- रंग बदला गया -->
+            </div>
+          </div>
+      </div>
+      
+      <div id="progressBarContainer" class="hidden bg-gray-200 rounded-full h-3 mb-4">
+        <div id="progressBar" class="progress-bar-animated h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+
+      <div id="actionButtonsContainer" class="flex flex-wrap gap-4 justify-center">
+        <button id="saveMetadataButton" class="py-3 px-6 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 btn hover-scale" disabled> <!-- रंग बदला गया -->
+          <svg class="inline w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          Save Metadata & Download
+        </button>
+        <button id="resetButton" class="py-3 px-6 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 btn hover-scale">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO-Friendly Article (जैसा पहले था) -->
+  <div class="article-section px-4 sm:px-0">
+    <h2 class="text-gray-800">Mastering Your PDFs: A Comprehensive Guide to Editing PDF Metadata</h2>
+    <p>PDF (Portable Document Format) files are ubiquitous in the digital world, used for everything from academic papers and business reports to personal documents and e-books. While the visible content of a PDF is what most users interact with, there's a wealth of hidden information embedded within each file: its metadata. This metadata, or "data about data," can include details like the document's title, author, subject, keywords, creation date, and the software used to create it. Being able to <strong>edit PDF metadata</strong> is crucial for organization, searchability, compliance, and professional presentation. Our free online <strong>PDF metadata editor</strong> empowers you to easily view and <strong>modify PDF metadata</strong> directly in your browser, without needing to upload your files to a server.</p>
+    <h3>What is PDF Metadata and Why is it Important?</h3>
+    <p>PDF metadata refers to a set of properties or information that describes and identifies a PDF document. This information is stored within the file itself but is not typically part of the main visible content. Key metadata fields include:</p>
+    <ul>
+      <li><strong>Title:</strong> The official title of the document, which might differ from the filename. Important for search engine optimization (SEO) if the PDF is online, and for how it's displayed in some PDF viewers or digital libraries.</li>
+      <li><strong>Author:</strong> The person or entity that created the document. Crucial for attribution and copyright.</li>
+      <li><strong>Subject:</strong> A brief description or topic of the document's content.</li>
+      <li><strong>Keywords:</strong> A list of relevant terms or phrases associated with the document, aiding in searchability and categorization.</li>
+      <li><strong>Creator:</strong> The software application used to originally create the document (e.g., Microsoft Word, Adobe InDesign).</li>
+      <li><strong>Producer:</strong> The software application used to convert the original document to PDF or to modify the PDF (e.g., Adobe Acrobat, pdf-lib).</li>
+      <li><strong>Creation Date:</strong> The date and time the document was originally created.</li>
+      <li><strong>Modification Date:</strong> The date and time the document was last modified.</li>
+    </ul>
+    <p>Why should you care about this information and want to use a <strong>PDF metadata tool</strong>?</p>
+    <ul>
+      <li><strong>Improved Searchability (SEO):</strong> Search engines and document management systems often use metadata (especially title and keywords) to index and rank PDFs. Accurate metadata makes your documents easier to find.</li>
+      <li><strong>Better Organization:</strong> Consistent metadata helps in organizing and managing large collections of PDF files, whether on a personal computer or a shared corporate drive.</li>
+      <li><strong>Professionalism and Branding:</strong> Ensuring that metadata like author and creator reflects your organization or personal brand adds a layer of professionalism. You can <strong>change PDF properties</strong> to match your standards.</li>
+      <li><strong>Compliance and Archiving:</strong> Some industries or archival standards require specific metadata to be present and accurate.</li>
+      <li><strong>Correcting Errors:</strong> Software sometimes auto-populates metadata incorrectly, or an old version's metadata might persist. A <strong>PDF metadata editor</strong> lets you fix these issues.</li>
+      <li><strong>Privacy:</strong> Sometimes, default metadata might reveal information you don't want to share (e.g., the original author's name on a template you've modified). You can <strong>update PDF info</strong> to protect privacy.</li>
+    </ul>
+    <h3>How to Use Our Free Online PDF Metadata Editor</h3>
+    <p>Our tool is designed for simplicity and security, allowing you to <strong>edit PDF metadata online</strong> without complex software installations. All processing is done client-side.</p>
+    <ol>
+      <li><strong>Upload Your PDF File:</strong> Click the "Choose PDF File" button or drag and drop a single PDF file into the designated area. This tool processes one PDF at a time to allow focused metadata editing. The name of the uploaded file will be displayed.</li>
+      <li><strong>View Current Metadata:</strong> Once the PDF is loaded, the tool will attempt to read its existing metadata and populate the form fields (Title, Author, Subject, Keywords, Creator, Producer, Creation Date, Modification Date).</li>
+      <li><strong>Modify Metadata Fields:</strong>
+        <ul>
+          <li>Edit the text in any of the available fields as needed.</li>
+          <li>For **Keywords**, enter them as a comma-separated list (e.g., `report, finance, Q3`).</li>
+          <li>For **Creation Date** and **Modification Date**, you can use the date-time picker or clear them using the "Clear Dates" button. If cleared, the tool will typically set these to the current date and time upon saving. Some PDF libraries might also allow completely removing these dates.</li>
+        </ul>
+      </li>
+      <li><strong>Save Metadata & Download:</strong> After making your desired changes, click the "Save Metadata & Download" button. The tool will process the PDF in your browser, apply the new metadata, and then initiate a download of the modified PDF file. The new file will usually have "_meta_updated" or a similar suffix added to its original name.</li>
+      <li><strong>Reset (Optional):</strong> If you want to clear the form and upload a new file, or discard changes, click the "Reset" button.</li>
+    </ol>
+    <p>With this <strong>free PDF metadata editor</strong>, you can efficiently <strong>update PDF info</strong> and ensure your documents are accurately described.</p>
+    <h3>Understanding Different PDF Metadata Fields</h3>
+    <p>Let's delve deeper into the common metadata fields you can <strong>change PDF properties</strong> for:</p>
+    <ul>
+      <li><strong>Title (`doc.setTitle()`):</strong> This is the formal title of the document. It's often displayed in the title bar of PDF viewer applications. It's distinct from the filename and very important for discoverability.</li>
+      <li><strong>Author (`doc.setAuthor()`):</strong> The name(s) of the individual(s) or organization(s) responsible for creating the content of the document.</li>
+      <li><strong>Subject (`doc.setSubject()`):</strong> A short phrase or sentence summarizing the main topic or theme of the PDF.</li>
+      <li><strong>Keywords (`doc.setKeywords()`):</strong> A set of words or short phrases that describe the document's content. These are crucial for indexing and searching. `pdf-lib` expects an array of strings for keywords, but our UI uses comma-separated input for ease of use, which is then converted.</li>
+      <li><strong>Creator (`doc.setCreator()`):</strong> The name of the application that originally created the document from which the PDF was generated (e.g., "Microsoft® Word 2019").</li>
+      <li><strong>Producer (`doc.setProducer()`):</strong> The name of the application that converted the document to the PDF format or significantly modified the PDF structure (e.g., "Adobe PDF Library 15.0", "pdf-lib"). When you save with our tool, `pdf-lib` will likely set itself as the producer.</li>
+      <li><strong>Creation Date (`doc.setCreationDate()`):</strong> The date and time when the original document content was created. `pdf-lib` expects a `Date` object.</li>
+      <li><strong>Modification Date (`doc.setModificationDate()`):</strong> The date and time when the PDF document itself was last modified. When you save changes, this will typically be updated to the current time by `pdf-lib` unless you explicitly set it.</li>
+    </ul>
+    <p>Being able to <strong>modify PDF metadata</strong> across these fields gives you significant control over how your documents are perceived and managed.</p>
+    <h3>Benefits of Using a Client-Side PDF Metadata Editor</h3>
+    <p>Our tool performs all metadata editing operations directly in your web browser. This client-side approach offers several key advantages:</p>
+    <ul>
+      <li><strong>Enhanced Privacy and Security:</strong> Your PDF files are never uploaded to any external server. They remain on your local machine throughout the editing process. This is paramount for sensitive or confidential documents.</li>
+      <li><strong>Speed and Efficiency:</strong> Since there's no need to upload files to a server and then download them back, the process is generally much faster, especially for larger PDFs.</li>
+      <li><strong>No File Size Limitations (Practically):</strong> While we set a practical limit (e.g., 50MB) to prevent browser crashes with extremely large files, client-side processing is less constrained by server upload limits.</li>
+      <li><strong>Offline Access (Potentially):</strong> Once the webpage and its resources (like `pdf-lib.js`) are loaded, tools like this can often function even if your internet connection drops, though initial loading requires connectivity.</li>
+      <li><strong>No Installation Needed:</strong> It's a web-based tool, so you don't need to install any specific software on your computer.</li>
+    </ul>
+    <p>Choosing a client-side solution for tasks like editing PDF metadata ensures that you maintain full control over your data.</p>
+    <h3>Best Practices for Editing PDF Metadata</h3>
+    <p>To make the most out of editing your PDF metadata, consider these best practices:</p>
+    <ul>
+      <li><strong>Be Consistent:</strong> If you're managing a collection of documents, establish a consistent style for titles, author names, and keywords.</li>
+      <li><strong>Be Accurate:</strong> Ensure the metadata accurately reflects the document's content and origin. Misleading metadata can be counterproductive.</li>
+      <li><strong>Use Relevant Keywords:</strong> Choose keywords that users (or search engines) are likely to use when looking for the information contained in your PDF. Think from the perspective of the searcher.</li>
+      <li><strong>Keep it Concise:</strong> While thoroughness is good, overly long titles or subjects can be truncated in some views. Be descriptive but also concise.</li>
+      <li><strong>Update Regularly:</strong> If a document's content or status changes, remember to <strong>update PDF info</strong> in its metadata as well.</li>
+      <li><strong>Respect Copyright and Authorship:</strong> Only change author information if you have the right to do so (e.g., it's your own work, or you are representing an organization that owns the content).</li>
+      <li><strong>Check Producer/Creator Fields:</strong> While you can edit these, be aware that PDF software often automatically updates the "Producer" field when a file is saved. The "Creator" field usually refers to the original authoring application.</li>
+    </ul>
+    <h3>Frequently Asked Questions (FAQs) about Editing PDF Metadata</h3>
+    <h4>1. Is this PDF Metadata Editor free to use?</h4>
+    <p>Yes, our online tool to <strong>edit PDF metadata</strong> is completely free, with no subscriptions or hidden charges.</p>
+    <h4>2. Are my PDF files uploaded to a server when I use this tool?</h4>
+    <p>No. All file processing, including reading and writing metadata, happens locally within your web browser using JavaScript. Your files are never sent to any server, ensuring your privacy.</p>
+    <h4>3. What metadata fields can I edit?</h4>
+    <p>You can typically edit standard PDF metadata fields such as Title, Author, Subject, Keywords, Creator, Producer, Creation Date, and Modification Date.</p>
+    <h4>4. Will editing metadata change the visible content of my PDF?</h4>
+    <p>No, editing the metadata does not alter the actual text, images, or layout of your PDF document. It only changes the descriptive information embedded within the file.</p>
+    <h4>5. Can I edit metadata for password-protected PDFs?</h4>
+    <p>If a PDF is password-protected against modifications (often requiring an owner password), you will likely need to remove that protection first using a PDF unlocking tool (if you have the password) before you can edit its metadata. This tool attempts to load PDFs even if they are encrypted, but modification might be restricted by the PDF's security settings if it's heavily encrypted without the necessary permissions/password for `pdf-lib` to operate.</p>
+    <h4>6. Why is the "Producer" field sometimes automatically changed?</h4>
+    <p>The "Producer" field usually indicates the software that last processed or saved the PDF. When you use our tool (which utilizes `pdf-lib`), `pdf-lib` may set itself as the producer of the newly saved file. This is standard behavior for most PDF editing software. You can override this by typing your desired producer name in the field.</p>
+    <h4>7. How should I format keywords?</h4>
+    <p>It's best to enter keywords as a comma-separated list (e.g., `annual report, financials, Q4 results, company update`). Our tool will handle converting this into the format required by the PDF.</p>
+    <h4>8. What happens if I clear the date fields?</h4>
+    <p>If you clear the Creation Date or Modification Date fields using the "Clear Dates" button, `pdf-lib` will typically set these dates to the current date and time when you save the modified PDF. This is often the desired behavior to reflect the new version.</p>
+    <h3>Conclusion: Take Control of Your PDF Document Properties</h3>
+    <p>Effectively managing and editing PDF metadata is a vital skill in today's digital document workflows. Whether for improved organization, enhanced searchability, professional presentation, or compliance, having the ability to <strong>modify PDF metadata</strong> is essential. Our free, secure, and client-side <strong>PDF metadata editor</strong> provides an easy-to-use solution for anyone looking to <strong>update PDF info</strong> without the need for complex software or concerns about file privacy.</p>
+    <p>By taking a few moments to ensure your PDF metadata is accurate and relevant, you can significantly improve the value and usability of your documents. <a href="#dropZone" class="text-blue-600 hover:underline font-semibold">Try our PDF Metadata Editor now</a> and experience the convenience of managing your PDF properties effortlessly!</p> <!-- लिंक का रंग बदला गया -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let PDFDocument;
+        try {
+            if (typeof PDFLib !== 'undefined') {
+                ({ PDFDocument } = PDFLib);
+                console.log("PDFLib PDFDocument destructured successfully.");
+            } else {
+                throw new Error("PDFLib is not defined. Ensure pdf-lib.min.js is loaded before this script.");
+            }
+        } catch (e) {
+            console.error("Initialization Error - Could not destructure PDFLib PDFDocument:", e);
+            Swal.fire("Library Error", "The PDF processing library (PDFLib) is not loaded correctly. Please check your internet connection and refresh the page.", "error");
+            const saveBtn = document.getElementById('saveMetadataButton');
+            if(saveBtn) saveBtn.disabled = true;
+            return; 
+        }
+
+        let currentPdfDoc = null;
+        let currentFile = null;
+
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('pdfFile');
+        const currentFileNameEl = document.getElementById('currentFileName');
+        const metadataFormContainer = document.getElementById('metadataFormContainer');
+        const saveMetadataButton = document.getElementById('saveMetadataButton');
+        const resetButton = document.getElementById('resetButton');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        const progressBar = document.getElementById('progressBar');
+        
+        const metaTitle = document.getElementById('metaTitle');
+        const metaAuthor = document.getElementById('metaAuthor');
+        const metaSubject = document.getElementById('metaSubject');
+        const metaKeywords = document.getElementById('metaKeywords');
+        const metaCreator = document.getElementById('metaCreator');
+        const metaProducer = document.getElementById('metaProducer');
+        const metaCreationDate = document.getElementById('metaCreationDate');
+        const metaModDate = document.getElementById('metaModDate');
+        const clearDatesButton = document.getElementById('clearDatesButton');
+        const actionButtonsContainer = document.getElementById('actionButtonsContainer');
+
+
+        if (!dropZone || !fileInput || !saveMetadataButton || !resetButton || !metadataFormContainer || !metaTitle || !actionButtonsContainer) {
+            console.error("One or more essential UI elements are missing from the DOM.");
+            Swal.fire("UI Error", "Some essential page elements are missing. The tool might not function correctly.", "error");
+            return;
+        }
+
+        actionButtonsContainer.classList.remove('hidden'); 
+        saveMetadataButton.classList.remove('hidden'); 
+        saveMetadataButton.disabled = true; 
+
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); e.stopPropagation(); dropZone.classList.add('dragover'); });
+        dropZone.addEventListener('dragleave', (e) => { e.preventDefault(); e.stopPropagation(); dropZone.classList.remove('dragover'); });
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault(); e.stopPropagation(); dropZone.classList.remove('dragover');
+          const droppedFiles = e.dataTransfer.files;
+          if (droppedFiles.length > 0) { 
+            fileInput.files = droppedFiles;
+            handleFileSelection(); 
+          }
+        });
+        fileInput.addEventListener('change', handleFileSelection);
+
+        async function handleFileSelection() {
+            if (fileInput.files.length === 0) {
+                resetForm();
+                return;
+            }
+            currentFile = fileInput.files[0];
+
+            if (currentFile.type !== 'application/pdf') {
+                Swal.fire('Invalid File Type', `${currentFile.name} is not a PDF. Please select a PDF file.`, 'error');
+                resetForm();
+                return;
+            }
+            if (currentFile.size > 50 * 1024 * 1024) {
+                Swal.fire('File Too Large', `${currentFile.name} exceeds the 50MB size limit. Please choose a smaller file.`, 'error');
+                resetForm();
+                return;
+            }
+
+            currentFileNameEl.textContent = `Selected: ${currentFile.name}`;
+            saveMetadataButton.disabled = true; 
+            metadataFormContainer.classList.add('hidden');
+            progressBarContainer.classList.remove('hidden');
+            progressBar.style.width = '20%'; 
+
+            try {
+                console.log(`Loading PDF: ${currentFile.name}`);
+                const existingPdfBytes = await currentFile.arrayBuffer();
+                progressBar.style.width = '50%';
+                currentPdfDoc = await PDFDocument.load(existingPdfBytes, { 
+                    updateMetadata: false, 
+                    ignoreEncryption: true 
+                });
+                console.log("PDF loaded. Populating form...");
+                progressBar.style.width = '80%';
+                
+                populateMetadataForm(currentPdfDoc);
+                metadataFormContainer.classList.remove('hidden');
+                saveMetadataButton.disabled = false;
+                progressBar.style.width = '100%';
+                setTimeout(() => progressBarContainer.classList.add('hidden'), 500);
+
+            } catch (error) {
+                console.error("Error loading PDF or reading metadata:", error);
+                let userErrorMessage = `Could not load or read metadata from ${currentFile.name}. `;
+                if (error.message && error.message.toLowerCase().includes('encrypted pdf')) {
+                    userErrorMessage += 'The PDF might be encrypted and password-protected against viewing or modification. Please unlock it first.';
+                } else if (error.name === 'InvalidPDFError') {
+                    userErrorMessage += 'The file appears to be an invalid or corrupted PDF.';
+                }
+                else {
+                    userErrorMessage += `Error: ${error.message}`;
+                }
+                Swal.fire('Error Loading PDF', userErrorMessage, 'error');
+                resetForm();
+                progressBarContainer.classList.add('hidden');
+                progressBar.style.width = '0%';
+            }
+        }
+        
+        function formatDateForInput(date) {
+            if (!date || !(date instanceof Date) || isNaN(date.getTime())) return '';
+            try {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                const seconds = String(date.getSeconds()).padStart(2, '0');
+                return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+            } catch (e) {
+                console.warn("Could not format date:", date, e);
+                return '';
+            }
+        }
+
+        function populateMetadataForm(pdfDoc) {
+            console.log("Populating metadata form fields...");
+            try {
+                metaTitle.value = pdfDoc.getTitle() || '';
+                metaAuthor.value = pdfDoc.getAuthor() || '';
+                metaSubject.value = pdfDoc.getSubject() || '';
+                const keywords = pdfDoc.getKeywords();
+                metaKeywords.value = keywords ? keywords.join(', ') : '';
+                metaCreator.value = pdfDoc.getCreator() || '';
+                metaProducer.value = pdfDoc.getProducer() || '';
+                
+                const creationDate = pdfDoc.getCreationDate();
+                metaCreationDate.value = creationDate ? formatDateForInput(creationDate) : '';
+                
+                const modDate = pdfDoc.getModificationDate();
+                metaModDate.value = modDate ? formatDateForInput(modDate) : '';
+                console.log("Form population complete.");
+            } catch (e) {
+                console.error("Error populating form with PDF metadata:", e);
+                Swal.fire("Metadata Read Error", "Could not fully read existing metadata. Some fields might be empty or incorrect.", "warning");
+            }
+        }
+
+        clearDatesButton.addEventListener('click', () => {
+            metaCreationDate.value = '';
+            metaModDate.value = '';
+            console.log("Date fields cleared by user.");
+        });
+
+        saveMetadataButton.addEventListener('click', async () => {
+            if (!currentPdfDoc || !currentFile) {
+                Swal.fire('No File Loaded', 'Please choose a PDF file first.', 'warning');
+                return;
+            }
+
+            saveMetadataButton.disabled = true;
+            resetButton.disabled = true;
+            progressBarContainer.classList.remove('hidden');
+            progressBar.style.width = '10%';
+
+            console.log("Starting metadata save process...");
+
+            try {
+                currentPdfDoc.setTitle(metaTitle.value.trim());
+                currentPdfDoc.setAuthor(metaAuthor.value.trim());
+                currentPdfDoc.setSubject(metaSubject.value.trim());
+                
+                const keywordsArray = metaKeywords.value.split(',')
+                    .map(kw => kw.trim())
+                    .filter(kw => kw !== '');
+                currentPdfDoc.setKeywords(keywordsArray);
+                
+                currentPdfDoc.setCreator(metaCreator.value.trim());
+                currentPdfDoc.setProducer(metaProducer.value.trim() || 'OnePageTools PDF Meta Editor (via pdf-lib)');
+
+                if (metaCreationDate.value) {
+                    try {
+                        const creationD = new Date(metaCreationDate.value);
+                        if (!isNaN(creationD.getTime())) currentPdfDoc.setCreationDate(creationD);
+                        else throw new Error("Invalid Creation Date format");
+                    } catch (e) { console.warn("Invalid Creation Date input, setting to current time.", e); currentPdfDoc.setCreationDate(new Date());}
+                } else {
+                    currentPdfDoc.setCreationDate(new Date()); 
+                }
+
+                if (metaModDate.value) {
+                     try {
+                        const modD = new Date(metaModDate.value);
+                        if(!isNaN(modD.getTime())) currentPdfDoc.setModificationDate(modD);
+                        else throw new Error("Invalid Modification Date format");
+                    } catch (e) { console.warn("Invalid Modification Date input, setting to current time.", e); currentPdfDoc.setModificationDate(new Date());}
+                } else {
+                    currentPdfDoc.setModificationDate(new Date()); 
+                }
+                
+                progressBar.style.width = '60%';
+                const pdfBytes = await currentPdfDoc.save({ useObjectStreams: false });
+                progressBar.style.width = '90%';
+
+                if (!pdfBytes || pdfBytes.length === 0) {
+                    throw new Error("Generated PDF bytes are empty or invalid after save operation.");
+                }
+
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const newFileName = currentFile.name.replace(/\.pdf$/i, '_meta_updated.pdf');
+                
+                const downloadUrl = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = newFileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(downloadUrl);
+
+                progressBar.style.width = '100%';
+                Swal.fire('Success!', 'PDF metadata updated and file download initiated.', 'success');
+                
+            } catch (error) {
+                console.error("Error saving PDF metadata or creating download:", error);
+                Swal.fire('Error Saving Metadata', `Could not save metadata changes or initiate download. Error: ${error.message}. Check console for details.`, 'error');
+                progressBar.style.width = '0%';
+            } finally {
+                saveMetadataButton.disabled = !currentPdfDoc; 
+                resetButton.disabled = false;
+                setTimeout(() => {
+                    progressBarContainer.classList.add('hidden');
+                    progressBar.style.width = '0%';
+                }, 1500);
+            }
+        });
+        
+        function resetForm() {
+            fileInput.value = '';
+            currentFileNameEl.textContent = '';
+            metadataFormContainer.classList.add('hidden');
+            
+            metaTitle.value = '';
+            metaAuthor.value = '';
+            metaSubject.value = '';
+            metaKeywords.value = '';
+            metaCreator.value = '';
+            metaProducer.value = '';
+            metaCreationDate.value = '';
+            metaModDate.value = '';
+            
+            currentPdfDoc = null;
+            currentFile = null;
+            saveMetadataButton.disabled = true;
+            progressBarContainer.classList.add('hidden');
+            progressBar.style.width = '0%';
+            console.log("Form and state reset.");
+        }
+
+        resetButton.addEventListener('click', () => {
+            resetForm();
+            Swal.fire('Reset', 'Form and file selection cleared.', 'info');
+        });
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PDF to Audio Converter - Free Online TTS with Advanced Features</title>
+    <meta name="description" content="Convert PDF to audio (Speech) with our advanced online PDF to Audio Converter. Features voice selection, speed control, speak selected text, pause/resume, and best-effort audio download.">
+    <meta name="keywords" content="PDF to Audio Converter, convert PDF to MP3, PDF to speech, listen to PDF, online text to speech converter, TTS PDF converter, free PDF reader audio, PDF to voice, text to audio PDF, document to speech, speak selected text, pause resume audio, download pdf audio">
+
+    <!-- Favicon (example) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📢</text></svg>">
+
+    <!-- PDF.js (Mozilla) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        } else {
+            console.error("pdf.js library not loaded. PDF functionality will be affected.");
+        }
+    </script>
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF to Audio Converter (Advanced)",
+      "description": "A free online tool to convert PDF documents into audible speech. Supports multiple voices, languages, speed/pitch control, page range selection, speak selected text, pause/resume, and best-effort audio download.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All (Web-based)",
+      "browserRequirements": "Requires a modern web browser with JavaScript and SpeechSynthesis API support.",
+      "url": "YOUR_TOOL_URL_HERE", /* Replace with your actual URL */
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "keywords": "PDF to Audio, convert PDF to MP3, PDF to speech, listen to PDF, text to speech PDF, free PDF audio reader, speak selected text, pause resume tts, download pdf speech",
+      "featureList": [
+        "PDF Upload (Drag & Drop, Manual)",
+        "Text Extraction from PDF with Progress",
+        "Text-to-Speech Conversion",
+        "Voice Selection (Male/Female, Multiple Languages)",
+        "Speech Speed & Pitch Control",
+        "Pause/Resume/Stop Speech",
+        "Speak Selected Text from Preview",
+        "Download Audio (Best-effort WebM/OGG)",
+        "Page Range Selection",
+        "Extracted Text Preview",
+        "Dark Mode & Font Size Toggle for Accessibility",
+        "Remember User Settings (Voice, Speed, Pitch)"
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            --background-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #fff;
+            --border-color: #ddd;
+            --font-size-normal: 16px;
+            --font-size-large: 18px;
+            --font-size-xlarge: 20px;
+        }
+        .dark-mode {
+            --primary-color: #4dabf7;
+            --secondary-color: #868e96;
+            --success-color: #20c997;
+            --warning-color: #ffd333;
+            --danger-color: #f7606e;
+            --info-color: #30c5d2;
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --border-color: #444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            font-size: var(--font-size-normal);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header { text-align: center; padding: 20px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 20px; }
+        header h1 { color: var(--primary-color); font-size: 2.5em; margin-bottom: 5px; }
+        header p { font-size: 1.1em; color: var(--secondary-color); }
+
+        #pdf-to-audio-tool { padding: 25px; border: 1px solid var(--border-color); border-radius: 8px; background-color: var(--card-bg); margin-bottom: 30px; }
+        .tool-section { margin-bottom: 20px; }
+        .tool-section h3 { font-size: 1.2em; color: var(--primary-color); margin-bottom: 10px; }
+        
+        #dropZone {
+            border: 2px dashed var(--border-color);
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        #dropZone.hover { border-color: var(--primary-color); background-color: #e9ecef; }
+        .dark-mode #dropZone.hover { background-color: #333; }
+
+        input[type="file"], input[type="text"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1em;
+            background-color: var(--background-color); 
+            color: var(--text-color);
+        }
+        .dark-mode input, .dark-mode select, .dark-mode textarea {
+             background-color: #2c2c2c; 
+             border-color: #555;
+        }
+        textarea#textPreview { min-height: 150px; resize: vertical; font-family: monospace; background-color: var(--card-bg); }
+        .dark-mode textarea#textPreview { background-color: #1a1a1a; }
+        
+        .button-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; align-items: center;}
+        .tool-button, .control-button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0; 
+        }
+        .tool-button { background-color: var(--primary-color); color: white; }
+        .tool-button.secondary { background-color: var(--secondary-color); color: white; }
+        .tool-button.success { background-color: var(--success-color); color: white; }
+        .tool-button.warning { background-color: var(--warning-color); color: #212529; } 
+        .dark-mode .tool-button.warning { color: #333; }
+        .tool-button.danger { background-color: var(--danger-color); color: white; }
+        .tool-button.info { background-color: var(--info-color); color: white; }
+
+
+        .tool-button:hover:not(:disabled) { filter: brightness(90%); }
+        .tool-button:disabled { background-color: #ccc; color: #666; cursor: not-allowed; }
+        .dark-mode .tool-button:disabled { background-color: #555; color: #aaa; }
+
+        .controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px; }
+        .control-group label { display: block; margin-bottom: 5px; font-weight: 500; }
+        
+        #loader { display: none; text-align: center; margin: 20px 0; }
+        #loader .spinner {
+            border: 4px solid #f3f3f3; border-radius: 50%; border-top: 4px solid var(--primary-color);
+            width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 5px auto;
+        }
+        #progressText { font-size: 0.9em; color: var(--secondary-color); }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        #statusMessageContainer { min-height: 2.5em; margin-bottom: 10px; }
+        #statusMessage { font-size: 0.9em; margin-top: 0; padding: 10px; border-radius: 4px; display: none; }
+        #statusMessage.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        #statusMessage.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        #statusMessage.warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .dark-mode #statusMessage.error { background-color: #52262a; color: #f8d7da; border-color: #8b3d43; }
+        .dark-mode #statusMessage.success { background-color: #1c3c24; color: #d4edda; border-color: #4b8356; }
+        .dark-mode #statusMessage.warning { background-color: #665120; color: #fff3cd; border-color: #89783f; }
+        
+        #privacyNotice { background-color: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; text-align: center; padding: 10px; margin-top: 15px; font-size: 0.9em; border-radius: 4px;}
+        .dark-mode #privacyNotice { background-color: #343a40; color: #f8f9fa; border-color: #495057; }
+
+        .accessibility-controls { text-align: right; margin-bottom: 15px; }
+        .accessibility-controls button { background: none; border: 1px solid var(--secondary-color); color: var(--secondary-color); padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 5px; }
+        .accessibility-controls button:hover { background-color: var(--secondary-color); color: var(--card-bg); }
+
+        #tool-article { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        /* ... (rest of article styles from previous response are fine) ... */
+        .share-section { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        .share-section h3 { margin-bottom: 15px; }
+        .share-icons a { margin: 0 10px; display: inline-block; }
+        .share-icons img { width: 40px; height: 40px; transition: transform 0.2s; }
+        .share-icons img:hover { transform: scale(1.1); }
+         @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            .container { width: 95%; padding: 15px; }
+            #pdf-to-audio-tool { padding: 15px; }
+            .controls-grid { grid-template-columns: 1fr; }
+            .button-group .tool-button { flex-grow: 1; } 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PDF to Audio Converter</h1>
+            <p>Transform your PDF documents into spoken words. Listen on the go!</p>
+        </header>
+
+        <div class="accessibility-controls">
+            <button id="toggleDarkMode">🌙 Dark Mode</button>
+            <button id="toggleFontSize"> A / あ Font Size</button>
+        </div>
+
+        <section id="pdf-to-audio-tool">
+            <div class="tool-section">
+                <h3>1. Upload Your PDF</h3>
+                <div id="dropZone">
+                    <p>Drag & drop your PDF file here, or click to select file.</p>
+                    <p>(Max 10MB, .pdf format only)</p>
+                </div>
+                <input type="file" id="pdfFile" accept=".pdf" style="display: none;">
+                <div id="fileNameDisplay" style="margin-bottom:10px; font-style: italic;"></div>
+                <button id="resetToolBtn" class="tool-button secondary" style="display:none;">🔄 Reset Tool</button>
+            </div>
+
+            <div class="tool-section">
+                <h3>2. Configure Conversion</h3>
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <label for="pageRange">Page Range (e.g., 1-5, 7, 9-10):</label>
+                        <input type="text" id="pageRange" placeholder="All pages by default">
+                    </div>
+                    <div class="control-group">
+                        <label for="voiceSelect">Voice:</label>
+                        <select id="voiceSelect" disabled></select>
+                    </div>
+                    <div class="control-group">
+                        <label for="speedControl">Speed (<span id="speedValue">1.0</span>x):</label>
+                        <input type="range" id="speedControl" min="0.5" max="2" step="0.1" value="1">
+                    </div>
+                     <div class="control-group">
+                        <label for="pitchControl">Pitch (<span id="pitchValue">1.0</span>):</label>
+                        <input type="range" id="pitchControl" min="0" max="2" step="0.1" value="1">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-section">
+                <h3>3. Process & Listen</h3>
+                <div class="button-group">
+                    <button id="convertToAudioBtn" class="tool-button success" disabled>🔊 Convert & Play Full Text</button>
+                </div>
+                <div id="loader">
+                    <div class="spinner"></div>
+                    <p id="progressText">Processing...</p>
+                </div>
+                <div id="statusMessageContainer"><div id="statusMessage"></div></div>
+            </div>
+            
+            <div class="tool-section" id="textPreviewSection" style="display:none;">
+                <h3>Extracted Text Preview</h3>
+                <textarea id="textPreview" readonly placeholder="Extracted text will appear here..."></textarea>
+                <div class="button-group" style="margin-top:10px;">
+                    <button id="speakSelectedBtn" class="tool-button info" disabled>🗣️ Speak Selected</button>
+                    <button id="pauseBtn" class="tool-button warning" style="display:none;">⏸️ Pause</button>
+                    <button id="resumeBtn" class="tool-button warning" style="display:none;">▶️ Resume</button>
+                    <button id="stopAudioBtn" class="tool-button danger" style="display:none;">⏹️ Stop All Audio</button>
+                </div>
+                 <div class="button-group" style="margin-top:10px;">
+                    <button id="downloadAudioBtn" class="tool-button secondary" style="display:none;">💾 Download Full Audio</button> 
+                    <!-- "Best Effort" will be in status message -->
+                </div>
+                <small id="downloadHint" style="display:none; color: var(--secondary-color);">Note: Audio download is best-effort and may result in a silent file on some browsers.</small>
+            </div>
+            
+            <div id="privacyNotice">
+                <p><strong>Privacy Note:</strong> Your files are processed locally in your browser. We do not upload or store your PDF files or generated audio on our servers.</p>
+            </div>
+        </section>
+
+        <article id="tool-article">
+            <!-- Article content from previous response remains the same -->
+            <h2>Unlock a New Way to Consume Information: The Ultimate PDF to Audio Converter</h2>
+            <p>In our fast-paced digital world, information consumption methods are constantly evolving. While reading remains fundamental, the ability to listen to content offers unparalleled flexibility and accessibility. Introducing our cutting-edge <strong>PDF to Audio Converter</strong> – a free online tool designed to transform your PDF documents into high-quality spoken audio. Whether you're a student aiming to "listen to PDF" notes, a professional catching up on reports while multitasking, or someone with visual impairments needing a "PDF to speech" solution, this tool is your perfect companion.</p>
+
+            <h3>1. Introduction to PDF to Audio Conversion</h3>
+            <p>PDF to Audio conversion is the process of taking a Portable Document Format (PDF) file, extracting its textual content, and then using Text-to-Speech (TTS) technology to render that text as audible speech. Essentially, it turns your written documents into audiobooks or spoken-word content. This technology bridges the gap between visual text and auditory learning, making information more accessible and consumable in various situations. Our "online text to speech converter" specializes in handling PDF files, ensuring that even complex documents can be transformed into a "free PDF reader audio" experience.</p>
+
+            <h3>2. Why Converting PDFs to Audio is Useful</h3>
+            <p>The applications and benefits of converting PDFs to audio are vast and varied:</p>
+            <ul>
+                <li><strong>Enhanced Accessibility:</strong> This is a game-changer for individuals with visual impairments, dyslexia, or other reading difficulties. It provides an alternative way to access written information, promoting inclusivity.</li>
+                <li><strong>Increased Productivity & Multitasking:</strong> Listen to reports, research papers, or articles while commuting, exercising, or doing chores. This allows you to absorb information without being tied to a screen, effectively turning "dead time" into productive learning time.</li>
+                <li><strong>Improved Learning & Retention:</strong> For auditory learners, hearing information can significantly boost comprehension and memory retention compared to just reading. Students can "convert PDF to MP3" (or other audio formats) for their study materials.</li>
+                <li><strong>Reduced Eye Strain:</strong> Staring at screens for extended periods can lead to digital eye strain. Listening to documents provides a much-needed break for your eyes.</li>
+                <li><strong>Convenience on the Go:</strong> Carry your documents as audio files on your phone or MP3 player and listen to them anywhere, anytime, even without an internet connection (after downloading).</li>
+                <li><strong>Language Learning:</strong> Listening to texts in a foreign language can help with pronunciation and comprehension. Our tool aims to support various languages, making it a versatile "TTS PDF converter."</li>
+                 <li><strong>Proofreading:</strong> Hearing your own written work read aloud can help identify errors, awkward phrasing, or areas for improvement that might be missed by visual reading alone.</li>
+            </ul>
+
+            <h3>3. Top Use Cases for a PDF to Audio Converter</h3>
+            <p>Who can benefit most from a "PDF to speech" tool? Here are some key user groups and scenarios:</p>
+            <ul>
+                <li><strong>Students:</strong> Convert lecture notes, textbooks, and research papers into audio for easier revision, especially when on the move or to reinforce learning through auditory channels. Use "Speak Selected Text" for specific definitions or paragraphs.</li>
+                <li><strong>Visually Impaired Users:</strong> An essential tool for accessing written content that might otherwise be inaccessible. Pause/Resume features enhance control over the listening experience.</li>
+                <li><strong>Professionals:</strong> Listen to business reports, industry news, legal documents, or training materials during commutes or while handling other tasks. Quickly listen to key sections.</li>
+                <li><strong>Researchers & Academics:</strong> Keep up with numerous research papers and journals by listening to them, saving valuable reading time.</li>
+                <li><strong>Audiobook Lovers:</strong> Turn any PDF e-book or article into a personal audiobook experience, especially for content not available in traditional audiobook formats.</li>
+                <li><strong>Travelers:</strong> Catch up on reading material during long journeys without suffering from motion sickness often associated with reading in moving vehicles.</li>
+                <li><strong>Content Creators & Writers:</strong> Proofread manuscripts or articles by listening to them. Use "Speak Selected Text" to focus on specific sentences or dialogues.</li>
+                <li><strong>Multitaskers:</strong> Anyone looking to absorb information while engaged in other activities – from cooking and cleaning to working out.</li>
+                <li><strong>Language Learners:</strong> Listen to PDF texts in a target language to improve pronunciation and listening comprehension. Adjust speed for easier understanding.</li>
+            </ul>
+
+            <h3>4. Step-by-Step Guide on Using This PDF to Audio Converter</h3>
+            <p>Our tool is designed for simplicity and ease of use. Here’s how to convert your PDF to audio:</p>
+            <ol>
+                <li><strong>Upload Your PDF:</strong> Drag and drop or click to select your PDF file (max 10MB). The filename will appear.</li>
+                <li><strong>Configure Settings (Optional):</strong>
+                    <ul>
+                        <li><strong>Page Range:</strong> Specify pages (e.g., "1-5", "7") or leave blank for all.</li>
+                        <li><strong>Voice:</strong> Select from available system voices. Your last choice may be remembered.</li>
+                        <li><strong>Speed & Pitch:</strong> Adjust sliders to your preference. These settings are also remembered.</li>
+                    </ul>
+                </li>
+                <li><strong>Convert & Play Full Text:</strong> Click "🔊 Convert & Play Full Text". The tool extracts text (progress shown) and then starts speaking.
+                    <ul>
+                        <li>A preview of the extracted text appears below.</li>
+                        <li>Use "⏸️ Pause", "▶️ Resume", or "⏹️ Stop All Audio" as needed.</li>
+                    </ul>
+                </li>
+                <li><strong>Speak Selected Text (Optional):</strong> After text is extracted, select any portion in the "Extracted Text Preview" box and click "🗣️ Speak Selected" to hear just that part.</li>
+                <li><strong>Download Full Audio (Best Effort):</strong> After the full text has finished speaking (or been stopped), the "💾 Download Full Audio" button becomes active if any audio data was captured. Click to download. The quality and success of this depend on browser capabilities. A small note about "best effort" will appear.</li>
+                <li><strong>Reset Tool:</strong> Click "🔄 Reset Tool" at any time to clear the current PDF and all settings to start fresh.</li>
+            </ol>
+            <p>Enjoy a more flexible way to interact with your PDF documents!</p>
+
+            <h3>5. Core Features Explained in Detail</h3>
+            <p>Our <strong>PDF to Audio Converter</strong> is packed with features:</p>
+            <ul>
+                <li><strong>PDF Upload & Text Extraction with Progress:</strong> Easy file upload with a visual text percentage update during extraction for longer documents.</li>
+                <li><strong>Natural-Sounding Text-to-Speech:</strong> Leverages your browser's `SpeechSynthesis` API for quality voices.</li>
+                <li><strong>Voice, Speed, & Pitch Customization:</strong> Tailor the audio output. Settings are saved in `localStorage` for your next visit.</li>
+                <li><strong>Pause, Resume, and Stop Controls:</strong> Full control over the audio playback for the entire document.</li>
+                <li><strong>Speak Selected Text:</strong> Highlight text in the preview area and have only that portion read aloud – perfect for focusing on specific details or re-listening.</li>
+                <li><strong>Page Range Selection:</strong> Convert only the parts of the PDF you need.</li>
+                <li><strong>Download Full Audio (Best Effort):</strong> An option to download the synthesized audio of the *entire converted text* as a WebM or OGG file. Success and quality vary by browser.</li>
+                <li><strong>Responsive & Accessible UI:</strong> Includes Dark Mode, Font Size toggle, and ARIA considerations.</li>
+                <li><strong>Reset Functionality:</strong> Easily clear all inputs and start over.</li>
+                <li><strong>Data Privacy:</strong> All processing is client-side; no files are uploaded.</li>
+            </ul>
+
+            <h3>6. Advantages Over Traditional Screen Readers or Paid Tools</h3>
+            <p>Our online <strong>PDF to Audio Converter</strong> offers unique advantages:</p>
+            <ul>
+                <li><strong>Free & No Installation:</strong> Accessible from any modern browser without cost or setup.</li>
+                <li><strong>User-Friendly Interface:</strong> Designed for simplicity, with added controls like Pause/Resume and Speak Selected Text for enhanced usability.</li>
+                <li><strong>PDF-Focused:</strong> Optimized for extracting text from PDF documents efficiently.</li>
+                <li><strong>Privacy by Design:</strong> Client-side processing ensures your documents stay on your device.</li>
+                <li><strong>Customizable Experience:</strong> Remembers your preferred voice and playback settings.</li>
+            </ul>
+
+            <h3>7. Comparison with Other Popular Tools</h3>
+            <p>How does our tool stack up?</p>
+            <ul>
+                <li><strong>NaturalReader, Speechify:</strong> These are powerful, often premium tools. Our converter offers core PDF-to-speech for free with unique client-side benefits like "Speak Selected Text" and strong privacy.</li>
+                <li><strong>Adobe Acrobat Reader (Read Out Loud):</strong> Integrated but less flexible. Our tool provides more voice/speed control, page selection, text preview, and a best-effort download.</li>
+                <li><strong>General Online TTS:</strong> Many require copy-pasting text. We handle PDF files directly and offer PDF-specific features like page ranging.</li>
+            </ul>
+            <p>Our converter excels in providing a free, private, and feature-rich client-side solution for listening to PDFs.</p>
+
+            <h3>8. Supported Languages and Formats</h3>
+            <ul>
+                <li><strong>PDF Document Language Support:</strong> Extracts text from PDFs in many languages if text is encoded.</li>
+                <li><strong>Text-to-Speech Language Support:</strong> Voice availability depends on your browser/OS.</li>
+                <li><strong>Input Format:</strong> .PDF.</li>
+                <li><strong>Output Audio Format (Best Effort Download):</strong> WebM or OGG.</li>
+            </ul>
+
+            <h3>9. Voice Customization Features</h3>
+            <p>Personalize your listening experience with:</p>
+            <ul>
+                <li><strong>Voice Selection:</strong> Male/female voices, various languages/accents (system-dependent).</li>
+                <li><strong>Speech Rate (Speed):</strong> Adjustable from 0.5x to 2x.</li>
+                <li><strong>Pitch Control:</strong> Modify voice pitch (0 to 2).</li>
+                <li><strong>Persistent Settings:</strong> Your choices for voice, speed, and pitch are saved locally for convenience.</li>
+            </ul>
+
+            <h3>10. Security & Privacy Policy</h3>
+            <p>Your privacy is paramount:</p>
+            <ul>
+                <li><strong>Client-Side Processing:</strong> All operations happen in your browser.</li>
+                <li><strong>No Server Uploads/Storage:</strong> PDFs and audio are not sent to or stored on our servers.</li>
+                <li><strong>HTTPS Recommended:</strong> If hosted, use HTTPS for secure connection.</li>
+            </ul>
+
+            <h3>11. Frequently Asked Questions (FAQs)</h3>
+            <dl>
+                <dt><strong>1. Is this PDF to Audio Converter free?</strong></dt>
+                <dd>Yes, all core features are completely free.</dd>
+                <dt><strong>2. Can I pause and resume the audio?</strong></dt>
+                <dd>Yes, "Pause" and "Resume" buttons are available once speech starts for the full text.</dd>
+                <dt><strong>3. What is "Speak Selected Text"?</strong></dt>
+                <dd>After text is extracted, you can select a portion in the preview box and click "Speak Selected" to hear only that part.</dd>
+                <dt><strong>4. How reliable is the "Download Audio" feature?</strong></dt>
+                <dd>It's a "best effort" client-side feature. Due to browser limitations in capturing synthesized speech, the downloaded file might sometimes be silent or have imperfect quality. It works better on some browsers than others.</dd>
+                <dt><strong>5. Are my voice and speed settings saved?</strong></dt>
+                <dd>Yes, your last used voice, speed, and pitch settings are saved in your browser's local storage for your next session.</dd>
+                <dt><strong>6. What if the PDF is very long?</strong></dt>
+                <dd>The tool will show a progress indicator during text extraction. For speech, very long texts (e.g., over 30,000 characters) might be interrupted by the browser. Use the page range feature or "Speak Selected Text" for smaller chunks.</dd>
+                 <dt><strong>7. What does the "Reset Tool" button do?</strong></dt>
+                <dd>It clears the uploaded PDF file, any extracted text, stops any audio, and resets all settings to their defaults, allowing you to start fresh.</dd>
+                <dt><strong>8. Can I convert scanned PDF (image-based) to audio?</strong></dt>
+                <dd>This tool primarily works with text-based PDFs. If your PDF is an image scan without embedded text (OCR layer), it cannot extract text directly. You would need an OCR (Optical Character Recognition) tool first to convert the scanned PDF to a text-searchable PDF.</dd>
+                <dt><strong>9. Are my PDF files and data safe?</strong></dt>
+                <dd>Absolutely. All processing is done locally in your browser. Your files are not uploaded or stored on our servers.</dd>
+                <dt><strong>10. Why are some voices or languages not available in the selection?</strong></dt>
+                <dd>The list of available voices and languages is determined by what's installed and supported on your specific operating system and browser.</dd>
+            </dl>
+
+            <h3>12. Troubleshooting Common Issues</h3>
+            <ul>
+                <li><strong>Problem: No audio / "Convert" button unresponsive.</strong>
+                    <ul><li>Solution: Check sound, browser permissions. Refresh. Ensure voices loaded (voice select enabled). Select a file. Check console (F12) for errors.</li></ul>
+                </li>
+                <li><strong>Problem: Speech error "interrupted".</strong>
+                    <ul><li>Solution: Text might be too long for browser TTS. Use page ranges or "Speak Selected Text" for smaller segments. The tool attempts to `cancel()` previous speech, but browser limits apply.</li></ul>
+                </li>
+                <li><strong>Problem: Downloaded audio is silent.</strong>
+                    <ul><li>Solution: This is a known limitation of client-side speech capture. The `MediaRecorder` may not be able to capture the audio synthesized by the browser. Try a different browser (Chrome/Edge sometimes fare better). For reliable downloads, server-side TTS is often needed.</li></ul>
+                </li>
+                <li><strong>Problem: "Speak Selected Text" button is disabled.</strong>
+                    <ul><li>Solution: This button enables only after text has been successfully extracted into the preview box and some text is actually selected. Ensure a PDF has been processed.</li></ul>
+                </li>
+                <li><strong>Problem: Pause/Resume not working as expected.</strong>
+                    <ul><li>Solution: Browser support for `speechSynthesis.pause()` and `resume()` can vary. Ensure your browser is up to date. If it still misbehaves, using "Stop All Audio" and then "Speak Selected Text" for a section might be a workaround.</li></ul>
+                </li>
+                 <li><strong>Problem: Text extraction is poor or garbled / "No text found" error.</strong>
+                    <ul><li>Solution: The PDF might be image-based (scanned without OCR), use unsupported fonts, or have very complex formatting. Ensure your PDF is text-selectable.</li></ul>
+                </li>
+                 <li><strong>Problem: Voice selection list is empty or `ConvertToAudioBtn` is disabled.</strong>
+                    <ul><li>Solution: This means `SpeechSynthesis` voices didn't load correctly or aren't supported by your browser/OS. Try updating your browser or using a different one. The "Convert to Audio" button enables once voices are loaded AND a file is selected.</li></ul>
+                </li>
+            </ul>
+
+            <h3>13. Conclusion and Call to Action</h3>
+            <p>Elevate your document interaction with our enhanced <strong>PDF to Audio Converter</strong>. With features like "Speak Selected Text," pause/resume functionality, and persistent user settings, alongside core TTS capabilities, this tool offers unparalleled flexibility for free. Access information your way, improve productivity, and make reading more accessible.</p>
+            <p><strong>Ready to explore these powerful new features?</strong></p>
+            <a href="#pdf-to-audio-tool" class="cta-button">Try the Advanced PDF to Audio Converter Now!</a>
+            <p style="margin-top:15px;">Bookmark this page and share this versatile tool with anyone who could benefit from a smarter way to listen to PDF content!</p>
+
+            <section class="share-section">
+                <h3>Share This Tool!</h3>
+                <div class="share-icons">
+                    <a id="shareWhatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/512px-WhatsApp.svg.png" alt="WhatsApp">
+                    </a>
+                    <a id="shareFacebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                    </a>
+                    <a id="shareTelegram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+                    </a>
+                     <a id="shareTwitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter">
+                    </a>
+                </div>
+            </section>
+        </article>
+    </div>
+
+    <script>
+    // --- DOM Elements ---
+    const pdfFileEl = document.getElementById('pdfFile');
+    const dropZoneEl = document.getElementById('dropZone');
+    const fileNameDisplayEl = document.getElementById('fileNameDisplay');
+    const resetToolBtnEl = document.getElementById('resetToolBtn');
+    const pageRangeInputEl = document.getElementById('pageRange');
+    const voiceSelectEl = document.getElementById('voiceSelect');
+    const speedControlEl = document.getElementById('speedControl');
+    const speedValueEl = document.getElementById('speedValue');
+    const pitchControlEl = document.getElementById('pitchControl');
+    const pitchValueEl = document.getElementById('pitchValue');
+    const convertToAudioBtnEl = document.getElementById('convertToAudioBtn');
+    const speakSelectedBtnEl = document.getElementById('speakSelectedBtn');
+    const pauseBtnEl = document.getElementById('pauseBtn');
+    const resumeBtnEl = document.getElementById('resumeBtn');
+    const stopAudioBtnEl = document.getElementById('stopAudioBtn');
+    const downloadAudioBtnEl = document.getElementById('downloadAudioBtn');
+    const downloadHintEl = document.getElementById('downloadHint');
+    const loaderEl = document.getElementById('loader');
+    const progressTextEl = document.getElementById('progressText');
+    const statusMessageEl = document.getElementById('statusMessage');
+    const textPreviewSectionEl = document.getElementById('textPreviewSection');
+    const textPreviewEl = document.getElementById('textPreview');
+    const toggleDarkModeBtnEl = document.getElementById('toggleDarkMode');
+    const toggleFontSizeBtnEl = document.getElementById('toggleFontSize');
+
+    // --- State Variables ---
+    let currentFontSizeState = 0;
+    const fontSizes = ['var(--font-size-normal)', 'var(--font-size-large)', 'var(--font-size-xlarge)'];
+    let speechSynthesis = window.speechSynthesis;
+    let currentMainUtterance = null; // For full text playback
+    let audioChunks = [];
+    let mediaRecorderInstance;
+    let extractedFullTextContent = "";
+    let audioBlobForDownload = null;
+    let audioContextForRecording;
+    let originalPdfFileName = "";
+
+    // --- Initialization and UI Setup ---
+    function applyStoredSettings() {
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            toggleDarkModeBtnEl.textContent = '☀️ Light Mode';
+        }
+        if (localStorage.getItem('fontSizeState')) {
+            currentFontSizeState = parseInt(localStorage.getItem('fontSizeState'));
+            document.body.style.fontSize = fontSizes[currentFontSizeState];
+        }
+        // TTS settings applied after voices load
+    }
+
+    function showStatus(message, type = "success") {
+        statusMessageEl.textContent = message;
+        statusMessageEl.classList.remove('status-success', 'status-error', 'status-warning');
+        if (type) statusMessageEl.classList.add(`status-${type}`);
+        statusMessageEl.style.display = message ? 'block' : 'none';
+    }
+    
+    function updateTTSButtonStates() {
+        const speaking = speechSynthesis && speechSynthesis.speaking;
+        const pending = speechSynthesis && speechSynthesis.pending;
+        const paused = speechSynthesis && speechSynthesis.paused;
+
+        pauseBtnEl.style.display = speaking && !paused ? 'inline-block' : 'none';
+        resumeBtnEl.style.display = paused ? 'inline-block' : 'none';
+        stopAudioBtnEl.style.display = speaking || pending ? 'inline-block' : 'none';
+
+        convertToAudioBtnEl.disabled = speaking || pending || (pdfFileEl.files.length === 0) || voiceSelectEl.disabled;
+        
+        const selectedTextLength = textPreviewEl.selectionEnd - textPreviewEl.selectionStart;
+        speakSelectedBtnEl.disabled = speaking || pending || !textPreviewEl.value.trim() || selectedTextLength === 0;
+    }
+
+    function populateVoiceList() {
+        if (!speechSynthesis) {
+            showStatus("Speech Synthesis API not supported.", "error");
+            [voiceSelectEl, convertToAudioBtnEl, speakSelectedBtnEl].forEach(el => el.disabled = true);
+            return;
+        }
+        const voices = speechSynthesis.getVoices();
+        if (voices.length === 0) {
+            if (speechSynthesis.onvoiceschanged === undefined) showStatus("No speech voices found.", "error");
+            return; // onvoiceschanged will call this
+        }
+        voiceSelectEl.innerHTML = '';
+        const storedVoiceName = localStorage.getItem('ttsVoiceName');
+        let voiceFound = false;
+        voices.forEach(voice => {
+            const option = document.createElement('option');
+            option.textContent = `${voice.name} (${voice.lang})`;
+            option.value = voice.name;
+            if (voice.name === storedVoiceName) {
+                option.selected = true;
+                voiceFound = true;
+            }
+            voiceSelectEl.appendChild(option);
+        });
+        if (!voiceFound && voiceSelectEl.options.length > 0) voiceSelectEl.options[0].selected = true;
+        
+        voiceSelectEl.disabled = false;
+        convertToAudioBtnEl.disabled = (pdfFileEl.files.length === 0);
+        speakSelectedBtnEl.disabled = !textPreviewEl.value.trim();
+
+        speedControlEl.value = localStorage.getItem('ttsSpeed') || 1;
+        pitchControlEl.value = localStorage.getItem('ttsPitch') || 1;
+        speedValueEl.textContent = parseFloat(speedControlEl.value).toFixed(1);
+        pitchValueEl.textContent = parseFloat(pitchControlEl.value).toFixed(1);
+    }
+
+    // --- Event Listeners ---
+    toggleDarkModeBtnEl.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        toggleDarkModeBtnEl.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+    toggleFontSizeBtnEl.addEventListener('click', () => {
+        currentFontSizeState = (currentFontSizeState + 1) % fontSizes.length;
+        document.body.style.fontSize = fontSizes[currentFontSizeState];
+        localStorage.setItem('fontSizeState', currentFontSizeState);
+    });
+    
+    if (speechSynthesis) {
+        if (speechSynthesis.getVoices().length > 0) populateVoiceList();
+        else if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = populateVoiceList;
+        else populateVoiceList();
+    } else {
+        showStatus("Speech Synthesis API not supported.", "error");
+        [voiceSelectEl, convertToAudioBtnEl, speakSelectedBtnEl, pauseBtnEl, resumeBtnEl, stopAudioBtnEl].forEach(btn => btn.disabled = true);
+    }
+
+    voiceSelectEl.addEventListener('change', () => localStorage.setItem('ttsVoiceName', voiceSelectEl.value));
+    speedControlEl.addEventListener('input', () => {
+        speedValueEl.textContent = parseFloat(speedControlEl.value).toFixed(1);
+        localStorage.setItem('ttsSpeed', speedControlEl.value);
+    });
+    pitchControlEl.addEventListener('input', () => {
+        pitchValueEl.textContent = parseFloat(pitchControlEl.value).toFixed(1);
+        localStorage.setItem('ttsPitch', pitchControlEl.value);
+    });
+
+    dropZoneEl.addEventListener('click', () => pdfFileEl.click());
+    dropZoneEl.addEventListener('dragover', (e) => { e.preventDefault(); dropZoneEl.classList.add('hover'); });
+    dropZoneEl.addEventListener('dragleave', () => dropZoneEl.classList.remove('hover'));
+    dropZoneEl.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZoneEl.classList.remove('hover');
+        if (e.dataTransfer.files.length > 0 && e.dataTransfer.files[0].type === "application/pdf") {
+            handleFile(e.dataTransfer.files[0]);
+        } else {
+            showStatus("Please drop a PDF file.", "error");
+        }
+    });
+    pdfFileEl.addEventListener('change', (e) => { if (e.target.files.length > 0) handleFile(e.target.files[0]); });
+    resetToolBtnEl.addEventListener('click', resetTool);
+
+    convertToAudioBtnEl.addEventListener('click', async () => {
+        if (!pdfFileEl.files || pdfFileEl.files.length === 0) {
+            showStatus("Please select a PDF file first.", "error"); return;
+        }
+        stopAllAudio();
+
+        const file = pdfFileEl.files[0];
+        if (file.size > 10 * 1024 * 1024) {
+             showStatus("File is too large (max 10MB).", "error"); return;
+        }
+
+        loaderEl.style.display = 'block';
+        progressTextEl.textContent = 'Extracting text...';
+        textPreviewSectionEl.style.display = 'none';
+        downloadAudioBtnEl.style.display = 'none';
+        downloadHintEl.style.display = 'none';
+        convertToAudioBtnEl.disabled = true;
+        speakSelectedBtnEl.disabled = true;
+        audioBlobForDownload = null;
+
+        try {
+            extractedFullTextContent = await extractTextFromPdf(file, pageRangeInputEl.value);
+            if (!extractedFullTextContent) {
+                 showStatus("Failed to extract text. Check page range or PDF content.", "error");
+                 resetAfterProcessingError(); return;
+            }
+            if (!extractedFullTextContent.trim()) {
+                showStatus("No text found in PDF or selected pages.", "error");
+                resetAfterProcessingError(); return;
+            }
+
+            textPreviewEl.value = extractedFullTextContent;
+            textPreviewSectionEl.style.display = 'block';
+            speakSelectedBtnEl.disabled = false;
+
+            if (extractedFullTextContent.length > 32000) {
+                showStatus("Warning: Text is very long. Speech might be slow or interrupted. Consider page ranges or 'Speak Selected'.", "warning");
+            } else {
+                showStatus("Text extracted. Preparing to speak...", "success");
+            }
+            
+            progressTextEl.textContent = 'Preparing audio...';
+            speakText(extractedFullTextContent, true); // true to attempt recording
+        } catch (error) {
+            showStatus("Error during PDF processing: " + error, "error");
+            resetAfterProcessingError();
+        }
+    });
+
+    speakSelectedBtnEl.addEventListener('click', () => {
+        const selectedText = textPreviewEl.value.substring(textPreviewEl.selectionStart, textPreviewEl.selectionEnd);
+        if (!selectedText.trim()) {
+            showStatus("No text selected in the preview.", "warning");
+            return;
+        }
+        stopAllAudio();
+        speakText(selectedText, false); // false = don't attempt to record selected snippets
+    });
+
+    pauseBtnEl.addEventListener('click', () => {
+        if (speechSynthesis && speechSynthesis.speaking && !speechSynthesis.paused) {
+            speechSynthesis.pause();
+        }
+        updateTTSButtonStates();
+    });
+    resumeBtnEl.addEventListener('click', () => {
+        if (speechSynthesis && speechSynthesis.paused) {
+            speechSynthesis.resume();
+        }
+        updateTTSButtonStates();
+    });
+    stopAudioBtnEl.addEventListener('click', stopAllAudio);
+    
+    downloadAudioBtnEl.addEventListener('click', () => {
+        if (audioBlobForDownload) {
+            const url = URL.createObjectURL(audioBlobForDownload);
+            const a = document.createElement('a');
+            document.body.appendChild(a);
+            a.style.display = 'none';
+            a.href = url;
+            
+            let filename = "audio_from_pdf.webm"; // Default
+            if(originalPdfFileName) {
+                const nameWithoutExt = originalPdfFileName.substring(0, originalPdfFileName.lastIndexOf('.')) || originalPdfFileName;
+                filename = `${nameWithoutExt.replace(/[^a-z0-9_.-]/gi, '_')}_audio.webm`; // Sanitize and keep extension
+            }
+            if (audioBlobForDownload.type) {
+                 if (audioBlobForDownload.type.includes("ogg")) filename = filename.replace(/\.webm$/, '.ogg');
+                 else if (audioBlobForDownload.type.includes("mp4")) filename = filename.replace(/\.webm$/, '.mp4');
+            }
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            a.remove();
+        } else {
+            showStatus("No audio available for download. Try converting again.", "error");
+        }
+    });
+
+    textPreviewEl.addEventListener('select', updateTTSButtonStates); // Update speak selected btn on text selection
+
+    // --- Core Logic Functions ---
+    function handleFile(file) {
+        originalPdfFileName = file.name;
+        fileNameDisplayEl.textContent = `Selected file: ${originalPdfFileName}`;
+        resetToolBtnEl.style.display = 'inline-block';
+        if (!voiceSelectEl.disabled) convertToAudioBtnEl.disabled = false;
+        showStatus("File selected. Configure options and click 'Convert & Play'.", "success");
+        textPreviewSectionEl.style.display = 'none';
+        textPreviewEl.value = '';
+        extractedFullTextContent = '';
+        audioBlobForDownload = null;
+        downloadAudioBtnEl.style.display = 'none';
+        downloadHintEl.style.display = 'none';
+    }
+
+    function resetTool() {
+        stopAllAudio();
+        pdfFileEl.value = '';
+        fileNameDisplayEl.textContent = '';
+        originalPdfFileName = '';
+        pageRangeInputEl.value = '';
+        textPreviewEl.value = '';
+        extractedFullTextContent = '';
+        textPreviewSectionEl.style.display = 'none';
+        convertToAudioBtnEl.disabled = true;
+        speakSelectedBtnEl.disabled = true;
+        resetToolBtnEl.style.display = 'none';
+        downloadAudioBtnEl.style.display = 'none';
+        downloadHintEl.style.display = 'none';
+        audioBlobForDownload = null;
+        loaderEl.style.display = 'none';
+        progressTextEl.textContent = '';
+        showStatus("Tool reset. Please upload a new PDF.", "success");
+    }
+    
+    function resetAfterProcessingError() {
+        loaderEl.style.display = 'none';
+        progressTextEl.textContent = '';
+        convertToAudioBtnEl.disabled = (pdfFileEl.files.length === 0 || voiceSelectEl.disabled);
+        speakSelectedBtnEl.disabled = true; // No text to speak
+    }
+
+    async function extractTextFromPdf(file, pageRangesStr) {
+        return new Promise(async (resolve, reject) => { // Made outer function async
+            const reader = new FileReader();
+            reader.onload = async (event) => {
+                try {
+                    const pdfData = new Uint8Array(event.target.result);
+                    const pdfDoc = await pdfjsLib.getDocument({ data: pdfData }).promise;
+                    const numPages = pdfDoc.numPages;
+                    let fullText = "";
+
+                    const pagesToProcess = parsePageRanges(pageRangesStr, numPages);
+                    if (!pagesToProcess) { reject("Invalid page range format."); return; }
+
+                    for (let i = 0; i < pagesToProcess.length; i++) {
+                        const pageNum = pagesToProcess[i];
+                        if (pageNum > numPages) continue;
+                        const page = await pdfDoc.getPage(pageNum);
+                        const textContent = await page.getTextContent();
+                        textContent.items.forEach(item => { fullText += item.str + " "; });
+                        fullText += "\n";
+                        progressTextEl.textContent = `Extracting: ${Math.round(((i + 1) / pagesToProcess.length) * 100)}%`;
+                        await new Promise(r => setTimeout(r, 0)); // Allow UI repaint
+                    }
+                    resolve(fullText);
+                } catch (error) { reject("PDF processing error: " + error.message); }
+            };
+            reader.onerror = (error) => reject("File reading error: " + error);
+            reader.readAsArrayBuffer(file);
+        });
+    }
+
+    function parsePageRanges(rangesStr, totalPages) {
+        if (!rangesStr || rangesStr.trim() === "") {
+            return Array.from({ length: totalPages }, (_, i) => i + 1);
+        }
+        const pages = new Set();
+        const parts = rangesStr.split(',');
+        for (const part of parts) {
+            const trimmedPart = part.trim();
+            if (trimmedPart.includes('-')) {
+                const [startStr, endStr] = trimmedPart.split('-');
+                const start = parseInt(startStr.trim());
+                const end = parseInt(endStr.trim());
+                if (isNaN(start) || isNaN(end) || start < 1 || end > totalPages || start > end) return null;
+                for (let i = start; i <= end; i++) pages.add(i);
+            } else {
+                const pageNum = parseInt(trimmedPart);
+                if (isNaN(pageNum) || pageNum < 1 || pageNum > totalPages) return null;
+                pages.add(pageNum);
+            }
+        }
+        return pages.size > 0 ? Array.from(pages).sort((a, b) => a - b) : null;
+    }
+    
+    function stopAllAudio() {
+        if (speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) {
+            speechSynthesis.cancel(); // This should trigger onend/onerror of currentMainUtterance
+        }
+        if (mediaRecorderInstance && mediaRecorderInstance.state === "recording") {
+            mediaRecorderInstance.stop(); // This will trigger recorder's onstop
+        }
+        // Reset button states. onend/onerror will also call updateTTSButtonStates.
+        currentMainUtterance = null; // Clear the reference
+        setTimeout(updateTTSButtonStates, 50); // Brief delay for events to settle
+    }
+
+    function speakText(textToSpeak, attemptRecord = false) {
+        if (!speechSynthesis) { showStatus("Speech Synthesis not supported.", "error"); return; }
+        stopAllAudio(); // Ensure everything is stopped first
+
+        currentMainUtterance = new SpeechSynthesisUtterance(textToSpeak);
+        const selectedVoiceName = voiceSelectEl.value;
+        if (selectedVoiceName && speechSynthesis.getVoices().length > 0) {
+            currentMainUtterance.voice = speechSynthesis.getVoices().find(v => v.name === selectedVoiceName);
+        }
+        currentMainUtterance.rate = parseFloat(speedControlEl.value);
+        currentMainUtterance.pitch = parseFloat(pitchControlEl.value);
+        currentMainUtterance.onboundary = updateTTSButtonStates; // Update during speech if needed
+
+        audioChunks = []; // Reset for new recording attempt
+        audioBlobForDownload = null; // Reset blob
+        downloadAudioBtnEl.style.display = 'none'; // Hide until ready
+        downloadHintEl.style.display = 'none';
+
+
+        if (attemptRecord) {
+            if (!audioContextForRecording || audioContextForRecording.state === 'closed') {
+                audioContextForRecording = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            const mediaStreamDestination = audioContextForRecording.createMediaStreamDestination();
+            try {
+                let mimeType = '';
+                if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) mimeType = 'audio/webm;codecs=opus';
+                else if (MediaRecorder.isTypeSupported('audio/ogg;codecs=opus')) mimeType = 'audio/ogg;codecs=opus';
+                else if (MediaRecorder.isTypeSupported('audio/webm')) mimeType = 'audio/webm';
+                mediaRecorderInstance = new MediaRecorder(mediaStreamDestination.stream, mimeType ? { mimeType } : undefined);
+            } catch (e) { mediaRecorderInstance = null; }
+
+            if (mediaRecorderInstance) {
+                mediaRecorderInstance.ondataavailable = (event) => { if (event.data.size > 0) audioChunks.push(event.data); };
+                mediaRecorderInstance.onstop = () => {
+                    if (audioChunks.length > 0) {
+                        audioBlobForDownload = new Blob(audioChunks, { type: mediaRecorderInstance.mimeType || 'audio/webm' });
+                        downloadAudioBtnEl.style.display = 'inline-block';
+                        downloadHintEl.style.display = 'block';
+                        if(!speechSynthesis.speaking && !speechSynthesis.pending) showStatus("Speech finished. Audio ready for download.", "success");
+                    } else {
+                        downloadAudioBtnEl.style.display = 'none';
+                        downloadHintEl.style.display = 'none';
+                         if(!speechSynthesis.speaking && !speechSynthesis.pending) showStatus("Speech finished, but no audio captured for download.", "warning");
+                    }
+                    updateTTSButtonStates();
+                };
+                try { mediaRecorderInstance.start(); }
+                catch (e) {
+                    console.error("MediaRecorder.start() failed:", e);
+                    showStatus("Audio recording for download failed to start.", "error");
+                    mediaRecorderInstance = null;
+                }
+            }
+        } else { // Not attempting to record (e.g. speak selected)
+            mediaRecorderInstance = null;
+            downloadAudioBtnEl.style.display = 'none';
+            downloadHintEl.style.display = 'none';
+        }
+
+        currentMainUtterance.onstart = () => {
+            loaderEl.style.display = 'none';
+            progressTextEl.textContent = '';
+            showStatus("Playing audio...", "success");
+            updateTTSButtonStates();
+        };
+        currentMainUtterance.onpause = updateTTSButtonStates;
+        currentMainUtterance.onresume = updateTTSButtonStates;
+        currentMainUtterance.onend = () => {
+            currentMainUtterance = null; // Clear current utterance
+            if (mediaRecorderInstance && mediaRecorderInstance.state === "recording") {
+                mediaRecorderInstance.stop(); // Triggers recorder's onstop
+            } else {
+                 // If not recording or recorder already stopped
+                if (!attemptRecord) showStatus("Finished speaking selected text.", "success");
+                // else status is handled by recorder.onstop
+            }
+            updateTTSButtonStates();
+        };
+        currentMainUtterance.onerror = (event) => {
+            console.error("Speech error:", event);
+            showStatus(`Speech error: ${event.error}. Try shorter text or different voice.`, "error");
+            if (mediaRecorderInstance && mediaRecorderInstance.state === "recording") mediaRecorderInstance.stop();
+            currentMainUtterance = null;
+            updateTTSButtonStates();
+        };
+        
+        speechSynthesis.speak(currentMainUtterance);
+        updateTTSButtonStates();
+    }
+
+    // --- Initial Page Setup ---
+    applyStoredSettings();
+    updateTTSButtonStates();
+
+    function updateShareLinks() {
+        const toolUrl = window.location.href; // Or your deployed URL
+        const shareText = "Check out this Advanced PDF to Audio Converter!";
+        document.getElementById('shareWhatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + " " + toolUrl)}`;
+        document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(toolUrl)}`;
+        document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${encodeURIComponent(toolUrl)}&text=${encodeURIComponent(shareText)}`;
+        document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(toolUrl)}&text=${encodeURIComponent(shareText)}`;
+    }
+    updateShareLinks();
+
+    if (typeof pdfjsLib === 'undefined') {
+        showStatus("Error: PDF library failed to load. Refresh page or check connection.", "error");
+        convertToAudioBtnEl.disabled = true;
+    }
+    </script>
+</body>
+</html>

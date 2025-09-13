@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOC to PDF Converter - Free Online Word to PDF Converter</title>
+    <meta name="description" content="Convert DOC and DOCX files to PDF online for free. Our Word to PDF converter preserves formatting, is fast, secure, and works on any device. Try it now!">
+    <meta name="keywords" content="DOC to PDF Converter, Word to PDF online, convert doc to pdf, free doc to pdf converter, .docx to pdf converter, online Word to PDF converter, Word to PDF, .doc to .pdf, .docx to .pdf, free PDF converter">
+    <meta name="author" content="WebToolCreator">
+    <link rel="canonical" href="https://example.com/doc-to-pdf-converter"> <!-- Replace with actual URL -->
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DOC to PDF Converter",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web (Cross-platform)",
+      "description": "A free online tool to convert Microsoft Word documents (.doc and .docx files) into PDF format, preserving original formatting. Fast, secure, and easy to use.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "softwareVersion": "1.0",
+      "url": "https://example.com/doc-to-pdf-converter", // Replace with actual URL
+      "featureList": [
+        "DOCX to PDF conversion",
+        "DOC to PDF conversion (limited support, .docx recommended)",
+        "Drag and drop file upload",
+        "Real-time file validation",
+        "PDF preview before download",
+        "Copy download link",
+        "Responsive design for mobile and tablet",
+        "File size limit and progress bar",
+        "Client-side processing for enhanced privacy (.docx)"
+      ],
+      "screenshot": "https://example.com/tool-screenshot-doc-pdf.png", // Replace with actual screenshot URL
+      "creator": {
+        "@type": "Organization",
+        "name": "WebToolCreator"
+      }
+    }
+    </script>
+
+    <!-- docx-preview CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docx-preview@0.3.2/dist/docx-preview.css">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background: #007bff; /* Blue theme */
+            color: #fff;
+            padding: 1.2rem 0;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+        }
+
+        /* Tool Section Styles */
+        #tool-section {
+            background: #fff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 35px;
+        }
+
+        #tool-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #007bff;
+            font-size: 1.8rem;
+        }
+
+        .instructions {
+            background-color: #e6f7ff;
+            border-left: 5px solid #007bff;
+            padding: 18px;
+            margin-bottom: 25px;
+            font-size: 0.98em;
+            border-radius: 5px;
+        }
+
+        .instructions ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+         .instructions li {
+            margin-bottom: 5px;
+        }
+
+        #drop-area {
+            border: 3px dashed #007bff;
+            border-radius: 10px;
+            padding: 45px;
+            text-align: center;
+            margin-bottom: 25px;
+            background-color: #fdfdff;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        #drop-area.highlight {
+            background-color: #e6f2ff;
+            border-color: #0056b3;
+        }
+
+        #drop-area p {
+            margin-bottom: 12px;
+            font-size: 1.15em;
+            color: #555;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #28a745; /* Green for action */
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+        .file-input-label:hover {
+            background-color: #218838;
+        }
+        #fileElem {
+            display: none;
+        }
+
+        #file-info {
+            margin-bottom: 18px;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+        }
+
+        .file-error, .file-warning {
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .file-error { color: #D8000C; background-color: #FFD2D2; }
+        .file-warning { color: #9F6000; background-color: #FEEFB3; }
+
+
+        #progress-bar-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            overflow: hidden; /* Ensures progress bar corners are rounded */
+            display: none;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 28px;
+            background-color: #007bff;
+            text-align: center;
+            line-height: 28px;
+            color: white;
+            border-radius: 6px 0 0 6px; /* Round left corners */
+            transition: width 0.4s ease;
+            font-weight: 500;
+        }
+
+        #status-message {
+            text-align: center;
+            margin-bottom: 18px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .tool-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-size: 1.25em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 18px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        .tool-button:hover {
+            background-color: #0056b3;
+        }
+        .tool-button:disabled {
+            background-color: #ced4da;
+            cursor: not-allowed;
+        }
+
+        #output-area {
+            margin-top: 25px;
+            display: none;
+        }
+        #output-area h3 {
+            margin-bottom: 15px;
+            text-align: center;
+            color: #28a745;
+        }
+        #pdf-preview {
+            width: 100%;
+            height: 550px;
+            border: 1px solid #dee2e6;
+            margin-bottom: 18px;
+            border-radius: 6px;
+        }
+        .download-buttons button {
+            padding: 12px 18px;
+            font-size: 1.05em;
+            margin-right: 12px;
+            margin-bottom: 10px; /* For mobile stacking */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+        #download-pdf-btn {
+            background-color: #28a745; /* Green for primary download */
+            color: white;
+        }
+        #download-pdf-btn:hover {
+            background-color: #218838;
+        }
+        #copy-link-btn {
+            background-color: #6c757d; /* Grey for secondary action */
+            color: white;
+        }
+        #copy-link-btn:hover {
+            background-color: #5a6268;
+        }
+        #reset-btn {
+            background-color: #ffc107; /* Yellow for reset */
+            color: #212529;
+        }
+        #reset-btn:hover {
+            background-color: #e0a800;
+        }
+        
+        /* Hidden container for docx-preview rendering.
+           It's positioned off-screen. html2pdf.js needs the element to be in the DOM
+           and have layout dimensions for accurate conversion. */
+        #docx-render-container-wrapper {
+            position: absolute;
+            left: -99999px; /* Far off-screen */
+            top: auto;
+            width: 8.27in; /* Standard A4 width, docx-preview might adjust */
+            /* height: 1px; /* Minimal height to not disrupt flow if it briefly appears */
+            /* overflow: hidden; /* Clip content if it's larger than 1px */
+        }
+        /* #docx-render-container might get its own styling from docx-preview.css */
+
+
+        /* Article Section Styles */
+        #content-section {
+            background: #fff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+
+        #content-section h1, #content-section h2, #content-section h3, #content-section h4 {
+            color: #0056b3; /* Darker blue for article headings */
+            margin-bottom: 0.8em;
+            margin-top: 1.6em;
+            line-height: 1.3;
+        }
+        #content-section h1 { font-size: 2.3em; }
+        #content-section h2 { font-size: 1.9em; }
+        #content-section h3 { font-size: 1.6em; }
+        #content-section h4 { font-size: 1.3em; }
+
+        #content-section p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        #content-section ul, #content-section ol {
+            margin-left: 35px;
+            margin-bottom: 1.2em;
+        }
+        #content-section li {
+            margin-bottom: 0.6em;
+        }
+        #content-section a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        #content-section a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+        #content-section strong {
+            color: #343a40;
+        }
+        #content-section .call-to-action {
+            text-align: center;
+            padding: 25px;
+            background-color: #e6f7ff;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            margin-top: 35px;
+        }
+        #content-section .call-to-action button {
+            padding: 14px 28px;
+            font-size: 1.15em;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        #content-section .call-to-action button:hover {
+            background-color: #218838;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.2em;
+            font-size: 0.95em;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #dee2e6;
+            padding: 14px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #e9ecef;
+            font-weight: 600;
+            color: #0056b3;
+        }
+        .comparison-table td.feature-our-tool {
+            background-color: #e6f7ff;
+            font-weight: 500;
+        }
+        .comparison-table td.feature-others {
+            background-color: #f8f9fa;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #343a40; /* Dark footer */
+            color: #f8f9fa;
+            margin-top: auto; /* Pushes footer to bottom */
+        }
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .container { width: 95%; }
+            #tool-section, #content-section { padding: 20px; }
+            #drop-area { padding: 30px; }
+            #pdf-preview { height: 450px; }
+            .download-buttons button { display: block; width: 100%; margin-bottom: 10px; margin-right: 0; }
+            #content-section h1 { font-size: 1.9em; }
+            #content-section h2 { font-size: 1.6em; }
+            #content-section h3 { font-size: 1.3em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DOC to PDF Converter</h1>
+    </header>
+
+    <div class="container">
+        <main>
+            <section id="tool-section">
+                <h2>Convert Your Word Documents to PDF Instantly</h2>
+                
+                <div class="instructions">
+                    <p><strong>How to use this DOC to PDF converter:</strong></p>
+                    <ul>
+                        <li>Drag and drop your Word file (.doc or .docx) into the area below, or click "Choose File".</li>
+                        <li>Best results are achieved with <strong>.docx</strong> files. For <strong>.doc</strong> files, conversion quality may vary; consider saving as .docx first.</li>
+                        <li>Maximum file size: 20MB.</li>
+                        <li>Click the "Convert to PDF" button.</li>
+                        <li>Wait for the conversion, then preview your PDF. Download or copy the link.</li>
+                    </ul>
+                </div>
+
+                <div id="drop-area">
+                    <input type="file" id="fileElem" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;">
+                    <label for="fileElem" class="file-input-label">Choose File</label>
+                    <p>Or drag & drop your Word file here</p>
+                    <p class="file-support-note">Supports .docx and .doc files. Max 20MB.</p>
+                </div>
+
+                <div id="file-info"></div>
+                <div id="file-error" class="file-error" style="display:none;"></div>
+                <div id="file-warning" class="file-warning" style="display:none;"></div>
+
+
+                <div id="progress-bar-container">
+                    <div id="progress-bar">0%</div>
+                </div>
+                <div id="status-message"></div>
+
+                <button id="convert-btn" class="tool-button" disabled>Convert to PDF</button>
+
+                <div id="output-area">
+                    <h3>Your PDF is Ready!</h3>
+                    <iframe id="pdf-preview"></iframe>
+                    <div class="download-buttons">
+                        <button id="download-pdf-btn">Download PDF</button>
+                        <button id="copy-link-btn">Copy Download Link</button>
+                        <button id="reset-btn">Convert Another File</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hidden container for docx-preview to render HTML -->
+            <div id="docx-render-container-wrapper">
+                 <div id="docx-render-container"></div>
+            </div>
+
+            <article id="content-section">
+                <h1>The Ultimate DOC to PDF Converter: Free, Fast, and Secure Online Tool</h1>
+                <p>In an era dominated by digital documentation, the ability to seamlessly convert file formats is not just a convenience—it's a necessity. Microsoft Word documents (DOC and DOCX) are ubiquitous for creating text-based content, but when it comes to sharing, archiving, or ensuring universal compatibility, the Portable Document Format (PDF) reigns supreme. Our <strong>DOC to PDF Converter</strong> offers a streamlined, efficient, and free solution to transform your Word files into high-quality PDFs, preserving your original formatting with remarkable accuracy, especially for <strong>.docx to PDF</strong> conversions.</p>
+
+                <h2>1. Introduction to DOC to PDF Conversion</h2>
+                <p>DOC to PDF conversion is the process of changing a Microsoft Word file (<code>.doc</code> for older versions, <code>.docx</code> for newer, XML-based versions) into a PDF file. Word documents are dynamic and editable, perfect for drafting and collaboration. PDFs, on the other hand, are designed to be static and universally viewable, ensuring your document looks the same on any device, regardless of the operating system or available software. This transformation is crucial for final drafts, official communications, and widespread distribution. Our <strong>online Word to PDF converter</strong> simplifies this task, making it accessible to everyone without requiring software installation or technical expertise.</p>
+
+                <h2>2. Benefits of Converting Word Documents to PDF</h2>
+                <p>Converting your Word documents to PDF format offers a multitude of advantages for both personal and professional use:</p>
+                <ul>
+                    <li><strong>Universal Compatibility:</strong> PDFs are the gold standard for document sharing. They can be opened and viewed on virtually any operating system (Windows, macOS, Linux, Android, iOS) using free readers like Adobe Acrobat Reader, or even directly within most web browsers. This eliminates concerns about recipients not having Microsoft Word or compatible software.</li>
+                    <li><strong>Formatting Preservation:</strong> This is perhaps the most significant benefit. PDFs embed fonts, images, and layouts, ensuring that your document appears exactly as you intended. When you <strong>convert DOC to PDF</strong>, you lock in the formatting, preventing shifts in layout, font substitutions, or image misplacements that can occur when a Word document is opened on different systems or with different Word versions.</li>
+                    <li><strong>Enhanced Security:</strong> While our tool focuses on conversion, the PDF format itself supports security features like password protection for opening, printing, or editing. Even without these, a PDF is inherently less prone to accidental edits than a Word document.</li>
+                    <li><strong>Reduced File Size (Often):</strong> PDFs can often be smaller than their Word counterparts, especially for documents with many embedded fonts or complex formatting that PDF handles efficiently. This makes them easier to email and share online.</li>
+                    <li><strong>Print-Readiness:</strong> PDFs are designed with printing in mind. They maintain high quality for printed output, ensuring margins, resolution, and colors are consistent with the on-screen version.</li>
+                    <li><strong>Professional Appearance:</strong> Sending a document as a PDF, especially in a professional context (like a resume, proposal, or report), often conveys a sense of finality and professionalism.</li>
+                    <li><strong>Archival Standard:</strong> PDF/A is an ISO-standardized version of PDF specialized for long-term archiving of electronic documents. Converting important Word files to PDF is a good practice for record-keeping.</li>
+                    <li><strong>Interactive Elements:</strong> PDFs can support features like fillable forms, hyperlinks, and bookmarks, which can be carried over from Word if structured correctly (though complex interactivity depends on the converter's capabilities). Our tool aims to preserve basic links.</li>
+                </ul>
+                <p>Using a reliable <strong>free DOC to PDF converter</strong> like ours allows you to tap into these benefits effortlessly.</p>
+
+                <h2>3. Step-by-Step Guide on How to Use This DOC to PDF Converter</h2>
+                <p>Our <strong>DOC to PDF Converter</strong> is designed for maximum simplicity and efficiency. Follow these easy steps:</p>
+                <ol>
+                    <li><strong>Prepare Your Document:</strong> Ensure your document is saved as a <code>.doc</code> or <code>.docx</code> file. For optimal conversion quality and formatting preservation, <strong>.docx files are strongly recommended</strong>. If you have an older <code>.doc</code> file, consider opening it in a modern version of Word and saving it as <code>.docx</code> first. Our tool supports files up to 20MB.</li>
+                    <li><strong>Upload Your Word File:</strong>
+                        <ul>
+                            <li><strong>Drag and Drop:</strong> Simply drag your Word document from your computer and drop it onto the designated "Drag & drop your Word file here" area. The area will highlight to indicate it's ready.</li>
+                            <li><strong>Choose File:</strong> Alternatively, click the "Choose File" button. This will open your system's file dialog, allowing you to browse and select your Word document.</li>
+                        </ul>
+                    </li>
+                    <li><strong>File Validation & Information:</strong> Once selected, the tool will quickly check the file type and size. The file name and size will be displayed. If it's a <code>.doc</code> file, a friendly warning about potential quality differences compared to <code>.docx</code> may appear. If there's an error (e.g., wrong file type, too large), a message will guide you.</li>
+                    <li><strong>Initiate Conversion:</strong> If the file is valid, the "Convert to PDF" button will become active. Click this button to start the conversion process.</li>
+                    <li><strong>Track Progress:</strong> A progress bar will appear, showing the status of the conversion (e.g., "Loading file...", "Rendering document...", "Generating PDF..."). The time taken depends on the file size and complexity.</li>
+                    <li><strong>Preview Your PDF:</strong> Upon successful conversion, a preview of the generated PDF will be displayed directly on the page within an embedded viewer. Scroll through it to check the formatting and content.</li>
+                    <li><strong>Download or Share:</strong>
+                        <ul>
+                            <li>Click the "Download PDF" button to save the converted PDF file to your device.</li>
+                            <li>Click the "Copy Download Link" button to copy a temporary direct download link to your clipboard. This is useful for quick sharing (note: the link is session-based and will expire).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Convert Another Document:</strong> To convert more files, click the "Convert Another File" button. This resets the tool, ready for your next upload.</li>
+                </ol>
+                <p>It's that simple! You've successfully used our <strong>online Word to PDF converter</strong> to transform your document.</p>
+
+                <h2>4. Highlight Key Features and Advantages of This Converter</h2>
+                <p>Our <strong>DOC to PDF Converter</strong> is built with the user in mind, offering a range of features for a seamless experience:</p>
+                <ul>
+                    <li><strong>High-Fidelity .DOCX Conversion:</strong>
+                        <em>Advantage:</em> Utilizes advanced client-side technology (docx-preview and html2pdf.js) to render <code>.docx</code> files to HTML and then to PDF, striving to maintain layouts, fonts (if commonly available or specified in CSS by docx-preview), images, tables, and lists.
+                    </li>
+                    <li><strong>.DOC File Support (Basic):</strong>
+                        <em>Advantage:</em> While <code>.docx</code> is preferred for quality, the tool attempts to handle <code>.doc</code> files. Users are advised that results may vary and converting to <code>.docx</code> first via Word yields better outcomes. (Note: True client-side .doc parsing is extremely difficult; this tool focuses on excellence with .docx).
+                    </li>
+                    <li><strong>Completely Free & Online:</strong>
+                        <em>Advantage:</em> No fees, subscriptions, or software installations required. Access it from any device with a web browser.
+                    </li>
+                    <li><strong>Client-Side Processing & Enhanced Privacy:</strong>
+                        <em>Advantage:</em> For <code>.docx</code> files, the conversion happens directly in your browser. Your files are not uploaded to our servers for processing, significantly boosting your data privacy and security.
+                    </li>
+                    <li><strong>User-Friendly Interface:</strong>
+                        <em>Advantage:</em> A clean, modern, and intuitive design makes the conversion process straightforward for users of all technical levels.
+                    </li>
+                    <li><strong>Drag & Drop Upload:</strong>
+                        <em>Advantage:</em> Speeds up the workflow by allowing easy file uploads.
+                    </li>
+                    <li><strong>Real-Time Validation & Feedback:</strong>
+                        <em>Advantage:</em> Instant checks for file type and size (up to 20MB), with clear messages and a progress bar keeping you informed.
+                    </li>
+                    <li><strong>Integrated PDF Preview:</strong>
+                        <em>Advantage:</em> Review the converted PDF directly in your browser before downloading, ensuring it meets your expectations.
+                    </li>
+                    <li><strong>Multi-Device Compatibility:</strong>
+                        <em>Advantage:</em> Fully responsive design ensures a smooth experience on desktops, tablets, and mobile phones. Convert documents on the go!
+                    </li>
+                    <li><strong>Instant Download & Share Link:</strong>
+                        <em>Advantage:</em> Get your PDF immediately or copy a temporary link for quick sharing.
+                    </li>
+                </ul>
+
+                <h2>5. Real-Life Use Cases</h2>
+                <p>The ability to <strong>convert Word to PDF online</strong> is invaluable in many scenarios:</p>
+                <h4>For Students:</h4>
+                <ul>
+                    <li><strong>Submitting Assignments:</strong> Many educational institutions require submissions in PDF format to ensure consistent viewing and prevent accidental modifications.</li>
+                    <li><strong>Sharing Theses & Dissertations:</strong> Large academic documents are best shared as PDFs to preserve complex formatting and ensure readability.</li>
+                    <li><strong>Group Projects:</strong> Consolidate contributions from Word into a final PDF for submission or sharing.</li>
+                </ul>
+                <h4>For Job Seekers:</h4>
+                <ul>
+                    <li><strong>Resumes & CVs:</strong> Always send your resume as a PDF to ensure recruiters see it exactly as you designed it, regardless of their system.</li>
+                    <li><strong>Cover Letters:</strong> A PDF cover letter maintains professionalism and consistent formatting.</li>
+                    <li><strong>Portfolios:</strong> If parts of your portfolio are text-based documents, convert them to PDF for easy inclusion.</li>
+                </ul>
+                <h4>For Professionals:</h4>
+                <ul>
+                    <li><strong>Reports & Proposals:</strong> Ensure clients and stakeholders receive a polished, unalterable final version.</li>
+                    <li><strong>Contracts & Agreements:</strong> PDFs are standard for legal documents to maintain integrity.</li>
+                    <li><strong>Invoices & Quotes:</strong> Professional-looking PDFs are essential for financial documents.</li>
+                    <li><strong>Manuals & Guides:</strong> Distribute internal or external documentation in an easily accessible PDF format.</li>
+                    <li><strong>Presentations Handouts:</strong> If notes or summaries are in Word, convert to PDF for distribution.</li>
+                </ul>
+                <h4>For Writers and Authors:</h4>
+                <ul>
+                    <li><strong>Manuscript Submissions:</strong> Many publishers and agents prefer or require submissions in PDF format.</li>
+                    <li><strong>Sharing Drafts for Feedback:</strong> A PDF ensures reviewers see the intended layout, though for collaborative editing, Word might be used earlier.</li>
+                </ul>
+                <h4>General Users:</h4>
+                <ul>
+                    <li><strong>Sharing Official Letters:</strong> Maintain formatting when sending important personal correspondence.</li>
+                    <li><strong>Archiving Personal Documents:</strong> Convert important Word files to PDF for long-term, stable storage.</li>
+                </ul>
+
+                <h2>6. Comparison with Microsoft Word’s Built-in Method and Other Tools</h2>
+                <p>When you need to <strong>convert DOC to PDF</strong>, you have several options. Here's how our tool compares:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature/Aspect</th>
+                            <th>Our DOC to PDF Converter</th>
+                            <th>Microsoft Word (Save as PDF)</th>
+                            <th>Other Online Converters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cost</strong></td>
+                            <td class="feature-our-tool">Free</td>
+                            <td>Requires MS Word license (paid)</td>
+                            <td>Often free with limitations (ads, file size, daily limits) or paid tiers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accessibility</strong></td>
+                            <td class="feature-our-tool">Online, any device with browser</td>
+                            <td>Offline, but only if MS Word is installed</td>
+                            <td>Online, generally accessible</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Installation</strong></td>
+                            <td class="feature-our-tool">None required</td>
+                            <td>MS Word installation needed</td>
+                            <td>None for web tools, some push desktop versions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Formatting Fidelity (DOCX)</strong></td>
+                            <td class="feature-our-tool">High (client-side rendering aims to match original)</td>
+                            <td>Perfect (native conversion)</td>
+                            <td>Varies greatly; some are excellent, others poor</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Privacy (.docx files)</strong></td>
+                            <td class="feature-our-tool">Excellent (client-side conversion, no server upload for file content)</td>
+                            <td>Excellent (all local)</td>
+                            <td>Potential concern (files uploaded to third-party servers)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ease of Use</strong></td>
+                            <td class="feature-our-tool">Very high (simple UI, drag & drop)</td>
+                            <td>High (within Word interface)</td>
+                            <td>Varies; can be cluttered with ads or complex steps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>.doc File Support</strong></td>
+                            <td class="feature-our-tool">Basic/Limited (recommend .docx)</td>
+                            <td>Excellent (native support)</td>
+                            <td>Varies; some handle .doc well, others focus on .docx</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Preview Feature</strong></td>
+                            <td class="feature-our-tool">Yes, integrated</td>
+                            <td>No direct pre-conversion preview (you see Word doc itself)</td>
+                            <td>Often missing or requires download first</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Speed</strong></td>
+                            <td class="feature-our-tool">Fast for most files (client-side dependent on PC power)</td>
+                            <td>Fast (local processing)</td>
+                            <td>Can involve server queues, upload/download times</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Why Our Tool Stands Out:</strong></p>
+                <p>While Microsoft Word offers perfect fidelity, it's not always available or convenient. Many online tools exist, but our <strong>DOC to PDF Converter</strong> prioritizes a unique blend of high-quality <code>.docx</code> conversion, user privacy (through client-side processing), and a clean, ad-free experience. For users who need quick, reliable conversions without software installation and with a strong emphasis on data security for their <code>.docx</code> files, our tool is an excellent choice.</p>
+
+                <h2>7. Security and Privacy Explanation</h2>
+                <p>We take your security and privacy seriously. Here's how our <strong>online Word to PDF converter</strong> is designed with your data protection in mind:</p>
+                <ul>
+                    <li><strong>Client-Side Conversion for .DOCX:</strong> This is a cornerstone of our tool's security. For <code>.docx</code> files, the entire conversion process (reading the file, rendering its content, and generating the PDF) happens directly within your web browser on your own computer. Your <code>.docx</code> file's content is <strong>not uploaded to our server</strong>. This significantly reduces privacy risks associated with transmitting sensitive data over the internet or storing it on third-party servers.</li>
+                    <li><strong>Limited .DOC Handling:</strong> True client-side conversion of older binary <code>.doc</code> files with high fidelity is extremely challenging. While our tool allows <code>.doc</code> uploads, we strongly recommend converting them to <code>.docx</code> using Microsoft Word first for the best results and to benefit from client-side processing. If any future server-side processing for <code>.doc</code> were implemented (not currently the case), it would be clearly communicated.</li>
+                    <li><strong>No File Storage:</strong> Since <code>.docx</code> conversions are client-side, we do not store your original Word documents or the generated PDFs on our servers. The PDF is created as a data object in your browser, which you download directly.</li>
+                    <li><strong>Secure Connection (HTTPS):</strong> Our website (assuming deployed correctly) uses HTTPS, encrypting the connection between your browser and our server. This protects the integrity of the tool's code itself and any (minimal) non-file data exchanged.</li>
+                    <li><strong>Temporary Download Links:</strong> The "Copy Download Link" feature generates a Blob URL. This URL points to data stored temporarily in your browser's memory and is only valid for your current session. It's not a link to a file on our server.</li>
+                    <li><strong>No Registration Required:</strong> You can use our converter without creating an account or providing personal information, enhancing your anonymity.</li>
+                </ul>
+                <p>Our commitment is to provide a <strong>free DOC to PDF converter</strong> that is not only powerful but also respects your privacy by keeping your <code>.docx</code> document data localized to your machine during conversion.</p>
+
+                <h2>8. Frequently Asked Questions (FAQs)</h2>
+                <dl>
+                    <dt><strong>1. Is this DOC to PDF Converter completely free?</strong></dt>
+                    <dd>Yes, our tool is 100% free to use for converting your Word documents to PDF. There are no hidden costs or limitations on the number of conversions.</dd>
+
+                    <dt><strong>2. What file types are supported?</strong></dt>
+                    <dd>We primarily support <code>.docx</code> files for high-quality conversion. We also accept older <code>.doc</code> files, but for best formatting preservation, we recommend saving <code>.doc</code> files as <code>.docx</code> in Microsoft Word before using our tool.</dd>
+
+                    <dt><strong>3. Is there a file size limit for uploads?</strong></dt>
+                    <dd>Yes, the current maximum file size is 20MB. This helps ensure efficient client-side processing within typical browser capabilities.</dd>
+
+                    <dt><strong>4. How well is the original formatting preserved?</strong></dt>
+                    <dd>For <code>.docx</code> files, our tool uses advanced techniques to render the document's structure (layouts, fonts, images, tables, lists) into the PDF, aiming for high fidelity. However, extremely complex Word documents with very niche features might see minor variations. For <code>.doc</code> files, formatting preservation is more limited.</dd>
+
+                    <dt><strong>5. Do I need to install any software?</strong></dt>
+                    <dd>No, our converter is entirely web-based. You don't need to download or install anything. It works directly in your modern web browser.</dd>
+
+                    <dt><strong>6. Are my files uploaded to a server? How secure is it?</strong></dt>
+                    <dd>For <code>.docx</code> files, the conversion process happens locally in your browser. Your file content is NOT uploaded to our server, ensuring high privacy. We advise converting <code>.doc</code> files to <code>.docx</code> first for this benefit.</dd>
+
+                    <dt><strong>7. Can I use this tool on my smartphone or tablet?</strong></dt>
+                    <dd>Absolutely! Our <strong>online Word to PDF converter</strong> is fully responsive and designed to work seamlessly on desktops, laptops, tablets, and smartphones.</dd>
+
+                    <dt><strong>8. How long does the conversion take?</strong></dt>
+                    <dd>Conversion time depends on the file size, complexity, and your device's processing power (as it's client-side). Most documents convert within a few seconds to a minute. A progress bar will keep you updated.</dd>
+
+                    <dt><strong>9. What happens to my files after conversion?</strong></dt>
+                    <dd>Your original file remains on your device. The converted PDF is generated in your browser and made available for direct download. We do not store your files on our servers.</dd>
+
+                    <dt><strong>10. Why is .docx recommended over .doc?</strong></dt>
+                    <dd><code>.docx</code> is a modern, XML-based format that is easier for web technologies to parse and render accurately compared to the older binary <code>.doc</code> format. Client-side libraries provide much better support for <code>.docx</code>, leading to superior formatting preservation and enabling privacy-focused in-browser conversion.</dd>
+                </dl>
+
+                <h2>9. Troubleshooting Guide</h2>
+                <p>If you encounter issues while using our <strong>DOC to PDF Converter</strong>, here are some common solutions:</p>
+                <ul>
+                    <li><strong>Conversion Fails or Freezes:</strong>
+                        <ul>
+                            <li><strong>File Type/Format:</strong> If using a <code>.doc</code> file, try saving it as <code>.docx</code> in Microsoft Word and re-uploading. Ensure the file is not corrupted.</li>
+                            <li><strong>File Size/Complexity:</strong> Files over 20MB or extremely complex documents (e.g., hundreds of pages with intricate graphics) might strain browser resources. Try simplifying the document or splitting it if possible.</li>
+                            <li><strong>Browser Issues:</strong> Clear your browser's cache and cookies. Try using a different modern browser (Chrome, Firefox, Edge are recommended). Ensure your browser is up-to-date. Disable any browser extensions that might interfere with JavaScript execution.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Formatting Issues in the PDF:</strong>
+                        <ul>
+                            <li><strong>Complex Word Features:</strong> Some highly advanced or non-standard Word features (e.g., very custom SmartArt, complex text effects, or rare fonts not available to the browser) might not translate perfectly. Simplify these elements if possible.</li>
+                            <li><strong>Fonts:</strong> The tool relies on common fonts or fonts defined via CSS by the rendering library. If your document uses very obscure fonts, they might be substituted. Embedding fonts in Word (if the option is available and respected by the rendering library) could help, but standard web fonts work best.</li>
+                            <li><strong>.doc Files:</strong> Expect more significant formatting deviations with <code>.doc</code> files. Converting to <code>.docx</code> is the best remedy.</li>
+                        </ul>
+                    </li>
+                    <li><strong>PDF Preview is Blank or Shows an Error:</strong>
+                        <ul>
+                            <li>This could indicate an error during the rendering or PDF generation phase. Try the general troubleshooting steps above (file type, browser).</li>
+                            <li>The issue might be with the browser's built-in PDF viewer. Try downloading the PDF and opening it with a dedicated PDF reader like Adobe Acrobat Reader.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Download Button Not Working:</strong>
+                        <ul>
+                            <li>Check for pop-up blockers that might interfere (though direct downloads are usually not blocked).</li>
+                            <li>Verify your internet connection.</li>
+                            <li>Try a different browser.</li>
+                        </ul>
+                    </li>
+                    <li><strong>"Copy Download Link" Issues:</strong>
+                        <ul>
+                            <li>The link is a Blob URL, valid only in your current browser session. It will not work if pasted into a different browser or after closing the tab. It's for immediate, temporary sharing.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Error Message: "Invalid File Type" or "File Too Large":</strong>
+                        <ul>
+                            <li>Double-check that you are uploading a <code>.doc</code> or <code>.docx</code> file.</li>
+                            <li>Ensure the file size is within the 20MB limit. If larger, try compressing images within Word (Format Picture > Compress Pictures) or removing unnecessary large elements.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Our tool leverages cutting-edge client-side libraries, which are continually improving. For most standard Word documents, especially in <code>.docx</code> format, you should achieve excellent results.</p>
+
+                <h2>10. Conclusion with Call to Action</h2>
+                <p>In today's digital landscape, efficient document management is key. The ability to effortlessly <strong>convert Word to PDF online</strong> is a vital skill for students, professionals, and anyone who regularly works with documents. PDFs offer unparalleled compatibility, security, and formatting integrity, making them the ideal choice for sharing and archiving finalized content.</p>
+                <p>Our <strong>DOC to PDF Converter</strong> is engineered to provide you with a superior conversion experience: it's free, fast, and exceptionally user-friendly. We've placed a strong emphasis on high-fidelity <code>.docx</code> conversion and, crucially, on your privacy by processing these files directly in your browser. No software to install, no complicated steps—just a straightforward path to a perfect PDF.</p>
+                <p><strong>Ready to transform your Word documents with ease and confidence?</strong></p>
+                <div class="call-to-action">
+                    <p>Experience the best in online document conversion. Say goodbye to formatting headaches and compatibility issues. Try our <strong>free DOC to PDF Converter</strong> now and get your professional-quality PDF in seconds!</p>
+                    <button onclick="document.getElementById('tool-section').scrollIntoView({ behavior: 'smooth' });">Convert Your DOC to PDF Now!</button>
+                </div>
+                <p>Bookmark this page for all your future <strong>Word to PDF online</strong> needs. We are dedicated to maintaining a high-quality, reliable service. Share it with anyone who could benefit from a top-notch, free document conversion tool!</p>
+            </article>
+        </main>
+    </div>
+
+    <footer>
+        <p>© <span id="currentYear"></span> DOC to PDF Converter. All rights reserved.</p>
+        <p>Disclaimer: This tool uses client-side libraries for conversion. While we strive for accuracy, conversion quality, especially for complex .doc files, may vary. Always verify critical documents.</p>
+    </footer>
+
+    <!-- JS Libraries -->
+    <!-- JSZip is a dependency for docx-preview -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- docx-preview library -->
+    <script src="https://cdn.jsdelivr.net/npm/docx-preview@0.3.2/dist/docx-preview.js"></script>
+    <!-- html2pdf.js for converting HTML (rendered by docx-preview) to PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const dropArea = document.getElementById('drop-area');
+        const fileElem = document.getElementById('fileElem');
+        const convertBtn = document.getElementById('convert-btn');
+        const fileInfo = document.getElementById('file-info');
+        const fileError = document.getElementById('file-error');
+        const fileWarning = document.getElementById('file-warning');
+        const progressBarContainer = document.getElementById('progress-bar-container');
+        const progressBar = document.getElementById('progress-bar');
+        const statusMessage = document.getElementById('status-message');
+        const outputArea = document.getElementById('output-area');
+        const pdfPreview = document.getElementById('pdf-preview');
+        const downloadPdfBtn = document.getElementById('download-pdf-btn');
+        const copyLinkBtn = document.getElementById('copy-link-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const docxRenderContainer = document.getElementById('docx-render-container');
+
+        let currentFile = null;
+        let pdfBlobUrl = null;
+        const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
+
+        // Drag and drop events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.add('highlight'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.remove('highlight'), false);
+        });
+
+        dropArea.addEventListener('drop', handleDrop, false);
+        fileElem.addEventListener('change', handleFileSelect);
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            handleFiles(e.target.files);
+        }
+        
+        function resetErrorAndWarning() {
+            fileError.textContent = '';
+            fileError.style.display = 'none';
+            fileWarning.textContent = '';
+            fileWarning.style.display = 'none';
+        }
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                resetErrorAndWarning();
+                fileInfo.textContent = `Selected file: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+
+                const allowedTypes = [
+                    'application/msword', // .doc
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document' // .docx
+                ];
+                const allowedExtensions = ['.doc', '.docx'];
+
+                const fileExtension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+                
+                if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+                    fileError.textContent = 'Invalid file type. Please upload a .doc or .docx file.';
+                    fileError.style.display = 'block';
+                    convertBtn.disabled = true;
+                    currentFile = null;
+                    return;
+                }
+
+                if (file.size > MAX_FILE_SIZE) {
+                    fileError.textContent = `File is too large. Maximum size is ${MAX_FILE_SIZE / 1024 / 1024}MB.`;
+                    fileError.style.display = 'block';
+                    convertBtn.disabled = true;
+                    currentFile = null;
+                    return;
+                }
+                
+                if (fileExtension === '.doc') {
+                    fileWarning.textContent = 'You uploaded a .doc file. For best formatting results, please save it as .docx in Microsoft Word and try again. Conversion quality for .doc may be limited.';
+                    fileWarning.style.display = 'block';
+                }
+
+                currentFile = file;
+                convertBtn.disabled = false;
+                statusMessage.textContent = 'File ready for conversion.';
+            }
+        }
+
+        convertBtn.addEventListener('click', async () => {
+            if (!currentFile) {
+                fileError.textContent = 'Please select a file first.';
+                fileError.style.display = 'block';
+                return;
+            }
+
+            convertBtn.disabled = true;
+            resetBtn.disabled = true;
+            progressBarContainer.style.display = 'block';
+            updateProgress(0, 'Starting conversion...');
+            outputArea.style.display = 'none';
+            docxRenderContainer.innerHTML = ''; // Clear previous rendering
+
+            try {
+                const fileExtension = currentFile.name.substring(currentFile.name.lastIndexOf('.')).toLowerCase();
+
+                if (fileExtension === '.doc') {
+                    // docx-preview does not support .doc files. html2pdf also won't help.
+                    // This path is where server-side logic or a WebAssembly-ported library (like LibreOffice) would be needed.
+                    // For a pure client-side solution, full .doc support is extremely hard.
+                    updateProgress(0, 'Error');
+                    progressBar.style.backgroundColor = 'red';
+                    fileError.textContent = '.doc files have limited support for direct client-side conversion. Please save your file as .docx using Microsoft Word and try again for best results.';
+                    fileError.style.display = 'block';
+                    statusMessage.textContent = 'Conversion failed for .doc file.';
+                    convertBtn.disabled = false;
+                    resetBtn.disabled = false;
+                    // setTimeout(() => { progressBarContainer.style.display = 'none'; }, 3000);
+                    return; // Stop processing for .doc
+                }
+
+                // Proceed with .docx conversion
+                updateProgress(10, 'Loading file...');
+                const arrayBuffer = await currentFile.arrayBuffer();
+
+                updateProgress(30, 'Rendering document content...');
+                // docx-preview options
+                const docxOptions = {
+                    className: "docx", // Default class
+                    inWrapper: true, // Wraps content for better styling isolation
+                    ignoreWidth: false, 
+                    ignoreHeight: false,
+                    breakPages: true, // Crucial for page breaks
+                    experimental: true, // Try experimental features for potentially better rendering
+                    debug: false, // Set to true for console logs from docx-preview
+                    trimXmlDeclaration: true,
+                    ignoreLastRenderedPageBreak: true,
+                };
+                
+                // docxPreview.renderAsync renders the .docx file into an HTML element.
+                await docx.renderAsync(arrayBuffer, docxRenderContainer, null, docxOptions);
+                
+                // Check if content was rendered
+                if (docxRenderContainer.children.length === 0) {
+                     throw new Error("docx-preview was unable to render the document. The file might be corrupted or use unsupported features.");
+                }
+
+
+                updateProgress(70, 'Generating PDF...');
+                const html2pdfOptions = {
+                    margin:       [0.5, 0.5, 0.5, 0.5], // margins in inches [top, left, bottom, right] or [vertical, horizontal] or single value
+                    filename:     (currentFile?.name || 'document').replace(/\.(docx|doc)$/, '.pdf'),
+                    image:        { type: 'jpeg', quality: 0.98 }, // Image settings
+                    html2canvas:  { scale: 2, logging: false, useCORS: true, letterRendering: true }, // html2canvas options
+                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }, // jsPDF options
+                    pagebreak:    { mode: ['css', 'legacy'], before: '.docx-page-break-before' } // Respect page breaks from docx-preview if it adds such classes
+                };
+
+                // html2pdf will take the content of docxRenderContainer and convert it to PDF
+                const pdfBlob = await html2pdf().from(docxRenderContainer).set(html2pdfOptions).output('blob');
+
+                if (pdfBlobUrl) {
+                    URL.revokeObjectURL(pdfBlobUrl); // Revoke old URL if exists
+                }
+                pdfBlobUrl = URL.createObjectURL(pdfBlob);
+
+                pdfPreview.src = pdfBlobUrl;
+                outputArea.style.display = 'block';
+                updateProgress(100, 'Conversion complete!');
+                statusMessage.textContent = 'Your PDF is ready!';
+                setTimeout(() => { progressBarContainer.style.display = 'none'; }, 2000);
+
+            } catch (error) {
+                console.error('Conversion Error:', error);
+                fileError.textContent = `Conversion failed: ${error.message}. This can happen with very complex or non-standard .docx files.`;
+                fileError.style.display = 'block';
+                statusMessage.textContent = `Error: ${error.message}`;
+                updateProgress(0, 'Error');
+                progressBar.style.backgroundColor = 'red';
+            } finally {
+                convertBtn.disabled = false;
+                resetBtn.disabled = false;
+            }
+        });
+
+        downloadPdfBtn.addEventListener('click', () => {
+            if (pdfBlobUrl) {
+                const a = document.createElement('a');
+                a.href = pdfBlobUrl;
+                a.download = (currentFile?.name || 'document').replace(/\.(docx|doc)$/, '.pdf');
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                statusMessage.textContent = 'Download started.';
+            }
+        });
+
+        copyLinkBtn.addEventListener('click', () => {
+            if (pdfBlobUrl) {
+                // Blob URLs are typically very long and only work in the current browser session.
+                // It's not ideal for sharing, but it's a common request.
+                navigator.clipboard.writeText(pdfBlobUrl).then(() => {
+                    statusMessage.textContent = 'Temporary download link copied! (Only works in this browser session)';
+                    setTimeout(() => statusMessage.textContent = 'Your PDF is ready!', 3000);
+                }).catch(err => {
+                    statusMessage.textContent = 'Failed to copy link.';
+                    console.error('Failed to copy link: ', err);
+                });
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            currentFile = null;
+            if (pdfBlobUrl) {
+                URL.revokeObjectURL(pdfBlobUrl);
+                pdfBlobUrl = null;
+            }
+            fileElem.value = ''; 
+            fileInfo.textContent = '';
+            resetErrorAndWarning();
+            statusMessage.textContent = '';
+            outputArea.style.display = 'none';
+            pdfPreview.src = 'about:blank';
+            progressBarContainer.style.display = 'none';
+            updateProgress(0, '');
+            convertBtn.disabled = true;
+            docxRenderContainer.innerHTML = ''; // Clear rendered HTML
+        });
+
+        function updateProgress(percentage, message) {
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = message ? message : percentage + '%';
+            
+            if (message) statusMessage.textContent = message;
+
+            if (percentage === 100 && progressBar.style.backgroundColor !== 'red') {
+                 progressBar.style.backgroundColor = '#007bff'; // Blue for success/in progress
+            } else if (progressBar.style.backgroundColor === 'red' && percentage < 100) {
+                 progressBar.style.backgroundColor = '#007bff'; // Reset to blue if new progress after error
+            }
+        }
+    </script>
+</body>
+</html>

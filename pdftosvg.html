@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Free PDF to SVG Converter - High-Quality & Scalable Vector Output</title>
+    <meta name="description" content="Convert any PDF to a high-quality, scalable SVG (Scalable Vector Graphics) file for free. Our online PDF to SVG converter works in your browser, ensuring your files are secure. Perfect for designers, developers, and web projects.">
+    <meta name="keywords" content="pdf to svg, convert pdf to svg, pdf to svg converter, free pdf to svg, online pdf to svg, pdf to vector, pdf vectorization, extract vector from pdf, scalable vector graphics, pdf.js svg, make pdf vector">
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="./css/style.css" /> <!-- Aapki existing CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom Styles for the tool */
+        #uploader.ondragover {
+            border-color: #059669; /* a green color */
+            background-color: #f0fdf4;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #059669;
+            width: 0%;
+            transition: width 0.2s ease-in-out;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        .svg-preview-container {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+        .svg-preview-container svg {
+            width: 100%;
+            height: auto;
+            border: 1px dashed #e5e7eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar (Aapke existing code se) -->
+    <nav class="bg-white fixed w-full z-30 top-0 start-0 border-b border-gray-200">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+        </a>
+        <div class="flex md:order-2">
+          <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+            <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a></li>
+            <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+            <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-24">
+        <!-- Tool Section -->
+        <div class="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-gray-800">PDF to SVG Converter</h1>
+                <p class="text-lg text-gray-600 mt-2">Convert your PDF files into scalable, high-quality vector graphics (SVG).</p>
+            </div>
+
+            <!-- Uploader -->
+            <div id="uploader" class="border-4 border-dashed border-gray-300 rounded-lg p-10 text-center cursor-pointer transition-colors duration-300">
+                <input type="file" id="fileInput" class="hidden" accept="application/pdf">
+                <label for="fileInput" class="cursor-pointer">
+                    <svg class="mx-auto h-16 w-16 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                    </svg>
+                    <p class="mt-4 text-2xl font-semibold text-gray-700">Choose a PDF file or drag it here</p>
+                    <p class="mt-1 text-sm text-gray-500">100% Free & Secure. Files are processed in your browser.</p>
+                </label>
+            </div>
+
+            <!-- Processing Options -->
+            <div id="options-container" class="hidden mt-6 p-4 bg-gray-100 rounded-lg">
+                <div id="file-info" class="text-center font-semibold text-gray-700 mb-4"></div>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <label for="from-page" class="font-medium">Convert pages:</label>
+                    <input type="number" id="from-page" min="1" class="w-24 p-2 border border-gray-300 rounded-md" placeholder="From">
+                    <label for="to-page" class="font-medium">to</label>
+                    <input type="number" id="to-page" min="1" class="w-24 p-2 border border-gray-300 rounded-md" placeholder="To">
+                    <button id="startButton" class="px-8 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        Convert to SVG
+                    </button>
+                </div>
+            </div>
+
+            <!-- Processing View -->
+            <div id="processing" class="hidden mt-8 text-center">
+                <p id="status" class="text-lg font-semibold text-gray-700 mb-4">Initializing...</p>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar">0%</div>
+                </div>
+            </div>
+
+            <!-- Results View -->
+            <div id="results" class="hidden mt-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Conversion Complete!</h2>
+                    <button id="downloadZipButton" class="px-6 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        Download All as .zip
+                    </button>
+                </div>
+                <div id="preview-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- SVG previews will be injected here -->
+                </div>
+                 <div class="text-center mt-8">
+                    <button id="startOverButton" class="px-8 py-3 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-600">Convert Another PDF</button>
+                </div>
+            </div>
+            <div id="error-message" class="hidden mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center"></div>
+        </div>
+
+        <!-- SEO Article Section -->
+        <article class="max-w-4xl mx-auto p-6 mt-12 bg-white rounded-lg shadow-lg prose lg:prose-xl">
+            <h2 class="text-3xl font-bold">The Complete Guide to PDF to SVG Conversion</h2>
+            <p>The digital world relies on various file formats, each with its own strengths. While PDF (Portable Document Format) is the undisputed champion for sharing documents with fixed layouts, SVG (Scalable Vector Graphics) is the gold standard for graphics that need to look crisp at any size. The ability to **convert a PDF to SVG** is a powerful skill for designers, developers, and content creators. Our free online **PDF to SVG converter** makes this process simple, secure, and accessible to everyone.</p>
+
+            <h3 class="text-2xl font-semibold">What is SVG and Why is it So Powerful?</h3>
+            <p><strong>Scalable Vector Graphics (SVG)</strong> is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation. Unlike raster formats like JPEG or PNG which are made of pixels, SVGs are defined by mathematical equations. This fundamental difference gives SVG several incredible advantages:</p>
+            <ul>
+                <li><strong>Infinite Scalability:</strong> This is the hallmark of SVG. You can scale an SVG image up or down to any size—from a tiny icon to a massive billboard—and it will never lose quality or become pixelated. It will always remain perfectly sharp.</li>
+                <li><strong>Small File Sizes:</strong> For simple to moderately complex graphics, SVGs often have smaller file sizes than their raster counterparts, which is great for web performance.</li>
+                <li><strong>Editable & Styleable:</strong> Since SVG is just code (XML), you can open it in a text editor and change colors, shapes, or text. You can also style SVGs with CSS, just like any other HTML element.</li>
+                <li><strong>Searchable & Indexable:</strong> Any text within an SVG file is real text, not an image of text. This means it can be selected, copied, and, most importantly, indexed by search engines like Google, which is a huge benefit for SEO.</li>
+                <li><strong>Interactive & Animatable:</strong> You can use JavaScript and CSS to animate parts of an SVG or make them respond to user actions like clicks or hovers, creating rich, dynamic web experiences.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold">Why Convert a PDF to SVG? Key Use Cases</h3>
+            <p>While a PDF is excellent for a final, static document, there are many scenarios where a **PDF to vector** conversion is necessary. Using a **PDF to SVG converter** unlocks new possibilities:</p>
+            <ol>
+                <li><strong>Web Design and Development:</strong> You can extract logos, icons, and diagrams from a PDF and use them directly on a website as SVGs. This ensures they look sharp on all screens, from standard monitors to high-resolution Retina displays, while keeping load times fast.</li>
+                <li><strong>Graphic Design & Illustration:</strong> Designers often receive assets like logos or charts in PDF format. Converting them to SVG allows them to easily import these elements into vector editing software like Adobe Illustrator, Inkscape, or Figma for modification without any loss of quality.</li>
+                <li><strong>Data Visualization:</strong> If you have charts, graphs, or infographics in a PDF report, converting them to SVG makes it possible to animate them or make them interactive for online presentations or dashboards.</li>
+                <li><strong>Architectural and Engineering Plans:</strong> Converting floor plans or technical drawings from PDF to SVG allows for easier scaling and manipulation in CAD-like software or for presentation on the web.</li>
+                <li><strong>Making Content Accessible:</strong> True text within an SVG can be read by screen readers, making your graphics more accessible to visually impaired users compared to a flat image format.</li>
+            </ol>
+            
+            <h3 class="text-2xl font-semibold">How Our Free PDF to SVG Converter Works: A Secure, Browser-Based Approach</h3>
+            <p>Many online tools require you to upload your sensitive documents to their servers. We believe in privacy first. Our converter is built using powerful, open-source JavaScript libraries—`pdf.js` and `JSZip`—that run entirely within your web browser. Here’s what that means for you:</p>
+            <ul>
+                <li><strong>Maximum Security:</strong> Your PDF file is never uploaded to any server. It is opened and processed directly on your own computer. Your data remains 100% private.</li>
+                <li><strong>No Installation Needed:</strong> You get the power of a desktop application without the hassle of downloading or installing any software.</li>
+                <li><strong>Instant Results:</strong> The conversion happens right before your eyes, with live previews generated as each page is processed.</li>
+            </ul>
+            <p>The process is simple:
+                1. Drag and drop or select your PDF file.
+                2. Choose the range of pages you wish to convert.
+                3. Click "Convert to SVG".
+                4. Preview the results and download your files individually or as a convenient .zip archive.
+            </p>
+
+            <h3 class="text-2xl font-semibold">Understanding Your Conversion Results: Vector vs. Raster in a PDF</h3>
+            <p>It's crucial to understand what's inside your PDF to set the right expectations for the conversion. A PDF can contain two types of content:</p>
+            <ul>
+                <li><strong>Vector Content:</strong> This includes text, shapes, lines, and paths created in software like Word, Illustrator, or PowerPoint. When you **convert a PDF with vector content to SVG**, our tool will preserve these elements as true, editable vector paths in the SVG output. This is the ideal scenario.</li>
+                <li><strong>Raster Content:</strong> This includes embedded images like JPEGs or PNGs (e.g., photos in a brochure or a scanned page of a book). If a PDF page is just a single large raster image, the resulting SVG will essentially be that same raster image *wrapped* inside an SVG tag. It will be scalable, but the image content itself will still be made of pixels and can become blurry if enlarged too much. Our tool does not perform raster-to-vector tracing (autotracing), it faithfully extracts the existing content.</li>
+            </ul>
+            <p>This is why our **free PDF to SVG converter** is most powerful for PDFs that were originally created from digital, vector-based sources.</p>
+
+            <h3 class="text-2xl font-semibold">Frequently Asked Questions (FAQ)</h3>
+            <h4>Is this online PDF to SVG converter truly free?</h4>
+            <p>Yes, our tool is completely free to use. There are no subscriptions, no hidden fees, and no watermarks on your output files. Convert as many PDFs as you like.</p>
+            <h4>Will the converted SVG maintain layers from my PDF?</h4>
+            <p>The PDF format and SVG format handle layers differently. The conversion process will create a visually identical SVG, but it may not preserve the original layering structure from a program like Adobe Illustrator. All visible elements will be converted into SVG paths and objects.</p>
+            <h4>How do I convert only a specific page from my PDF to SVG?</h4>
+            <p>Our tool makes this easy. After uploading your PDF, you'll see options to enter a "From" and "To" page number. To convert only page 5, for example, simply enter '5' in both the "From" and "To" fields before clicking the convert button.</p>
+            <h4>Why should I use SVG instead of PNG for my website logo?</h4>
+            <p>A logo in SVG format will be smaller in file size and will look perfectly sharp on any device, at any resolution. A PNG logo, being raster-based, might look blurry on high-density screens or when scaled up, and you would need to create multiple versions (e.g., logo@2x.png) to handle different screen densities, which is less efficient.</p>
+
+            <h3 class="text-2xl font-semibold">Conclusion: Unleash the Power of Vector Graphics</h3>
+            <p>Don't let your valuable graphics be locked inside a static PDF. With our secure, fast, and free **online PDF to SVG converter**, you can effortlessly transform your documents into a flexible, web-friendly, and infinitely scalable format. Whether you're optimizing web assets, preparing files for a design project, or simply need to **extract a vector from a PDF**, our tool provides a reliable and user-friendly solution. Bookmark this page and make it your go-to resource for all your PDF vectorization needs.</p>
+        </article>
+    </main>
+
+    <!-- Footer (Aapke existing code se) -->
+    <div class="bg-gray-200 mt-12">
+        <div class="max-w-screen-lg py-10 px-4 sm:px-6 text-gray-800 text-center mx-auto">
+             <img style="height: 60px; margin: auto; margin-bottom: 20px; mix-blend-mode: multiply;" src="./One_Page-removebg-preview.png" alt="OnePageTools Footer Logo" />
+            <p class="text-gray-500 text-sm mb-10">OnePageTools.com provides a suite of free, secure, and powerful online tools to manage your documents. All processing is done client-side for maximum privacy.</p>
+            <div class="my-5">
+                <center>Copyright © 2024 OnePageTools.com <br> All Rights Reserved</center>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript Libraries (Free & Client-Side) -->
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js`;
+
+        // DOM Elements
+        const uploader = document.getElementById('uploader');
+        const fileInput = document.getElementById('fileInput');
+        const optionsContainer = document.getElementById('options-container');
+        const fileInfo = document.getElementById('file-info');
+        const fromPageInput = document.getElementById('from-page');
+        const toPageInput = document.getElementById('to-page');
+        const startButton = document.getElementById('startButton');
+        const processing = document.getElementById('processing');
+        const statusEl = document.getElementById('status');
+        const progressBar = document.getElementById('progressBar');
+        const results = document.getElementById('results');
+        const previewGrid = document.getElementById('preview-grid');
+        const downloadZipButton = document.getElementById('downloadZipButton');
+        const startOverButton = document.getElementById('startOverButton');
+        const errorMessage = document.getElementById('error-message');
+
+        let currentFile = null;
+        let generatedSVGs = [];
+
+        // Event Listeners
+        uploader.addEventListener('click', () => fileInput.click());
+        uploader.addEventListener('dragover', (e) => { e.preventDefault(); uploader.classList.add('ondragover'); });
+        uploader.addEventListener('dragleave', () => uploader.classList.remove('ondragover'));
+        uploader.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploader.classList.remove('ondragover');
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener('change', (e) => {
+             if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        });
+        
+        startButton.addEventListener('click', processFile);
+        downloadZipButton.addEventListener('click', downloadAsZip);
+        startOverButton.addEventListener('click', resetUI);
+
+        async function handleFile(file) {
+            if (file && file.type === 'application/pdf') {
+                currentFile = file;
+                errorMessage.classList.add('hidden');
+                uploader.classList.add('hidden');
+                
+                try {
+                    const loadingTask = pdfjsLib.getDocument(URL.createObjectURL(file));
+                    const pdf = await loadingTask.promise;
+                    fileInfo.textContent = `File: ${file.name} (${pdf.numPages} pages)`;
+                    fromPageInput.value = 1;
+                    fromPageInput.max = pdf.numPages;
+                    toPageInput.value = pdf.numPages;
+                    toPageInput.max = pdf.numPages;
+                    optionsContainer.classList.remove('hidden');
+                } catch (error) {
+                    console.error("Error loading PDF:", error);
+                    showError("Could not read PDF. It might be corrupted or password-protected.");
+                    resetUI();
+                }
+
+            } else {
+                showError('Please select a valid PDF file.');
+                currentFile = null;
+            }
+        }
+
+        async function processFile() {
+            if (!currentFile) return;
+
+            const fromPage = parseInt(fromPageInput.value);
+            const toPage = parseInt(toPageInput.value);
+            
+            generatedSVGs = [];
+            previewGrid.innerHTML = '';
+            
+            optionsContainer.classList.add('hidden');
+            processing.classList.remove('hidden');
+            results.classList.add('hidden');
+
+            try {
+                const loadingTask = pdfjsLib.getDocument(URL.createObjectURL(currentFile));
+                const pdf = await loadingTask.promise;
+                
+                if (fromPage < 1 || toPage > pdf.numPages || fromPage > toPage) {
+                    showError("Invalid page range selected.");
+                    processing.classList.add('hidden');
+                    optionsContainer.classList.remove('hidden');
+                    return;
+                }
+
+                const totalPagesToProcess = toPage - fromPage + 1;
+
+                for (let i = fromPage; i <= toPage; i++) {
+                    const progress = ((i - fromPage) / totalPagesToProcess) * 100;
+                    updateProgress(progress, `Converting page ${i} of ${pdf.numPages}...`);
+
+                    const page = await pdf.getPage(i);
+                    const viewport = page.getViewport({ scale: 1.0 });
+
+                    const operatorList = await page.getOperatorList();
+                    const svgGfx = new pdfjsLib.SVGGraphics(page.commonObjs, page.objs);
+                    const svgElement = await svgGfx.getSVG(operatorList, viewport);
+                    
+                    const svgString = new XMLSerializer().serializeToString(svgElement);
+                    generatedSVGs.push({ pageNum: i, content: svgString });
+                }
+
+                updateProgress(100, 'Finalizing...');
+                displayResults();
+            } catch (err) {
+                console.error(err);
+                showError('An error occurred during conversion. The PDF may be invalid.');
+                resetUI();
+            }
+        }
+
+        function displayResults() {
+            processing.classList.add('hidden');
+            results.classList.remove('hidden');
+            generatedSVGs.forEach(svgData => {
+                const previewEl = document.createElement('div');
+                previewEl.className = 'svg-preview-container flex flex-col gap-4';
+                previewEl.innerHTML = `
+                    <h4 class="text-lg font-semibold text-center text-gray-700">Page ${svgData.pageNum}</h4>
+                    <div class="flex-grow">${svgData.content}</div>
+                    <button class="w-full px-4 py-2 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700" onclick="downloadIndividualSVG(${svgData.pageNum - fromPageInput.value})">Download Page ${svgData.pageNum}.svg</button>
+                `;
+                previewGrid.appendChild(previewEl);
+            });
+        }
+        
+        function updateProgress(percent, status) {
+            progressBar.style.width = `${percent}%`;
+            progressBar.textContent = `${Math.round(percent)}%`;
+            statusEl.textContent = status;
+        }
+
+        function downloadIndividualSVG(index) {
+            const svgData = generatedSVGs[index];
+            const blob = new Blob([svgData.content], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentFile.name.replace('.pdf', '')}_page_${svgData.pageNum}.svg`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        async function downloadAsZip() {
+            const zip = new JSZip();
+            generatedSVGs.forEach(svgData => {
+                zip.file(`${currentFile.name.replace('.pdf', '')}_page_${svgData.pageNum}.svg`, svgData.content);
+            });
+            
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            const url = URL.createObjectURL(zipBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentFile.name.replace('.pdf', '')}_svg.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+        }
+
+        function resetUI() {
+            currentFile = null;
+            generatedSVGs = [];
+            fileInput.value = '';
+            previewGrid.innerHTML = '';
+            uploader.classList.remove('hidden');
+            optionsContainer.classList.add('hidden');
+            processing.classList.add('hidden');
+            results.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            updateProgress(0, 'Initializing...');
+        }
+    </script>
+</body>
+</html>

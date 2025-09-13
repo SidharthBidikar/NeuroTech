@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAR to PDF Converter – Extract & Merge PDFs Online</title>
+    <meta name="description" content="Convert RAR to PDF online. Extract PDF files from any .rar archive easily, then download individually or merge into a single PDF. No software needed. Fast, secure, and free!">
+    <meta name="keywords" content="rar to pdf, rar to pdf converter, extract pdf from rar, online rar extractor, merge pdf from rar, convert rar file, unrar pdf, rar archive to pdf, open rar pdf">
+    <meta name="author" content="WebToolCreator">
+    <link rel="canonical" href="https://example.com/rar-to-pdf-converter"> <!-- Replace with actual URL -->
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "RAR to PDF Converter",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web (Cross-platform)",
+      "description": "A free online tool to extract PDF files from RAR archives and optionally merge them into a single PDF document. Client-side processing for privacy.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "softwareVersion": "1.0",
+      "url": "https://example.com/rar-to-pdf-converter", // Replace with actual URL
+      "featureList": [
+        "RAR archive upload (.rar)",
+        "PDF file extraction from RAR",
+        "Client-side processing",
+        "Password-protected RAR support (optional)",
+        "Individual PDF download",
+        "Merge multiple PDFs into one",
+        "PDF preview (first page)",
+        "Display PDF file name, size, page count",
+        "Download all as ZIP",
+        "Rename merged PDF",
+        "Responsive design",
+        "Progress bar"
+      ],
+      "screenshot": "https://example.com/tool-screenshot-rar-pdf.png", // Replace with actual screenshot URL
+      "creator": {
+        "@type": "Organization",
+        "name": "WebToolCreator"
+      }
+    }
+    </script>
+
+    <!-- External Libraries -->
+    <!-- libarchive.js (for RAR extraction) -->
+    <script src="https://unpkg.com/libarchive.js@1.2.0/dist/libarchive.js"></script>
+    <!-- pdf-lib.js (for PDF merging & manipulation) -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <!-- JSZip (for creating ZIP archives) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- PDF.js (for page count and potentially preview - using for page count here) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        // Required for PDF.js
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js`;
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #d9534f; /* Reddish for RAR theme */
+            --secondary-color: #c9302c;
+            --accent-color: #f7f7f7;
+            --text-color: #333;
+            --light-gray: #eee;
+            --medium-gray: #ccc;
+            --dark-gray: #555;
+            --success-color: #5cb85c;
+            --warning-color: #f0ad4e;
+            --info-color: #5bc0de;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container { width: 90%; max-width: 1200px; margin: 20px auto; padding: 20px; }
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 { font-size: 2.5rem; }
+
+        #tool-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        #tool-section h2 { text-align: center; margin-bottom: 20px; color: var(--primary-color); }
+
+        .instructions {
+            background-color: #fceded;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px; margin-bottom: 20px; font-size: 0.9em;
+        }
+        .instructions ul { list-style-position: inside; padding-left: 5px; }
+
+        #drop-area {
+            border: 3px dashed var(--medium-gray);
+            border-radius: 8px; padding: 30px; text-align: center;
+            margin-bottom: 20px; background-color: #fff9f9;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        #drop-area.highlight { background-color: #ffebeb; border-color: var(--primary-color); }
+        #drop-area p { margin-bottom: 10px; font-size: 1.1em; }
+        .file-input-label {
+            display: inline-block; padding: 10px 20px;
+            background-color: var(--primary-color); color: white;
+            border-radius: 5px; cursor: pointer; transition: background-color 0.3s;
+        }
+        .file-input-label:hover { background-color: var(--secondary-color); }
+        #fileElem { display: none; }
+        #file-info, #password-section { margin-bottom: 15px; text-align: center; }
+        #password-section input { padding: 8px; border-radius: 4px; border: 1px solid var(--medium-gray); margin-left: 10px; }
+        .file-error { color: var(--primary-color); font-weight: bold; margin-bottom: 10px; text-align: center; }
+
+        #progress-bar-container {
+            width: 100%; background-color: var(--light-gray);
+            border-radius: 5px; margin-bottom: 20px; display: none;
+        }
+        #progress-bar {
+            width: 0%; height: 25px; background-color: var(--success-color);
+            text-align: center; line-height: 25px; color: white;
+            border-radius: 5px; transition: width 0.3s;
+        }
+        #status-message { text-align: center; margin-bottom: 15px; font-weight: bold; }
+
+        .tool-button, .action-button {
+            padding: 10px 15px; font-size: 1em; margin: 5px;
+            border: none; border-radius: 5px; cursor: pointer;
+            background-color: var(--primary-color); color: white;
+            transition: background-color 0.3s;
+        }
+        .tool-button:hover, .action-button:hover { background-color: var(--secondary-color); }
+        .tool-button:disabled { background-color: var(--medium-gray); cursor: not-allowed; }
+        
+        #extracted-files-section { margin-top: 20px; display: none; }
+        #extracted-files-section h3 { text-align: center; margin-bottom: 15px; }
+        .file-list { list-style: none; padding: 0; }
+        .file-item {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+            padding: 10px; border: 1px solid var(--light-gray); border-radius: 5px;
+            margin-bottom: 10px; background-color: #fff;
+        }
+        .file-item-info { flex-grow: 1; }
+        .file-item-info span { display: block; font-size: 0.9em; color: var(--dark-gray); }
+        .file-item-actions button, .file-item-actions input[type="checkbox"] { margin-left: 8px; vertical-align: middle;}
+        
+        .merge-options { margin-top: 20px; padding: 15px; background-color: #fdf6f6; border-radius: 5px; text-align: center;}
+        .merge-options input[type="text"] { padding: 8px; border-radius: 4px; border: 1px solid var(--medium-gray); margin-right: 10px; }
+
+        #pdf-preview-modal {
+            display: none; position: fixed; z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe; margin: 5% auto; padding: 20px;
+            border: 1px solid #888; width: 80%; max-width: 900px; height: 80%;
+            border-radius: 8px; position: relative; display: flex; flex-direction: column;
+        }
+        .modal-content iframe { flex-grow: 1; border: none; }
+        .close-modal {
+            color: #aaa; float: right; font-size: 28px; font-weight: bold;
+            position: absolute; top: 10px; right: 20px;
+        }
+        .close-modal:hover, .close-modal:focus { color: black; text-decoration: none; cursor: pointer; }
+
+
+        #article-section { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        #article-section h1, #article-section h2, #article-section h3 { color: var(--primary-color); margin: 1.5em 0 0.75em 0; }
+        #article-section p, #article-section ul, #article-section ol { margin-bottom: 1em; text-align: justify; }
+        #article-section ul, #article-section ol { margin-left: 30px; }
+        #article-section a { color: var(--secondary-color); text-decoration: none; }
+        #article-section a:hover { text-decoration: underline; }
+        #article-section strong { color: #a72a25; }
+
+        .share-section { text-align: center; margin: 20px 0; padding:15px; background-color: #fff8f8; border-radius: 5px; }
+        .share-section h3 { margin-bottom:10px; }
+        .share-button {
+            display: inline-block; text-decoration: none; color: white;
+            padding: 8px 15px; margin: 5px; border-radius: 5px; font-size: 0.9em;
+        }
+        .share-whatsapp { background-color: #25D366; }
+        .share-telegram { background-color: #0088cc; }
+        .share-facebook { background-color: #3b5998; }
+
+        footer { text-align: center; padding: 20px; background: var(--dark-gray); color: white; margin-top: auto; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .container { width: 95%; padding: 10px; }
+            #tool-section, #article-section { padding: 15px; }
+            .file-item { flex-direction: column; align-items: flex-start; }
+            .file-item-actions { margin-top: 10px; width: 100%; text-align: left; }
+            .file-item-actions button { margin-left:0; margin-right: 8px;}
+            .modal-content { width: 95%; height: 70%; margin: 10% auto; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RAR to PDF Converter</h1>
+    </header>
+
+    <div class="container">
+        <main>
+            <section id="tool-section">
+                <h2>Extract & Merge PDFs from RAR Archives</h2>
+                <div class="instructions">
+                    <p><strong>How to use this tool:</strong></p>
+                    <ul>
+                        <li>Upload your .RAR file (drag & drop or click "Choose File"). Max 100MB.</li>
+                        <li>If your RAR is password-protected, enter the password.</li>
+                        <li>Click "Extract PDFs". The tool will find PDF files inside the archive.</li>
+                        <li>Extracted PDFs will be listed. You can preview, download individually, or select for merging.</li>
+                        <li>To merge, select desired PDFs, (optionally) name your merged file, and click "Merge & Download".</li>
+                        <li>You can also download all extracted PDFs as a ZIP file.</li>
+                    </ul>
+                </div>
+
+                <div id="drop-area">
+                    <input type="file" id="fileElem" accept=".rar,application/vnd.rar,application/x-rar-compressed" style="display:none;">
+                    <label for="fileElem" class="file-input-label">Choose .RAR File</label>
+                    <p>Or drag & drop your .RAR file here</p>
+                    <p style="font-size:0.8em;">Max file size: 100MB. Processing is done in your browser.</p>
+                </div>
+                <div id="file-info"></div>
+                <div id="password-section" style="display:none;">
+                    <label for="rarPassword">RAR Password (if any):</label>
+                    <input type="password" id="rarPassword" placeholder="Enter password">
+                </div>
+                <div id="file-error" class="file-error"></div>
+
+                <button id="extract-btn" class="tool-button" disabled style="width:100%; padding:12px; font-size:1.1em;">Extract PDFs from RAR</button>
+
+                <div id="progress-bar-container">
+                    <div id="progress-bar">0%</div>
+                </div>
+                <div id="status-message"></div>
+
+                <section id="extracted-files-section">
+                    <h3>Extracted PDF Files <span id="pdf-count"></span></h3>
+                    <div class="actions-bar" style="margin-bottom: 10px; text-align: right;">
+                         <input type="checkbox" id="select-all-pdfs" title="Select/Deselect All"> <label for="select-all-pdfs" style="margin-right:15px;">Select All</label>
+                        <button id="download-all-zip-btn" class="action-button" title="Download all extracted PDFs as a single ZIP file">Download All as ZIP</button>
+                    </div>
+                    <ul id="file-list" class="file-list"></ul>
+                    <div class="merge-options">
+                        <input type="text" id="merged-pdf-name" placeholder="Merged PDF Filename (optional)">
+                        <button id="merge-btn" class="action-button" title="Merge selected PDFs into one document">Merge Selected & Download PDF</button>
+                    </div>
+                </section>
+            </section>
+
+            <!-- PDF Preview Modal -->
+            <div id="pdf-preview-modal">
+                <div class="modal-content">
+                    <span class="close-modal" id="close-preview-modal">×</span>
+                    <h4 id="preview-modal-title" style="text-align:center; margin-bottom:10px;">PDF Preview</h4>
+                    <iframe id="pdf-preview-iframe"></iframe>
+                </div>
+            </div>
+
+            <section id="article-section">
+                <!-- SEO Article dynamically inserted here -->
+                <h1>Unlock Your PDFs: The Ultimate Online RAR to PDF Converter Guide</h1>
+                <p>In the digital age, files come in all shapes and sizes, and often, for convenience or compression, valuable documents like PDFs are bundled within archive files. One of the most common archive formats is RAR. If you've ever received a <code>.rar</code> file packed with PDF documents, you know the small hurdle of needing to extract them. Our <strong>RAR to PDF Converter</strong> is designed to leap over this hurdle effortlessly, allowing you to <strong>extract PDF from RAR</strong> archives directly in your browser, and even <strong>merge PDF from RAR</strong> into a single, manageable document.</p>
+
+                <h2>1. What is a RAR File? Why are PDFs Compressed in RAR Archives?</h2>
+                <p>A RAR file (Roshal Archive) is a proprietary archive file format that supports data compression, error recovery, and file spanning. Developed by Eugene Roshal, RAR files are widely used to compress one or more files and folders into a smaller, single archive. This makes them easier to store, share, and download.</p>
+                <p>Why are PDFs, which are often already optimized for size, compressed into RAR archives? There are several reasons:</p>
+                <ul>
+                    <li><strong>Bundling Multiple PDFs:</strong> When you need to send or share a collection of PDF documents (e.g., a series of book chapters, a set of project reports, a batch of invoices), a RAR archive groups them into one convenient file. This is much tidier than attaching numerous individual PDFs to an email or providing multiple download links.</li>
+                    <li><strong>Marginal Compression:</strong> While PDFs can be well-compressed, RAR's advanced compression algorithms can sometimes still achieve further size reduction, especially if the PDFs contain uncompressed elements or if there are many similar PDFs with redundant data.</li>
+                    <li><strong>Organization and Structure:</strong> RAR archives can maintain folder structures. If your PDFs are organized into subfolders, the RAR file can preserve this hierarchy, which is lost if you just zip them without path information.</li>
+                    <li><strong>Error Recovery:</strong> RAR format includes optional recovery records, which can help repair a damaged archive, offering a slight edge in data integrity over formats like ZIP in certain situations.</li>
+                    <li><strong>Password Protection:</strong> RAR files can be encrypted with a password, providing a layer of security for sensitive PDF documents contained within. Our tool supports extracting PDFs from password-protected RARs if you provide the correct password.</li>
+                </ul>
+                <p>Thus, encountering a <strong>RAR file to PDF</strong> scenario is common when dealing with collections of documents, large eBooks, or protected information.</p>
+
+                <h2>2. Common User Needs: Accessing PDFs from RAR Archives</h2>
+                <p>Users from all walks of life often need to <strong>unrar PDF</strong> files:</p>
+                <ul>
+                    <li><strong>Students:</strong> Downloading lecture notes, research papers, or eBook collections often shared as RAR archives by professors or peers.</li>
+                    <li><strong>Professionals:</strong> Receiving batches of reports, contracts, or project documentation from colleagues or clients in RAR format for easier transfer.</li>
+                    <li><strong>Researchers:</strong> Accessing academic journals or conference proceedings that are sometimes distributed as RAR archives containing multiple PDF papers.</li>
+                    <li><strong>Graphic Designers & Publishers:</strong> Handling sets of PDF proofs, design assets, or manuscript chapters.</li>
+                    <li><strong>General Users:</strong> Downloading online resources like user manuals, forms, or collections of articles that have been compressed into RAR files.</li>
+                </ul>
+                <p>The core need is simple: to quickly access the PDF content without necessarily installing dedicated desktop software like WinRAR or 7-Zip, especially if they are on a public computer, a restricted work machine, or a mobile device.</p>
+
+                <h2>3. Benefits of Extracting PDFs from RAR Using an Online Tool</h2>
+                <p>Using an <strong>online RAR to PDF converter</strong> like ours offers several distinct advantages over traditional desktop methods:</p>
+                <ul>
+                    <li><strong>No Software Installation:</strong> The most significant benefit. You don't need to download or install any specific software (like WinRAR, WinZip, 7-Zip) to handle RAR files. This is perfect for users on computers where they don't have installation privileges or for those who rarely deal with RAR files and don't want to clutter their system.</li>
+                    <li><strong>Accessibility from Anywhere:</strong> Access the tool from any device (desktop, laptop, tablet, or smartphone) with an internet connection and a modern web browser. This means you can <strong>extract PDF from RAR online</strong> on the go.</li>
+                    <li><strong>Client-Side Processing for Privacy:</strong> Our tool prioritizes your privacy. The RAR file processing and PDF extraction happen directly in your browser using JavaScript and WebAssembly. Your RAR file is not uploaded to our server, meaning your data stays on your device. This is a crucial security advantage.</li>
+                    <li><strong>User-Friendly Interface:</strong> Designed for simplicity, our tool guides you through the process with clear instructions and a clean layout, making it easy even for non-technical users.</li>
+                    <li><strong>Speed and Efficiency:</strong> For moderately sized RAR files, the client-side extraction can be very fast. You get immediate access to your PDFs without lengthy upload/download cycles to a server.</li>
+                    <li><strong>PDF-Specific Features:</strong> Beyond just extracting, our tool is tailored for PDFs. It lists only PDF files, allows individual downloads, and offers a powerful PDF merging capability.
+                        <ul>
+                            <li><strong>Merge PDFs:</strong> Combine multiple extracted PDFs into a single document, ideal for creating a cohesive report or a complete eBook.</li>
+                            <li><strong>Rename Merged File:</strong> Customize the name of your combined PDF before downloading.</li>
+                            <li><strong>Preview (First Page):</strong> Quickly check the content of an extracted PDF before deciding to download or merge.</li>
+                            <li><strong>Page Count & File Size:</strong> Get useful metadata about each extracted PDF.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Download All as ZIP:</strong> If you prefer to have all extracted PDFs in a new, universally compatible ZIP archive, our tool provides this option with a single click.</li>
+                    <li><strong>Password Support:</strong> Easily handle password-protected RAR archives by simply entering the password when prompted or in the provided field.</li>
+                    <li><strong>Free to Use:</strong> Access all these powerful features without any cost or hidden charges.</li>
+                </ul>
+                <p>In essence, an <strong>online RAR extractor</strong> focused on PDFs offers convenience, security, and specialized functionality that desktop tools might not provide in such an integrated manner for web users.</p>
+
+                <h2>4. Step-by-Step Usage Guide for This RAR to PDF Converter</h2>
+                <p>Using our <strong>RAR to PDF Converter</strong> is straightforward. Here’s a simple guide:</p>
+                <ol>
+                    <li><strong>Access the Tool:</strong> Open this webpage in your preferred web browser.</li>
+                    <li><strong>Upload Your .RAR File:</strong>
+                        <ul>
+                            <li><strong>Drag and Drop:</strong> Simply drag your <code>.rar</code> file from your computer and drop it onto the designated "Drag & drop your .RAR file here" area.</li>
+                            <li><strong>Choose File:</strong> Alternatively, click the "Choose .RAR File" button. This will open your system's file browser, allowing you to navigate to and select your RAR archive. The file size limit is 100MB.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Enter Password (If Applicable):</strong> If your RAR file is password-protected, an input field for the password will appear (or be visible). Enter the correct password. If there's no password, you can skip this.</li>
+                    <li><strong>Start Extraction:</strong> Once the file is selected (and password entered, if needed), the "Extract PDFs from RAR" button will become active. Click it to begin the extraction process.</li>
+                    <li><strong>Monitor Progress:</strong> A progress bar will show the status of the extraction. This process happens in your browser.</li>
+                    <li><strong>View Extracted PDFs:</strong> After successful extraction, a list of all PDF files found within the RAR archive will be displayed. Each item will show:
+                        <ul>
+                            <li>Filename</li>
+                            <li>File size</li>
+                            <li>Page count (requires a moment to process each PDF)</li>
+                            <li>A checkbox to select the PDF for merging</li>
+                            <li>A "Preview" button (shows the first page)</li>
+                            <li>A "Download" button for that individual PDF</li>
+                        </ul>
+                    </li>
+                    <li><strong>Manage Extracted PDFs:</strong>
+                        <ul>
+                            <li><strong>Select/Deselect All:</strong> Use the "Select All" checkbox at the top of the list to quickly select or deselect all PDFs for merging.</li>
+                            <li><strong>Download Individually:</strong> Click the "Download" button next to any PDF to save it directly to your device.</li>
+                            <li><strong>Preview PDF:</strong> Click the "Preview" button to see the first page of a PDF in a modal window. This helps you identify content.</li>
+                            <li><strong>Download All as ZIP:</strong> Click the "Download All as ZIP" button to get all extracted PDFs bundled into a single <code>.zip</code> file.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Merge PDFs (Optional):</strong>
+                        <ul>
+                            <li>Select the PDFs you want to combine using the checkboxes next to each file.</li>
+                            <li>Optionally, enter a custom name for your merged document in the "Merged PDF Filename" field. If left blank, a default name will be used.</li>
+                            <li>Click the "Merge Selected & Download PDF" button. The selected PDFs will be combined into one, and the download will start automatically.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Convert Another File:</strong> To process another RAR archive, simply refresh the page or upload a new file; the tool will reset.</li>
+                </ol>
+                <p>This process makes it incredibly easy to <strong>open RAR and save PDF</strong> files without hassle.</p>
+
+                <h2>5. Feature-by-Feature Breakdown</h2>
+                <p>Our <strong>RAR to PDF Converter</strong> is packed with features to make your experience smooth and productive:</p>
+                <ul>
+                    <li><strong>.RAR File Upload:</strong> Supports standard <code>.rar</code> files up to 100MB. Includes drag-and-drop and traditional file selection.</li>
+                    <li><strong>Client-Side Extraction:</strong> Utilizes `libarchive.js` (a WebAssembly port of the robust libarchive library) to decompress RAR archives directly in your browser. This enhances privacy as your files are not sent to any server.</li>
+                    <li><strong>Password-Protected RAR Support:</strong> Includes an optional field to enter a password for encrypted RAR archives.</li>
+                    <li><strong>Automatic PDF Filtering:</strong> After extraction, the tool intelligently lists only the PDF files found within the archive, ignoring other file types.</li>
+                    <li><strong>Extracted PDF Listing:</strong> Displays a clear, manageable list of all extracted PDFs.
+                        <ul>
+                            <li><strong>File Details:</strong> Shows filename, file size, and (after a quick analysis) the page count for each PDF, helping you identify and manage documents.</li>
+                            <li><strong>Individual Downloads:</strong> Download any extracted PDF with a single click.</li>
+                        </ul>
+                    </li>
+                    <li><strong>PDF Preview (First Page):</strong> A quick preview option allows you to view the first page of any extracted PDF, confirming its content before downloading or merging.</li>
+                    <li><strong>Comprehensive Selection:</strong> Checkboxes next to each PDF and a "Select All" option provide flexible selection for merging or other batch operations.</li>
+                    <li><strong>Powerful PDF Merging:</strong>
+                        <ul>
+                            <li><strong>Merge Selected:</strong> Combine only the PDFs you've chosen into a single, consolidated PDF document.</li>
+                            <li><strong>Custom Merged Filename:</strong> Option to specify a name for your merged PDF file before downloading.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Download All as ZIP:</strong> A convenient one-click option to download all extracted PDF files neatly packaged into a single ZIP archive. JSZip library is used for this client-side.</li>
+                    <li><strong>Real-Time Progress:</strong> Visual progress bars and status messages keep you informed during the extraction and merging processes.</li>
+                    <li><strong>Responsive Design:</strong> Fully functional and easy to use on desktops, tablets, and mobile phones.</li>
+                    <li><strong>No Registration Needed:</strong> Use the tool freely without any login or signup requirements.</li>
+                    <li><strong>Secure & Private:</strong> As processing is client-side, your files remain on your device, offering a high degree of privacy. Temporary data (like Blob URLs) is cleared when you close the page or navigate away.</li>
+                </ul>
+
+                <h2>6. Real-Life Scenarios</h2>
+                <p>This <strong>RAR file to PDF</strong> tool is valuable in various practical situations:</p>
+                <ul>
+                    <li><strong>Students:</strong> A professor shares a semester's worth of lecture notes and supplementary readings as a single password-protected RAR file. Students can use this tool to enter the password, extract all PDF notes, preview them, and then merge all lecture slides into one chronological PDF for easy studying.</li>
+                    <li><strong>Businesses Handling Documents:</strong> A company receives multiple project proposals or signed contracts from different vendors, all bundled into separate RAR archives for email efficiency. An administrator can quickly extract the PDF contracts from each RAR, preview to ensure correctness, and then download them individually for filing or merge them if they are part of a single larger submission.</li>
+                    <li><strong>Researchers & Academics:</strong> Downloading a conference's proceedings shared as a RAR archive. They can extract all individual PDF research papers, use the page count and preview to identify key papers, and download them selectively or download all as a ZIP for offline reading.</li>
+                    <li><strong>eBook Enthusiasts:</strong> Downloading an eBook series or a collection of graphic novels that are distributed in RAR format. The user can extract all PDF chapters/issues and merge them into a single PDF for a seamless reading experience on their tablet.</li>
+                    <li><strong>Users on Restricted Computers:</strong> An employee needs to access PDF forms from a RAR archive sent by HR but cannot install WinRAR on their work computer. They can use this online tool to extract the PDF forms, fill them (using another tool or feature if the PDFs are fillable), and proceed without violating IT policy.</li>
+                </ul>
+
+                <h2>7. File Privacy and Data Security Measures</h2>
+                <p>We understand the importance of your data's privacy and security. Our <strong>RAR to PDF Converter</strong> is built with these principles at its core:</p>
+                <ul>
+                    <li><strong>Client-Side Processing:</strong> This is the cornerstone of our security model. The entire process of reading your RAR file, extracting its contents, and any subsequent PDF operations (like merging or generating download links) happens <strong>directly within your web browser</strong> on your computer.
+                        <ul>
+                            <li>Your <code>.rar</code> file is <strong>not uploaded to our server</strong> or any third-party server.</li>
+                            <li>The PDF files extracted also remain within your browser's memory space.</li>
+                        </ul>
+                    </li>
+                    <li><strong>No File Storage on Servers:</strong> Since files are not uploaded, we do not store your RAR archives or your extracted/merged PDF documents on our servers, not even temporarily.</li>
+                    <li><strong>Secure Connection (HTTPS):</strong> The webpage itself (assuming correctly deployed) is served over HTTPS, which encrypts the connection between your browser and our server. This protects the integrity of the tool's code and any non-file related communication.</li>
+                    <li><strong>Temporary In-Browser Data:</strong> When you extract or merge files, temporary data representations (like JavaScript `Blob` objects or `ArrayBuffer`s) are created in your browser's memory.
+                        <ul>
+                            <li>`Blob URLs` used for downloads or previews are session-specific and typically become invalid once you close the browser tab or navigate away.</li>
+                            <li>We explicitly revoke `Blob URLs` when they are no longer needed by the tool (e.g., after a new file is processed or the reset button is clicked) to help the browser free up memory.</li>
+                        </ul>
+                    </li>
+                    <li><strong>No User Accounts:</strong> We do not require you to sign up, log in, or provide any personal information to use the tool, further enhancing your anonymity.</li>
+                    <li><strong>Transparency:</strong> We use well-known open-source JavaScript libraries (`libarchive.js`, `pdf-lib`, `JSZip`, `PDF.js`) for the core functionalities. These libraries operate within the sandboxed environment of your web browser.</li>
+                </ul>
+                <p>By performing operations client-side, you maintain control over your files, significantly reducing the risks associated with online file conversion tools that rely on server-side processing. Your sensitive documents never leave your computer.</p>
+
+                <h2>8. Troubleshooting Tips</h2>
+                <p>While we strive for a seamless experience, you might occasionally encounter issues. Here are some common problems and their solutions:</p>
+                <ul>
+                    <li><strong>Extraction Fails or "No PDF files found":</strong>
+                        <ul>
+                            <li><strong>Incorrect File Type:</strong> Ensure you are uploading a valid <code>.rar</code> file. The tool specifically looks for this extension.</li>
+                            <li><strong>Corrupt RAR File:</strong> The RAR archive itself might be damaged or incomplete. Try opening it with a desktop archiver like WinRAR or 7-Zip to check its integrity.</li>
+                            <li><strong>No PDFs Inside:</strong> The RAR archive may not contain any PDF files. Our tool filters and lists only PDFs.</li>
+                            <li><strong>Unsupported RAR Version/Features:</strong> While `libarchive.js` is robust, it might struggle with very new or obscure RAR compression methods or specific RAR5 features that are not fully supported. RAR3 is generally better supported.</li>
+                            <li><strong>Incorrect Password:</strong> If the RAR is password-protected, double-check that you've entered the correct password. It's case-sensitive.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tool is Slow or Browser Freezes:</strong>
+                        <ul>
+                            <li><strong>Large File Size:</strong> Processing very large RAR files (approaching the 100MB limit) or archives containing many files can be memory and CPU intensive for your browser, especially on older computers or mobile devices. Please be patient.</li>
+                            <li><strong>Browser Resources:</strong> Close other unnecessary browser tabs or applications to free up system resources.</li>
+                            <li><strong>Outdated Browser:</strong> Ensure your web browser (Chrome, Firefox, Edge, Safari) is updated to the latest version for optimal performance and WebAssembly support.</li>
+                        </ul>
+                    </li>
+                    <li><strong>PDF Preview Doesn't Work or Shows Error:</strong>
+                        <ul>
+                            <li><strong>Complex PDF:</strong> The specific PDF might be very complex or use features that the browser's iframe or our simple preview struggles with. Try downloading it and opening with a dedicated PDF reader.</li>
+                            <li><strong>Browser PDF Viewer Issues:</strong> Sometimes, built-in browser PDF viewers have limitations.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Merged PDF Formatting Issues:</strong>
+                        <ul>
+                            <li>`pdf-lib` does an excellent job of merging, but extremely complex PDFs or those with non-standard internal structures could potentially cause minor issues. This is rare.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Download Doesn't Start:</strong>
+                        <ul>
+                            <li><strong>Pop-up Blockers:</strong> Ensure your browser isn't blocking downloads (though direct blob downloads are usually allowed).</li>
+                            <li><strong>Browser Extensions:</strong> Some browser extensions (especially security or ad-blocking ones) might interfere with JavaScript-triggered downloads. Try disabling them temporarily.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>If problems persist, try a different browser or a smaller/simpler RAR file to isolate the issue. Client-side processing relies heavily on your browser's capabilities.</p>
+
+                <h2>9. 10+ Frequently Asked Questions (FAQs)</h2>
+                <dl>
+                    <dt><strong>1. Is this RAR to PDF Converter tool free to use?</strong></dt>
+                    <dd>Yes, absolutely! Our tool is completely free, with no hidden charges or limitations on the number of files you can process.</dd>
+
+                    <dt><strong>2. Do I need to install any software?</strong></dt>
+                    <dd>No, our converter is entirely web-based. It works directly in your browser, so no installation is required.</dd>
+
+                    <dt><strong>3. Are my files uploaded to a server?</strong></dt>
+                    <dd>No. Your RAR files are processed locally in your browser using JavaScript and WebAssembly. Your data never leaves your computer, ensuring your privacy.</dd>
+
+                    <dt><strong>4. What is the maximum RAR file size supported?</strong></dt>
+                    <dd>The current maximum file size is 100MB. Processing very large files client-side can be resource-intensive, so performance may vary depending on your device.</dd>
+
+                    <dt><strong>5. Can it handle password-protected RAR files?</strong></dt>
+                    <dd>Yes, you can enter a password for encrypted RAR archives. The tool will use this password to attempt decryption and extraction.</dd>
+
+                    <dt><strong>6. What happens if my RAR file contains files other than PDFs?</strong></dt>
+                    <dd>Our tool will extract all files but will specifically list only the PDF files for further actions like previewing, downloading, or merging. Other file types are ignored in the UI display but are extracted in memory.</dd>
+
+                    <dt><strong>7. Can I merge only specific PDFs from the RAR archive?</strong></dt>
+                    <dd>Yes! After extraction, you'll see a list of all PDFs. You can select individual PDFs using checkboxes and then click the "Merge Selected & Download PDF" button.</dd>
+
+                    <dt><strong>8. Is there a limit to the number of PDFs I can merge?</strong></dt>
+                    <dd>There's no hard limit set by the tool, but merging a very large number of PDFs or very large individual PDFs might be constrained by your browser's memory and processing power.</dd>
+
+                    <dt><strong>9. How long are my files kept?</strong></dt>
+                    <dd>Since files are processed in your browser and not uploaded to our servers, they are not "kept" by us at all. Any data resides in your browser's memory during your session and is cleared when you close the tab/browser or process a new file.</dd>
+
+                    <dt><strong>10. What if the RAR extraction fails?</strong></dt>
+                    <dd>Extraction can fail if the RAR is corrupt, uses an unsupported newer RAR format/compression, or if an incorrect password is provided. Please check the Troubleshooting section for more details.</dd>
+
+                    <dt><strong>11. Can I use this tool on my mobile phone or tablet?</strong></dt>
+                    <dd>Yes, the tool is designed to be responsive and should work on modern mobile and tablet browsers, though performance with large files might be better on a desktop.</dd>
+                    
+                    <dt><strong>12. What PDF versions are supported for merging?</strong></dt>
+                    <dd>The `pdf-lib` library used for merging supports a wide range of PDF versions (typically PDF 1.0 to 1.7). Most standard PDFs should merge without issues.</dd>
+                </dl>
+
+                <h2>10. Comparison with Desktop Methods (e.g., WinRAR + PDF Reader/Editor)</h2>
+                <p>While desktop applications like WinRAR, 7-Zip, and Adobe Acrobat (or other PDF editors) are powerful, our online <strong>RAR to PDF Converter</strong> offers a different set of conveniences:</p>
+                <table class="comparison-table" style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Our Online Tool</th>
+                            <th>Desktop Method (e.g., WinRAR + PDF Editor)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Installation</strong></td>
+                            <td>None required</td>
+                            <td>Requires installation of an archiver and potentially a PDF editor for merging</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accessibility</strong></td>
+                            <td>Any device with a browser & internet</td>
+                            <td>Only on devices where software is installed</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Privacy (File Handling)</strong></td>
+                            <td>High (client-side, no server upload)</td>
+                            <td>High (all local processing)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cost</strong></td>
+                            <td>Free</td>
+                            <td>Archivers often free (WinRAR is shareware), PDF editors for merging can be paid</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ease of Use for PDF Tasks</strong></td>
+                            <td>Integrated (extract, list PDFs, preview, merge, zip all in one UI)</td>
+                            <td>Multi-step process (extract with one app, then open/merge with another)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Speed for Quick Tasks</strong></td>
+                            <td>Often faster for single, quick extractions/merges due to no app switching</td>
+                            <td>Can be faster for very large/complex operations if PC is powerful</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RAR Format Support</strong></td>
+                            <td>Good (via libarchive.js, best with RAR3, some RAR5)</td>
+                            <td>Excellent (native desktop archivers usually have full format support)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PDF Merging</strong></td>
+                            <td>Built-in, simple merging</td>
+                            <td>Requires a separate PDF tool, which may have more advanced options but adds complexity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Resource Usage</strong></td>
+                            <td>Browser-dependent, can be high for large files</td>
+                            <td>System-dependent, dedicated apps can be more optimized</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>When to use our online tool:</strong></p>
+                <ul>
+                    <li>You need to quickly extract and/or merge PDFs from a RAR on a computer without appropriate software.</li>
+                    <li>You prioritize privacy and prefer not to upload files to a server.</li>
+                    <li>You value an integrated, simple workflow for PDF-specific tasks from a RAR.</li>
+                    <li>You are on a mobile device or tablet.</li>
+                </ul>
+                <p><strong>When desktop methods might be better:</strong></p>
+                <ul>
+                    <li>You frequently work with many very large or complex RAR archives.</li>
+                    <li>You need advanced RAR features (e.g., repairing archives, very specific compression methods).</li>
+                    <li>You require advanced PDF editing/merging features beyond simple combination.</li>
+                    <li>You are working entirely offline.</li>
+                </ul>
+
+                <h2>11. Call to Action</h2>
+                <p>Stop struggling with RAR archives full of PDFs! Our <strong>RAR to PDF Converter</strong> provides a fast, free, secure, and incredibly convenient way to access and manage your PDF documents. Whether you need to extract a single PDF, download an entire collection, or merge multiple PDFs into one, our tool handles it all directly in your browser.</p>
+                <div class="call-to-action" style="text-align:center; padding:20px; background-color:#ffebeb; border:1px solid var(--primary-color); border-radius:5px; margin-top:20px;">
+                    <p style="font-size:1.2em; margin-bottom:15px;">Ready to unlock your PDFs? Try our <strong>RAR to PDF Converter</strong> now!</p>
+                    <button onclick="document.getElementById('tool-section').scrollIntoView({ behavior: 'smooth' });" style="padding:12px 25px; font-size:1.1em; background-color:var(--primary-color); color:white; border:none; border-radius:5px; cursor:pointer;">Go to Tool</button>
+                </div>
+                <p style="margin-top:20px;">Bookmark this page for easy access whenever you need to <strong>convert RAR to PDF online</strong>. If you find this tool helpful, please consider sharing it with your colleagues, friends, and anyone who might benefit from a hassle-free solution for handling PDFs in RAR archives.</p>
+
+                <div class="share-section">
+                    <h3>Share This Tool:</h3>
+                    <a href="#" id="share-whatsapp" class="share-button share-whatsapp" target="_blank">WhatsApp</a>
+                    <a href="#" id="share-telegram" class="share-button share-telegram" target="_blank">Telegram</a>
+                    <a href="#" id="share-facebook" class="share-button share-facebook" target="_blank">Facebook</a>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© <span id="currentYear"></span> RAR to PDF Converter. All rights reserved.</p>
+        <p>Disclaimer: This tool processes files client-side. Performance depends on your browser and device capabilities. RAR extraction support may vary for newer or complex RAR formats.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const dropArea = document.getElementById('drop-area');
+        const fileElem = document.getElementById('fileElem');
+        const extractBtn = document.getElementById('extract-btn');
+        const fileInfo = document.getElementById('file-info');
+        const fileError = document.getElementById('file-error');
+        const rarPasswordInput = document.getElementById('rarPassword');
+        const passwordSection = document.getElementById('password-section');
+        
+        const progressBarContainer = document.getElementById('progress-bar-container');
+        const progressBar = document.getElementById('progress-bar');
+        const statusMessage = document.getElementById('status-message');
+        
+        const extractedFilesSection = document.getElementById('extracted-files-section');
+        const fileListUl = document.getElementById('file-list');
+        const pdfCountSpan = document.getElementById('pdf-count');
+        const selectAllCheckbox = document.getElementById('select-all-pdfs');
+
+        const mergeBtn = document.getElementById('merge-btn');
+        const mergedPdfNameInput = document.getElementById('merged-pdf-name');
+        const downloadAllZipBtn = document.getElementById('download-all-zip-btn');
+
+        const previewModal = document.getElementById('pdf-preview-modal');
+        const previewIframe = document.getElementById('pdf-preview-iframe');
+        const closeModalBtn = document.getElementById('close-preview-modal');
+        const previewModalTitle = document.getElementById('preview-modal-title');
+
+
+        let currentFile = null;
+        let extractedPdfFiles = []; // To store { name: string, data: Uint8Array, size: number, pageCount: number }
+        const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
+
+        // Configure libarchive.js worker
+        Archive.init({
+            workerUrl: 'https://unpkg.com/libarchive.js@1.2.0/dist/worker-bundle.js'
+        });
+
+        // Drag and drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+        ['dragenter', 'dragover'].forEach(eventName => dropArea.addEventListener(eventName, () => dropArea.classList.add('highlight'), false));
+        ['dragleave', 'drop'].forEach(eventName => dropArea.addEventListener(eventName, () => dropArea.classList.remove('highlight'), false));
+        dropArea.addEventListener('drop', handleDrop, false);
+        fileElem.addEventListener('change', handleFileSelect);
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function handleDrop(e) { handleFiles(e.dataTransfer.files); }
+        function handleFileSelect(e) { handleFiles(e.target.files); }
+
+        function handleFiles(files) {
+            resetToolState();
+            if (files.length > 0) {
+                const file = files[0];
+                if (!file.name.toLowerCase().endsWith('.rar')) {
+                    fileError.textContent = 'Invalid file type. Please upload a .RAR file.';
+                    extractBtn.disabled = true; return;
+                }
+                if (file.size > MAX_FILE_SIZE) {
+                    fileError.textContent = `File is too large. Max size is ${MAX_FILE_SIZE / 1024 / 1024}MB.`;
+                    extractBtn.disabled = true; return;
+                }
+                fileInfo.textContent = `Selected file: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                currentFile = file;
+                extractBtn.disabled = false;
+                fileError.textContent = '';
+                passwordSection.style.display = 'block'; // Show password field
+            }
+        }
+        
+        function resetToolState() {
+            currentFile = null;
+            extractedPdfFiles = [];
+            fileListUl.innerHTML = '';
+            extractedFilesSection.style.display = 'none';
+            progressBarContainer.style.display = 'none';
+            statusMessage.textContent = '';
+            fileError.textContent = '';
+            fileInfo.textContent = '';
+            rarPasswordInput.value = '';
+            passwordSection.style.display = 'none';
+            extractBtn.disabled = true;
+            mergedPdfNameInput.value = '';
+            selectAllCheckbox.checked = false;
+            if (previewIframe.src) URL.revokeObjectURL(previewIframe.src);
+            previewIframe.src = 'about:blank';
+        }
+
+        extractBtn.addEventListener('click', async () => {
+            if (!currentFile) {
+                fileError.textContent = 'Please select a RAR file first.'; return;
+            }
+            extractBtn.disabled = true;
+            progressBarContainer.style.display = 'block';
+            updateProgress(0, 'Preparing to extract...');
+            extractedPdfFiles = [];
+            fileListUl.innerHTML = '';
+            extractedFilesSection.style.display = 'none';
+
+            try {
+                const archive = await Archive.open(currentFile, { password: rarPasswordInput.value || undefined });
+                updateProgress(20, 'Archive opened, reading entries...');
+                const entries = await archive.getFilesObject();
+                let processedCount = 0;
+                const totalEntries = Object.keys(entries).length;
+
+                if (totalEntries === 0) {
+                    throw new Error("RAR archive appears to be empty or unreadable.");
+                }
+
+                for (const entry of Object.values(entries)) {
+                    processedCount++;
+                    const progress = 20 + (60 * processedCount / totalEntries);
+                    updateProgress(progress, `Processing: ${entry.name}`);
+
+                    if (entry.name.toLowerCase().endsWith('.pdf') && !entry.name.startsWith('__MACOSX')) {
+                        const fileData = await entry.extract(); // Uint8Array
+                        extractedPdfFiles.push({ 
+                            name: entry.name, 
+                            data: fileData, 
+                            size: fileData.byteLength,
+                            pageCount: 'N/A' // Placeholder
+                        });
+                    }
+                }
+                
+                updateProgress(80, 'Finalizing PDF list...');
+                if (extractedPdfFiles.length > 0) {
+                    extractedFilesSection.style.display = 'block';
+                    pdfCountSpan.textContent = `(${extractedPdfFiles.length} found)`;
+                    await displayExtractedFiles();
+                    updateProgress(100, 'Extraction complete. PDFs listed below.');
+                } else {
+                    statusMessage.textContent = 'No PDF files found in the RAR archive.';
+                    updateProgress(100, 'Extraction complete. No PDFs found.');
+                }
+                archive.close();
+            } catch (err) {
+                console.error('Extraction error:', err);
+                fileError.textContent = `Error extracting RAR: ${err.message}. Check password or file integrity.`;
+                updateProgress(0, 'Extraction failed.');
+                progressBar.style.backgroundColor = 'var(--primary-color)';
+            } finally {
+                extractBtn.disabled = false;
+                 setTimeout(() => { 
+                    if(progressBar.textContent.includes("complete") || progressBar.textContent.includes("found")){
+                        progressBarContainer.style.display = 'none'; 
+                    }
+                }, 3000);
+            }
+        });
+
+        async function displayExtractedFiles() {
+            fileListUl.innerHTML = ''; // Clear previous list
+            for (let i = 0; i < extractedPdfFiles.length; i++) {
+                const file = extractedPdfFiles[i];
+                const li = document.createElement('li');
+                li.className = 'file-item';
+                li.innerHTML = `
+                    <div class="file-item-info">
+                        <input type="checkbox" class="pdf-select-checkbox" data-index="${i}" id="pdf-check-${i}" style="margin-right: 10px;">
+                        <label for="pdf-check-${i}" style="font-weight:bold; cursor:pointer;">${file.name}</label>
+                        <span>Size: ${(file.size / 1024).toFixed(2)} KB</span>
+                        <span id="page-count-${i}">Page Count: Fetching...</span>
+                    </div>
+                    <div class="file-item-actions">
+                        <button class="action-button preview-pdf-btn" data-index="${i}">Preview</button>
+                        <button class="action-button download-pdf-btn" data-index="${i}">Download</button>
+                    </div>
+                `;
+                fileListUl.appendChild(li);
+                // Asynchronously get page count
+                updatePageCount(file.data, i);
+            }
+
+            document.querySelectorAll('.download-pdf-btn').forEach(btn => {
+                btn.onclick = (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    downloadBlob(extractedPdfFiles[index].data, extractedPdfFiles[index].name, 'application/pdf');
+                };
+            });
+            document.querySelectorAll('.preview-pdf-btn').forEach(btn => {
+                btn.onclick = (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    showPdfPreview(extractedPdfFiles[index]);
+                };
+            });
+        }
+
+        async function updatePageCount(pdfData, index) {
+            const pageCountSpan = document.getElementById(`page-count-${index}`);
+            try {
+                const loadingTask = pdfjsLib.getDocument({data: pdfData});
+                const pdfDoc = await loadingTask.promise;
+                extractedPdfFiles[index].pageCount = pdfDoc.numPages;
+                pageCountSpan.textContent = `Page Count: ${pdfDoc.numPages}`;
+            } catch (err) {
+                console.error('Error getting page count for', extractedPdfFiles[index].name, err);
+                pageCountSpan.textContent = `Page Count: Error`;
+                extractedPdfFiles[index].pageCount = 'Error';
+            }
+        }
+
+        selectAllCheckbox.addEventListener('change', (e) => {
+            document.querySelectorAll('.pdf-select-checkbox').forEach(checkbox => {
+                checkbox.checked = e.target.checked;
+            });
+        });
+        
+        closeModalBtn.onclick = () => { 
+            previewModal.style.display = 'none'; 
+            if (previewIframe.src) URL.revokeObjectURL(previewIframe.src);
+            previewIframe.src = 'about:blank'; // Clear iframe
+        };
+        window.onclick = (event) => {
+            if (event.target == previewModal) {
+                previewModal.style.display = 'none';
+                if (previewIframe.src) URL.revokeObjectURL(previewIframe.src);
+                previewIframe.src = 'about:blank';
+            }
+        };
+
+        function showPdfPreview(pdfFile) {
+            previewModalTitle.textContent = `Preview: ${pdfFile.name}`;
+            const blob = new Blob([pdfFile.data], { type: 'application/pdf' });
+            const objectUrl = URL.createObjectURL(blob);
+            previewIframe.src = objectUrl; // iframe will handle revoking its own src on unload
+            previewModal.style.display = 'block';
+        }
+
+        mergeBtn.addEventListener('click', async () => {
+            const selectedFilesData = [];
+            document.querySelectorAll('.pdf-select-checkbox:checked').forEach(cb => {
+                selectedFilesData.push(extractedPdfFiles[parseInt(cb.dataset.index)].data);
+            });
+
+            if (selectedFilesData.length === 0) {
+                statusMessage.textContent = 'Please select at least one PDF to merge.'; return;
+            }
+            if (selectedFilesData.length === 1) {
+                statusMessage.textContent = 'Please select at least two PDFs to merge. For one file, use individual download.'; return;
+            }
+
+            statusMessage.textContent = 'Merging PDFs...';
+            progressBarContainer.style.display = 'block';
+            updateProgress(0, 'Starting merge...');
+
+            try {
+                const { PDFDocument } = PDFLib;
+                const mergedPdf = await PDFDocument.create();
+                let currentProgress = 0;
+                const progressStep = 90 / selectedFilesData.length;
+
+                for (let i = 0; i < selectedFilesData.length; i++) {
+                    const pdfBytes = selectedFilesData[i];
+                    const pdfDoc = await PDFDocument.load(pdfBytes);
+                    const copiedPages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+                    copiedPages.forEach(page => mergedPdf.addPage(page));
+                    currentProgress += progressStep;
+                    updateProgress(Math.min(90, Math.round(currentProgress)), `Merged ${i+1}/${selectedFilesData.length} PDFs`);
+                }
+                
+                const mergedPdfBytes = await mergedPdf.save();
+                updateProgress(100, 'Merge complete!');
+                const filename = mergedPdfNameInput.value.trim() || 'merged_document.pdf';
+                downloadBlob(mergedPdfBytes, filename.endsWith('.pdf') ? filename : filename + '.pdf', 'application/pdf');
+            } catch (err) {
+                console.error('Merge error:', err);
+                statusMessage.textContent = `Error merging PDFs: ${err.message}`;
+                updateProgress(0, 'Merge failed.');
+                progressBar.style.backgroundColor = 'var(--primary-color)';
+            } finally {
+                 setTimeout(() => { progressBarContainer.style.display = 'none'; }, 3000);
+            }
+        });
+        
+        downloadAllZipBtn.addEventListener('click', async () => {
+            if (extractedPdfFiles.length === 0) {
+                statusMessage.textContent = 'No PDFs to ZIP.'; return;
+            }
+            statusMessage.textContent = 'Creating ZIP file...';
+            progressBarContainer.style.display = 'block';
+            updateProgress(0, 'Preparing ZIP...');
+            
+            try {
+                const zip = new JSZip();
+                let currentProgress = 0;
+                const progressStep = 90 / extractedPdfFiles.length;
+
+                for (let i = 0; i < extractedPdfFiles.length; i++) {
+                    const file = extractedPdfFiles[i];
+                    zip.file(file.name, file.data);
+                    currentProgress += progressStep;
+                    updateProgress(Math.min(90, Math.round(currentProgress)), `Added ${file.name} to ZIP`);
+                }
+                
+                const zipBlob = await zip.generateAsync({ type: "blob" });
+                updateProgress(100, 'ZIP created!');
+                downloadBlob(zipBlob, 'extracted_pdfs.zip', 'application/zip');
+            } catch (err) {
+                console.error('ZIP error:', err);
+                statusMessage.textContent = `Error creating ZIP: ${err.message}`;
+                updateProgress(0, 'ZIP creation failed.');
+                progressBar.style.backgroundColor = 'var(--primary-color)';
+            } finally {
+                 setTimeout(() => { progressBarContainer.style.display = 'none'; }, 3000);
+            }
+        });
+
+        function updateProgress(percentage, message) {
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+            if (message) statusMessage.textContent = message;
+            if (progressBar.style.backgroundColor === 'var(--primary-color)' && percentage > 0) {
+                progressBar.style.backgroundColor = 'var(--success-color)';
+            }
+        }
+
+        function downloadBlob(data, fileName, mimeType) {
+            const blob = new Blob([data], { type: mimeType });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        // Share functionality
+        const pageUrl = window.location.href;
+        const shareText = "Check out this awesome RAR to PDF Converter!";
+        document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + " " + pageUrl)}`;
+        document.getElementById('share-telegram').href = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`;
+        document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+
+    </script>
+</body>
+</html>

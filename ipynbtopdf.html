@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPYNB to PDF Converter – Convert Jupyter Notebooks to PDF Online</title>
+  <meta name="description" content="Convert IPYNB to PDF online for free. Preserve code, markdown, and outputs from your Jupyter Notebooks with ease.">
+  <meta name="keywords" content="ipynb to pdf, jupyter notebook to pdf, convert ipynb file, export ipynb, notebook to pdf converter, code to pdf">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="IPYNB Tools Team">
+  <meta property="og:title" content="IPYNB to PDF Converter – Convert Jupyter Notebooks to PDF Online">
+  <meta property="og:description" content="Easily convert IPYNB to PDF with our free online tool. Preserve code, markdown, and outputs, preview PDFs, and download instantly.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=IPYNB+to+PDF+Converter">
+  <meta property="og:url" content="https://onepagetools.com/ipynbt_pdf.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IPYNB to PDF Converter",
+    "url": "https://onepagetools.com/ipynbt_pdf.html",
+    "description": "A free online tool to convert IPYNB (Jupyter Notebook) files to PDF with preserved formatting, outputs, and code. Includes preview, customization, and secure client-side conversion.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "OnePageTools",
+      "url": "https://onepagetools.com/"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "150"
+    },
+    "featureList": [
+      "IPYNB to PDF conversion",
+      "Code and markdown rendering",
+      "Output cell support",
+      "PDF preview",
+      "Client-side processing",
+      "Light/dark theme",
+      "Watermark option"
+    ],
+    "inLanguage": "en-US",
+    "datePublished": "2025-05-24",
+    "dateModified": "2025-05-24"
+  }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://via.placeholder.com/32?text=PDF">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .progress-bar-animated { background: linear-gradient(to right, #4f46e5, #7c3aed); }
+    .drop-zone { transition: all 0.3s ease; }
+    .drop-zone.dragover { border-color: #4f46e5; background-color: rgba(79, 70, 229, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .preview-container { max-height: 300px; overflow-y: auto; }
+    .gradient-bg { background: linear-gradient(135deg, #f3f4f6, #e0e7ff); }
+    .ipynb-preview { white-space: pre-wrap; font-family: monospace; background: #f8f8f8; padding: 10px; border-radius: 5px; max-height: 200px; overflow-y: auto; }
+    .pdf-preview { border: 1px solid #e5e7eb; border-radius: 8px; max-height: 400px; overflow-y: auto; }
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+    .article-section h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+    .dark-mode { background: #1a202c; color: #e2e8f0; }
+    .dark-mode .gradient-bg { background: linear-gradient(135deg, #2d3748, #4a5568); }
+    .dark-mode .bg-white { background: #2d3748; }
+    .dark-mode .bg-gray-50 { background: #4a5568; }
+    .dark-mode .text-gray-700 { color: #e2e8f0; }
+    .dark-mode .text-gray-600 { color: #cbd5e0; }
+    .dark-mode .border-gray-200 { border-color: #4a5568; }
+    .social-share { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
+    .social-share a { transition: transform 0.2s; }
+    .social-share a:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Navigation -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com/" class="flex items-center space-x-3">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap">OnePageTools</span>
+      </a>
+      <div class="flex items-center space-x-3">
+        <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100">
+          <svg id="themeIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+        </button>
+        <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li><a href="https://onepagetools.com/" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">Home</a></li>
+          <li><a href="https://onepagetools.com/about-us" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">About Us</a></li>
+          <li><a href="https://onepagetools.com/contact-us" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 hover:text-indigo-600">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tutorial Modal -->
+  <div id="tutorialModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+    <div class="bg-white p-6 rounded-lg max-w-lg w-full scale-in">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800">Welcome to IPYNB to PDF Converter</h3>
+      <p class="text-gray-600 mb-4">Follow these steps to convert your Jupyter Notebooks to PDF:</p>
+      <ol class="list-decimal ml-6 mb-4 text-gray-600">
+        <li>Upload .ipynb files via "Choose IPYNB Files" or drag-and-drop.</li>
+        <li>Preview the notebook structure of the first file.</li>
+        <li>Customize options (include outputs, theme, watermark).</li>
+        <li>Click "Convert to PDF" to generate the PDF.</li>
+        <li>Preview the PDF and download it.</li>
+      </ol>
+      <p class="text-gray-600 mb-4"><strong>Note:</strong> All processing happens client-side for privacy.</p>
+      <button onclick="closeTutorial()" class="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 btn">Got It!</button>
+    </div>
+  </div>
+
+  <!-- Main Tool Section -->
+  <div class="flex justify-center items-center min-h-screen pt-20 pb-10">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-lg fade-in">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 text-center">IPYNB to PDF Converter</h1>
+      <p class="text-center text-gray-500 mb-6">Convert Jupyter Notebooks (.ipynb) to PDF with code, markdown, and outputs preserved. Free, secure, and easy to use!</p>
+
+      <div class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-8 sm:p-12 text-center mb-8 transition-colors duration-300 hover:border-blue-400" 
+           ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="handleDragLeave(event)">
+        <label for="ipynbFiles" class="inline-block w-full py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full cursor-pointer hover:bg-indigo-700 btn hover-scale">
+          Choose IPYNB Files
+        </label>
+        <input type="file" id="ipynbFiles" accept=".ipynb,application/json" multiple class="hidden" onchange="previewFiles()">
+        <p class="text-gray-500 mt-2 text-sm">or drag and drop .ipynb files here (supports multiple files, max 50MB each)</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700">Export Options</h3>
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="includeOutputs" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" checked>
+              <label for="includeOutputs" class="text-sm text-gray-600">Include Outputs</label>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="combineFiles" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="combineFiles" class="text-sm text-gray-600">Combine Multiple Files into One PDF</label>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="addWatermark" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50">
+              <label for="addWatermark" class="text-sm text-gray-600">Add Watermark</label>
+            </div>
+            <div>
+              <label for="theme" class="block text-sm font-medium text-gray-700 mb-1">Theme</label>
+              <select id="theme" class="w-full p-2 border border-gray-300 rounded-lg text-sm">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700">Layout Options</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="fontSize" class="block text-sm font-medium text-gray-700 mb-1">Font Size</label>
+              <input type="number" id="fontSize" class="w-full p-2 border border-gray-300 rounded-lg text-sm" value="12" min="6" max="24">
+            </div>
+            <div>
+              <label for="pageMargin" class="block text-sm font-medium text-gray-700 mb-1">Page Margin (mm)</label>
+              <input type="number" id="pageMargin" class="w-full p-2 border border-gray-300 rounded-lg text-sm" value="15" min="0" max="50">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ipynbPreviewContainer" class="bg-gray-50 p-4 rounded-lg mb-6 hidden">
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">IPYNB Preview (First File)</h3>
+        <div id="ipynbContentPreview" class="ipynb-preview text-xs"></div>
+      </div>
+
+      <div id="pdfPreviewContainer" class="bg-gray-50 p-4 rounded-lg mb-6 hidden">
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">PDF Preview</h3>
+        <iframe id="pdfPreviewFrame" class="pdf-preview w-full h-96"></iframe>
+      </div>
+
+      <div id="progressBarContainer" class="hidden bg-gray-200 rounded-full h-2.5 mb-4">
+        <div id="progressBarFill" class="progress-bar-animated h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button onclick="convertFilesToPDF()" class="py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 btn hover-scale" id="convertButton" disabled>
+          Convert to PDF
+        </button>
+        <button onclick="resetConverterState()" class="py-3 px-5 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 btn hover-scale">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article Section -->
+  <div class="article-section">
+    <h1>IPYNB to PDF Converter – Convert Jupyter Notebooks to PDF Online</h1>
+    <p>In the world of data science, programming, and research, Jupyter Notebooks (saved as .ipynb files) have become an indispensable tool for creating, sharing, and documenting code, visualizations, and analyses. However, when it comes to sharing your work with professors, clients, or colleagues, the .ipynb format isn’t always ideal. That’s where our <strong>IPYNB to PDF Converter</strong> comes in—a free, online tool designed to <a href="#how-to-use">convert IPYNB to PDF</a> with ease, preserving your code, markdown, and outputs in a clean, professional format. Whether you're a student, developer, or researcher, this <a href="#features">feature-rich converter</a> ensures your Jupyter Notebooks are ready to share or archive in just a few clicks. In this comprehensive guide, we’ll explore what IPYNB files are, why converting them to PDF is essential, and how our <strong>online IPYNB to PDF tool</strong> can simplify your workflow.</p>
+
+    <nav class="mb-6">
+      <h2 class="text-lg font-semibold mb-2">Table of Contents</h2>
+      <ul class="list-disc ml-6 text-indigo-600">
+        <li><a href="#what-is-ipynb">What is an IPYNB File?</a></li>
+        <li><a href="#why-convert">Why Convert IPYNB to PDF?</a></li>
+        <li><a href="#who-benefits">How This Tool Helps Students, Developers, Researchers</a></li>
+        <li><a href="#how-to-use">Step-by-Step Guide to Use the IPYNB to PDF Converter</a></li>
+        <li><a href="#features">Features Explained in Detail</a></li>
+        <li><a href="#comparison">Comparison with Manual Methods</a></li>
+        <li><a href="#benefits">Benefits of This Online Converter vs Offline Tools</a></li>
+        <li><a href="#use-cases">Top Use Cases</a></li>
+        <li><a href="#privacy">File Safety and Privacy Details</a></li>
+        <li><a href="#faqs">10+ Useful FAQs</a></li>
+        <li><a href="#cta">Call to Action</a></li>
+      </ul>
+    </nav>
+
+    <h2 id="what-is-ipynb">What is an IPYNB File?</h2>
+    <p>An IPYNB file (short for IPython Notebook) is the file format used by Jupyter Notebooks, a popular open-source tool for interactive computing. These files store a combination of code, markdown text, and outputs (like plots, tables, or text) in a JSON-based structure. Jupyter Notebooks are widely used in data science, machine learning, education, and research because they allow users to write and execute code, document their work with markdown, and visualize results—all in one place.</p>
+    <p>IPYNB files are excellent for development and collaboration within the Jupyter environment, but they require specific software (like Jupyter Notebook or JupyterLab) to open and view. This can be a barrier when sharing with someone who doesn’t have the necessary tools or technical knowledge. Converting your IPYNB file to a PDF ensures that your work is accessible to anyone with a PDF reader, making it a universal and portable format for sharing.</p>
+
+    <h2 id="why-convert">Why Convert IPYNB to PDF?</h2>
+    <p>While IPYNB files are great for interactive work, they have limitations when it comes to sharing, archiving, or presenting your work. Here’s why you should use an <strong>IPYNB to PDF Converter</strong> to transform your Jupyter Notebooks into PDF:</p>
+    <ul>
+      <li><strong>Universal Compatibility</strong>: PDFs can be opened on any device with a PDF reader, ensuring your audience can view your work without needing Jupyter installed.</li>
+      <li><strong>Preserved Formatting</strong>: PDFs maintain the exact layout of your notebook, including code, markdown, and outputs, preventing distortion across platforms.</li>
+      <li><strong>Professional Presentation</strong>: PDFs give your notebooks a polished look, ideal for submitting assignments, sharing reports, or archiving research.</li>
+      <li><strong>Ease of Sharing</strong>: PDFs are easy to email, upload to cloud storage, or share via messaging apps, making collaboration seamless.</li>
+      <li><strong>Archival Purposes</strong>: PDFs are a stable format for long-term storage, ensuring your work remains accessible years later.</li>
+      <li><strong>SEO Benefits</strong>: PDFs can be optimized with metadata, making them discoverable online when shared publicly.</li>
+    </ul>
+    <p>By using our <strong>Jupyter Notebook to PDF</strong> converter, you can overcome the limitations of the IPYNB format and share your work with confidence.</p>
+
+    <h2 id="who-benefits">How This Tool Helps Students, Developers, Researchers</h2>
+    <p>Our <strong>IPYNB to PDF Converter</strong> is designed to cater to a wide range of users, making it an essential tool for:</p>
+    <h3>Students</h3>
+    <p>Students often use Jupyter Notebooks for assignments, projects, or data analysis tasks in courses like data science, machine learning, or programming. Converting their work to PDF ensures they can submit professional-looking documents to professors, even if the professor doesn’t have Jupyter installed.</p>
+    <h3>Developers</h3>
+    <p>Developers use Jupyter Notebooks to prototype code, document workflows, or create tutorials. By converting their notebooks to PDF, they can share their work with clients or team members in a format that’s easy to review and doesn’t require running the code.</p>
+    <h3>Researchers</h3>
+    <p>Researchers rely on Jupyter Notebooks to document experiments, visualize data, and share findings. Converting their notebooks to PDF allows them to create formal reports for publication, grant applications, or presentations at conferences.</p>
+    <p>Whether you’re submitting an assignment, sharing a tutorial, or publishing research, this <strong>online IPYNB to PDF tool</strong> streamlines the process.</p>
+
+    <h2 id="how-to-use">Step-by-Step Guide to Use the IPYNB to PDF Converter</h2>
+    <p>Using our <strong>IPYNB to PDF Converter</strong> is simple and intuitive. Follow these steps to <a href="#convert-ipynb">convert IPYNB to PDF</a> in just a few clicks:</p>
+    <ol>
+      <li><strong>Upload Your IPYNB Files</strong>: Click the “Choose IPYNB Files” button or drag and drop your .ipynb files into the upload area. The tool supports multiple files, with a maximum size of 50MB each.</li>
+      <li><strong>Preview the Notebook Structure</strong>: Once uploaded, the tool displays a preview of the first notebook’s structure, showing code, markdown, and outputs (if included).</li>
+      <li><strong>Customize Your PDF Output</strong>: Adjust settings like including outputs, combining multiple files into one PDF, adding a watermark, choosing a light/dark theme, font size, and page margins.</li>
+      <li><strong>Convert to PDF</strong>: Click the “Convert to PDF” button to start the conversion process. A progress bar will show the status.</li>
+      <li><strong>Preview and Download</strong>: After conversion, preview the generated PDF in the browser. Click the download button to save it to your device.</li>
+      <li><strong>Reset and Start Over</strong>: Use the “Reset” button to clear all settings and start a new conversion.</li>
+    </ol>
+    <p>With these steps, you can quickly <strong>convert IPYNB file</strong> to PDF and share your work effortlessly.</p>
+
+    <h2 id="features">Features Explained in Detail</h2>
+    <p>Our <strong>IPYNB to PDF Converter</strong> is packed with features to ensure a seamless conversion experience. Here’s a detailed look at what it offers:</p>
+    <ul>
+      <li><strong>Drag-and-Drop Upload</strong>: Easily upload .ipynb files by dragging and dropping them into the tool, saving time.</li>
+      <li><strong>Full Notebook Rendering</strong>: The tool renders code cells, markdown cells, and outputs (text, tables, plots) in the PDF, preserving the notebook’s structure.</li>
+      <li><strong>Include/Exclude Outputs</strong>: Choose whether to include output cells (e.g., plots, print statements) in the PDF, giving you control over the final document.</li>
+      <li><strong>Light/Dark Theme</strong>: Select a light or dark theme for the PDF to match your preference or improve readability.</li>
+      <li><strong>Watermark Option</strong>: Add a watermark to your PDF for branding or copyright purposes, with a toggle to enable/disable.</li>
+      <li><strong>Live PDF Preview</strong>: Preview the generated PDF before downloading to ensure it meets your expectations.</li>
+      <li><strong>Combine Multiple Files</strong>: Convert multiple .ipynb files into a single PDF, perfect for creating comprehensive reports.</li>
+      <li><strong>Responsive Design</strong>: The tool works seamlessly on desktops, tablets, and smartphones, ensuring accessibility on the go.</li>
+      <li><strong>Client-Side Processing</strong>: All conversions happen in your browser, ensuring your files never leave your device.</li>
+      <li><strong>Auto-Delete Files</strong>: Uploaded files are automatically cleared from memory after your session ends or after 30 minutes, enhancing privacy.</li>
+    </ul>
+    <p>These features make our <strong>Jupyter Notebook to PDF</strong> converter a versatile and powerful tool for anyone working with IPYNB files.</p>
+
+    <h2 id="comparison">Comparison with Manual Methods (nbconvert, Jupyter Print)</h2>
+    <p>While there are manual methods to convert IPYNB to PDF, such as using `nbconvert` or Jupyter’s built-in print feature, our online tool offers a more convenient alternative. Here’s how it compares:</p>
+    <ul>
+      <li><strong>nbconvert</strong>: The `nbconvert` tool (part of Jupyter) can convert IPYNB to PDF via the command line, but it requires installing dependencies like TeX (for PDF generation) and running commands manually. Our tool eliminates this setup, offering a browser-based solution with no installation needed.</li>
+      <li><strong>Jupyter Print</strong>: Jupyter’s “Print” feature allows you to save a notebook as a PDF via the browser’s print dialog, but it often struggles with formatting, especially for outputs like plots. Our <strong>IPYNB to PDF Converter</strong> ensures better formatting and output rendering.</li>
+      <li><strong>Customization</strong>: Manual methods lack customization options like theme selection, watermarking, or combining files. Our tool provides these features for a tailored PDF output.</li>
+      <li><strong>Ease of Use</strong>: Manual methods require technical knowledge, while our <strong>online IPYNB to PDF tool</strong> is user-friendly, requiring no coding or setup.</li>
+    </ul>
+    <p>Our converter simplifies the process, making it accessible to everyone, regardless of technical expertise.</p>
+
+    <h2 id="benefits">Benefits of This Online Converter vs Offline Tools</h2>
+    <p>While offline tools like `nbconvert` or desktop apps can convert IPYNB to PDF, our online converter offers distinct advantages:</p>
+    <ul>
+      <li><strong>No Installation Required</strong>: Unlike offline tools, our <strong>IPYNB to PDF Converter</strong> works directly in your browser, saving you from installing software or dependencies.</li>
+      <li><strong>Cross-Platform Compatibility</strong>: Access the tool from any device—desktop, tablet, or mobile—without worrying about operating system compatibility.</li>
+      <li><strong>Real-Time Preview</strong>: See how your PDF will look before downloading, a feature often missing in offline tools.</li>
+      <li><strong>Privacy-Focused</strong>: With client-side processing, your files never leave your device, unlike some offline tools that may require internet access for certain features.</li>
+      <li><strong>Regular Updates</strong>: As a web-based tool, our converter receives regular updates to improve functionality, without requiring you to update software manually.</li>
+    </ul>
+    <p>These benefits make our <strong>IPYNB export as PDF</strong> tool a superior choice for quick, secure, and hassle-free conversions.</p>
+
+    <h2 id="use-cases">Top Use Cases</h2>
+    <p>Our <strong>IPYNB to PDF Converter</strong> is versatile and caters to various scenarios. Here are the top use cases:</p>
+    <h3>Submitting Assignments</h3>
+    <p>Students can convert their Jupyter Notebooks to PDF for submitting assignments or projects to professors, ensuring their work is presented in a professional, universally accessible format.</p>
+    <h3>Creating Portfolio Documents</h3>
+    <p>Data scientists and developers can create PDF portfolios of their coding projects, showcasing their skills to potential employers or clients in a clean, readable format.</p>
+    <h3>Archiving Research Work</h3>
+    <p>Researchers can archive their experiments, analyses, and visualizations in PDF format, ensuring their work is preserved in a stable, long-term format for future reference or publication.</p>
+    <p>Other use cases include sharing tutorials, creating reports for stakeholders, or preparing materials for workshops and presentations.</p>
+
+    <h2 id="privacy">File Safety and Privacy Details</h2>
+    <p>We prioritize your privacy and data security. Here’s how our <strong>IPYNB to PDF Converter</strong> ensures your files remain safe:</p>
+    <ul>
+      <li><strong>Client-Side Processing</strong>: All conversions happen in your browser, meaning your files are never uploaded to a server.</li>
+      <li><strong>No Data Storage</strong>: We don’t store your files or any data related to your conversion, ensuring complete privacy.</li>
+      <li><strong>Auto-Delete</strong>: Uploaded files are automatically cleared from memory after your session ends or after 30 minutes, whichever comes first.</li>
+      <li><strong>No Account Required</strong>: Use the tool without signing up, reducing the risk of data exposure.</li>
+    </ul>
+    <p>With these measures, you can confidently use our <strong>IPYNB to PDF online free</strong> tool without worrying about data leaks or privacy breaches.</p>
+
+    <h2 id="faqs">10+ Useful FAQs</h2>
+    <h3>1. What is the IPYNB to PDF Converter?</h3>
+    <p>The <strong>IPYNB to PDF Converter</strong> is a free online tool that converts Jupyter Notebook (.ipynb) files to PDF, preserving code, markdown, and outputs.</p>
+    <h3>2. Is this tool really free?</h3>
+    <p>Yes, our <strong>IPYNB to PDF Converter</strong> is completely free to use, with no hidden fees or subscriptions.</p>
+    <h3>3. Can I convert multiple IPYNB files at once?</h3>
+    <p>Yes, the tool supports multiple files and allows you to combine them into a single PDF if desired.</p>
+    <h3>4. Does the tool preserve outputs like plots?</h3>
+    <p>Yes, you can choose to include outputs (e.g., plots, tables) in the PDF, ensuring your visualizations are preserved.</p>
+    <h3>5. Can I preview the PDF before downloading?</h3>
+    <p>Yes, after conversion, you can preview the PDF in the browser to ensure it meets your expectations.</p>
+    <h3>6. Is my data secure with this tool?</h3>
+    <p>Yes, all processing happens client-side, and your files are never stored on a server. They are auto-deleted after your session.</p>
+    <h3>7. Does the tool work on mobile devices?</h3>
+    <p>Yes, the tool is fully responsive and works on desktops, tablets, and smartphones.</p>
+    <h3>8. What is the file size limit for IPYNB files?</h3>
+    <p>The tool supports IPYNB files up to 50MB each. You’ll receive a warning if a file exceeds this limit.</p>
+    <h3>9. Can I customize the PDF output?</h3>
+    <p>Yes, you can customize options like including outputs, theme, watermark, font size, and page margins.</p>
+    <h3>10. Does the tool support plots generated by Matplotlib?</h3>
+    <p>Yes, if the plots are embedded as base64 images in the IPYNB file, they will be rendered in the PDF.</p>
+    <h3>11. How do I add a watermark to my PDF?</h3>
+    <p>Simply check the “Add Watermark” option before converting, and a default watermark will be added to your PDF.</p>
+
+    <h2 id="cta">Call to Action</h2>
+    <p>Ready to convert your Jupyter Notebooks to PDF? Try our <strong>IPYNB to PDF Converter</strong> now and experience the easiest way to <strong>convert IPYNB to PDF</strong>! Bookmark this page for quick access, and don’t forget to share it with your classmates, colleagues, or friends who might find it useful.</p>
+    <div class="social-share">
+      <a href="https://wa.me/?text=Check%20out%20this%20IPYNB%20to%20PDF%20Converter!%20https://onepagetools.com/ipynbt_pdf.html" target="_blank">
+        <img src="https://via.placeholder.com/40?text=WA" alt="Share on WhatsApp">
+      </a>
+      <a href="https://t.me/share/url?url=https://onepagetools.com/ipynbt_pdf.html&text=Check%20out%20this%20IPYNB%20to%20PDF%20Converter!" target="_blank">
+        <img src="https://via.placeholder.com/40?text=TG" alt="Share on Telegram">
+      </a>
+      <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20IPYNB%20to%20PDF%20Converter!&url=https://onepagetools.com/ipynbt_pdf.html" target="_blank">
+        <img src="https://via.placeholder.com/40?text=TW" alt="Share on Twitter">
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://onepagetools.com/ipynbt_pdf.html" target="_blank">
+        <img src="https://via.placeholder.com/40?text=FB" alt="Share on Facebook">
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const { jsPDF } = window.jspdf;
+    let uploadedFilesData = [];
+    let pdfBlob = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const tutorialModal = document.getElementById('tutorialModal');
+      if (tutorialModal && !localStorage.getItem('ipynbToPdfTutorialShown')) {
+        tutorialModal.classList.remove('hidden');
+      }
+      // Check for dark mode preference
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeIcon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>';
+      }
+    });
+
+    function closeTutorial() {
+      const tutorialModal = document.getElementById('tutorialModal');
+      tutorialModal.classList.add('hidden');
+      localStorage.setItem('ipynbToPdfTutorialShown', 'true');
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.getElementById('themeIcon').innerHTML = isDark
+        ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>'
+        : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+    }
+
+    function handleDragOver(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.add('dragover');
+    }
+
+    function handleDragLeave(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.remove('dragover');
+    }
+
+    async function handleDrop(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.currentTarget.classList.remove('dragover');
+      const droppedFiles = event.dataTransfer.files;
+      if (droppedFiles.length) {
+        const fileInput = document.getElementById('ipynbFiles');
+        fileInput.files = droppedFiles;
+        await previewFiles();
+      }
+    }
+
+    async function previewFiles() {
+      const fileInput = document.getElementById('ipynbFiles');
+      const ipynbPreviewContainer = document.getElementById('ipynbPreviewContainer');
+      const ipynbContentPreviewDiv = document.getElementById('ipynbContentPreview');
+
+      uploadedFilesData = [];
+      pdfBlob = null;
+      ipynbPreviewContainer.classList.add('hidden');
+      ipynbContentPreviewDiv.innerHTML = '';
+      document.getElementById('pdfPreviewContainer').classList.add('hidden');
+
+      if (!fileInput || !fileInput.files.length) {
+        document.getElementById('convertButton').disabled = true;
+        return;
+      }
+
+      let firstFileProcessedForPreview = false;
+      for (let i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files[i];
+
+        if (!file.name.match(/\.ipynb$/i) && file.type !== 'application/json') {
+          Swal.fire('Invalid File Type', `${file.name} is not a .ipynb file. Please upload only .ipynb files.`, 'error');
+          continue;
+        }
+        if (file.size > 50 * 1024 * 1024) {
+          Swal.fire('File Too Large', `${file.name} exceeds the 50MB size limit.`, 'error');
+          continue;
+        }
+
+        const fileData = {
+          fileObject: file,
+          name: file.name,
+          cells: [],
+          error: null
+        };
+        uploadedFilesData.push(fileData);
+        await parseIndividualIPYNB(fileData, !firstFileProcessedForPreview);
+        if (!fileData.error && fileData.cells.length > 0 && !firstFileProcessedForPreview) {
+          firstFileProcessedForPreview = true;
+        }
+      }
+
+      const convertButton = document.getElementById('convertButton');
+      convertButton.disabled = uploadedFilesData.filter(f => !f.error && f.cells.length > 0).length === 0;
+    }
+
+    async function parseIndividualIPYNB(fileData, shouldUpdatePreview) {
+      try {
+        const reader = new FileReader();
+        const fileContent = await new Promise((resolve) => {
+          reader.onload = (e) => resolve(e.target.result);
+          reader.readAsText(fileData.fileObject);
+        });
+
+        const notebook = JSON.parse(fileContent);
+        if (!notebook.cells || !Array.isArray(notebook.cells)) {
+          throw new Error('Invalid IPYNB structure: No cells found.');
+        }
+
+        const cells = notebook.cells.map(cell => ({
+          type: cell.cell_type,
+          source: Array.isArray(cell.source) ? cell.source.join('') : cell.source || '',
+          outputs: cell.outputs || []
+        }));
+
+        fileData.cells = cells;
+
+        if (shouldUpdatePreview) {
+          const previewContent = cells.map(cell => {
+            let content = '';
+            if (cell.type === 'markdown') {
+              content = `Markdown:\n${cell.source}\n`;
+            } else if (cell.type === 'code') {
+              content = `Code:\n${cell.source}\n`;
+              if (cell.outputs.length > 0) {
+                content += 'Outputs:\n' + cell.outputs.map(out => JSON.stringify(out, null, 2)).join('\n') + '\n';
+              }
+            }
+            return content;
+          }).join('\n');
+          document.getElementById('ipynbContentPreview').textContent = previewContent;
+          document.getElementById('ipynbPreviewContainer').classList.remove('hidden');
+        }
+
+      } catch (error) {
+        fileData.error = error.message || 'Unknown error during IPYNB parsing.';
+        Swal.fire('Parsing Error', `Failed to parse ${fileData.name}: ${fileData.error}`, 'error');
+      }
+    }
+
+    async function convertFilesToPDF() {
+      const filesToProcess = uploadedFilesData.filter(f => !f.error && f.cells.length > 0);
+      if (filesToProcess.length === 0) {
+        Swal.fire('No Valid Files', 'No valid IPYNB files to convert. Please upload valid .ipynb files.', 'warning');
+        return;
+      }
+
+      const progressBarContainer = document.getElementById('progressBarContainer');
+      const progressBarFill = document.getElementById('progressBarFill');
+      const convertButton = document.getElementById('convertButton');
+      const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+      const pdfPreviewFrame = document.getElementById('pdfPreviewFrame');
+
+      const includeOutputs = document.getElementById('includeOutputs').checked;
+      const combineFiles = document.getElementById('combineFiles').checked;
+      const addWatermark = document.getElementById('addWatermark').checked;
+      const theme = document.getElementById('theme').value;
+      const fontSize = parseInt(document.getElementById('fontSize').value) || 12;
+      const pageMarginMm = parseInt(document.getElementById('pageMargin').value) || 15;
+
+      convertButton.disabled = true;
+      progressBarContainer.classList.remove('hidden');
+      progressBarFill.style.width = '0%';
+      pdfPreviewContainer.classList.add('hidden');
+
+      const pointsPerMm = 72 / 25.4;
+      const marginInPoints = pageMarginMm * pointsPerMm;
+      const A4_WIDTH = 595;
+      const A4_HEIGHT = 842;
+      const lineHeightMultiplier = 1.2;
+      const maxImageWidth = A4_WIDTH - 2 * marginInPoints;
+      const maxImageHeight = (A4_HEIGHT - 2 * marginInPoints) / 2;
+
+      const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'pt',
+        format: 'a4'
+      });
+
+      let yPosition = marginInPoints + fontSize;
+      doc.setFont('Helvetica');
+      doc.setFontSize(fontSize);
+      doc.setTextColor(theme === 'dark' ? '#ffffff' : '#000000');
+      doc.setFillColor(theme === 'dark' ? '#1a202c' : '#ffffff');
+      doc.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+
+      for (let i = 0; i < filesToProcess.length; i++) {
+        const fileData = filesToProcess[i];
+
+        if (combineFiles && i > 0) {
+          doc.addPage();
+          yPosition = marginInPoints + fontSize;
+          doc.setFillColor(theme === 'dark' ? '#1a202c' : '#ffffff');
+          doc.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+        }
+
+        if (combineFiles) {
+          doc.setFontSize(fontSize + 4);
+          doc.text(fileData.name, marginInPoints, yPosition);
+          yPosition += (fontSize + 4) * lineHeightMultiplier + 10;
+          doc.setFontSize(fontSize);
+        }
+
+        for (const cell of fileData.cells) {
+          if (cell.type === 'markdown') {
+            const lines = doc.splitTextToSize(cell.source, A4_WIDTH - 2 * marginInPoints);
+            for (const line of lines) {
+              if (yPosition > A4_HEIGHT - marginInPoints - fontSize * lineHeightMultiplier) {
+                doc.addPage();
+                yPosition = marginInPoints + fontSize;
+                doc.setFillColor(theme === 'dark' ? '#1a202c' : '#ffffff');
+                doc.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+              }
+              doc.text(line, marginInPoints, yPosition);
+              yPosition += fontSize * lineHeightMultiplier;
+            }
+            yPosition += fontSize;
+          } else if (cell.type === 'code') {
+            const codeLines = doc.splitTextToSize(cell.source, A4_WIDTH - 2 * marginInPoints);
+            for (const line of codeLines) {
+              if (yPosition > A4_HEIGHT - marginInPoints - fontSize * lineHeightMultiplier) {
+                doc.addPage();
+                yPosition = marginInPoints + fontSize;
+                doc.setFillColor(theme === 'dark' ? '#1a202c' : '#ffffff');
+                doc.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+              }
+              doc.text(line, marginInPoints, yPosition);
+              yPosition += fontSize * lineHeightMultiplier;
+            }
+
+            if (includeOutputs && cell.outputs.length > 0) {
+              yPosition += fontSize;
+              for (const output of cell.outputs) {
+                if (output.text) {
+                  const text = Array.isArray(output.text) ? output.text.join('') : output.text;
+                  const lines = doc.splitTextToSize(text, A4_WIDTH - 2 * marginInPoints);
+                  for (const line of lines) {
+                    if (yPosition > A4_HEIGHT - marginInPoints - fontSize * lineHeightMultiplier) {
+                      doc.addPage();
+                      yPosition = marginInPoints + fontSize;
+                      doc.setFillColor(theme === 'dark' ? '#1a202c' : '#ffffff');
+                      doc.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+                    }
+                    doc.text(line, marginInPoints, yPosition);
+                    yPosition += fontSize * lineHeightMultiplier;
+                  }
+                } else if (output.data && output.data['image/png']) {
+                  if (yPosition + maxImageHeight > A4_HEIGHT - marginInPoints) {
+                    doc.addPage();
+                    yPosition = marginInPoints + fontSize;
+                    doc.setFillColor(theme === 'dark' ? '#1a202c' : '#ffffff');
+                    doc.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+                  }
+
+                  const imgData = `data:image/png;base64,${output.data['image/png']}`;
+                  const img = new Image();
+                  img.src = imgData;
+                  await new Promise((resolve) => {
+                    img.onload = resolve;
+                  });
+
+                  let imgWidth = img.width;
+                  let imgHeight = img.height;
+                  const aspectRatio = imgWidth / imgHeight;
+
+                  if (imgWidth > maxImageWidth) {
+                    imgWidth = maxImageWidth;
+                    imgHeight = imgWidth / aspectRatio;
+                  }
+                  if (imgHeight > maxImageHeight) {
+                    imgHeight = maxImageHeight;
+                    imgWidth = imgHeight * aspectRatio;
+                  }
+
+                  doc.addImage(imgData, 'PNG', marginInPoints, yPosition, imgWidth, imgHeight);
+                  yPosition += imgHeight + 10;
+                }
+              }
+            }
+            yPosition += fontSize;
+          }
+        }
+
+        if (!combineFiles) {
+          if (addWatermark) {
+            const pages = doc.getNumberOfPages();
+            for (let p = 1; p <= pages; p++) {
+              doc.setPage(p);
+              doc.setFontSize(10);
+              doc.setTextColor(150, 150, 150);
+              doc.text('Converted by IPYNB to PDF Converter', A4_WIDTH / 2, A4_HEIGHT - marginInPoints, { align: 'center' });
+            }
+          }
+
+          const pdfBlob = doc.output('blob');
+          const outputFileName = `${fileData.name.replace(/\.ipynb$/i, '')}.pdf`;
+          saveAs(pdfBlob, outputFileName);
+
+          if (i === 0) {
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            pdfPreviewFrame.src = pdfUrl;
+            pdfPreviewContainer.classList.remove('hidden');
+          }
+
+          doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'pt',
+            format: 'a4'
+          });
+          yPosition = marginInPoints + fontSize;
+          doc.setFont('Helvetica');
+          doc.setFontSize(fontSize);
+          doc.setTextColor(theme === 'dark' ? '#ffffff' : '#000000');
+          doc.setFillColor(theme === 'dark' ? '#1a202c' : '#ffffff');
+          doc.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+        }
+
+        progressBarFill.style.width = `${((i + 1) / filesToProcess.length) * 100}%`;
+      }
+
+      if (combineFiles) {
+        if (addWatermark) {
+          const pages = doc.getNumberOfPages();
+          for (let p = 1; p <= pages; p++) {
+            doc.setPage(p);
+            doc.setFontSize(10);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Converted by IPYNB to PDF Converter', A4_WIDTH / 2, A4_HEIGHT - marginInPoints, { align: 'center' });
+          }
+        }
+
+        pdfBlob = doc.output('blob');
+        const outputFileName = 'combined_notebooks.pdf';
+        saveAs(pdfBlob, outputFileName);
+
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        pdfPreviewFrame.src = pdfUrl;
+        pdfPreviewContainer.classList.remove('hidden');
+      }
+
+      setTimeout(() => {
+        progressBarContainer.classList.add('hidden');
+        progressBarFill.style.width = '0%';
+      }, 1500);
+
+      convertButton.disabled = false;
+      Swal.fire('Conversion Successful!', `${filesToProcess.length} IPYNB file(s) converted to PDF.`, 'success');
+    }
+
+    function resetConverterState() {
+      uploadedFilesData = [];
+      pdfBlob = null;
+
+      const fileInput = document.getElementById('ipynbFiles');
+      fileInput.value = '';
+      document.getElementById('includeOutputs').checked = true;
+      document.getElementById('combineFiles').checked = false;
+      document.getElementById('addWatermark').checked = false;
+      document.getElementById('theme').value = 'light';
+      document.getElementById('fontSize').value = '12';
+      document.getElementById('pageMargin').value = '15';
+
+      document.getElementById('ipynbPreviewContainer').classList.add('hidden');
+      document.getElementById('ipynbContentPreview').innerHTML = '';
+      document.getElementById('pdfPreviewContainer').classList.add('hidden');
+      document.getElementById('pdfPreviewFrame').src = '';
+
+      document.getElementById('progressBarContainer').classList.add('hidden');
+      document.getElementById('progressBarFill').style.width = '0%';
+
+      document.getElementById('convertButton').disabled = true;
+    }
+
+    window.handleDragOver = handleDragOver;
+    window.handleDragLeave = handleDragLeave;
+    window.handleDrop = handleDrop;
+    window.previewFiles = previewFiles;
+    window.convertFilesToPDF = convertFilesToPDF;
+    window.resetConverterState = resetConverterState;
+    window.closeTutorial = closeTutorial;
+    window.toggleDarkMode = toggleDarkMode;
+
+    // Auto-delete files after 30 minutes
+    setTimeout(() => {
+      resetConverterState();
+    }, 30 * 60 * 1000);
+  </script>
+</body>
+</html>

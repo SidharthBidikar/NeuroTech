@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Paint Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Calculator - How Much Paint Do I Need?</title>
+    <meta name="description" content="A powerful and free online paint calculator to estimate how much paint you need for your walls. Accounts for multiple walls, doors, windows, and coats of paint.">
+    <meta name="keywords" content="paint calculator, how much paint do i need, wall paint calculator, paint coverage calculator, room paint calculator, online paint estimator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/paint-calculator.html">
+    <meta property="og:title" content="Advanced Paint Calculator - Estimate Your Paint Needs">
+    <meta property="og:description" content="Calculate the exact amount of paint required for your project with our easy-to-use tool. Supports multiple walls, doors, windows, and coats.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Paint+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/paint-calculator.html">
+    <meta property="twitter:title" content="Advanced Paint Calculator - Estimate Your Paint Needs">
+    <meta property="twitter:description" content="Calculate the exact amount of paint required for your project with our easy-to-use tool. Supports multiple walls, doors, windows, and coats.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Paint+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      .unit-btn.active { background-color: #4f46e5; color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-5xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Paint Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Estimate the exact amount of paint you need for your interior or exterior walls.</p>
+              </div>
+              
+              <!-- Calculator Body -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Inputs -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-gray-700">Project Details</h3>
+                        <div class="inline-flex rounded-md shadow-sm">
+                            <button id="metric-btn" class="unit-btn active px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-l-md">Metric (m)</button>
+                            <button id="imperial-btn" class="unit-btn -ml-px px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-r-md">Imperial (ft)</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Walls Section -->
+                    <div id="walls-container" class="space-y-3 mb-6">
+                        <label class="block text-sm font-bold text-gray-700">Wall Dimensions (<span class="unit-label">m</span>)</label>
+                        <!-- Wall inputs will be added here by JS -->
+                    </div>
+                    <button id="add-wall-btn" class="btn w-full py-2 border-2 border-dashed border-gray-300 text-gray-600 rounded-md hover:bg-gray-100">+ Add Another Wall</button>
+                    
+                    <!-- Exclusions Section -->
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                         <label class="block text-sm font-bold text-gray-700">Areas to Exclude (Doors, Windows, etc.)</label>
+                         <div class="grid grid-cols-2 gap-4 mt-2">
+                             <div>
+                                 <label for="doors-count" class="block text-xs font-medium text-gray-600">Number of Doors</label>
+                                 <input type="number" id="doors-count" value="0" min="0" class="mt-1 w-full p-2 border-gray-300 rounded-md">
+                             </div>
+                             <div>
+                                 <label for="windows-count" class="block text-xs font-medium text-gray-600">Number of Windows</label>
+                                 <input type="number" id="windows-count" value="0" min="0" class="mt-1 w-full p-2 border-gray-300 rounded-md">
+                             </div>
+                         </div>
+                    </div>
+                    
+                    <!-- Paint Settings -->
+                     <div class="mt-6 pt-6 border-t border-gray-200">
+                         <label class="block text-sm font-bold text-gray-700">Paint Settings</label>
+                         <div class="grid grid-cols-2 gap-4 mt-2">
+                             <div>
+                                 <label for="paint-coats" class="block text-xs font-medium text-gray-600">Coats of Paint</label>
+                                 <input type="number" id="paint-coats" value="2" min="1" class="mt-1 w-full p-2 border-gray-300 rounded-md">
+                             </div>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="flex flex-col">
+                    <div class="bg-indigo-600 text-white p-6 rounded-lg text-center shadow-lg">
+                        <p class="text-lg">Total Paint Needed</p>
+                        <p id="paint-liters" class="text-5xl font-bold my-2">0.00 Liters</p>
+                        <p id="paint-gallons" class="text-2xl text-indigo-200">/ 0.00 Gallons</p>
+                    </div>
+                    <div class="mt-6 p-4 bg-white border rounded-lg space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Total Wall Area:</span>
+                            <span id="total-area" class="font-semibold text-gray-800">0 m²</span>
+                        </div>
+                         <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Excluded Area (Doors/Windows):</span>
+                            <span id="excluded-area" class="font-semibold text-gray-800">0 m²</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-base pt-2 border-t">
+                            <span class="text-gray-700">Total Paintable Area:</span>
+                            <span id="paintable-area" class="text-indigo-600">0 m²</span>
+                        </div>
+                    </div>
+                    <button id="clear-btn" class="btn w-full mt-6 py-3 bg-red-500 text-white rounded-md hover:bg-red-600">Clear All</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Calculating How Much Paint You Need</h2>
+      <p>Starting a new painting project is exciting, but one of the most common questions that can cause confusion is: "How much paint do I actually need?" Buying too little means a frustrating trip back to the store mid-project, while buying too much is a waste of money. A <strong>paint calculator</strong> is the perfect solution, providing a precise estimate to ensure you buy the right amount the first time. This guide will explain the factors involved in paint calculation and show you how to use our powerful <strong>wall paint calculator</strong> for an accurate estimate.</p>
+    
+      <h3>How to Use Our Advanced Paint Calculator</h3>
+      <p>Our tool is designed to handle simple and complex projects with ease.</p>
+      <ol>
+          <li><strong>Select Your Units:</strong> At the top of the "Project Details" section, choose between **Metric (m)** for meters or **Imperial (ft)** for feet. All your inputs should be in the selected unit.</li>
+          <li><strong>Enter Wall Dimensions:</strong> For each wall you plan to paint, enter its length and height. If you have more than one wall, click the **"+ Add Another Wall"** button to add more input fields.</li>
+          <li><strong>Account for Exclusions:</strong> Enter the total number of doors and windows in your project. Our calculator uses standard dimensions to subtract these non-paintable areas, giving you a more accurate result.</li>
+          <li><strong>Specify Coats of Paint:</strong> Enter the number of coats you plan to apply. Two coats is standard for most projects for good coverage.</li>
+          <li><strong>View Your Results Instantly:</strong> The results on the right will automatically update, showing you:
+            <ul>
+              <li>The **Total Paint Needed** in both Liters and Gallons.</li>
+              <li>A detailed breakdown of the **Total Wall Area**, the **Excluded Area** for doors and windows, and the final **Total Paintable Area**.</li>
+            </ul>
+          </li>
+      </ol>
+      
+      <h3>The Key Factors in Estimating Paint</h3>
+      <p>A good <strong>paint coverage calculator</strong> must consider several variables for an accurate result.</p>
+      
+      <h4>1. Total Surface Area</h4>
+      <p>This is the most basic part of the calculation. You need to find the total area of all the surfaces you intend to paint. The formula for the area of a rectangular wall is simple:</p>
+      <code>Wall Area = Length × Height</code>
+      <p>Our calculator does this for each wall you add and sums them up to get the Total Wall Area.</p>
+
+      <h4>2. Exclusions (Doors and Windows)</h4>
+      <p>You don't paint over doors and windows, so their area must be subtracted from the total. To simplify the process, our calculator uses standard average dimensions:</p>
+      <ul>
+        <li><strong>Standard Door Area:** Approximately 1.95 sq. meters (21 sq. feet).</li>
+        <li><strong>Standard Window Area:** Approximately 1.4 sq. meters (15 sq. feet).</li>
+      </ul>
+      <p>By subtracting these areas, our <strong>room paint calculator</strong> ensures you're not buying paint for surfaces that won't be covered.</p>
+      
+      <h4>3. Paint Coverage</h4>
+      <p>This is a crucial factor. "Coverage" refers to how much area a certain amount of paint can cover. The industry standard is:</p>
+      <ul>
+          <li><strong>1 Liter of paint** covers approximately **10 square meters** (or 107 square feet).</li>
+          <li><strong>1 Gallon of paint** covers approximately **37 square meters** (or 400 square feet).</li>
+      </ul>
+      <p>Our calculator uses these standard coverage rates. However, keep in mind that this can vary based on the paint brand, the texture of the wall (rough surfaces absorb more paint), and the color you are covering (painting a light color over a dark one may require more paint).</p>
+      
+      <h4>4. Number of Coats</h4>
+      <p>Very rarely is one coat of paint enough for a professional finish. Two coats are standard practice to ensure even color and durability. A primer coat might also be necessary if you are painting on a new, unpainted surface or covering a dark color. Our calculator multiplies the total paintable area by the number of coats you specify to give you the true total amount of paint required.</p>
+
+      <h3>Putting It All Together: The Calculation Formula</h3>
+      <p>Our <strong>online paint estimator</strong> follows this logical sequence:</p>
+      <ol>
+        <li>Calculate the total area of all walls.</li>
+        <li>Calculate the total area of all doors and windows to be excluded.</li>
+        <li>Subtract the excluded area from the total wall area to get the `Paintable Area`.</li>
+        <li>Multiply the `Paintable Area` by the `Number of Coats` to get the `Total Coverage Needed`.</li>
+        <li>Divide the `Total Coverage Needed` by the standard coverage per liter/gallon to find the final amount of paint required.</li>
+      </ol>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>Should I buy exactly the amount the calculator suggests?</h4>
+      <p>It's always a good idea to buy a little extra—about 10-15% more. This accounts for any spills, touch-ups, or variations in wall texture. It's better to have a small amount of leftover paint from the same batch than to have to buy a new can later, which might have a slight color variation.</p>
+      
+      <h4>Does this calculator work for ceilings?</h4>
+      <p>Yes! To calculate the paint needed for a ceiling, simply treat it as another "wall." Enter the length and width of the ceiling into the length and height fields for a new wall.</p>
+
+      <h4>What if my doors or windows are not standard size?</h4>
+      <p>For the most precise calculation, you can measure the area of your non-standard doors/windows yourself (`Length × Height`). Then, instead of using the door/window input fields, add these as extra "walls" and subtract their total area from your main wall area to find the true paintable surface.</p>
+      
+      <h4>How much does 1 litre of paint cover?</h4>
+      <p>As a general rule, 1 litre of standard interior paint will cover about 10 square meters with one coat.</p>
+
+      <h3>Conclusion</h3>
+      <p>Proper planning is the key to a successful and stress-free painting project. By using our <strong>Paint Calculator</strong>, you can eliminate the guesswork and confidently purchase the right amount of paint for your needs. This not only saves you money and time but also ensures you get a professional-looking result without any last-minute hassles. Bookmark this tool for your next DIY project and paint with confidence!</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const metricBtn = document.getElementById('metric-btn');
+        const imperialBtn = document.getElementById('imperial-btn');
+        const wallsContainer = document.getElementById('walls-container');
+        const addWallBtn = document.getElementById('add-wall-btn');
+        const doorsCountInput = document.getElementById('doors-count');
+        const windowsCountInput = document.getElementById('windows-count');
+        const paintCoatsInput = document.getElementById('paint-coats');
+        const clearBtn = document.getElementById('clear-btn');
+        
+        const paintLitersEl = document.getElementById('paint-liters');
+        const paintGallonsEl = document.getElementById('paint-gallons');
+        const totalAreaEl = document.getElementById('total-area');
+        const excludedAreaEl = document.getElementById('excluded-area');
+        const paintableAreaEl = document.getElementById('paintable-area');
+        
+        let unit = 'm';
+        let wallCount = 0;
+
+        const coveragePerLiter = 10; 
+        const coveragePerGallon = 37.16;
+        const doorAreaM = 1.95;
+        const windowAreaM = 1.39;
+        const doorAreaFt = 21;
+        const windowAreaFt = 15;
+
+        const createWallInputs = () => {
+            wallCount++;
+            const wallDiv = document.createElement('div');
+            wallDiv.id = `wall-${wallCount}`;
+            wallDiv.className = 'grid grid-cols-11 gap-2 items-center';
+            wallDiv.innerHTML = `
+                <input type="number" class="wall-length col-span-5 p-2 border-gray-300 rounded-md" placeholder="Length">
+                <span class="col-span-1 text-center text-gray-500">×</span>
+                <input type="number" class="wall-height col-span-4 p-2 border-gray-300 rounded-md" placeholder="Height">
+                <button class="remove-wall-btn col-span-1 text-red-500 hover:text-red-700 ${wallCount === 1 ? 'opacity-0 cursor-default' : ''}" data-id="${wallCount}">×</button>
+            `;
+            wallsContainer.appendChild(wallDiv);
+            
+            wallDiv.querySelector('.remove-wall-btn').addEventListener('click', (e) => {
+                if (wallCount > 1) {
+                    e.target.closest('div').remove();
+                    calculate();
+                }
+            });
+            
+            wallDiv.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', calculate);
+            });
+        };
+
+        const calculate = () => {
+            let totalWallArea = 0;
+            document.querySelectorAll('#walls-container > div').forEach(wallDiv => {
+                const length = parseFloat(wallDiv.querySelector('.wall-length').value) || 0;
+                const height = parseFloat(wallDiv.querySelector('.wall-height').value) || 0;
+                totalWallArea += length * height;
+            });
+
+            const doors = parseInt(doorsCountInput.value) || 0;
+            const windows = parseInt(windowsCountInput.value) || 0;
+            const coats = parseInt(paintCoatsInput.value) || 1;
+            
+            const doorArea = unit === 'm' ? doorAreaM : doorAreaFt;
+            const windowArea = unit === 'm' ? windowAreaM : windowAreaFt;
+
+            const totalExcludedArea = (doors * doorArea) + (windows * windowArea);
+            const totalPaintableArea = Math.max(0, totalWallArea - totalExcludedArea);
+            const totalCoverageNeeded = totalPaintableArea * coats;
+            
+            const unitSq = unit === 'm' ? 'm²' : 'ft²';
+            totalAreaEl.textContent = `${totalWallArea.toFixed(2)} ${unitSq}`;
+            excludedAreaEl.textContent = `${totalExcludedArea.toFixed(2)} ${unitSq}`;
+            paintableAreaEl.textContent = `${totalPaintableArea.toFixed(2)} ${unitSq}`;
+            
+            let paintNeededLiters, paintNeededGallons;
+
+            if (unit === 'm') {
+                paintNeededLiters = totalCoverageNeeded / coveragePerLiter;
+                paintNeededGallons = (totalCoverageNeeded / coveragePerGallon);
+            } else { 
+                const totalCoverageNeededMeters = totalCoverageNeeded * 0.092903;
+                paintNeededLiters = totalCoverageNeededMeters / coveragePerLiter;
+                paintNeededGallons = totalCoverageNeeded / 400;
+            }
+
+            paintLitersEl.textContent = `${paintNeededLiters.toFixed(2)} Liters`;
+            paintGallonsEl.textContent = `/ ${paintNeededGallons.toFixed(2)} Gallons`;
+        };
+        
+        const switchUnits = (newUnit) => {
+            if (unit === newUnit) return;
+            unit = newUnit;
+            
+            document.querySelectorAll('.unit-label').forEach(label => {
+                label.textContent = unit;
+            });
+
+            if (unit === 'm') {
+                metricBtn.classList.add('active');
+                imperialBtn.classList.remove('active');
+            } else {
+                imperialBtn.classList.add('active');
+                metricBtn.classList.remove('active');
+            }
+            calculate();
+        };
+
+        const clearAll = () => {
+            wallsContainer.innerHTML = '';
+            wallCount = 0;
+            createWallInputs();
+            doorsCountInput.value = 0;
+            windowsCountInput.value = 0;
+            paintCoatsInput.value = 2;
+            calculate();
+        };
+        
+        addWallBtn.addEventListener('click', createWallInputs);
+        [doorsCountInput, windowsCountInput, paintCoatsInput].forEach(el => {
+            el.addEventListener('input', calculate);
+        });
+        
+        metricBtn.addEventListener('click', () => switchUnits('m'));
+        imperialBtn.addEventListener('click', () => switchUnits('ft'));
+        clearBtn.addEventListener('click', clearAll);
+
+        // Initial setup
+        createWallInputs();
+        calculate();
+      });
+    </script>
+</body>
+</html>

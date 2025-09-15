@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Concrete Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concrete Calculator - Estimate Concrete Volume & Cost</title>
+    <meta name="description" content="A powerful and free online concrete calculator to estimate the volume of concrete needed for slabs, footings, columns, and walls. Calculate bags and total cost for your project.">
+    <meta name="keywords" content="concrete calculator, how much concrete do i need, concrete slab calculator, concrete volume calculator, concrete estimator, concrete bag calculator, online concrete calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/concrete-calculator.html">
+    <meta property="og:title" content="Advanced Concrete Calculator with Cost & Bag Estimation">
+    <meta property="og:description" content="Easily calculate the volume, number of bags, and cost of concrete for any project shape (slab, column, wall) with our free and accurate online tool.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Concrete+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/concrete-calculator.html">
+    <meta property="twitter:title" content="Advanced Concrete Calculator with Cost & Bag Estimation">
+    <meta property="twitter:description" content="Easily calculate the volume, number of bags, and cost of concrete for any project shape (slab, column, wall) with our free and accurate online tool.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Concrete+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      .unit-btn.active { background-color: #4f46e5; color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-6xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Concrete Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Estimate the volume, bags, and cost of concrete needed for your project.</p>
+              </div>
+        
+              <!-- Calculator Body -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Inputs -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-700">Project Details</h3>
+                        <div class="inline-flex rounded-md shadow-sm">
+                            <button id="metric-btn" class="unit-btn active px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-l-md">Metric</button>
+                            <button id="imperial-btn" class="unit-btn -ml-px px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-r-md">Imperial</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="shape-select" class="block text-sm font-medium text-gray-700">Shape of Pour</label>
+                        <select id="shape-select" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                            <option value="slab">Slab / Rectangular</option>
+                            <option value="circular">Circular Slab / Column</option>
+                            <option value="wall">Wall / Fence</option>
+                            <option value="tube">Tube / Footing</option>
+                        </select>
+                    </div>
+                    
+                    <div id="dimensions-inputs" class="mt-4 space-y-4">
+                        <!-- Dynamic inputs will be rendered here -->
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200 space-y-4">
+                         <h3 class="text-lg font-bold text-gray-700">Cost & Bag Estimation</h3>
+                         <div>
+                            <label for="cost" class="block text-sm font-medium text-gray-700">Cost (<span id="cost-unit-label">per cubic meter</span>)</label>
+                            <input type="number" id="cost" class="calc-input mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 5000">
+                         </div>
+                         <div>
+                            <label for="bag-weight" class="block text-sm font-medium text-gray-700">Bag Weight (<span id="bag-unit-label">kg</span>)</label>
+                            <select id="bag-weight" class="calc-input mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="20">20 kg</option>
+                                <option value="30">30 kg</option>
+                                <option value="40" selected>40 kg</option>
+                                <option value="60">60 lbs</option>
+                                <option value="80">80 lbs</option>
+                            </select>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="space-y-6">
+                    <div class="bg-indigo-600 text-white p-6 rounded-lg text-center shadow-lg">
+                        <p class="text-lg">Volume Needed</p>
+                        <p id="volume-result" class="text-5xl font-bold my-2">0.00 <span class="text-3xl" id="volume-unit">m³</span></p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <p class="text-sm text-gray-500">Total Bags Needed</p>
+                            <p id="bags-needed" class="text-2xl font-semibold text-gray-800">0</p>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <p class="text-sm text-gray-500">Total Cost</p>
+                            <p id="total-cost" class="text-2xl font-semibold text-green-600">₹0.00</p>
+                        </div>
+                    </div>
+                    <button id="clear-btn" class="btn w-full mt-6 py-3 bg-red-500 text-white rounded-md hover:bg-red-600">Clear All</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Calculating Concrete for Any Project</h2>
+      <p>Whether you're a seasoned contractor or a DIY enthusiast planning a weekend project, one of the most critical steps is determining the correct amount of concrete. Ordering too little can cause costly delays and structural weak points, while ordering too much is a waste of money and resources. A <strong>concrete calculator</strong> is an indispensable tool that eliminates guesswork, providing accurate volume and material estimates. This comprehensive guide will explain the fundamentals of concrete calculation for various shapes and show you how to use our powerful <strong>concrete estimator</strong> to plan your project with confidence.</p>
+    
+      <h3>How to Use Our Advanced Concrete Calculator</h3>
+      <p>Our tool is designed to handle a variety of project shapes and provide detailed results.</p>
+      <ol>
+          <li><strong>Select Units:</strong> At the top, choose between **Metric** (meters) or **Imperial** (feet, inches) units.</li>
+          <li><strong>Choose the Shape of Your Pour:</strong> Select the shape that best matches your project from the dropdown menu (Slab, Circular, Wall, or Tube). The input fields will change based on your selection.</li>
+          <li><strong>Enter Dimensions:</strong> Input the required dimensions for your chosen shape (e.g., length, width, and thickness for a slab).</li>
+          <li><strong>Estimate Cost and Bags (Optional):</strong>
+            <ul>
+                <li>Enter the cost of concrete in your area (either per cubic unit or per bag).</li>
+                <li>Select the weight of the pre-mixed concrete bags you plan to buy.</li>
+            </ul>
+          </li>
+          <li><strong>View Your Detailed Results Instantly:</strong> The results update automatically, showing you:
+            <ul>
+              <li>The total **Volume Needed** in cubic meters, feet, and yards.</li>
+              <li>The number of **Bags Needed** based on the bag weight you selected.</li>
+              <li>The **Total Estimated Cost** for the concrete.</li>
+            </ul>
+          </li>
+      </ol>
+      
+      <h3>Calculating Concrete for Different Shapes</h3>
+      <p>Our <strong>concrete volume calculator</strong> uses standard geometric formulas to provide accurate estimates.</p>
+      
+      <h4>1. Rectangular Slab Calculator</h4>
+      <p>This is the most common calculation, used for foundations, patios, sidewalks, and floors. The formula is simple:</p>
+      <code>Volume = Length × Width × Thickness</code>
+      <p>It's crucial to ensure all dimensions are in the same unit before multiplying. Our tool handles this conversion automatically.</p>
+
+      <h4>2. Circular Slab or Column Calculator</h4>
+      <p>Used for circular patios, deck footings, or columns. The formula involves the constant Pi (π).</p>
+      <code>Volume = π × (Diameter / 2)² × Height (or Thickness)</code>
+      <p>Our calculator simplifies this by asking for the diameter and height/thickness directly.</p>
+
+      <h4>3. Wall or Fence Footing Calculator</h4>
+      <p>This is essentially a long, narrow slab. The calculation is the same as a rectangular slab: `Length × Width × Thickness`.</p>
+      
+      <h4>4. Tube / Post Footing Calculator</h4>
+      <p>For setting fence posts or deck supports in cylindrical holes (often formed with cardboard tubes). This uses the same formula as a circular slab, where the "height" is the depth of the hole.</p>
+
+      <h3>From Volume to Bags: How Many Bags Do I Need?</h3>
+      <p>A key feature of our <strong>concrete bag calculator</strong> is converting the required volume into the number of pre-mixed bags you need to buy. The yield of a concrete bag (how much volume it produces) depends on its weight. Here are some standard yields:</p>
+      <ul>
+        <li>A 20 kg bag yields approximately 0.009 m³.</li>
+        <li>A 30 kg bag yields approximately 0.014 m³.</li>
+        <li>A 40 kg bag yields approximately 0.018 m³.</li>
+        <li>A 60 lb bag yields approximately 0.0127 m³ (0.45 ft³).</li>
+        <li>An 80 lb bag yields approximately 0.017 m³ (0.6 ft³).</li>
+      </ul>
+      <p>Our calculator divides the total required volume by the yield of your selected bag size and rounds up to the nearest whole number, as you cannot buy a fraction of a bag.</p>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>Should I add extra for wastage?</h4>
+      <p>Yes. It is always recommended to add an extra **5-10%** to your total calculated volume. This accounts for spillage, uneven subgrade, and the small amount of concrete that will stick to the mixer and tools. It's much better to have a little extra than to run out before the job is finished.</p>
+      
+      <h4>What is the difference between concrete and cement?</h4>
+      <p>This is a common point of confusion. **Cement** is just one ingredient in concrete. **Concrete** is a composite material made of three main components: aggregate (rock and sand), cement (which acts as the binder), and water.</p>
+      
+      <h4>Is this online concrete estimator free?</h4>
+      <p>Yes, this tool is 100% free to use, with no limits on the number of calculations.</p>
+
+      <h3>Conclusion</h3>
+      <p>Accurate planning is the foundation of any successful construction project. By using our comprehensive <strong>Concrete Calculator</strong>, you can eliminate costly errors and ensure you have the right amount of material for the job. From calculating the volume for a simple slab to estimating the number of bags and the total cost, this tool provides the detailed information you need to proceed with confidence. Bookmark it for your next project and build with precision.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const metricBtn = document.getElementById('metric-btn');
+            const imperialBtn = document.getElementById('imperial-btn');
+            const shapeSelect = document.getElementById('shape-select');
+            const dimensionsInputs = document.getElementById('dimensions-inputs');
+            const clearBtn = document.getElementById('clear-btn');
+            
+            const volumeResultEl = document.getElementById('volume-result');
+            const volumeUnitEl = document.getElementById('volume-unit');
+            const bagsNeededEl = document.getElementById('bags-needed');
+            const totalCostEl = document.getElementById('total-cost');
+
+            let unit = 'metric';
+            let shape = 'slab';
+            
+            const bagYields = {
+                '20': 0.0093, '30': 0.014, '40': 0.018,
+                '60': 0.0127, '80': 0.017
+            };
+
+            const renderInputs = () => {
+                let html = '';
+                const lengthUnit = unit === 'metric' ? 'm' : 'ft';
+                const thicknessUnit = unit === 'metric' ? 'cm' : 'in';
+
+                switch(shape) {
+                    case 'slab':
+                        html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Length (${lengthUnit})</label><input type="number" id="length" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Width (${lengthUnit})</label><input type="number" id="width" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div class="col-span-2"><label class="text-xs">Thickness (${thicknessUnit})</label><input type="number" id="thickness" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                    case 'circular':
+                         html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Diameter (${lengthUnit})</label><input type="number" id="diameter" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Thickness (${thicknessUnit})</label><input type="number" id="thickness" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                    case 'wall':
+                         html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Length (${lengthUnit})</label><input type="number" id="length" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Height (${lengthUnit})</label><input type="number" id="height" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div class="col-span-2"><label class="text-xs">Thickness (${thicknessUnit})</label><input type="number" id="thickness" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                    case 'tube':
+                        html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Diameter (${thicknessUnit})</label><input type="number" id="diameter" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Depth (${lengthUnit})</label><input type="number" id="depth" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                }
+                dimensionsInputs.innerHTML = html;
+                attachInputListeners();
+            };
+
+            const calculate = () => {
+                let volumeM3 = 0;
+                let inputs = Array.from(document.querySelectorAll('.calc-input')).map(el => parseFloat(el.value) || 0);
+
+                if (inputs.some(val => val < 0)) {
+                    resetResults();
+                    return;
+                }
+
+                let length, width, thickness, height, diameter, depth;
+                
+                if (unit === 'metric') {
+                    switch(shape) {
+                        case 'slab': [length, width, thickness] = inputs; volumeM3 = length * width * (thickness / 100); break;
+                        case 'circular': [diameter, thickness] = inputs; volumeM3 = Math.PI * Math.pow(diameter / 2, 2) * (thickness / 100); break;
+                        case 'wall': [length, height, thickness] = inputs; volumeM3 = length * height * (thickness / 100); break;
+                        case 'tube': [diameter, depth] = inputs; volumeM3 = Math.PI * Math.pow(diameter / 2 / 100, 2) * depth; break;
+                    }
+                } else { // Imperial
+                     switch(shape) {
+                        case 'slab': [length, width, thickness] = inputs; volumeM3 = (length * 0.3048) * (width * 0.3048) * (thickness * 0.0254); break;
+                        case 'circular': [diameter, thickness] = inputs; volumeM3 = Math.PI * Math.pow((diameter * 0.3048) / 2, 2) * (thickness * 0.0254); break;
+                        case 'wall': [length, height, thickness] = inputs; volumeM3 = (length * 0.3048) * (height * 0.3048) * (thickness * 0.0254); break;
+                        case 'tube': [diameter, depth] = inputs; volumeM3 = Math.PI * Math.pow((diameter * 0.0254) / 2, 2) * (depth * 0.3048); break;
+                    }
+                }
+                
+                displayResults(volumeM3);
+            };
+
+            const displayResults = (volumeM3) => {
+                const cost = parseFloat(document.getElementById('cost').value) || 0;
+                const bagWeight = document.getElementById('bag-weight').value;
+                
+                let volumeDisplay, unitDisplay, costDisplay;
+                
+                if (unit === 'metric') {
+                    volumeDisplay = volumeM3.toFixed(2);
+                    unitDisplay = 'm³';
+                    costDisplay = (cost * volumeM3).toLocaleString('en-IN', { style: 'currency', currency: 'INR' });
+                } else {
+                    const volumeFt3 = volumeM3 * 35.3147;
+                    volumeDisplay = volumeFt3.toFixed(2);
+                    unitDisplay = 'ft³';
+                    costDisplay = (cost * volumeFt3).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                }
+
+                volumeResultEl.textContent = volumeDisplay;
+                volumeUnitEl.textContent = unitDisplay;
+
+                const bagsNeeded = Math.ceil(volumeM3 / bagYields[bagWeight]);
+                bagsNeededEl.textContent = bagsNeeded.toLocaleString();
+                
+                totalCostEl.textContent = cost > 0 ? costDisplay : (0).toLocaleString('en-US', { style: 'currency', currency: unit === 'metric' ? 'INR' : 'USD' });
+            };
+            
+            const resetResults = () => {
+                volumeResultEl.textContent = '0.00';
+                bagsNeededEl.textContent = '0';
+                totalCostEl.textContent = (0).toLocaleString('en-US', { style: 'currency', currency: unit === 'metric' ? 'INR' : 'USD' });
+            };
+
+            const clearAll = () => {
+                document.querySelectorAll('.calc-input, #cost').forEach(input => input.value = '');
+                resetResults();
+            };
+
+            const attachInputListeners = () => {
+                document.querySelectorAll('.calc-input, #cost, #bag-weight').forEach(el => {
+                    el.removeEventListener('input', calculate);
+                    el.addEventListener('input', calculate);
+                });
+            };
+
+            const setupUnits = (newUnit) => {
+                unit = newUnit;
+                metricBtn.classList.toggle('active', newUnit === 'metric');
+                imperialBtn.classList.toggle('active', newUnit === 'imperial');
+                document.getElementById('cost-unit-label').textContent = newUnit === 'metric' ? 'per cubic meter' : 'per cubic foot';
+                document.getElementById('bag-unit-label').textContent = newUnit === 'metric' ? 'kg' : 'lbs';
+                renderInputs();
+            };
+
+            // Event Listeners
+            shapeSelect.addEventListener('change', () => { shape = shapeSelect.value; renderInputs(); });
+            metricBtn.addEventListener('click', () => setupUnits('metric'));
+            imperialBtn.addEventListener('click', () => setupUnits('imperial'));
+            clearBtn.addEventListener('click', clearAll);
+
+            // Initial setup
+            renderInputs();
+        });
+    </script>
+</body>
+</html>

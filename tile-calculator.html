@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Tile Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tile Calculator - Estimate Tiles Needed for Floor & Wall</title>
+    <meta name="description" content="A powerful and free online tile calculator to estimate the number of tiles and cost for your floor or wall project. Accounts for grout gap, wastage, and supports various units.">
+    <meta name="keywords" content="tile calculator, how many tiles do i need, floor tile calculator, wall tile calculator, tile estimator, tile coverage calculator, online tile calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/tile-calculator.html">
+    <meta property="og:title" content="Advanced Tile Calculator with Cost & Wastage Estimation">
+    <meta property="og:description" content="Calculate the exact number of tiles and the total cost for your project with our easy-to-use tool. Perfect for DIYers and professionals.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Tile+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/tile-calculator.html">
+    <meta property="twitter:title" content="Advanced Tile Calculator with Cost & Wastage Estimation">
+    <meta property="twitter:description" content="Calculate the exact number of tiles and the total cost for your project with our easy-to-use tool. Perfect for DIYers and professionals.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Tile+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      .unit-btn.active { background-color: #4f46e5; color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"><!-- Header content --></nav>
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-6xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Tile Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Estimate the number of tiles and total cost for your floor or wall project.</p>
+              </div>
+        
+              <!-- Calculator Body -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Inputs -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-gray-700">Project Details</h3>
+                        <div class="inline-flex rounded-md shadow-sm">
+                            <button id="metric-btn" class="unit-btn active px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-l-md">Metric</button>
+                            <button id="imperial-btn" class="unit-btn -ml-px px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-r-md">Imperial</button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                         <div>
+                            <label class="block text-sm font-medium text-gray-700">Area Dimensions (<span class="unit-label">m</span>)</label>
+                             <div class="flex space-x-2 mt-1">
+                                <input type="number" id="area-length" class="input-field block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Length">
+                                <input type="number" id="area-width" class="input-field block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Width">
+                             </div>
+                        </div>
+                         <div>
+                            <label class="block text-sm font-medium text-gray-700">Tile Dimensions (<span class="unit-label-small">cm</span>)</label>
+                             <div class="flex space-x-2 mt-1">
+                                <input type="number" id="tile-length" class="input-field block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Length">
+                                <input type="number" id="tile-width" class="input-field block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Width">
+                             </div>
+                        </div>
+                         <div>
+                            <label for="grout-gap" class="block text-sm font-medium text-gray-700">Grout Gap (<span class="unit-label-small-mm">mm</span>)</label>
+                            <input type="number" id="grout-gap" value="3" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="wastage" class="block text-sm font-medium text-gray-700">Wastage (%)</label>
+                            <input type="number" id="wastage" value="10" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200 space-y-4">
+                         <h3 class="text-lg font-bold text-gray-700">Cost Estimation (Optional)</h3>
+                         <div>
+                            <label for="cost-per-tile" class="block text-sm font-medium text-gray-700">Cost per Tile</label>
+                            <input type="number" id="cost-per-tile" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 50">
+                         </div>
+                         <div>
+                            <label for="tiles-per-box" class="block text-sm font-medium text-gray-700">Tiles per Box</label>
+                            <input type="number" id="tiles-per-box" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 10">
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="space-y-6">
+                    <div class="bg-indigo-600 text-white p-6 rounded-lg text-center shadow-lg">
+                        <p class="text-lg">Total Tiles Needed</p>
+                        <p id="total-tiles" class="text-5xl font-bold my-2">0</p>
+                        <p id="total-boxes" class="text-xl text-indigo-200">(0 Boxes)</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <p class="text-sm text-gray-500">Total Area</p>
+                            <p id="total-area" class="text-2xl font-semibold text-gray-800">0</p>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <p class="text-sm text-gray-500">Total Cost</p>
+                            <p id="total-cost" class="text-2xl font-semibold text-green-600">₹0.00</p>
+                        </div>
+                    </div>
+                    <button id="clear-btn" class="btn w-full mt-6 py-3 bg-red-500 text-white rounded-md hover:bg-red-600">Clear All</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Calculating Tiles for Your Project</h2>
+      <p>Starting a tiling project, whether for a floor or a wall, is an exciting way to transform a space. However, one of the most critical steps in planning is accurately calculating the number of tiles you'll need. Buying too few tiles can halt your project midway, while buying too many results in wasted money and leftover materials. A <strong>tile calculator</strong> is an essential tool that eliminates guesswork, ensuring you purchase the right amount for a smooth and cost-effective project. This guide will explain the key factors in tile estimation and show you how to use our powerful <strong>tile estimator</strong> for precise results.</p>
+    
+      <h3>How to Use Our Advanced Tile Calculator</h3>
+      <p>Our tool is designed to provide a comprehensive and accurate estimate for any tiling job.</p>
+      <ol>
+          <li><strong>Select Your Units:</strong> At the top, choose between **Metric** (meters, cm, mm) or **Imperial** (feet, inches). The labels for all input fields will update accordingly.</li>
+          <li><strong>Enter Area Dimensions:</strong> Input the total length and width of the floor or wall you plan to tile.</li>
+          <li><strong>Enter Tile Dimensions:</strong> Input the length and width of a single tile.</li>
+          <li><strong>Specify Grout Gap:</strong> Enter the width of the gap you plan to leave between tiles for grout. This ensures a more accurate calculation as it accounts for the space between tiles.</li>
+          <li><strong>Account for Wastage:</strong> It's crucial to plan for cuts, mistakes, and future repairs. A standard wastage factor is 10-15%. Our calculator defaults to 10%, but you can adjust it as needed.</li>
+          <li><strong>Estimate Costs (Optional):</strong> To get a budget, you can enter the cost per tile and the number of tiles that come in a single box.</li>
+          <li><strong>View Your Detailed Results Instantly:</strong> The results update automatically, showing you:
+            <ul>
+              <li>The **Total Tiles Needed** (including wastage).</li>
+              <li>The number of **Boxes to Buy**.</li>
+              <li>The **Total Area** to be covered.</li>
+              <li>The **Total Estimated Cost** for the tiles.</li>
+            </ul>
+          </li>
+      </ol>
+      
+      <h3>Key Factors in Tile Calculation</h3>
+      <p>A good <strong>floor tile calculator</strong> or **wall tile calculator** must consider several variables.</p>
+      
+      <h4>1. Total Area to be Tiled</h4>
+      <p>The first step is always to calculate the total surface area. For a simple rectangular area, the formula is:</p>
+      <code>Total Area = Length × Width</code>
+
+      <h4>2. Individual Tile Area (Including Grout)</h4>
+      <p>To determine how many tiles fit into the total area, you must first calculate the area of a single tile, including the grout lines around it.</p>
+      <code>Single Tile Area = (Tile Length + Grout Gap) × (Tile Width + Grout Gap)</code>
+      <p>Forgetting to account for the grout gap is a common mistake that can lead to buying too many tiles.</p>
+
+      <h4>3. The Wastage Factor</h4>
+      <p>No tiling project is perfect. You will inevitably have to cut tiles to fit around edges, corners, and obstacles. Some tiles may also break during installation. To account for this, professionals always add a wastage factor.</p>
+      <ul>
+        <li>For simple, rectangular rooms, a **10%** wastage factor is usually sufficient.</li>
+        <li>For rooms with complex shapes, diagonal layouts, or many cuts, a **15-20%** wastage factor is recommended.</li>
+      </ul>
+      <p>Our calculator applies this percentage to the number of tiles needed, ensuring you have enough to complete the job and a few spares for future repairs.</p>
+      
+      <h4>4. Cost Estimation</h4>
+      <p>Our <strong>tile cost calculator</strong> helps you budget your project accurately. By knowing the cost per tile and the total number of tiles required (including wastage), you can get a clear picture of your material expenses before you even start.</p>
+
+      <h3>The Calculation Formula Explained</h3>
+      <p>Our <strong>online tile calculator</strong> follows these logical steps:</p>
+      <ol>
+        <li>Calculate the `Total Area` (Length × Width of the space).</li>
+        <li>Calculate the `Single Tile Area` including the grout gap.</li>
+        <li>Divide `Total Area` by `Single Tile Area` to get the `Base Number of Tiles`.</li>
+        <li>Add the wastage percentage: `Total Tiles Needed = Base Number of Tiles × (1 + (Wastage % / 100))`.</li>
+        <li>If provided, calculate the `Number of Boxes` and `Total Cost`.</li>
+      </ol>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>How many tiles do I need for a 10x10 room?</h4>
+      <p>This depends entirely on the size of your tiles. Use our calculator: enter 10 for length and 10 for width (in feet or meters), and then enter your tile dimensions to get an exact number.</p>
+      
+      <h4>What is a standard grout line width?</h4>
+      <p>For floor tiles, a common grout line is 3mm to 5mm (about 1/8 to 3/16 inch). For wall tiles, it can be smaller, around 1.5mm to 3mm. The size often depends on the tile type and the desired look.</p>
+      
+      <h4>Should I round up or down when buying boxes?</h4>
+      <p>Always round up. Since you cannot buy a fraction of a box, you must round up to the next whole number to ensure you have enough tiles to complete your project. Our calculator does this for you automatically.</p>
+
+      <h3>Conclusion</h3>
+      <p>A successful tiling project starts with careful planning. By using our comprehensive <strong>Tile Calculator</strong>, you can eliminate the most common point of failure—buying the wrong amount of material. This tool provides the precision you need to budget effectively, shop with confidence, and ensure your project runs smoothly from start to finish. Bookmark this page for all your future tiling projects!</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const metricBtn = document.getElementById('metric-btn');
+        const imperialBtn = document.getElementById('imperial-btn');
+        const allInputs = document.querySelectorAll('.input-field');
+        const clearBtn = document.getElementById('clear-btn');
+        
+        // Result elements
+        const totalTilesEl = document.getElementById('total-tiles');
+        const totalBoxesEl = document.getElementById('total-boxes');
+        const totalAreaEl = document.getElementById('total-area');
+        const totalCostEl = document.getElementById('total-cost');
+        
+        let unit = 'metric';
+
+        const switchUnits = (newUnit) => {
+            if (unit === newUnit) return;
+            unit = newUnit;
+
+            metricBtn.classList.toggle('active', unit === 'metric');
+            imperialBtn.classList.toggle('active', unit === 'imperial');
+
+            const areaUnitLabel = document.querySelector('label[for="area-length"] .unit-label');
+            const tileUnitLabel = document.querySelector('label[for="tile-length"] .unit-label-small');
+            const groutUnitLabel = document.querySelector('label[for="grout-gap"] .unit-label-small-mm');
+
+            if (unit === 'metric') {
+                if(areaUnitLabel) areaUnitLabel.textContent = 'm';
+                if(tileUnitLabel) tileUnitLabel.textContent = 'cm';
+                if(groutUnitLabel) groutUnitLabel.textContent = 'mm';
+            } else {
+                if(areaUnitLabel) areaUnitLabel.textContent = 'ft';
+                if(tileUnitLabel) tileUnitLabel.textContent = 'in';
+                if(groutUnitLabel) groutUnitLabel.textContent = 'in';
+            }
+            calculate();
+        };
+
+        const calculate = () => {
+            // Get values
+            const areaLength = parseFloat(document.getElementById('area-length').value) || 0;
+            const areaWidth = parseFloat(document.getElementById('area-width').value) || 0;
+            const tileLength = parseFloat(document.getElementById('tile-length').value) || 0;
+            const tileWidth = parseFloat(document.getElementById('tile-width').value) || 0;
+            const groutGap = parseFloat(document.getElementById('grout-gap').value) || 0;
+            const wastage = parseFloat(document.getElementById('wastage').value) || 0;
+            const costPerTile = parseFloat(document.getElementById('cost-per-tile').value) || 0;
+            const tilesPerBox = parseInt(document.getElementById('tiles-per-box').value, 10) || 0;
+
+            if (areaLength <= 0 || areaWidth <= 0 || tileLength <= 0 || tileWidth <= 0) {
+                resetResults();
+                return;
+            }
+
+            let areaLengthM, areaWidthM, tileLengthM, tileWidthM, groutGapM;
+
+            if (unit === 'metric') {
+                areaLengthM = areaLength;
+                areaWidthM = areaWidth;
+                tileLengthM = tileLength / 100; // cm to m
+                tileWidthM = tileWidth / 100; // cm to m
+                groutGapM = groutGap / 1000; // mm to m
+            } else { // Imperial
+                areaLengthM = areaLength * 0.3048; // ft to m
+                areaWidthM = areaWidth * 0.3048; // ft to m
+                tileLengthM = tileLength * 0.0254; // in to m
+                tileWidthM = tileWidth * 0.0254; // in to m
+                groutGapM = groutGap * 0.0254; // in to m
+            }
+
+            const totalAreaM2 = areaLengthM * areaWidthM;
+            const singleTileAreaM2 = (tileLengthM + groutGapM) * (tileWidthM + groutGapM);
+            
+            if (singleTileAreaM2 === 0) {
+                resetResults();
+                return;
+            }
+
+            const baseTilesNeeded = Math.ceil(totalAreaM2 / singleTileAreaM2);
+            const totalTiles = Math.ceil(baseTilesNeeded * (1 + wastage / 100));
+
+            totalTilesEl.textContent = totalTiles.toLocaleString('en-US');
+
+            if (tilesPerBox > 0) {
+                const totalBoxes = Math.ceil(totalTiles / tilesPerBox);
+                totalBoxesEl.textContent = `(${totalBoxes.toLocaleString('en-US')} Boxes)`;
+            } else {
+                totalBoxesEl.textContent = '';
+            }
+            
+            if(unit === 'metric') {
+                totalAreaEl.textContent = `${totalAreaM2.toFixed(2)} m²`;
+            } else {
+                totalAreaEl.textContent = `${(totalAreaM2 / 0.092903).toFixed(2)} ft²`;
+            }
+
+            if(costPerTile > 0) {
+                const totalCost = totalTiles * costPerTile;
+                totalCostEl.textContent = totalCost.toLocaleString('en-US', {style: 'currency', currency: unit === 'metric' ? 'INR' : 'USD' });
+            } else {
+                 totalCostEl.textContent = (0).toLocaleString('en-US', {style: 'currency', currency: unit === 'metric' ? 'INR' : 'USD' });
+            }
+        };
+        
+        const resetResults = () => {
+            totalTilesEl.textContent = '0';
+            totalBoxesEl.textContent = '(0 Boxes)';
+            totalAreaEl.textContent = '0';
+            totalCostEl.textContent = (0).toLocaleString('en-US', {style: 'currency', currency: unit === 'metric' ? 'INR' : 'USD' });
+        }
+
+        const clearAll = () => {
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                if (input.id !== 'wastage') {
+                    input.value = '';
+                } else {
+                    input.value = '10';
+                }
+            });
+            calculate();
+        };
+
+        // Event Listeners
+        allInputs.forEach(input => input.addEventListener('input', calculate));
+        metricBtn.addEventListener('click', () => switchUnits('metric'));
+        imperialBtn.addEventListener('click', () => switchUnits('imperial'));
+        clearBtn.addEventListener('click', clearAll);
+
+        // Initial setup
+        switchUnits('metric');
+    });
+    </script>
+</body>
+</html>

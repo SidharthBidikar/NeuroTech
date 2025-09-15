@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Bricks Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bricks Calculator - Estimate Bricks Needed for a Wall</title>
+    <meta name="description" content="A powerful and free online bricks calculator to estimate the number of bricks and mortar needed for your wall. Accounts for wall type, mortar thickness, wastage, and cost.">
+    <meta name="keywords" content="bricks calculator, how many bricks do i need, wall brick calculator, brickwork calculator, brick estimator, brick and mortar calculator, online brick calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/bricks-calculator.html">
+    <meta property="og:title" content="Advanced Bricks Calculator with Cost & Mortar Estimation">
+    <meta property="og:description" content="Calculate the exact number of bricks, mortar volume, and total cost for your construction project with our easy-to-use tool.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Bricks+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/bricks-calculator.html">
+    <meta property="twitter:title" content="Advanced Bricks Calculator with Cost & Mortar Estimation">
+    <meta property="twitter:description" content="Calculate the exact number of bricks, mortar volume, and total cost for your construction project with our easy-to-use tool.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Bricks+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      .unit-btn.active { background-color: #4f46e5; color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-6xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Bricks Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Estimate the number of bricks, mortar, and total cost for your wall construction project.</p>
+              </div>
+        
+              <!-- Calculator Body -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Inputs -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-gray-700">Project Details</h3>
+                        <div class="inline-flex rounded-md shadow-sm">
+                            <button id="metric-btn" class="unit-btn active px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-l-md">Metric</button>
+                            <button id="imperial-btn" class="unit-btn -ml-px px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-r-md">Imperial</button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                         <div>
+                            <label class="block text-sm font-medium text-gray-700">Wall Dimensions (<span class="unit-label">m</span>)</label>
+                             <div class="flex space-x-2 mt-1">
+                                <input type="number" id="wall-length" class="input-field block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Length">
+                                <input type="number" id="wall-height" class="input-field block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="Height">
+                             </div>
+                        </div>
+                         <div>
+                            <label class="block text-sm font-medium text-gray-700">Brick Dimensions (<span class="unit-label-small">mm</span>)</label>
+                             <div class="flex space-x-2 mt-1">
+                                <input type="number" id="brick-length" class="input-field block w-1/3 p-2 border border-gray-300 rounded-md" placeholder="L">
+                                <input type="number" id="brick-height" class="input-field block w-1/3 p-2 border border-gray-300 rounded-md" placeholder="H">
+                                <input type="number" id="brick-depth" class="input-field block w-1/3 p-2 border border-gray-300 rounded-md" placeholder="D">
+                             </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="mortar-joint" class="block text-sm font-medium text-gray-700">Mortar Joint (<span class="unit-label-small">mm</span>)</label>
+                                <input type="number" id="mortar-joint" value="10" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                            </div>
+                             <div>
+                                <label for="wall-type" class="block text-sm font-medium text-gray-700">Wall Type</label>
+                                <select id="wall-type" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                    <option value="single">Single Leaf</option>
+                                    <option value="double">Double Leaf</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="wastage" class="block text-sm font-medium text-gray-700">Wastage (%)</label>
+                            <input type="number" id="wastage" value="10" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        </div>
+                         <div>
+                            <label for="cost-per-brick" class="block text-sm font-medium text-gray-700">Cost per Brick (<span class="currency-symbol">₹</span>)</label>
+                            <input type="number" id="cost-per-brick" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 8">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="space-y-6">
+                    <div class="bg-indigo-600 text-white p-6 rounded-lg text-center shadow-lg">
+                        <p class="text-lg">Total Bricks Needed</p>
+                        <p id="total-bricks" class="text-5xl font-bold my-2">0</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <p class="text-sm text-gray-500">Total Wall Area</p>
+                            <p id="total-area" class="text-2xl font-semibold text-gray-800">0</p>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <p class="text-sm text-gray-500">Mortar Volume Needed</p>
+                            <p id="mortar-volume" class="text-2xl font-semibold text-gray-800">0</p>
+                        </div>
+                        <div class="p-4 bg-green-100 text-green-800 rounded-lg col-span-full text-center">
+                            <p class="font-semibold">Estimated Bricks Cost</p>
+                            <p id="total-cost" class="text-3xl font-bold">₹0.00</p>
+                        </div>
+                    </div>
+                    <button id="clear-btn" class="btn w-full mt-6 py-3 bg-red-500 text-white rounded-md hover:bg-red-600">Clear All</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Calculating Bricks for Construction</h2>
+      <p>Embarking on a construction project, whether it's a simple garden wall, a house extension, or a full-scale building, requires meticulous planning. One of the most fundamental steps in this process is accurately calculating the number of bricks required. A miscalculation can be costly and frustrating; ordering too few bricks leads to work stoppages and potential color mismatches between batches, while ordering too many results in wasted money and leftover materials. A <strong>bricks calculator</strong> is an indispensable modern tool for architects, contractors, and DIY enthusiasts, providing a precise estimate to ensure your project is efficient and cost-effective from the very beginning. This comprehensive guide will delve into the factors that affect brickwork calculations and show you how to use our powerful <strong>brick estimator</strong> for any construction project.</p>
+    
+      <h3>How to Use Our Advanced Bricks Calculator</h3>
+      <p>Our tool is designed to provide a comprehensive and accurate estimate with advanced options to suit any project.</p>
+      <ol>
+          <li><strong>Select Your Units:</strong> At the top of the calculator, choose between **Metric** (meters and millimeters) or **Imperial** (feet and inches). The unit labels next to each input field will update automatically, and the tool will pre-fill standard brick sizes for that region.</li>
+          <li><strong>Enter Wall Dimensions:</strong> Input the total length and height of the wall you intend to build.</li>
+          <li><strong>Check Brick Dimensions:</strong> The tool pre-fills standard brick sizes, but you should always measure your specific brick and enter its length, height, and depth for the most accurate results.</li>
+          <li><strong>Specify Mortar Joint Thickness:</strong> Enter the width of the mortar gap you plan to use between bricks. 10mm (or 3/8 inch) is a common standard, but this can be adjusted.</li>
+          <li><strong>Choose Wall Type:</strong> Select whether you are building a "Single Leaf" (one brick thick, also known as a half-brick wall) or a "Double Leaf" (two bricks thick, a full-brick wall) structure. This significantly impacts the total number of bricks.</li>
+          <li><strong>Account for Wastage:</strong> It's essential to plan for bricks that will be cut or broken. A 5-10% wastage factor is standard. Our calculator defaults to 10% for a safe estimate.</li>
+          <li><strong>Estimate Costs (Optional):</strong> To get a budget, enter the cost per individual brick.</li>
+          <li><strong>View Your Detailed Results Instantly:</strong> The results on the right will automatically update as you enter values, showing you:
+            <ul>
+              <li>The **Total Bricks Needed** (including the wastage factor).</li>
+              <li>The required **Mortar Volume** for the joints.</li>
+              <li>The **Total Estimated Cost** for the bricks.</li>
+            </ul>
+          </li>
+      </ol>
+      
+      <h3>Key Factors in Brick Calculation: A Deep Dive</h3>
+      <p>A good <strong>wall brick calculator</strong> must consider several critical variables to ensure accuracy. Let's break them down.</p>
+      
+      <h4>1. Understanding Brick and Wall Dimensions</h4>
+      <p>The calculation begins with the wall's surface area. The formula is simple:</p>
+      <code>Wall Surface Area = Wall Length × Wall Height</code>
+      <p>However, simply dividing this by the area of a single brick is a common mistake. Why? Because it ignores the mortar joints that hold the bricks together.</p>
+
+      <h4>2. The Importance of the Mortar Joint</h4>
+      <p>The mortar joint is the space between bricks that is filled with mortar. It is a structural component and also significantly affects the number of bricks needed. Our calculator accounts for this by calculating the area of one brick *plus* its surrounding mortar joint.</p>
+      <code>Effective Area of One Brick = (Brick Length + Mortar Thickness) × (Brick Height + Mortar Thickness)</code>
+      <p>By dividing the total wall area by this "effective area," we get a much more accurate count of the bricks needed for the face of the wall.</p>
+
+      <h4>3. Single Leaf vs. Double Leaf Walls</h4>
+      <p>The type of wall you are building is a major factor. Our <strong>brickwork calculator</strong> allows you to choose:</p>
+      <ul>
+          <li><strong>Single Leaf Wall:</strong> Also known as a half-brick wall, this is one brick thick. It's typically used for garden walls, boundary walls, or internal partitions.</li>
+          <li><strong>Double Leaf Wall:</strong> Also known as a full-brick wall, this structure is two bricks thick, often with a cavity between them, providing greater strength, insulation, and weather resistance. It is the standard for exterior walls of houses. A double leaf wall requires approximately double the number of bricks as a single leaf wall of the same area.</li>
+      </ul>
+
+      <h4>4. The Inevitable Wastage Factor</h4>
+      <p>No construction project is without waste. Bricks need to be cut to fit corners and edges, and some may break during transport or handling. Professionals always add a wastage factor to their estimate.</p>
+      <ul>
+        <li>For simple, straight walls, a **5-7%** wastage factor is usually sufficient.</li>
+        <li>For walls with many corners, openings, or complex patterns (like herringbone), a **10-15%** wastage factor is recommended.</li>
+      </ul>
+      <p>Our calculator applies this percentage to the number of bricks needed, ensuring you have enough to complete the job and a few spares for future repairs.</p>
+      
+      <h4>5. Mortar Volume Calculation</h4>
+      <p>Our calculator also provides an estimate for the amount of mortar you'll need. It does this by calculating the total volume of the wall and subtracting the volume of the actual bricks used, leaving you with the volume of the joints.</p>
+      <code>Mortar Volume = Total Wall Volume - (Number of Bricks × Volume of One Brick)</code>
+      <p>This gives you a precise volume in cubic meters or cubic feet, which you can then use to determine how many bags of cement and sand you need based on your desired mix ratio (e.g., 1:4 or 1:6 cement to sand).</p>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>What are standard brick sizes?</h4>
+      <p>Brick sizes can vary significantly by country and region. In India, a standard modular brick is typically 190mm x 90mm x 90mm. In the US, a standard modular brick is approximately 7 5/8" x 3 5/8" x 2 1/4". It's always best to measure the specific brick you plan to use for the most accurate calculation. Our tool pre-fills these standards when you switch units.</p>
+      
+      <h4>What is the difference between a single leaf and double leaf wall?</h4>
+      <p>A **single leaf** (or half-brick) wall is one brick thick, with the brick's stretcher (long side) facing out. It's often used for garden walls or internal partitions. A **double leaf** (or full-brick) wall is two bricks thick, often with a cavity between them, providing greater strength, insulation, and weather resistance. It is the standard for exterior walls of houses.</p>
+      
+      <h4>How many bricks are needed per square meter?</h4>
+      <p>This depends on the brick size and mortar joint. For a standard Indian brick (190x90x90 mm) with a 10mm mortar joint, you would need approximately 50 bricks per square meter for a single leaf wall.</p>
+
+      <h4>Is this online brick estimator free?</h4>
+      <p>Yes, this tool is 100% free to use, with no limits on the number of calculations.</p>
+
+      <h3>Conclusion</h3>
+      <p>A successful construction project begins with precise planning and accurate material estimation. By using our comprehensive <strong>Bricks Calculator</strong>, you can eliminate the most common point of failure—buying the wrong amount of material. This tool provides the precision you need to budget effectively, shop with confidence, and ensure your project runs smoothly from start to finish. Bookmark this page for all your future brickwork projects and build with confidence.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const metricBtn = document.getElementById('metric-btn');
+        const imperialBtn = document.getElementById('imperial-btn');
+        const allInputs = document.querySelectorAll('.input-field');
+        const clearBtn = document.getElementById('clear-btn');
+        
+        // Result elements
+        const totalBricksEl = document.getElementById('total-bricks');
+        const totalAreaEl = document.getElementById('total-area');
+        const mortarVolumeEl = document.getElementById('mortar-volume');
+        const totalCostEl = document.getElementById('total-cost');
+        
+        let unit = 'metric';
+
+        const switchUnits = (newUnit) => {
+            if (unit === newUnit) return;
+            unit = newUnit;
+
+            metricBtn.classList.toggle('active', newUnit === 'metric');
+            imperialBtn.classList.toggle('active', newUnit === 'imperial');
+
+            const areaUnitLabel = document.querySelector('label[for="wall-length"] .unit-label');
+            const brickUnitLabel = document.querySelector('label[for="brick-length"] .unit-label-small');
+            const mortarUnitLabel = document.querySelector('label[for="mortar-joint"] .unit-label-small');
+            const costUnitLabel = document.querySelector('label[for="cost-per-brick"] .currency-symbol');
+            
+            if (unit === 'metric') {
+                if(areaUnitLabel) areaUnitLabel.textContent = 'm';
+                if(brickUnitLabel) brickUnitLabel.textContent = 'mm';
+                if(mortarUnitLabel) mortarUnitLabel.textContent = 'mm';
+                if(costUnitLabel) costUnitLabel.textContent = '₹';
+                document.getElementById('brick-length').value = 190;
+                document.getElementById('brick-height').value = 90;
+                document.getElementById('brick-depth').value = 90;
+                document.getElementById('mortar-joint').value = 10;
+            } else {
+                if(areaUnitLabel) areaUnitLabel.textContent = 'ft';
+                if(brickUnitLabel) brickUnitLabel.textContent = 'in';
+                if(mortarUnitLabel) mortarUnitLabel.textContent = 'in';
+                if(costUnitLabel) costUnitLabel.textContent = '$';
+                document.getElementById('brick-length').value = 7.625;
+                document.getElementById('brick-height').value = 2.25;
+                document.getElementById('brick-depth').value = 3.625;
+                document.getElementById('mortar-joint').value = 0.375;
+            }
+            calculate();
+        };
+
+        const calculate = () => {
+            const wallLength = parseFloat(document.getElementById('wall-length').value) || 0;
+            const wallHeight = parseFloat(document.getElementById('wall-height').value) || 0;
+            const brickLength = parseFloat(document.getElementById('brick-length').value) || 0;
+            const brickHeight = parseFloat(document.getElementById('brick-height').value) || 0;
+            const brickDepth = parseFloat(document.getElementById('brick-depth').value) || 0;
+            const mortarJoint = parseFloat(document.getElementById('mortar-joint').value) || 0;
+            const wallType = document.getElementById('wall-type').value;
+            const wastage = parseFloat(document.getElementById('wastage').value) || 0;
+            const costPerBrick = parseFloat(document.getElementById('cost-per-brick').value) || 0;
+
+            if (wallLength <= 0 || wallHeight <= 0 || brickLength <= 0 || brickHeight <= 0 || brickDepth <=0) {
+                resetResults();
+                return;
+            }
+
+            let wallLengthM, wallHeightM, brickLengthM, brickHeightM, brickDepthM, mortarJointM;
+
+            if (unit === 'metric') {
+                wallLengthM = wallLength;
+                wallHeightM = wallHeight;
+                brickLengthM = brickLength / 1000;
+                brickHeightM = brickHeight / 1000;
+                brickDepthM = brickDepth / 1000;
+                mortarJointM = mortarJoint / 1000;
+            } else { // Imperial
+                wallLengthM = wallLength * 0.3048;
+                wallHeightM = wallHeight * 0.3048;
+                brickLengthM = brickLength * 0.0254;
+                brickHeightM = brickHeight * 0.0254;
+                brickDepthM = brickDepth * 0.0254;
+                mortarJointM = mortarJoint * 0.0254;
+            }
+
+            const wallAreaM2 = wallLengthM * wallHeightM;
+            const brickAreaWithMortar = (brickLengthM + mortarJointM) * (brickHeightM + mortarJointM);
+            
+            if (brickAreaWithMortar === 0) {
+                resetResults();
+                return;
+            }
+
+            let baseBricksNeeded = (wallAreaM2 / brickAreaWithMortar);
+            if(wallType === 'double') {
+                baseBricksNeeded *= 2;
+            }
+
+            const totalBricks = Math.ceil(baseBricksNeeded * (1 + wastage / 100));
+            
+            const wallThickness = (wallType === 'double') ? (brickDepthM * 2 + mortarJointM) : brickDepthM;
+            const wallVolume = wallAreaM2 * wallThickness;
+            const bricksVolume = totalBricks * (brickLengthM * brickHeightM * brickDepthM);
+            const mortarVolume = wallVolume - bricksVolume;
+
+            totalBricksEl.textContent = totalBricks.toLocaleString('en-US');
+            
+            if(unit === 'metric') {
+                totalAreaEl.textContent = `${wallAreaM2.toFixed(2)} m²`;
+                mortarVolumeEl.textContent = `${mortarVolume.toFixed(3)} m³`;
+                totalCostEl.textContent = (costPerBrick * totalBricks).toLocaleString('en-IN', {style: 'currency', currency: 'INR'});
+            } else {
+                totalAreaEl.textContent = `${(wallAreaM2 * 10.764).toFixed(2)} ft²`;
+                mortarVolumeEl.textContent = `${(mortarVolume * 35.315).toFixed(3)} ft³`;
+                totalCostEl.textContent = (costPerBrick * totalBricks).toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+            }
+        };
+        
+        const resetResults = () => {
+            totalBricksEl.textContent = '0';
+            totalAreaEl.textContent = '0';
+            mortarVolumeEl.textContent = '0';
+            const currencyCode = unit === 'metric' ? 'INR' : 'USD';
+            totalCostEl.textContent = (0).toLocaleString(unit === 'metric' ? 'en-IN' : 'en-US', {style: 'currency', currency: currencyCode});
+        };
+
+        const clearAll = () => {
+            document.querySelectorAll('.input-field').forEach(input => {
+                if (input.id !== 'wastage' && input.id !== 'mortar-joint' && !input.id.startsWith('brick-')) {
+                    input.value = '';
+                }
+            });
+            calculate();
+        };
+
+        allInputs.forEach(input => input.addEventListener('input', calculate));
+        metricBtn.addEventListener('click', () => switchUnits('metric'));
+        imperialBtn.addEventListener('click', () => switchUnits('imperial'));
+        clearBtn.addEventListener('click', clearAll);
+
+        // Initial setup
+        switchUnits('metric');
+    });
+    </script>
+</body>
+</html>

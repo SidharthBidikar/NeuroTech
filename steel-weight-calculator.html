@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Steel Weight Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steel Weight Calculator - Calculate Weight of Steel</title>
+    <meta name="description" content="A powerful and free online steel weight calculator to estimate the weight and cost of various steel shapes like bars, plates, pipes, and tubes. Supports both metric and imperial units.">
+    <meta name="keywords" content="steel weight calculator, calculate steel weight, steel bar weight calculator, ms plate weight calculator, steel pipe weight, online steel calculator, weight of steel">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/steel-weight-calculator.html">
+    <meta property="og:title" content="Advanced Steel Weight Calculator with Cost Estimation">
+    <meta property="og:description" content="Easily calculate the weight and cost of steel bars, plates, pipes, and tubes with our versatile and accurate online tool.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Steel+Weight+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/steel-weight-calculator.html">
+    <meta property="twitter:title" content="Advanced Steel Weight Calculator with Cost Estimation">
+    <meta property="twitter:description" content="Easily calculate the weight and cost of steel bars, plates, pipes, and tubes with our versatile and accurate online tool.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Steel+Weight+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      .unit-btn.active { background-color: #4f46e5; color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-6xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Steel Weight Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Estimate the weight and cost of various steel shapes like bars, plates, and pipes.</p>
+              </div>
+        
+              <!-- Calculator Body -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Inputs -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-700">Project Details</h3>
+                        <div class="inline-flex rounded-md shadow-sm">
+                            <button id="metric-btn" class="unit-btn active px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-l-md">Metric</button>
+                            <button id="imperial-btn" class="unit-btn -ml-px px-3 py-1 text-sm font-medium bg-white border border-gray-200 rounded-r-md">Imperial</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="shape-select" class="block text-sm font-medium text-gray-700">Shape of Steel</label>
+                        <select id="shape-select" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                            <option value="round_bar">Round Bar</option>
+                            <option value="pipe">Pipe / Tube</option>
+                            <option value="square_bar">Square Bar / Hollow Section</option>
+                            <option value="plate">Plate / Sheet</option>
+                        </select>
+                    </div>
+                    
+                    <div id="dimensions-inputs" class="mt-4 space-y-4">
+                        <!-- Dynamic inputs will be rendered here -->
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200 space-y-4">
+                         <h3 class="text-lg font-bold text-gray-700">Quantity & Cost</h3>
+                         <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity (pieces)</label>
+                                <input type="number" id="quantity" value="1" class="calc-input mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                            </div>
+                            <div>
+                                <label for="cost" class="block text-sm font-medium text-gray-700">Cost (<span id="cost-unit-label">per kg</span>)</label>
+                                <input type="number" id="cost" class="calc-input mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 60">
+                            </div>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="space-y-6">
+                    <div class="bg-indigo-600 text-white p-6 rounded-lg text-center shadow-lg">
+                        <p class="text-lg">Total Weight</p>
+                        <p id="total-weight" class="text-5xl font-bold my-2">0.00 <span id="weight-unit">kg</span></p>
+                    </div>
+                    <div class="p-4 bg-green-100 text-green-800 rounded-lg text-center">
+                        <p class="font-semibold">Estimated Total Cost</p>
+                        <p id="total-cost" class="text-3xl font-bold">₹0.00</p>
+                    </div>
+                    <button id="clear-btn" class="btn w-full mt-6 py-3 bg-red-500 text-white rounded-md hover:bg-red-600">Clear All</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Calculating Steel Weight</h2>
+      <p>In construction, manufacturing, and engineering, accurately calculating the weight of steel components is a critical task. From ordering the right amount of raw material to ensuring structural integrity and managing logistics, knowing the precise weight is essential. A <strong>steel weight calculator</strong> is an indispensable tool that simplifies this process, providing quick and accurate weight estimates for various steel shapes. This comprehensive guide will explain the fundamentals of steel weight calculation and show you how to use our powerful <strong>online steel calculator</strong> for your projects.</p>
+    
+      <h3>How to Use Our Advanced Steel Weight Calculator</h3>
+      <p>Our tool is designed to be versatile and user-friendly, handling multiple shapes and units.</p>
+      <ol>
+          <li><strong>Select Units:</strong> Choose between **Metric** (millimeters, meters) or **Imperial** (inches, feet).</li>
+          <li><strong>Choose the Shape of Steel:</strong> Select the shape that matches your material from the dropdown menu (Round Bar, Pipe, Square Bar, or Plate). The input fields will change accordingly.</li>
+          <li><strong>Enter Dimensions:</strong> Input the required dimensions for your chosen shape. Note the units required for each field (e.g., mm vs. m or in vs. ft).</li>
+          <li><strong>Enter Quantity and Cost (Optional):</strong>
+            <ul>
+                <li>Input the number of identical pieces you have in the "Quantity" field.</li>
+                <li>Enter the cost per kilogram (or pound) to get a total material cost estimate.</li>
+            </ul>
+          </li>
+          <li><strong>View Your Detailed Results Instantly:</strong> The results on the right update automatically, showing you the **Total Weight** and the **Total Estimated Cost**.</li>
+      </ol>
+      
+      <h3>The Science Behind Steel Weight Calculation</h3>
+      <p>The calculation for the weight of any object is based on a simple formula:</p>
+      <code>Weight = Volume × Density</code>
+      <p>The key is to first accurately calculate the volume of the steel shape. The density of steel can vary slightly depending on its composition, but a standard value used for most calculations is **7850 kg/m³** (or approximately 490 lbs/ft³). Our calculator uses this standard density.</p>
+      
+      <h4>1. Round Bar Weight Calculator</h4>
+      <p>For a solid cylinder like a rebar or round bar, the volume is:</p>
+      <code>Volume = π × (Diameter / 2)² × Length</code>
+      <p>Our <strong>steel bar weight calculator</strong> uses this formula to find the volume and then multiplies it by the density to get the weight.</p>
+
+      <h4>2. Pipe / Tube Weight Calculator</h4>
+      <p>For a hollow pipe, you must calculate the volume of the outer cylinder and subtract the volume of the inner hollow cylinder.</p>
+      <code>Volume = [π × (Outer Diameter / 2)² - π × (Inner Diameter / 2)²] × Length</code>
+      <p>The inner diameter is simply the outer diameter minus twice the wall thickness.</p>
+      
+      <h4>3. Square Bar / Hollow Section Calculator</h4>
+      <p>For a solid square or rectangular bar:</p>
+      <code>Volume = Length × Width × Height</code>
+      <p>For a hollow section, it's the volume of the outer box minus the volume of the inner hollow box.</p>
+
+      <h4>4. Plate / Sheet Weight Calculator</h4>
+      <p>This is a straightforward calculation for a rectangular prism. Our <strong>MS plate weight calculator</strong> uses:</p>
+      <code>Volume = Length × Width × Thickness</code>
+
+      <h3>Why is an Accurate Steel Weight Calculator Important?</h3>
+      <ul>
+          <li><strong>Cost Estimation & Procurement:</strong> Steel is typically sold by weight. Accurately calculating the weight needed ensures you order the right amount, avoiding shortages or costly over-ordering.</li>
+          <li><strong>Logistics and Transportation:</strong> Knowing the total weight of a shipment is crucial for planning transportation, understanding shipping costs, and ensuring vehicles are not overloaded.</li>
+          <li><strong>Structural Engineering:</strong> The weight of steel components (the "dead load") is a fundamental factor in designing safe and stable structures like buildings and bridges.</li>
+          <li><strong>Manufacturing:</strong> For fabricating parts, knowing the weight of the raw material is essential for process planning and quality control.</li>
+      </ul>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>What is the density of steel used in this calculator?</h4>
+      <p>This calculator uses a standard density for mild steel of **7850 kg/m³** (or 490 lbs/ft³). While different steel alloys have slightly different densities, this value is a widely accepted standard for general engineering and construction calculations.</p>
+      
+      <h4>How do I calculate the weight of TMT bars?</h4>
+      <p>TMT bars are a type of round bar. To calculate their weight, select "Round Bar" from the shape menu, enter the bar's diameter (e.g., 8mm, 10mm, 12mm) and its total length.</p>
+      
+      <h4>Is this online steel calculator free?</h4>
+      <p>Yes, this tool is 100% free to use, with no limits.</p>
+      
+      <h4>What if my shape is not listed?</h4>
+      <p>Our calculator covers the most common shapes. For more complex shapes like I-beams or angles, you would need a more specialized calculator or engineering software, as their cross-sectional areas are more complex to calculate.</p>
+
+      <h3>Conclusion</h3>
+      <p>Accurate material estimation is fundamental to the success of any engineering or construction project. Our <strong>Steel Weight Calculator</strong> provides a fast, reliable, and user-friendly way to determine the weight and cost of the most common steel shapes. By eliminating manual calculations and providing instant results, this tool saves time, reduces the risk of error, and helps you plan your projects with greater precision. Bookmark this page for all your future steel calculation needs.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const metricBtn = document.getElementById('metric-btn');
+            const imperialBtn = document.getElementById('imperial-btn');
+            const shapeSelect = document.getElementById('shape-select');
+            const dimensionsInputs = document.getElementById('dimensions-inputs');
+            const clearBtn = document.getElementById('clear-btn');
+            
+            const totalWeightEl = document.getElementById('total-weight');
+            const weightUnitEl = document.getElementById('weight-unit');
+            const totalCostEl = document.getElementById('total-cost');
+
+            let unit = 'metric';
+            let shape = 'round_bar';
+            
+            const STEEL_DENSITY_KG_M3 = 7850;
+
+            const renderInputs = () => {
+                let html = '';
+                const lengthUnit = unit === 'metric' ? 'm' : 'ft';
+                const dimUnit = unit === 'metric' ? 'mm' : 'in';
+
+                switch(shape) {
+                    case 'round_bar':
+                        html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Diameter (${dimUnit})</label><input type="number" id="diameter" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Length (${lengthUnit})</label><input type="number" id="length" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                    case 'pipe':
+                         html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Outer Diameter (${dimUnit})</label><input type="number" id="outer-diameter" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Wall Thickness (${dimUnit})</label><input type="number" id="wall-thickness" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div class="col-span-2"><label class="text-xs">Length (${lengthUnit})</label><input type="number" id="length" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                    case 'square_bar':
+                         html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Width (${dimUnit})</label><input type="number" id="width" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Height (${dimUnit})</label><input type="number" id="height" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Wall Thickness (${dimUnit})</label><input type="number" id="wall-thickness" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md" placeholder="0 for solid"></div>
+                                    <div class="col-span-2"><label class="text-xs">Length (${lengthUnit})</label><input type="number" id="length" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                    case 'plate':
+                        html = `<div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-xs">Length (${lengthUnit})</label><input type="number" id="length" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div><label class="text-xs">Width (${lengthUnit})</label><input type="number" id="width" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                    <div class="col-span-2"><label class="text-xs">Thickness (${dimUnit})</label><input type="number" id="thickness" class="calc-input mt-1 w-full p-2 border-gray-300 rounded-md"></div>
+                                </div>`;
+                        break;
+                }
+                dimensionsInputs.innerHTML = html;
+                attachInputListeners();
+            };
+
+            const calculate = () => {
+                let volumeM3 = 0;
+                let inputs = Array.from(document.querySelectorAll('.calc-input')).map(el => parseFloat(el.value) || 0);
+
+                if (inputs.some(val => val < 0)) {
+                    resetResults();
+                    return;
+                }
+
+                const toMeters = (val, inputUnit) => {
+                    if (inputUnit === 'mm' || inputUnit === 'in') return unit === 'metric' ? val / 1000 : val * 0.0254;
+                    return unit === 'metric' ? val : val * 0.3048;
+                };
+
+                switch(shape) {
+                    case 'round_bar':
+                        const [diameter, length] = inputs;
+                        const radiusM = toMeters(diameter, 'mm') / 2;
+                        const lengthM = toMeters(length, 'm');
+                        volumeM3 = Math.PI * Math.pow(radiusM, 2) * lengthM;
+                        break;
+                    case 'pipe':
+                        const [outerDiameter, wallThickness, pipeLength] = inputs;
+                        const outerRadiusM = toMeters(outerDiameter, 'mm') / 2;
+                        const innerRadiusM = outerRadiusM - toMeters(wallThickness, 'mm');
+                        if(innerRadiusM <= 0) break;
+                        const pipeLengthM = toMeters(pipeLength, 'm');
+                        volumeM3 = Math.PI * (Math.pow(outerRadiusM, 2) - Math.pow(innerRadiusM, 2)) * pipeLengthM;
+                        break;
+                    case 'square_bar':
+                        const [width, height, thickness, barLength] = inputs;
+                        const widthM = toMeters(width, 'mm');
+                        const heightM = toMeters(height, 'mm');
+                        const barLengthM = toMeters(barLength, 'm');
+                        const thicknessM = toMeters(thickness, 'mm');
+                        const outerArea = widthM * heightM;
+                        const innerArea = thicknessM > 0 ? (widthM - 2 * thicknessM) * (heightM - 2 * thicknessM) : 0;
+                        volumeM3 = (outerArea - innerArea) * barLengthM;
+                        break;
+                    case 'plate':
+                        const [plateLength, plateWidth, plateThickness] = inputs;
+                        const plateLengthM = toMeters(plateLength, 'm');
+                        const plateWidthM = toMeters(plateWidth, 'm');
+                        const plateThicknessM = toMeters(plateThickness, 'mm');
+                        volumeM3 = plateLengthM * plateWidthM * plateThicknessM;
+                        break;
+                }
+                
+                if (volumeM3 > 0) {
+                    displayResults(volumeM3);
+                } else {
+                    resetResults();
+                }
+            };
+
+            const displayResults = (volumeM3) => {
+                const quantity = parseFloat(document.getElementById('quantity').value) || 1;
+                const cost = parseFloat(document.getElementById('cost').value) || 0;
+                
+                const totalVolumeM3 = volumeM3 * quantity;
+                const totalWeightKg = totalVolumeM3 * STEEL_DENSITY_KG_M3;
+                
+                let weightDisplay, unitDisplay, costDisplay;
+                let totalCost = 0;
+                
+                if (unit === 'metric') {
+                    weightDisplay = totalWeightKg.toFixed(2);
+                    unitDisplay = 'kg';
+                    totalCost = cost * totalWeightKg;
+                    costDisplay = totalCost.toLocaleString('en-IN', { style: 'currency', currency: 'INR' });
+                } else {
+                    const totalWeightLbs = totalWeightKg * 2.20462;
+                    weightDisplay = totalWeightLbs.toFixed(2);
+                    unitDisplay = 'lbs';
+                    totalCost = cost * totalWeightLbs;
+                    costDisplay = totalCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                }
+
+                totalWeightEl.textContent = weightDisplay;
+                weightUnitEl.textContent = unitDisplay;
+                totalCostEl.textContent = cost > 0 ? costDisplay : (0).toLocaleString('en-US', { style: 'currency', currency: unit === 'metric' ? 'INR' : 'USD' });
+            };
+            
+            const resetResults = () => {
+                totalWeightEl.textContent = '0.00';
+                weightUnitEl.textContent = unit === 'metric' ? 'kg' : 'lbs';
+                totalCostEl.textContent = (0).toLocaleString('en-US', { style: 'currency', currency: unit === 'metric' ? 'INR' : 'USD' });
+            };
+
+            const clearAll = () => {
+                document.querySelectorAll('.calc-input, #quantity, #cost').forEach(input => input.value = '');
+                document.getElementById('quantity').value = 1;
+                resetResults();
+            };
+
+            const attachInputListeners = () => {
+                document.querySelectorAll('.calc-input, #quantity, #cost').forEach(el => {
+                    el.removeEventListener('input', calculate);
+                    el.addEventListener('input', calculate);
+                });
+            };
+
+            const setupUnits = (newUnit) => {
+                unit = newUnit;
+                metricBtn.classList.toggle('active', newUnit === 'metric');
+                imperialBtn.classList.toggle('active', newUnit === 'imperial');
+                document.getElementById('cost-unit-label').textContent = newUnit === 'metric' ? 'per kg' : 'per lb';
+                renderInputs();
+            };
+
+            // Event Listeners
+            shapeSelect.addEventListener('change', () => { shape = shapeSelect.value; renderInputs(); });
+            metricBtn.addEventListener('click', () => setupUnits('metric'));
+            imperialBtn.addEventListener('click', () => setupUnits('imperial'));
+            clearBtn.addEventListener('click', clearAll);
+
+            // Initial setup
+            renderInputs();
+        });
+    </script>
+</body>
+</html>

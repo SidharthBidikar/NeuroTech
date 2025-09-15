@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator - BMR, TDEE, and Macros Calculator</title>
+    <meta name="description" content="Use our free calorie calculator to determine your daily calorie needs for weight loss, maintenance, or gain. Includes BMR, TDEE, and macronutrient breakdown.">
+    <meta name="keywords" content="calorie calculator, bmr calculator, tdee calculator, how many calories should I eat, macros calculator, weight loss calculator, calorie needs, daily calorie intake, protein calculator, carb calculator, fat calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools">
+    <meta property="og:title" content="Advanced Calorie & Macros Calculator - Free Online Tool">
+    <meta property="og:description" content="Calculate your daily calories for weight loss or muscle gain. Our tool provides BMR, TDEE, and a detailed macronutrient breakdown for different diet plans.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Calorie+Calculator">
+    <meta property="og:url" content="https://onepagetools.com/calorie-calculator.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.8.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #e0f7fa; }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .primary-btn { background-color: #10b981; transition: background-color 0.3s; }
+        .primary-btn:hover { background-color: #059669; }
+        .unit-toggle { background-color: #e5e7eb; border-radius: 9999px; padding: 4px; display: inline-flex; }
+        .unit-toggle button { padding: 8px 16px; border-radius: 9999px; transition: all 0.3s; border: none; background: transparent; font-weight: 500;}
+        .unit-toggle button.active { background-color: white; color: #059669; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .article-content h2, .article-content h3 { font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #047857; }
+        .article-content ul { list-style-type: disc; padding-left: 1.5rem; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header - As per screenshot -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center p-4">
+             <a href="https://onepagetools.com/" class="flex items-center space-x-2">
+                <img src="One_Page-removebg-preview.png" alt="Logo" class="h-12">
+            </a>
+            <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+                <a href="#" class="hover:text-green-600">Home</a>
+                <a href="#" class="hover:text-green-600">About</a>
+                <a href="#" class="hover:text-green-600">Contact</a>
+                <button id="pdf-tools-button" data-dropdown-toggle="pdf-tools-dropdown" class="hover:text-green-600 flex items-center">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <button id="text-tools-button" data-dropdown-toggle="text-tools-dropdown" class="hover:text-green-600 flex items-center">Text & Content Tools <span class="ml-1.5">✒️</span><svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <button id="calculators-button" data-dropdown-toggle="calculators-dropdown" class="hover:text-green-600 flex items-center">Calculators <span class="ml-1.5">🧮</span><svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="pdf-tools-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">PDF to Word</a></li></ul></div>
+                <div id="text-tools-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Article Rewriter</a></li></ul></div>
+                <div id="calculators-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Calorie Calculator</a></li></ul></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <!-- Calculator Form -->
+            <div class="card p-8 lg:sticky lg:top-24">
+                <h1 class="text-3xl font-bold mb-2 text-green-700">Calorie Calculator</h1>
+                <p class="text-gray-500 mb-6">Calculate your daily needs for calories, protein, carbs, and fats.</p>
+                <form id="calorie-form" onsubmit="calculate(event)">
+                    <div class="unit-toggle mb-6"><button type="button" id="metric-btn" class="active" onclick="switchUnits('metric')">Metric</button><button type="button" id="imperial-btn" onclick="switchUnits('imperial')">Imperial</button></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div><label for="age" class="block text-sm font-medium text-gray-700">Age</label><input type="number" id="age" required class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-green-500 focus:border-green-500" placeholder="e.g., 25"></div>
+                        <div><label for="gender" class="block text-sm font-medium text-gray-700">Gender</label><select id="gender" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-green-500 focus:border-green-500"><option value="male">Male</option><option value="female">Female</option></select></div>
+                        <div><label for="weight" class="block text-sm font-medium text-gray-700">Weight (<span class="unit-label">kg</span>)</label><input type="number" id="weight" step="0.1" required class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-green-500 focus:border-green-500" placeholder="e.g., 70"></div>
+                        <div id="height-metric"><label for="height-cm" class="block text-sm font-medium text-gray-700">Height (cm)</label><input type="number" id="height-cm" required class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-green-500 focus:border-green-500" placeholder="e.g., 175"></div>
+                        <div id="height-imperial" class="hidden grid grid-cols-2 gap-2"><div><label for="height-ft" class="block text-sm font-medium text-gray-700">Feet</label><input type="number" id="height-ft" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md" placeholder="e.g., 5"></div><div><label for="height-in" class="block text-sm font-medium text-gray-700">Inches</label><input type="number" id="height-in" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md" placeholder="e.g., 9"></div></div>
+                        <div class="sm:col-span-2"><label for="activity" class="block text-sm font-medium text-gray-700">Activity Level</label><select id="activity" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-green-500 focus:border-green-500"><option value="1.2">Sedentary (little or no exercise)</option><option value="1.375">Lightly Active (1-3 days/week)</option><option value="1.55" selected>Moderately Active (3-5 days/week)</option><option value="1.725">Very Active (6-7 days a week)</option><option value="1.9">Extra Active (physical job & exercise)</option></select></div>
+                        <div class="sm:col-span-2"><label for="goal" class="block text-sm font-medium text-gray-700">Your Goal</label><select id="goal" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-green-500 focus:border-green-500"><option value="maintain">Maintain weight</option><option value="mildloss">Mild weight loss (0.25 kg/week)</option><option value="loss" selected>Weight loss (0.5 kg/week)</option><option value="extremeloss">Extreme weight loss (1 kg/week)</option><option value="mildgain">Mild weight gain (0.25 kg/week)</option><option value="gain">Weight gain (0.5 kg/week)</option></select></div>
+                    </div>
+                    <button type="submit" class="primary-btn text-white font-bold w-full py-3 mt-6 rounded-md shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Calculate My Calories</button>
+                </form>
+            </div>
+            
+            <!-- Results Display -->
+            <div id="results-section" class="card p-8">
+                <div id="results-placeholder">
+                    <h2 class="text-2xl font-bold mb-4 text-green-700">Your Results</h2>
+                    <p class="text-gray-500">Fill out the form on the left to see your personalized calorie and macronutrient needs. Your results will appear here.</p>
+                </div>
+                <div id="results-content" class="hidden">
+                     <h2 class="text-2xl font-bold mb-4 text-green-700">Your Results</h2>
+                    <div class="grid grid-cols-2 gap-4 text-center mb-6"><div class="bg-green-50 p-4 rounded-lg"><h3 class="text-sm font-medium text-gray-500">Your BMR</h3><p id="bmr-result" class="text-2xl font-bold text-green-600">0</p><p class="text-xs text-gray-400">calories/day</p></div><div class="bg-green-50 p-4 rounded-lg"><h3 class="text-sm font-medium text-gray-500">To Maintain Weight</h3><p id="tdee-result" class="text-2xl font-bold text-green-600">0</p><p class="text-xs text-gray-400">calories/day</p></div></div>
+                    <h3 class="text-lg font-bold mb-3 text-center">Calories for Your Goals</h3>
+                    <table class="w-full text-center text-sm mb-8"><thead><tr class="border-b"><th class="py-2 font-medium">Goal</th><th class="py-2 font-medium">Calories/Day</th></tr></thead><tbody><tr class="border-b"><td class="py-2">Mild Weight Loss (0.25kg/wk)</td><td id="mildloss-cals" class="font-semibold">0</td></tr><tr class="border-b"><td class="py-2 text-green-600 font-bold">Weight Loss (0.5kg/wk)</td><td id="loss-cals" class="font-bold text-green-600">0</td></tr><tr class="border-b"><td class="py-2">Weight Gain (0.5kg/wk)</td><td id="gain-cals" class="font-semibold">0</td></tr></tbody></table>
+                    <h3 class="text-lg font-bold mb-3 text-center">Macronutrient Breakdown for Your Goal</h3>
+                     <div class="mb-4"><label for="diet-plan" class="block text-sm font-medium text-gray-700">Diet Plan</label><select id="diet-plan" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-green-500 focus:border-green-500"><option value="balanced" selected>Balanced Diet</option><option value="lowcarb">Low Carb</option><option value="highprotein">High Protein</option></select></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center"><div class="w-full h-48"><canvas id="macro-chart"></canvas></div><div class="text-center space-y-2"><div><p class="font-bold text-blue-600">Protein</p><p id="protein-grams" class="text-lg font-semibold">0g</p></div><div><p class="font-bold text-yellow-500">Carbs</p><p id="carbs-grams" class="text-lg font-semibold">0g</p></div><div><p class="font-bold text-red-500">Fats</p><p id="fats-grams" class="text-lg font-semibold">0g</p></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Article -->
+        <div class="article-content card p-8 mt-12 max-w-4xl mx-auto">
+            <!-- The 2000+ word article content will go here -->
+            <h2 class="text-3xl font-bold">The Ultimate Guide to Calculating Your Calorie and Macro Needs</h2>
+            <p>Welcome to the ultimate resource for understanding your body's energy needs. Whether your goal is to lose fat, build muscle, or simply maintain a healthy lifestyle, it all begins with one fundamental concept: calories. Our powerful <strong>calorie calculator</strong> is more than just a number-cruncher; it's the first step on your journey to mastering your nutrition. This guide will walk you through how to use the tool, what your results mean, and how to apply this knowledge to achieve your fitness goals.</p>
+            <h3>What is a Calorie and Why Does it Matter?</h3>
+            <p>A calorie is a unit of energy. In nutrition, calories refer to the energy people get from the food and drink they consume, and the energy they expend in physical activity. Calories are essential for everything your body does, from breathing and thinking to running and lifting weights. The balance between "calories in" (what you eat) and "calories out" (what you burn) is the single most important factor in weight management. This concept is known as energy balance.</p>
+            <h3>How to Use Our Calorie Calculator</h3>
+            <p>Our tool is designed for accuracy and ease of use. Follow these simple steps to find out your daily needs:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li><strong>Select Your Units:</strong> Choose between Metric (kg, cm) and Imperial (lbs, ft, in) systems.</li>
+                <li><strong>Enter Your Details:</strong> Input your age, gender, weight, and height. Be as accurate as possible.</li>
+                <li><strong>Choose Your Activity Level:</strong> This is crucial. Be honest about how much you move throughout the week, from a desk job (sedentary) to a construction worker who trains daily (extra active). Our <strong>TDEE calculator</strong> component uses this to estimate your total daily burn.</li>
+                <li><strong>Set Your Goal:</strong> Are you looking to lose, maintain, or gain weight? This will adjust your final calorie recommendations.</li>
+                <li><strong>Click "Calculate":</strong> Instantly receive a detailed breakdown of your calorie and macronutrient needs.</li>
+            </ol>
+            <h2 class="text-3xl font-bold mt-8">Understanding Your Results: BMR vs. TDEE</h2>
+            <p>The calculator provides two key figures: BMR and TDEE. Understanding the difference is vital.</p>
+            <h3>Basal Metabolic Rate (BMR)</h3>
+            <p>Your BMR is the number of calories your body needs to perform its most basic, life-sustaining functions at rest. Think of it as the energy required to keep your heart beating, lungs breathing, and body temperature stable if you were to lie in bed all day. Our <strong>BMR calculator</strong> uses the Mifflin-St Jeor formula, widely considered the most accurate method. You should never eat below your BMR for an extended period without medical supervision.</p>
+            <h3>Total Daily Energy Expenditure (TDEE)</h3>
+            <p>Your TDEE is a more practical number. It takes your BMR and adds the calories you burn from all other activities, including walking, working, exercising, and even digesting food. This is your "maintenance" calorie number. If you consistently eat this many calories, your weight will remain stable. Our <strong>TDEE calculator</strong> automatically determines this based on the activity level you selected.</p>
+            <h2 class="text-3xl font-bold mt-8">What Are Macronutrients (Macros)?</h2>
+            <p>Once you know <strong>how many calories you should eat</strong>, the next step is to understand where those calories should come from. This is where macros come in. The three main macronutrients are Protein, Carbohydrates, and Fats. Our <strong>macros calculator</strong> breaks down your target calories into these three categories.</p>
+            <h3>Protein (4 calories per gram)</h3>
+            <p>Often called the building block of life, protein is crucial for repairing tissues, building muscle, and supporting immune function. A higher protein intake can also promote satiety (the feeling of fullness), which is very beneficial for weight loss.</p>
+            <h3>Carbohydrates (4 calories per gram)</h3>
+            <p>Carbohydrates are the body's primary and preferred source of energy. They fuel your brain, your workouts, and nearly every cellular process. They are not the enemy! Choosing complex carbs like oats, brown rice, and vegetables provides sustained energy.</p>
+            <h3>Fats (9 calories per gram)</h3>
+            <p>Fats are essential for hormone production, vitamin absorption, and brain health. They are the most energy-dense macronutrient. Focusing on healthy fats from sources like avocados, nuts, seeds, and olive oil is key to a healthy diet.</p>
+            <h3 class="text-2xl font-bold mt-6">Choosing a Diet Plan</h3>
+            <p>Our calculator allows you to see your macro split based on different popular diet styles:</p>
+            <ul>
+                <li><strong>Balanced Diet:</strong> A moderate approach suitable for most people, typically around 40% carbs, 30% protein, and 30% fat.</li>
+                <li><strong>Low Carb Diet:</strong> Reduces carbohydrates and increases fat and protein. Often used for weight loss and to improve insulin sensitivity.</li>
+                <li><strong>High Protein Diet:</strong> Increases protein intake significantly, which is ideal for those looking to build muscle or preserve it during a weight loss phase.</li>
+            </ul>
+            <h2 class="text-3xl font-bold mt-8">How to Achieve Your Fitness Goals</h2>
+            <h3>For Weight Loss</h3>
+            <p>To lose weight, you must be in a caloric deficit, meaning you consume fewer calories than your TDEE. Our <strong>weight loss calculator</strong> automatically calculates this for you. A deficit of 500 calories per day generally leads to a loss of about 0.5 kg (1 lb) per week. It's crucial to lose weight at a sustainable pace to preserve muscle mass and avoid metabolic slowdown.</p>
+            <h3>For Weight Gain (Muscle Building)</h3>
+            <p>To gain weight, primarily muscle, you need to be in a caloric surplus. This means consuming more calories than your TDEE. A surplus of 250-500 calories per day is a good starting point. This should be combined with a progressive resistance training program to ensure the extra calories are used to build muscle, not just store fat. A high protein intake is especially important here.</p>
+            <h3>For Weight Maintenance</h3>
+            <p>If you're happy with your current weight and body composition, your goal is simple: eat at your TDEE. Your weight may fluctuate slightly day-to-day due to water retention and other factors, but on average, it will remain stable.</p>
+            <h2 class="text-3xl font-bold mt-8">Frequently Asked Questions (FAQ)</h2>
+            <h4 class="font-bold mt-4">1. How accurate is this calorie calculator?</h4>
+            <p>Our calculator uses the Mifflin-St Jeor formula, which research has shown to be the most accurate BMR formula. However, any calculator is an estimation. The best way to use this tool is as a starting point. Follow the recommended numbers for 2-3 weeks, track your weight, and adjust your intake up or down as needed based on your real-world results.</p>
+            <h4 class="font-bold mt-4">2. Should I eat the same number of calories on workout days and rest days?</h4>
+            <p>For simplicity, most people find success eating the same number of calories each day. Your TDEE is an average based on your weekly activity. Advanced athletes sometimes use "calorie cycling" (eating more on workout days and less on rest days), but it's not necessary for most people.</p>
+            <h4 class="font-bold mt-4">3. How often should I recalculate my calories?</h4>
+            <p>It's a good idea to recalculate your needs every time you lose or gain a significant amount of weight (e.g., 5-10 kg) or if your activity level changes dramatically. As your weight changes, so does your TDEE.</p>
+            <h4 class="font-bold mt-4">4. Do I need to track my macros perfectly?</h4>
+            <p>No, you don't need to be perfect. Aim to get close to your protein and calorie goals each day. The carb and fat numbers can be more flexible. Consistency over time is far more important than perfection on any single day.</p>
+            <h3 class="text-2xl font-bold mt-6">Conclusion: Your Journey Starts Now</h3>
+            <p>Knowledge is power, and with our <strong>calorie calculator</strong>, you now have the power to take control of your nutrition. You have the numbers you need to create a meal plan that aligns with your goals. Remember that this is a journey. Be patient with yourself, stay consistent, and use this tool as your trusted guide. Start today, and build a healthier, stronger you.</p>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.8.1/dist/flowbite.min.js"></script>
+    <script>
+        let myChart;
+        let lastResults = {};
+
+        function switchUnits(unit) {
+            const metricBtn = document.getElementById('metric-btn');
+            const imperialBtn = document.getElementById('imperial-btn');
+            const heightMetricDiv = document.getElementById('height-metric');
+            const heightImperialDiv = document.getElementById('height-imperial');
+            const unitLabels = document.querySelectorAll('.unit-label');
+            const heightCmInput = document.getElementById('height-cm');
+            const heightFtInput = document.getElementById('height-ft');
+            const heightInInput = document.getElementById('height-in');
+
+            if (unit === 'metric') {
+                metricBtn.classList.add('active');
+                imperialBtn.classList.remove('active');
+                heightMetricDiv.classList.remove('hidden');
+                heightImperialDiv.classList.add('hidden');
+                unitLabels.forEach(label => label.textContent = 'kg');
+                heightCmInput.required = true;
+                heightFtInput.required = false;
+            } else {
+                imperialBtn.classList.add('active');
+                metricBtn.classList.remove('active');
+                heightMetricDiv.classList.add('hidden');
+                heightImperialDiv.classList.remove('hidden');
+                unitLabels.forEach(label => label.textContent = 'lbs');
+                heightCmInput.required = false;
+                heightFtInput.required = true;
+            }
+        }
+
+        function calculate(event) {
+            event.preventDefault();
+            
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const activity = parseFloat(document.getElementById('activity').value);
+            const goal = document.getElementById('goal').value;
+            
+            let weightKg, heightCm;
+            const isMetric = document.getElementById('metric-btn').classList.contains('active');
+
+            if (isMetric) {
+                weightKg = parseFloat(document.getElementById('weight').value);
+                heightCm = parseFloat(document.getElementById('height-cm').value);
+            } else {
+                const weightLbs = parseFloat(document.getElementById('weight').value);
+                const heightFt = parseFloat(document.getElementById('height-ft').value) || 0;
+                const heightIn = parseFloat(document.getElementById('height-in').value) || 0;
+                weightKg = weightLbs * 0.453592;
+                heightCm = (heightFt * 12 + heightIn) * 2.54;
+            }
+
+            if (isNaN(age) || isNaN(weightKg) || isNaN(heightCm) || age < 15 || age > 80 || weightKg < 20 || heightCm < 100) {
+                Swal.fire('Invalid Input', 'Please enter valid age (15-80), weight, and height.', 'error');
+                return;
+            }
+
+            let bmr;
+            if (gender === 'male') { bmr = 10 * weightKg + 6.25 * heightCm - 5 * age + 5; } 
+            else { bmr = 10 * weightKg + 6.25 * heightCm - 5 * age - 161; }
+
+            const tdee = bmr * activity;
+            const goalAdjustments = { maintain: 0, mildloss: -250, loss: -500, extremeloss: -1000, mildgain: 250, gain: 500 };
+            const goalCalories = tdee + goalAdjustments[goal];
+            
+            lastResults = { bmr: Math.round(bmr), tdee: Math.round(tdee), goalCalories: Math.round(goalCalories), goalAdjustments };
+            
+            displayResults();
+            updateMacros();
+        }
+        
+        function displayResults() {
+            document.getElementById('results-placeholder').classList.add('hidden');
+            document.getElementById('results-content').classList.remove('hidden');
+            
+            document.getElementById('bmr-result').textContent = lastResults.bmr;
+            document.getElementById('tdee-result').textContent = lastResults.tdee;
+            
+            document.getElementById('mildloss-cals').textContent = Math.round(lastResults.tdee + lastResults.goalAdjustments.mildloss);
+            document.getElementById('loss-cals').textContent = Math.round(lastResults.tdee + lastResults.goalAdjustments.loss);
+            document.getElementById('gain-cals').textContent = Math.round(lastResults.tdee + lastResults.goalAdjustments.gain);
+
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateMacros() {
+            if (!lastResults.goalCalories) return;
+            const dietPlan = document.getElementById('diet-plan').value;
+            const goalCalories = lastResults.goalCalories;
+            
+            const dietPlans = {
+                balanced: { p: 0.3, c: 0.4, f: 0.3 },
+                lowcarb: { p: 0.4, c: 0.2, f: 0.4 },
+                highprotein: { p: 0.4, c: 0.3, f: 0.3 }
+            };
+
+            const plan = dietPlans[dietPlan];
+            const proteinGrams = Math.round((goalCalories * plan.p) / 4);
+            const carbsGrams = Math.round((goalCalories * plan.c) / 4);
+            const fatsGrams = Math.round((goalCalories * plan.f) / 9);
+
+            document.getElementById('protein-grams').textContent = `${proteinGrams}g`;
+            document.getElementById('carbs-grams').textContent = `${carbsGrams}g`;
+            document.getElementById('fats-grams').textContent = `${fatsGrams}g`;
+            
+            updateChart([proteinGrams, carbsGrams, fatsGrams]);
+        }
+        
+        document.getElementById('diet-plan').addEventListener('change', updateMacros);
+
+        function updateChart(data) {
+            const ctx = document.getElementById('macro-chart').getContext('2d');
+            if(myChart) { myChart.destroy(); }
+            
+            myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Protein', 'Carbs', 'Fats'],
+                    datasets: [{
+                        label: 'Macronutrients',
+                        data: data,
+                        backgroundColor: ['#3b82f6', '#f59e0b', '#ef4444'],
+                        borderColor: ['#ffffff'],
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => `${context.label}: ${context.raw}g`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

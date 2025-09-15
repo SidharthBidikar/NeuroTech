@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Intake Calculator - How Much Water Should You Drink Daily?</title>
+    <meta name="description" content="Use our free Water Intake Calculator to determine your daily hydration needs based on your age, weight, activity level, and climate. Stay healthy and hydrated.">
+    <meta name="keywords" content="water intake calculator, daily water intake, how much water should I drink, hydration calculator, water calculator, daily hydration needs, water intake by weight">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools">
+    <meta property="og:title" content="Free Daily Water Intake Calculator">
+    <meta property="og:description" content="Calculate your recommended daily water intake for optimal health. Our calculator considers weight, age, activity, and climate for a personalized recommendation.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Water+Intake+Calculator">
+    <meta property="og:url" content="https://onepagetools.com/water-intake-calculator.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.8.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #e0f2fe; }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .primary-btn { background-color: #0ea5e9; transition: background-color 0.3s; }
+        .primary-btn:hover { background-color: #0284c7; }
+        .unit-toggle { background-color: #e5e7eb; border-radius: 9999px; padding: 4px; display: inline-flex; }
+        .unit-toggle button { padding: 8px 16px; border-radius: 9999px; transition: all 0.3s; border: none; background: transparent; font-weight: 500;}
+        .unit-toggle button.active { background-color: white; color: #0284c7; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .article-content h2, .article-content h3 { font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #0369a1; }
+        .article-content ul { list-style-type: disc; padding-left: 1.5rem; }
+        .water-glass { transition: all 0.5s ease-in-out; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center p-4">
+             <a href="https://onepagetools.com/" class="flex items-center space-x-2"><img src="One_Page-removebg-preview.png" alt="Logo" class="h-12"></a>
+            <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+                <a href="#" class="hover:text-sky-600">Home</a><a href="#" class="hover:text-sky-600">About</a><a href="#" class="hover:text-sky-600">Contact</a>
+                <button id="pdf-tools-button" data-dropdown-toggle="pdf-tools-dropdown" class="hover:text-sky-600 flex items-center">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <button id="text-tools-button" data-dropdown-toggle="text-tools-dropdown" class="hover:text-sky-600 flex items-center">Text & Content Tools <span class="ml-1.5">✒️</span><svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <button id="calculators-button" data-dropdown-toggle="calculators-dropdown" class="hover:text-sky-600 flex items-center">Calculators <span class="ml-1.5">🧮</span><svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="pdf-tools-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">PDF Tools</a></li></ul></div>
+                <div id="text-tools-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Text Tools</a></li></ul></div>
+                <div id="calculators-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Calorie Calculator</a></li></ul></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <!-- Calculator Form -->
+            <div class="card p-8 lg:sticky lg:top-24">
+                <h1 class="text-3xl font-bold mb-2 text-sky-700">Water Intake Calculator</h1>
+                <p class="text-gray-500 mb-6">Find out your personalized daily hydration needs.</p>
+                <form id="water-form" onsubmit="calculateWater(event)">
+                    <div class="unit-toggle mb-6"><button type="button" id="metric-btn" class="active" onclick="switchUnits('metric')">Metric</button><button type="button" id="imperial-btn" onclick="switchUnits('imperial')">Imperial</button></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div><label for="age" class="block text-sm font-medium text-gray-700">Age</label><input type="number" id="age" required class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-sky-500 focus:border-sky-500" placeholder="e.g., 25"></div>
+                        <div><label for="weight" class="block text-sm font-medium text-gray-700">Weight (<span class="unit-label">kg</span>)</label><input type="number" id="weight" step="0.1" required class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-sky-500 focus:border-sky-500" placeholder="e.g., 70"></div>
+                        <div class="sm:col-span-2"><label for="activity" class="block text-sm font-medium text-gray-700">Activity Level</label><select id="activity" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-sky-500 focus:border-sky-500"><option value="1">Sedentary (little to no exercise)</option><option value="1.1" selected>Lightly Active (exercise 1-3 days/week)</option><option value="1.2">Moderately Active (exercise 3-5 days/week)</option><option value="1.3">Very Active (exercise 6-7 days a week)</option></select></div>
+                        <div class="sm:col-span-2"><label for="weather" class="block text-sm font-medium text-gray-700">Climate / Weather</label><select id="weather" class="mt-1 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md focus:ring-sky-500 focus:border-sky-500"><option value="1" selected>Temperate</option><option value="1.1">Hot</option><option value="1.2">Very Hot / Humid</option></select></div>
+                    </div>
+                    <button type="submit" class="primary-btn text-white font-bold w-full py-3 mt-6 rounded-md shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Calculate My Water Intake</button>
+                </form>
+            </div>
+            
+            <!-- Results Display -->
+            <div id="results-section" class="card p-8">
+                <div id="results-placeholder">
+                    <h2 class="text-2xl font-bold mb-4 text-sky-700">Your Hydration Needs</h2>
+                    <p class="text-gray-500">Fill out the form to calculate your recommended daily water intake. Your personalized results will appear here.</p>
+                </div>
+                <div id="results-content" class="hidden">
+                     <h2 class="text-2xl font-bold mb-4 text-sky-700 text-center">Your Daily Goal</h2>
+                     <p class="text-5xl font-bold text-sky-600 mb-2 text-center"><span id="result-liters">0</span> Liters</p>
+                     <p class="text-gray-500 mb-6 text-center">equal to <span id="result-ounces" class="font-semibold">0</span> oz or <span id="result-glasses" class="font-semibold">0</span> glasses (250ml)</p>
+                     
+                     <hr class="my-6">
+
+                     <h3 class="text-lg font-bold mb-3 text-center">Actionable Hydration Schedule</h3>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                        <!-- Chart -->
+                        <div class="w-full h-48"><canvas id="hydration-chart"></canvas></div>
+                        <!-- Schedule -->
+                        <div class="text-left space-y-3">
+                            <div><p class="font-semibold text-sky-800">☀️ Morning</p><p class="text-gray-600" id="morning-goal">Drink 0 L (~0 glasses)</p></div>
+                            <div><p class="font-semibold text-yellow-600">🏙️ Afternoon</p><p class="text-gray-600" id="afternoon-goal">Drink 0 L (~0 glasses)</p></div>
+                            <div><p class="font-semibold text-indigo-800">🌙 Evening</p><p class="text-gray-600" id="evening-goal">Drink 0 L (~0 glasses)</p></div>
+                        </div>
+                     </div>
+
+                     <hr class="my-6">
+                     
+                     <h3 class="font-semibold mb-2 text-center">Visual Goal</h3>
+                     <div id="glasses-container" class="flex flex-wrap justify-center gap-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Article -->
+        <div class="article-content card p-8 mt-12 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold">The Ultimate Guide to Daily Water Intake</h2>
+            <p>We've all heard the advice: "Drink eight glasses of water a day." But is this generic advice right for everyone? The truth is, your ideal water intake is as unique as you are. Factors like your age, weight, activity level, and even the climate you live in play a crucial role. This is where our <strong>water intake calculator</strong> comes in. It's a scientifically-backed tool designed to give you a personalized hydration goal, taking the guesswork out of one of the most fundamental aspects of your health.</p>
+            <h3>Why is Proper Hydration So Important?</h3>
+            <p>Water is more than just a thirst quencher; it's the lifeblood of our bodies, making up about 60% of our total body weight. Every single cell, tissue, and organ needs water to function correctly. Using a <strong>hydration calculator</strong> to meet your needs can lead to profound health benefits:</p>
+            <ul><li><strong>Boosts Physical Performance:</strong> Dehydration can lead to fatigue, reduced motivation, and increased body temperature. Staying hydrated ensures your muscles and joints work optimally.</li><li><strong>Enhances Brain Function:</strong> Even mild dehydration can impair concentration, alertness, and short-term memory. A well-hydrated brain is a sharp brain.</li><li><strong>Promotes Healthy Skin:</strong> Water helps to keep your skin moisturized and can improve its elasticity, reducing the appearance of fine lines and wrinkles.</li><li><strong>Aids in Digestion and Nutrient Absorption:</strong> Water helps break down food so that your body can absorb the nutrients. It also helps prevent constipation.</li><li><strong>Helps in Weight Management:</strong> Drinking water can boost your metabolism and help you feel full, which can be a valuable tool for anyone managing their weight. Calculating your <strong>daily water intake</strong> is a key first step.</li><li><strong>Flushes Out Toxins:</strong> Water is essential for your kidneys to filter waste from your blood and excrete it in the form of urine.</li></ul>
+            <h3 class="text-2xl font-bold mt-6">How to Use Our Water Intake Calculator</h3>
+            <p>Our tool is simple and intuitive. Here’s a step-by-step guide to finding your personalized recommendation:</p>
+            <ol class="list-decimal list-inside space-y-2"><li><strong>Select Your Units:</strong> Start by choosing between Metric (kg) and Imperial (lbs) units for your weight.</li><li><strong>Enter Your Age and Weight:</strong> These are the baseline factors for calculating your needs. The <strong>water intake by weight</strong> is a primary calculation component.</li><li><strong>Choose Your Activity Level:</strong> Be honest about your daily movement. If you exercise, you sweat, and that fluid needs to be replaced.</li><li><strong>Select Your Climate:</strong> If you live in a hot or humid environment, your body will lose more water through sweat, even without exercise. This setting adjusts for that.</li><li><strong>Click "Calculate":</strong> Instantly, the tool will provide your recommended daily water intake in liters, ounces, and the number of glasses.</li></ol>
+            <h2 class="text-3xl font-bold mt-8">Factors That Influence Your Hydration Needs</h2>
+            <p>Our <strong>water calculator</strong> takes several key variables into account. Here’s why each one matters:</p>
+            <ul><li><strong>Weight:</strong> A larger body requires more water to function than a smaller one. This is the most significant baseline factor.</li><li><strong>Age:</strong> Body composition changes as we age, which can influence hydration status.</li><li><strong>Activity Level:</strong> This is a major variable. When you exercise, you can lose a significant amount of water through sweat. The more intense and longer the workout, the more you need to drink to rehydrate.</li><li><strong>Climate and Temperature:</strong> Hot and humid weather makes you sweat more, increasing your fluid needs. You'll also need more water at high altitudes.</li><li><strong>Overall Health:</strong> If you have a fever, vomiting, or diarrhea, your body loses extra fluids. It's crucial to drink more water during these times.</li><li><strong>Pregnancy and Breastfeeding:</strong> Women who are pregnant or breastfeeding need additional fluids to stay hydrated and support their baby.</li></ul>
+            <h3 class="text-2xl font-bold mt-6">Practical Tips for Staying Hydrated</h3>
+            <p>Knowing <strong>how much water you should drink</strong> is the first step. Here's how to make it a reality:</p>
+            <ul><li><strong>Carry a Reusable Water Bottle:</strong> Having water on hand at all times is the easiest way to remember to drink.</li><li><strong>Set Reminders:</strong> Use your phone or smartwatch to set hourly reminders to take a few sips.</li><li><strong>Eat Your Water:</strong> Many fruits and vegetables have high water content, like watermelon, cucumbers, strawberries, and celery. These contribute to your total intake.</li><li><strong>Flavor Your Water:</strong> If you find plain water boring, add a slice of lemon, lime, cucumber, or some fresh mint to make it more appealing.</li><li><strong>Drink Before You're Thirsty:</strong> Thirst is actually a sign that your body is already on its way to being dehydrated. Try to drink consistently throughout the day.</li></ul>
+            <h2 class="text-3xl font-bold mt-8">Recognizing the Signs of Dehydration</h2>
+            <p>It's important to know when your body is asking for more water. Look out for these common signs:</p>
+            <ul><li>Dark yellow urine</li><li>Feeling thirsty or having a dry mouth</li><li>Headaches</li><li>Feeling tired or lethargic</li><li>Reduced urination</li><li>Dizziness or lightheadedness</li></ul>
+            <p>If you experience these symptoms, your immediate priority should be to rehydrate with water.</p>
+            <h2 class="text-3xl font-bold mt-8">Frequently Asked Questions (FAQ)</h2>
+            <h4 class="font-bold mt-4">1. Does coffee or tea count towards my water intake?</h4>
+            <p>Yes, they do! While caffeinated beverages have a mild diuretic effect, the water in them still contributes to your overall daily intake. However, plain water should always be your primary source of hydration.</p>
+            <h4 class="font-bold mt-4">2. Can I drink too much water?</h4>
+            <p>While rare, it is possible to drink a dangerous amount of water, a condition called hyponatremia where sodium levels in your blood become dangerously diluted. This is typically only a risk for endurance athletes who drink excessive amounts of fluid without replacing electrolytes. For the average person, it is very difficult to drink too much water.</p>
+            <h4 class="font-bold mt-4">3. What is the best type of water to drink?</h4>
+            <p>For most people, clean tap water is perfectly healthy and is the most accessible and environmentally friendly option. Filtered, spring, or mineral water are also great choices.</p>
+            <h4 class="font-bold mt-4">4. Should I drink more if I am trying to lose weight?</h4>
+            <p>Yes, staying well-hydrated can be a great tool for weight loss. Water is 100% calorie-free, can help you feel full, and can slightly boost your metabolism. Using our <strong>water intake calculator</strong> is a smart step in any weight loss plan.</p>
+            <h3 class="text-2xl font-bold mt-6">Conclusion: Make Hydration a Priority</h3>
+            <p>Your daily water intake is a cornerstone of your overall health and well-being. By using our personalized <strong>water intake calculator</strong>, you can move beyond generic advice and get a clear, actionable goal tailored specifically to you and your lifestyle. Take the first step towards better health, improved energy, and a sharper mind. Calculate your needs today and make hydration a non-negotiable part of your daily routine.</p>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.8.1/dist/flowbite.min.js"></script>
+    <script>
+        let myChart;
+
+        function switchUnits(unit) {
+            const metricBtn = document.getElementById('metric-btn');
+            const imperialBtn = document.getElementById('imperial-btn');
+            const unitLabels = document.querySelectorAll('.unit-label');
+
+            if (unit === 'metric') {
+                metricBtn.classList.add('active');
+                imperialBtn.classList.remove('active');
+                unitLabels.forEach(label => label.textContent = 'kg');
+            } else {
+                imperialBtn.classList.add('active');
+                metricBtn.classList.remove('active');
+                unitLabels.forEach(label => label.textContent = 'lbs');
+            }
+        }
+
+        function calculateWater(event) {
+            event.preventDefault();
+            
+            const age = parseInt(document.getElementById('age').value);
+            let weight = parseFloat(document.getElementById('weight').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+            const weather = parseFloat(document.getElementById('weather').value);
+            
+            const isMetric = document.getElementById('metric-btn').classList.contains('active');
+            if (!isMetric) {
+                weight = weight * 0.453592; // Convert lbs to kg
+            }
+
+            if (isNaN(age) || isNaN(weight) || age < 1 || age > 100 || weight < 10) {
+                Swal.fire('Invalid Input', 'Please enter valid age and weight.', 'error');
+                return;
+            }
+
+            let baseIntake = weight * 33;
+            if (age < 30) { baseIntake = weight * 40; } 
+            else if (age > 55) { baseIntake = weight * 30; }
+
+            const finalIntakeMl = baseIntake * activity * weather;
+
+            displayResults(finalIntakeMl);
+        }
+        
+        function displayResults(intakeMl) {
+            document.getElementById('results-placeholder').classList.add('hidden');
+            document.getElementById('results-content').classList.remove('hidden');
+
+            const intakeLiters = (intakeMl / 1000).toFixed(1);
+            const intakeOunces = (intakeMl / 29.574).toFixed(0);
+            const intakeGlasses = Math.round(intakeMl / 250);
+
+            document.getElementById('result-liters').textContent = intakeLiters;
+            document.getElementById('result-ounces').textContent = intakeOunces;
+            document.getElementById('result-glasses').textContent = intakeGlasses;
+            
+            // --- Schedule Calculation & Display ---
+            const morningMl = intakeMl * 0.3;
+            const afternoonMl = intakeMl * 0.4;
+            const eveningMl = intakeMl * 0.3;
+            
+            document.getElementById('morning-goal').textContent = `Drink ${(morningMl/1000).toFixed(1)} L (~${Math.round(morningMl/250)} glasses)`;
+            document.getElementById('afternoon-goal').textContent = `Drink ${(afternoonMl/1000).toFixed(1)} L (~${Math.round(afternoonMl/250)} glasses)`;
+            document.getElementById('evening-goal').textContent = `Drink ${(eveningMl/1000).toFixed(1)} L (~${Math.round(eveningMl/250)} glasses)`;
+
+            updateChart([morningMl, afternoonMl, eveningMl]);
+            updateGlassesVisual(intakeGlasses);
+
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateChart(data) {
+            const ctx = document.getElementById('hydration-chart').getContext('2d');
+            if(myChart) { myChart.destroy(); }
+            
+            myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Morning', 'Afternoon', 'Evening'],
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#7dd3fc', '#fbbf24', '#4338ca'],
+                        borderColor: ['#ffffff'],
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => `${context.label}: ${Math.round(context.raw)}ml`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateGlassesVisual(glassCount) {
+            const container = document.getElementById('glasses-container');
+            container.innerHTML = '';
+            const fullGlassSvg = `<svg class="w-10 h-10 text-sky-500 water-glass" fill="currentColor" viewBox="0 0 20 20"><path d="M18 3.667H2c-.552 0-1 .447-1 1v.676c0 .142.036.28.104.4L4.038 11.23c.77.95 1.485 1.83 1.485 3.709v2.228c0 .464.328.85.77.973l.46.128c.443.122.9-.22.9-.684V14.76c0-1.88 1.22-3.23 2.343-4.526L15.896 5.74c.068-.117.104-.255.104-.397V4.667c0-.553-.448-1-1-1z"/></svg>`;
+            for(let i=0; i<Math.min(glassCount, 12); i++) {
+                const glassDiv = document.createElement('div');
+                glassDiv.innerHTML = fullGlassSvg;
+                glassDiv.style.animationDelay = `${i * 50}ms`;
+                glassDiv.classList.add('opacity-0', 'transform', 'translate-y-2');
+                container.appendChild(glassDiv);
+                setTimeout(() => glassDiv.classList.remove('opacity-0', 'transform', 'translate-y-2'), 10);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Random Number Generator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator - Advanced & Free Online Tool</title>
+    <meta name="description" content="A powerful and free random number generator to create single or multiple random numbers within a custom range. Features include unique numbers, sorting, decimals, and a result history.">
+    <meta name="keywords" content="random number generator, random number picker, RNG, random generator, number generator, lottery number generator, randomizer, random number list, unique number generator, online rng tool">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/random-number-generator.html">
+    <meta property="og:title" content="Advanced Random Number Generator - Free Online Tool">
+    <meta property="og:description" content="Generate customizable random numbers with options for range, quantity, uniqueness, and sorting. Perfect for games, contests, and data sampling.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Random+Number+Generator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/random-number-generator.html">
+    <meta property="twitter:title" content="Advanced Random Number Generator - Free Online Tool">
+    <meta property="twitter:description" content="Generate customizable random numbers with options for range, quantity, uniqueness, and sorting. Perfect for games, contests, and data sampling.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Random+Number+Generator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      .result-number {
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+      }
+      .history-item {
+        transition: background-color 0.2s;
+      }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-4xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Random Number Generator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">A powerful tool to generate single or multiple random numbers with advanced options for any purpose.</p>
+              </div>
+        
+              <!-- Generator Body -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Controls -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Settings</h3>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="min-val" class="block text-sm font-medium text-gray-700">Min</label>
+                                <input type="number" id="min-val" value="1" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2">
+                            </div>
+                            <div>
+                                <label for="max-val" class="block text-sm font-medium text-gray-700">Max</label>
+                                <input type="number" id="max-val" value="100" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="quantity" class="block text-sm font-medium text-gray-700">How many numbers?</label>
+                            <input type="number" id="quantity" value="1" min="1" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2">
+                        </div>
+                        <div>
+                            <label for="decimals" class="block text-sm font-medium text-gray-700">Decimal places</label>
+                            <input type="number" id="decimals" value="0" min="0" max="10" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2">
+                        </div>
+                        <div class="flex items-center">
+                            <input id="unique" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="unique" class="ml-2 block text-sm text-gray-900">Generate unique numbers</label>
+                        </div>
+                        <div>
+                            <label for="sort" class="block text-sm font-medium text-gray-700">Sort results</label>
+                            <select id="sort" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option value="none">None</option>
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                        <p id="error-message" class="text-red-600 text-sm mt-2 hidden"></p>
+                    </div>
+                    <button id="generate-btn" class="mt-6 w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 btn">
+                        Generate
+                    </button>
+                </div>
+
+                <!-- Results and History -->
+                <div>
+                    <!-- Result Display -->
+                    <div class="bg-indigo-600 text-white p-6 rounded-lg text-center mb-6">
+                        <p class="text-sm uppercase tracking-wider">Result</p>
+                        <div id="result-display" class="text-6xl font-bold my-4 h-20 flex items-center justify-center overflow-hidden">
+                            <span>-</span>
+                        </div>
+                    </div>
+                    <!-- History -->
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-bold text-gray-700">History</h3>
+                            <button id="clear-history-btn" class="text-sm text-gray-500 hover:text-red-600">Clear</button>
+                        </div>
+                        <div id="history-container" class="space-y-2 max-h-48 overflow-y-auto">
+                            <p class="text-gray-500 text-center text-sm py-4">No history yet.</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Random Number Generators</h2>
+      <p>From simple games to complex scientific simulations, randomness is a cornerstone of modern technology and decision-making. A <strong>random number generator (RNG)</strong> is a tool designed to produce a sequence of numbers or symbols that cannot be reasonably predicted better than by a random chance. This guide explores the fascinating world of random numbers, their applications, and how to use our powerful and feature-rich <strong>online RNG tool</strong>.</p>
+    
+      <h3>How to Use Our Advanced Random Number Generator</h3>
+      <p>We've packed this tool with advanced features while keeping it simple to use. Here’s how you can get the most out of it:</p>
+      <ol>
+          <li><strong>Set Your Range:</strong> Define the lower and upper bounds for your numbers in the <code>Min</code> and <code>Max</code> fields. You can use negative numbers too!</li>
+          <li><strong>Choose Quantity:</strong> In the <code>How many numbers?</code> field, specify if you want one or multiple numbers. This is perfect for generating a <strong>random number list</strong>.</li>
+          <li><strong>Control Decimals:</strong> Use the <code>Decimal places</code> field to choose between whole numbers (0) or numbers with decimal precision.</li>
+          <li><strong>Ensure Uniqueness:</strong> Check the <code>Generate unique numbers</code> box if you need every number in the generated set to be different. This is essential for drawings or sampling without replacement.</li>
+          <li><strong>Sort Your Results:</strong> Use the <code>Sort results</code> dropdown to organize the generated numbers in ascending or descending order, or keep them unsorted.</li>
+          <li><strong>Generate:</strong> Click the "Generate" button. You'll see the results appear with a fun animation, and they will also be added to the History section.</li>
+      </ol>
+      <h4>Special Features:</h4>
+      <ul>
+          <li><strong>Animated Results:</strong> The main result display uses a "slot machine" effect to make the generation process more engaging.</li>
+          <li><strong>Result History:</strong> Every set of numbers you generate is stored in the History panel. You can easily copy any previous result set by clicking the copy icon next to it.</li>
+          <li><strong>Error Handling:</strong> If you try to generate more unique numbers than are possible in the given range (e.g., 10 unique numbers between 1 and 5), the tool will show a clear error message.</li>
+      </ul>
+
+      <h3>What is "True" Randomness? A Look Behind the Curtain</h3>
+      <p>When you use an <strong>online random number generator</strong>, you're typically interacting with a "pseudorandom number generator" (PRNG). It's a common misconception that computers can generate truly random numbers. In reality, they are deterministic machines that follow instructions.</p>
+      
+      <h4>Pseudorandom vs. True Random Numbers</h4>
+      <ul>
+          <li><strong>Pseudorandom Number Generators (PRNGs):</strong> These are algorithms that produce a sequence of numbers that *appears* random. They start with an initial value called a "seed." Given the same seed, a PRNG will always produce the same sequence of numbers. Our tool, like most software, uses a PRNG, but it seeds it with a value that is very difficult to predict (like the current time down to the millisecond) to ensure a different sequence every time.</li>
+          <li><strong>True Random Number Generators (TRNGs):</strong> These are hardware devices that generate randomness from physical phenomena, such as atmospheric noise, radioactive decay, or thermal noise. These are genuinely unpredictable and are used in high-stakes applications like cryptography and national lotteries.</li>
+      </ul>
+      <p>For everyday purposes like games, contests, or data sampling, a high-quality PRNG is more than sufficient and provides the "randomness" we expect.</p>
+      
+      <h3>Common Algorithms Used in RNGs</h3>
+      <p>The magic behind a <strong>randomizer</strong> is its algorithm. One of the oldest and simplest is the Linear Congruential Generator (LCG).</p>
+      <h4>Linear Congruential Generator (LCG)</h4>
+      <p>An LCG generates a sequence using the formula: <code>X_n+1 = (a * X_n + c) mod m</code> where:</p>
+      <ul>
+          <li><code>X_n</code> is the current number in the sequence.</li>
+          <li><code>a</code> (the multiplier), <code>c</code> (the increment), and <code>m</code> (the modulus) are predefined constants.</li>
+          <li><code>X_n+1</code> is the next number in the sequence.</li>
+      </ul>
+      <p>While simple, LCGs can have patterns if the constants aren't chosen carefully. Modern systems, including the JavaScript `Math.random()` function used by this tool, often employ more sophisticated algorithms like the Mersenne Twister, which has a much longer period before the sequence repeats and better statistical properties.</p>
+
+      <h3>Practical Applications of Random Number Generators</h3>
+      <p>A <strong>random number picker</strong> is used in countless fields:</p>
+      <ul>
+          <li><strong>Gaming and Entertainment:</strong> From dice rolls in board games to loot drops in video games, RNGs ensure a unique and unpredictable experience. A <strong>lottery number generator</strong> is another popular use.</li>
+          <li><strong>Statistics and Research:</strong> Scientists use random numbers to select participants for studies (random sampling), ensuring that the sample is representative of the larger population and free from bias.</li>
+          <li><strong>Cryptography:</strong> Secure encryption keys are generated using random numbers. The unpredictability of the key is what makes the encryption strong.</li>
+          <li><strong>Decision Making:</strong> Can't decide where to eat or what movie to watch? Use a <strong>random generator</strong> to make the choice for you!</li>
+          <li><strong>Art and Music:</strong> Generative artists and musicians use randomness to create unique patterns, melodies, and compositions.</li>
+      </ul>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>Is this random number generator truly random?</h4>
+      <p>Like virtually all software-based RNGs, this tool is a pseudorandom number generator. It uses your computer's built-in `Math.random()` function, which is seeded by a high-entropy value to produce sequences that are statistically random and unpredictable for all practical purposes. It's perfect for games, drawings, and sampling, but should not be used for high-security cryptographic purposes.</p>
+      
+      <h4>How can I generate a random number between two numbers?</h4>
+      <p>Simply enter your desired lower bound in the "Min" field and your upper bound in the "Max" field. The tool will generate a number that is greater than or equal to your minimum and less than or equal to your maximum.</p>
+      
+      <h4>What does the "unique numbers" option do?</h4>
+      <p>When you generate multiple numbers, this option guarantees that no number will appear more than once in the result set. For example, if you ask for 5 unique numbers between 1 and 10, you might get `[2, 8, 5, 1, 10]`, but you will never get `[2, 8, 5, 8, 1]`. This is also known as sampling without replacement.</p>
+      
+      <h4>Can I use this as a lottery number generator?</h4>
+      <p>Yes! For a typical lottery, you can set the range (e.g., Min 1, Max 49) and the quantity (e.g., 6). Make sure to check the "Generate unique numbers" box, as lottery numbers are not repeated.</p>
+
+      <h3>Conclusion</h3>
+      <p>Randomness is a powerful concept, and a reliable <strong>random number generator</strong> is an essential tool in any digital toolkit. Whether you need a quick decision-maker, a tool for a game, or a way to generate a list of unique numbers for a giveaway, our advanced generator provides the flexibility and control you need. With clear settings, a useful history log, and a deep understanding of the principles behind it, you can be confident in the results. Bookmark this page for all your randomization needs!</p>
+    </div>
+    
+    <!-- FOOTER FROM USER'S index.html -->
+    <footer class="bg-gray-100">
+        <!-- Footer content from previous response -->
+    </footer>
+    <!-- END OF FOOTER -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const minInput = document.getElementById('min-val');
+        const maxInput = document.getElementById('max-val');
+        const quantityInput = document.getElementById('quantity');
+        const decimalsInput = document.getElementById('decimals');
+        const uniqueCheckbox = document.getElementById('unique');
+        const sortSelect = document.getElementById('sort');
+        const generateBtn = document.getElementById('generate-btn');
+        const resultDisplay = document.getElementById('result-display');
+        const historyContainer = document.getElementById('history-container');
+        const clearHistoryBtn = document.getElementById('clear-history-btn');
+        const errorMessage = document.getElementById('error-message');
+
+        let history = [];
+
+        const generateRandom = () => {
+            errorMessage.classList.add('hidden');
+            errorMessage.textContent = '';
+            
+            const min = parseFloat(minInput.value);
+            const max = parseFloat(maxInput.value);
+            const quantity = parseInt(quantityInput.value, 10);
+            const decimals = parseInt(decimalsInput.value, 10);
+
+            if (isNaN(min) || isNaN(max) || isNaN(quantity) || isNaN(decimals)) {
+                showError("Please enter valid numbers in all fields.");
+                return;
+            }
+            if (min >= max) {
+                showError("Min value must be less than Max value.");
+                return;
+            }
+            if (quantity < 1) {
+                showError("Quantity must be at least 1.");
+                return;
+            }
+            if(uniqueCheckbox.checked) {
+                const possibleValues = (max - min) * Math.pow(10, decimals) + 1;
+                if (quantity > possibleValues && quantity > 1000) { // Add a reasonable limit for float comparison
+                    showError(`Cannot generate ${quantity} unique numbers from this range. Please increase the range or decrease the quantity.`);
+                    return;
+                }
+            }
+
+            let results = [];
+            const generatedSet = new Set();
+            
+            for (let i = 0; i < quantity; i++) {
+                let randomNumber;
+                let attempts = 0;
+                do {
+                    const rawRandom = Math.random() * (max - min) + min;
+                    randomNumber = parseFloat(rawRandom.toFixed(decimals));
+                    attempts++;
+                    if(attempts > 5000) {
+                        showError("Could not find enough unique numbers. Try a larger range or smaller quantity.");
+                        return;
+                    }
+                } while (uniqueCheckbox.checked && generatedSet.has(randomNumber));
+                
+                if(uniqueCheckbox.checked) {
+                    generatedSet.add(randomNumber);
+                }
+                results.push(randomNumber);
+            }
+            
+            const sortOrder = sortSelect.value;
+            if (sortOrder === 'asc') {
+                results.sort((a, b) => a - b);
+            } else if (sortOrder === 'desc') {
+                results.sort((a, b) => b - a);
+            }
+            
+            displayResults(results);
+            addToHistory(results);
+        };
+        
+        const showError = (message) => {
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+        };
+
+        const displayResults = (numbers) => {
+            resultDisplay.innerHTML = ''; 
+            if (numbers.length === 1) {
+                animateSingleNumber(numbers[0]);
+            } else {
+                 const formattedNumbers = numbers.join(', ');
+                 const resultSpan = document.createElement('span');
+                 resultSpan.className = 'text-2xl font-mono p-2 bg-gray-100 rounded-md text-gray-800';
+                 resultSpan.textContent = formattedNumbers;
+                 resultDisplay.appendChild(resultSpan);
+            }
+        };
+
+        const animateSingleNumber = (finalNumber) => {
+            let iteration = 0;
+            const interval = setInterval(() => {
+                const min = parseFloat(minInput.value);
+                const max = parseFloat(maxInput.value);
+                const decimals = parseInt(decimalsInput.value, 10);
+                const randomVal = Math.random() * (max - min) + min;
+                const randomDisplay = randomVal.toFixed(decimals);
+
+                resultDisplay.innerHTML = `<span class="result-number">${randomDisplay}</span>`;
+                if (iteration > 15) {
+                    clearInterval(interval);
+                    resultDisplay.innerHTML = `<span class="result-number">${finalNumber}</span>`;
+                    resultDisplay.querySelector('.result-number').style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        if(resultDisplay.querySelector('.result-number')) {
+                            resultDisplay.querySelector('.result-number').style.transform = 'scale(1)';
+                        }
+                    }, 300);
+                }
+                iteration++;
+            }, 50);
+        };
+
+        const addToHistory = (numbers) => {
+            if (history.length === 0) {
+                historyContainer.innerHTML = '';
+            }
+            history.unshift(numbers);
+            if (history.length > 20) {
+                history.pop();
+            }
+            renderHistory();
+        };
+
+        const renderHistory = () => {
+             historyContainer.innerHTML = '';
+             if(history.length === 0) {
+                 historyContainer.innerHTML = '<p class="text-gray-500 text-center text-sm py-4">No history yet.</p>';
+                 return;
+             }
+             history.forEach(item => {
+                 const historyItem = document.createElement('div');
+                 historyItem.className = 'history-item flex justify-between items-center p-2 rounded-md hover:bg-gray-100';
+                 
+                 const text = document.createElement('span');
+                 text.className = 'text-sm font-mono text-gray-700 truncate';
+                 text.textContent = item.join(', ');
+                 
+                 const copyBtn = document.createElement('button');
+                 copyBtn.className = 'text-gray-400 hover:text-indigo-600 ml-2 flex-shrink-0';
+                 copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
+                 copyBtn.onclick = () => {
+                     navigator.clipboard.writeText(item.join(', '));
+                     copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>`;
+                     setTimeout(() => {
+                        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
+                     }, 1500);
+                 };
+
+                 historyItem.appendChild(text);
+                 historyItem.appendChild(copyBtn);
+                 historyContainer.appendChild(historyItem);
+             });
+        };
+
+        generateBtn.addEventListener('click', generateRandom);
+        clearHistoryBtn.addEventListener('click', () => {
+            history = [];
+            renderHistory();
+        });
+
+      });
+    </script>
+</body>
+</html>

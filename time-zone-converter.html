@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Time Zone Converter -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zone Converter - Convert Time Between Cities & Time Zones</title>
+    <meta name="description" content="A powerful and free time zone converter to accurately convert time between different time zones and cities worldwide. Handles Daylight Saving Time (DST) automatically. Perfect for scheduling meetings and calls.">
+    <meta name="keywords" content="time zone converter, time conversion calculator, convert time zone, world clock, meeting planner, time difference calculator, UTC converter, GMT converter, what time is it in, online time converter">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/time-zone-converter.html">
+    <meta property="og:title" content="Accurate Time Zone Converter - World Clock & Meeting Planner">
+    <meta property="og:description" content="Instantly convert time across global time zones with our easy-to-use calculator. Features multiple zone comparison and automatic DST handling.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Time+Zone+Converter">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/time-zone-converter.html">
+    <meta property="twitter:title" content="Accurate Time Zone Converter - World Clock & Meeting Planner">
+    <meta property="twitter:description" content="Instantly convert time across global time zones with our easy-to-use calculator. Features multiple zone comparison and automatic DST handling.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Time+Zone+Converter">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      #target-zones-container .time-zone-card:not(:last-child) { border-bottom: 1px dashed #d1d5db; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-5xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Time Zone Converter</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Instantly convert time between cities and time zones worldwide. Perfect for planning international meetings and calls.</p>
+              </div>
+        
+              <!-- Converter Main Body -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <!-- Source Time Zone Section -->
+                  <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Source Time</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="source-datetime" class="block text-sm font-medium text-gray-700">Date and Time</label>
+                            <input type="datetime-local" id="source-datetime" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2">
+                        </div>
+                        <button id="use-current-time" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 btn">
+                            Use Current Time
+                        </button>
+                        <div>
+                            <label for="source-tz-search" class="block text-sm font-medium text-gray-700">Source Time Zone</label>
+                            <input type="text" id="source-tz-search" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2" placeholder="Search for a city or zone...">
+                            <select id="source-tz" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" size="8"></select>
+                        </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Target Time Zones Section -->
+                  <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Converted Times</h3>
+                    <div id="target-zones-container" class="space-y-4">
+                        <!-- Target time zone cards will be inserted here -->
+                    </div>
+                     <button id="add-zone-btn" class="mt-4 w-full py-2 px-4 border border-dashed border-gray-400 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 btn">
+                        + Add another time zone
+                    </button>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Time Zones and Converters</h2>
+      <p>In our interconnected global society, time is more complex than ever. Coordinating with a colleague in London, a client in Tokyo, or family in Sydney requires more than just knowing the time on your own clock. This is where a <strong>time zone converter</strong> becomes an indispensable tool. It bridges the gaps created by geography and the Earth's rotation, making global communication seamless. This guide will explore everything you need to know about time zones and how to leverage our powerful <strong>time conversion calculator</strong>.</p>
+    
+      <h3>How to Use Our Time Zone Converter</h3>
+      <p>We've designed this tool to be intuitive yet powerful, handling all the complexities like Daylight Saving Time (DST) automatically.</p>
+      <ol>
+          <li><strong>Set the Source Time:</strong> In the "Source Time" section, either manually select a date and time using the calendar picker or click the <strong>"Use Current Time"</strong> button to instantly load the time from your device.</li>
+          <li><strong>Select the Source Time Zone:</strong> Below the date picker, choose the time zone for the time you just entered. You can scroll through the list or use the search box to quickly find your city or time zone (e.g., "New York", "India", "Europe/Paris").</li>
+          <li><strong>View the Converted Time:</strong> The "Converted Times" section on the right will instantly update. By default, it will show you a common time zone, but you can change it.</li>
+          <li><strong>Add More Time Zones:</strong> Need to coordinate across multiple locations? Click the <strong>"+ Add another time zone"</strong> button. A new card will appear, allowing you to select another location and see its converted time simultaneously. This is the core of our <strong>meeting planner</strong> feature.</li>
+          <li><strong>Remove Time Zones:</strong> Click the 'X' button on any target time card to remove it from the list.</li>
+      </ol>
+      
+      <h3>The Science and History Behind Time Zones</h3>
+      <p>Before the 19th century, time was a local affair. Each town set its clocks by the sun's position at noon. This worked well until the advent of railways and telegraphs, which made the world smaller and local time a logistical nightmare. Imagine a train schedule where every stop had its own time! To solve this, a standardized system was needed.</p>
+      <p>In 1884, the International Meridian Conference established a global system of 24 time zones. The Earth was divided into 24 sections, each 15 degrees of longitude wide, and each representing one hour. The starting point, or Prime Meridian (0° longitude), was established in Greenwich, London, UK. This gave birth to Greenwich Mean Time (GMT).</p>
+
+      <h3>Understanding Key Concepts: UTC, GMT, and DST</h3>
+      <h4>What is UTC (Coordinated Universal Time)?</h4>
+      <p>UTC is the modern, scientific standard for timekeeping. It is the successor to GMT and is maintained by a network of hyper-accurate atomic clocks around the world. For all practical purposes in a <strong>UTC converter</strong>, UTC is the same as GMT. It is the time at the 0° longitude meridian, and all other time zones are expressed as an offset from UTC (e.g., UTC-5, UTC+5:30).</p>
+      
+      <h4>GMT vs. UTC: What's the Difference?</h4>
+      <p>While often used interchangeably, there is a subtle difference. GMT (Greenwich Mean Time) is a time zone based on the Earth's rotation. UTC (Coordinated Universal Time) is a time standard based on atomic clocks. Because the Earth's rotation is slightly irregular, UTC occasionally has a "leap second" added to keep it aligned with solar time. Our <strong>GMT converter</strong> effectively functions as a UTC converter, as this is the global standard.</p>
+      
+      <h4>Daylight Saving Time (DST): The Annual Confusion</h4>
+      <p>Daylight Saving Time is the practice of advancing clocks by one hour during warmer months so that darkness falls at a later clock time. This is the single biggest source of confusion when converting time. A city like New York is UTC-5 during winter (Standard Time) but becomes UTC-4 during summer (Daylight Time). A naive <strong>time difference calculator</strong> might get this wrong. Our tool automatically accounts for DST rules for any given date, past, present, or future, ensuring your conversions are always accurate.</p>
+
+      <h3>Why IANA Time Zones Are Better Than Abbreviations</h3>
+      <p>You might be used to abbreviations like EST, PST, or IST. However, these can be ambiguous. For example, "CST" could mean Central Standard Time (America), China Standard Time, or Cuba Standard Time. To avoid this, our converter uses the official IANA (Internet Assigned Numbers Authority) time zone database. These are always in a `Region/City` format (e.g., `America/New_York`, `Asia/Kolkata`, `Europe/London`). This format is unambiguous and contains all historical and future DST rules, which is why our tool is so reliable.</p>
+
+      <h3>Practical Uses for a Time Zone Converter</h3>
+      <ul>
+          <li><strong>International Business:</strong> Schedule video conferences and calls with clients and colleagues across the globe without confusion. Our multi-zone view makes it the perfect meeting planner.</li>
+          <li><strong>Travel Planning:</strong> Know the exact local time of your arrival and departure to plan your itinerary and avoid jet lag-induced mistakes.</li>
+          <li><strong>Webinars and Live Events:</strong> If you're hosting or attending an online event, a <strong>world clock</strong> converter is essential to tune in at the correct time.</li>
+          <li><strong>Staying in Touch:</strong> Call friends and family abroad at a reasonable hour without waking them up in the middle of their night.</li>
+          <li><strong>Software Development:</strong> Developers use a <strong>UTC converter</strong> constantly to handle server logs, user data, and time-stamped events from different parts of the world.</li>
+      </ul>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      <h4>How accurate is this time zone converter?</h4>
+      <p>This tool is highly accurate. It uses the internationally recognized IANA time zone database, which is the same database used by most computers and servers worldwide. It automatically and correctly applies Daylight Saving Time rules for any date you select.</p>
+      <h4>How do I find my time zone?</h4>
+      <p>The easiest way is to search for a major city near you in the search box. For example, if you live in California, searching for "Los Angeles" will bring up the correct `America/Los_Angeles` time zone.</p>
+      <h4>Can I convert time for a future date?</h4>
+      <p>Absolutely. Simply use the date and time picker to select any future date. The converter will apply the correct time zone rules, including any future DST changes, for that specific date.</p>
+      <h4>What is the easiest way to see "what time is it in London"?</h4>
+      <p>Click the "Use Current Time" button. This sets the source to your local time. Then, in one of the target boxes, select "Europe/London". The card will instantly show you the current time in London.</p>
+
+      <h3>Conclusion</h3>
+      <p>In a world that never sleeps, being time-zone-aware is a crucial skill. A reliable <strong>time zone converter</strong> eliminates guesswork, prevents missed appointments, and fosters smoother global collaboration. By providing accurate, DST-aware, and multi-zone conversions, this tool is designed to be your go-to solution for all time-related challenges. Bookmark this page and make time zones your strength, not a source of confusion.</p>
+    </div>
+    
+    <!-- FOOTER FROM USER'S index.html -->
+    <footer class="bg-gray-100">
+        <div class="max-w-screen-lg py-10 px-4 sm:px-6 text-gray-800 sm:flex justify-between mx-auto">
+            <div class="p-5 sm:w-2/12 border-r">
+              <div class="text-sm uppercase text-red-600 font-bold">Menu</div>
+              <ul>
+                <li class="my-2"><a class="hover:text-red-600" href="./index.html">Home</a></li>
+                <li class="my-2"><a class="hover:text-red-600" href="./about.html">About</a></li>
+                <li class="my-2"><a class="hover:text-red-600" href="./contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div class="p-5 sm:w-7/12 border-r text-center">
+              <img style="height: 60px; margin: auto; margin-bottom: 20px;" src="./One_Page-removebg-preview.png" alt="OnePageTools Footer Logo" />
+              <p class="text-gray-500 text-sm mb-10">Convert, edit, and manage your documents effortlessly with our comprehensive suite of online tools. Fast, free, and secure.</p>
+            </div>
+            <div class="p-5 sm:w-3/12">
+              <div class="text-sm uppercase text-red-600 font-bold">Contact Us</div>
+              <ul>
+                <li class="my-2"><a class="hover:text-red-600" href="#">FCI Colony, Bareilly</a></li>
+                <li class="my-2"><a class="hover:text-red-600" href="#">itceguru123@gmail.com</a></li>
+              </ul>
+            </div>
+        </div>
+        <div class="pt-2">
+         <div class="text-center py-5 border-t border-gray-200">Copyright © 2024 OnePageTools.com <br> All Rights Reserved</div>
+        </div>
+    </footer>
+    <!-- END OF FOOTER -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <!-- date-fns-tz (for accurate, DST-aware time zone conversions) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.28.0/date_fns.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns-tz/1.3.7/date_fns_tz.min.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const sourceDateTimeInput = document.getElementById('source-datetime');
+        const useCurrentTimeBtn = document.getElementById('use-current-time');
+        const sourceTzSearch = document.getElementById('source-tz-search');
+        const sourceTzSelect = document.getElementById('source-tz');
+        const targetZonesContainer = document.getElementById('target-zones-container');
+        const addZoneBtn = document.getElementById('add-zone-btn');
+
+        let allTimezones = [];
+        try {
+            allTimezones = Intl.supportedValuesOf('timeZone');
+        } catch (e) {
+            console.error("Time zone enumeration not supported in this browser.");
+            allTimezones = ["UTC", "America/New_York", "Europe/London", "Asia/Tokyo"]; // Fallback
+        }
+
+        const populateSelect = (select, searchTerm = '') => {
+            select.innerHTML = '';
+            const filteredTimezones = allTimezones.filter(tz => tz.toLowerCase().includes(searchTerm.toLowerCase()));
+            filteredTimezones.forEach(tz => {
+                const option = document.createElement('option');
+                option.value = tz;
+                option.textContent = tz.replace(/_/g, ' ');
+                select.appendChild(option);
+            });
+        };
+
+        const createTargetZoneCard = (defaultZone = 'UTC') => {
+            const cardId = `target-card-${Date.now()}-${Math.random()}`;
+            const card = document.createElement('div');
+            card.className = 'time-zone-card pt-4 pb-4';
+            card.id = cardId;
+
+            card.innerHTML = `
+                <div class="relative">
+                    <input type="text" class="target-tz-search w-full mb-1 shadow-sm sm:text-sm border-gray-300 rounded-md p-2" placeholder="Search for a zone...">
+                    <select class="target-tz-select mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" size="5"></select>
+                    <button class="remove-zone-btn absolute top-0 right-0 mt-1 mr-1 text-gray-400 hover:text-red-600">×</button>
+                </div>
+                <div class="target-result-display mt-2 p-3 bg-gray-100 rounded-md text-center">
+                    <p class="result-time text-2xl font-bold text-gray-800">-</p>
+                    <p class="result-date text-sm text-gray-600">-</p>
+                    <p class="result-offset text-xs text-gray-500">-</p>
+                </div>
+            `;
+            
+            targetZonesContainer.appendChild(card);
+            const searchInput = card.querySelector('.target-tz-search');
+            const select = card.querySelector('.target-tz-select');
+            
+            populateSelect(select);
+            select.value = defaultZone;
+
+            searchInput.addEventListener('input', () => populateSelect(select, searchInput.value));
+            select.addEventListener('change', convertAllTimes);
+            card.querySelector('.remove-zone-btn').addEventListener('click', () => {
+                card.remove();
+                convertAllTimes();
+            });
+
+            return { searchInput, select };
+        };
+
+        const convertAllTimes = () => {
+            const sourceDateTimeValue = sourceDateTimeInput.value;
+            const sourceTz = sourceTzSelect.value;
+            
+            if (!sourceDateTimeValue || !sourceTz) return;
+
+            try {
+                // Parse the local time string AS IF it were in the source time zone, then convert to a true UTC Date object
+                const sourceDateAsUtc = dateFnsTz.zonedTimeToUtc(sourceDateTimeValue, sourceTz);
+
+                document.querySelectorAll('.time-zone-card').forEach(card => {
+                    const targetTz = card.querySelector('.target-tz-select').value;
+                    if (!targetTz) return;
+
+                    const resultTimeEl = card.querySelector('.result-time');
+                    const resultDateEl = card.querySelector('.result-date');
+                    const resultOffsetEl = card.querySelector('.result-offset');
+
+                    const formattedTime = dateFnsTz.formatInTimeZone(sourceDateAsUtc, targetTz, 'HH:mm:ss');
+                    const formattedDate = dateFnsTz.formatInTimeZone(sourceDateAsUtc, targetTz, 'eeee, d MMMM yyyy');
+                    const formattedOffset = dateFnsTz.formatInTimeZone(sourceDateAsUtc, targetTz, 'zzz');
+                    
+                    resultTimeEl.textContent = formattedTime;
+                    resultDateEl.textContent = formattedDate;
+                    resultOffsetEl.textContent = `${targetTz.replace(/_/g, ' ')} (${formattedOffset})`;
+                });
+            } catch (error) {
+                console.error("Error during time conversion:", error);
+            }
+        };
+
+        // --- Event Listeners ---
+        sourceDateTimeInput.addEventListener('input', convertAllTimes);
+        sourceTzSelect.addEventListener('change', convertAllTimes);
+        sourceTzSearch.addEventListener('input', () => populateSelect(sourceTzSelect, sourceTzSearch.value));
+        addZoneBtn.addEventListener('click', () => {
+            createTargetZoneCard();
+            convertAllTimes();
+        });
+
+        useCurrentTimeBtn.addEventListener('click', () => {
+            const now = new Date();
+            // Format to 'YYYY-MM-DDTHH:mm' which is required by datetime-local input
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            sourceDateTimeInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+            
+            convertAllTimes();
+        });
+
+        // --- Initial Setup ---
+        const init = () => {
+            populateSelect(sourceTzSelect);
+            
+            // Set default source timezone
+            try {
+                sourceTzSelect.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            } catch(e) {
+                sourceTzSelect.value = 'America/New_York';
+            }
+            
+            // Add initial target zones
+            createTargetZoneCard('Europe/London');
+            createTargetZoneCard('Asia/Tokyo');
+            
+            // Set initial time and convert
+            useCurrentTimeBtn.click();
+        };
+
+        init();
+      });
+    </script>
+</body>
+</html>

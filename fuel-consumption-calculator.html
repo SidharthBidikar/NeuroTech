@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- User's Tracking and Ad Scripts (IMPORTANT: Use only ONE correct AdSense ID) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-22X7NY7QJF');
+  </script>
+  <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+  <!-- <meta name="google-adsense-account" content="ca-pub-6275528006958350" /> --> <!-- I have commented out the second AdSense ID. Please use only one. -->
+
+  <title>Fuel Consumption Calculator - Gas, EV, CNG, MPG, L/100km</title>
+  <meta name="description" content="The ultimate free fuel consumption calculator for Gas, EV, and CNG vehicles. Calculate MPG, L/100km, kg/100km, and trip costs. Use our advanced tool to compare Gas vs. EV vs. CNG costs, CO2, and time.">
+  <meta name="keywords" content="fuel consumption calculator, cng calculator, kg/100km, fuel economy calculator, MPG calculator, gas vs ev vs cng comparison, co2 emissions calculator, car mileage calculator, petrol calculator, fuel budget tool">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="OnePageTools.com">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onepagetools.com/fuel-consumption-calculator.html">
+  <meta property="og:title" content="Universal Fuel Consumption Calculator (Gas, EV, CNG)">
+  <meta property="og:description" content="The most comprehensive tool to calculate and compare fuel consumption for gasoline, electric, and CNG vehicles side-by-side.">
+  <meta property="og:image" content="/images/og-fuel-calculator.png"> <!-- IMPORTANT: Replace with your actual image URL -->
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://onepagetools.com/fuel-consumption-calculator.html">
+  <meta property="twitter:title" content="Universal Fuel Consumption Calculator (Gas, EV, CNG)">
+  <meta property="twitter:description" content="The most comprehensive tool to calculate and compare fuel consumption for gasoline, electric, and CNG vehicles side-by-side.">
+  <meta property="twitter:image" content="/images/og-fuel-calculator.png"> <!-- IMPORTANT: Replace with your actual image URL -->
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+    .gradient-bg { background: linear-gradient(135deg, #f3f4f6, #e0e7ff); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .mode-btn { transition: all 0.2s ease-in-out; }
+    .mode-btn.active { background-color: #4f46e5; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .mode-btn:not(.active) { background-color: #e5e7eb; color: #4b5563; }
+    .result-card { background-color: #f8fafc; border: 1px solid #e2e8f0; border-left-width: 4px; padding: 1rem; border-radius: 0.5rem; }
+    
+    /* Article Styles */
+    .article-section { max-width: 800px; margin: 4rem auto; padding: 2.5rem; background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+    .article-section h2, .article-section h3, .article-section h4 { text-align: left; }
+    .article-section h2 { font-size: 2.25rem; font-weight: 800; margin-bottom: 1.5rem; margin-top: 3rem; color: #111827; border-bottom: 3px solid #e5e7eb; padding-bottom: 0.75rem; }
+    .article-section h3 { font-size: 1.75rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1f2937; }
+    .article-section p, .article-section li { margin-bottom: 1.25rem; line-height: 1.8; color: #374151; font-size: 1.125rem; }
+    .article-section strong { color: #4f46e5; font-weight: 600; }
+    .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.5rem; border-radius: 6px; font-family: monospace; color:#1e293b; font-size: 1rem; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 1.5rem; }
+    .article-section ol { list-style-type: decimal; }
+  </style>
+</head>
+<body class="gradient-bg">
+
+    <!-- FULL HEADER FROM INDEX.HTML -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img style="height: 60px" src="/One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li><a href="/index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:text-black md:p-0" aria-current="page">Home</a></li>
+            <li><a href="/about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+            <li><a href="/contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+            <li>
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                ALL PDF TOOLS<svg style="margin-top: 5px" class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                  <li><a href="/pdftoword.html" class="block px-4 py-2 hover:bg-gray-100">PDF TO WORD</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                Text & Content Tools ✒️<svg style="margin-top: 5px" class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="textToolsDropdownLink">
+                  <li><a href="/textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100">Text Case Converter</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="calculatorToolsDropdownLink">
+                  <li><a href="/income-tax-calculator.html" class="block px-4 py-2 hover:bg-gray-100">Income Tax Calculator</a></li>
+                  <li><a href="/decimal-to-binary-converter.html" class="block px-4 py-2 hover:bg-gray-100">Decimal to Binary</a></li>
+                  <li><a href="/binary-to-decimal-converter.html" class="block px-4 py-2 hover:bg-gray-100">Binary to Decimal</a></li>
+                  <li><a href="/fuel-consumption-calculator.html" class="block px-4 py-2 hover:bg-gray-100">Fuel Consumption</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Main Content -->
+  <div class="flex justify-center items-start min-h-screen pt-28 pb-10 px-4">
+    <div class="w-full max-w-7xl p-6 md:p-8 bg-white rounded-xl shadow-2xl fade-in">
+      
+      <!-- Tool Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Fuel Consumption Calculator</h1>
+        <p class="text-lg text-gray-500 max-w-3xl mx-auto">A complete tool for Gas, EV, & CNG Vehicles. Calculate economy, trip costs, CO₂ emissions, and more.</p>
+      </div>
+
+      <!-- Mode Switcher -->
+      <div class="flex justify-center mb-8">
+        <div class="p-1 bg-gray-200 rounded-full flex">
+          <button id="fuel-mode-btn" class="mode-btn active px-4 sm:px-6 py-2 rounded-full font-semibold text-sm sm:text-base" onclick="setMode('fuel')">⛽ Fuel Vehicle</button>
+          <button id="ev-mode-btn" class="mode-btn px-4 sm:px-6 py-2 rounded-full font-semibold text-sm sm:text-base" onclick="setMode('ev')">⚡ Electric Vehicle</button>
+        </div>
+      </div>
+
+      <!-- Main Calculator Wrapper -->
+      <div id="calculator-wrapper" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- The rest of your calculator body remains the same -->
+          <!-- Col 1: Economy Input -->
+          <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+              <h3 class="text-xl font-bold text-gray-700 mb-4">1. Find Your Vehicle's Economy</h3>
+              <p class="text-sm text-gray-500 mb-4">Calculate manually OR select a vehicle from the list to get a baseline.</p>
+              
+              <!-- Fuel Manual Calculation -->
+              <div id="fuel-manual-calc" class="space-y-4">
+                  <p class="font-semibold text-gray-600">Manual Calculation:</p>
+                  <div>
+                      <label for="distance" class="block text-sm font-medium text-gray-700">Distance Traveled</label>
+                      <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="number" id="distance" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300 p-3" placeholder="400" oninput="calculateAll()">
+                          <select id="distanceUnit" class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-100 text-gray-600 sm:text-sm" onchange="calculateAll()"><option value="km">km</option><option value="miles">miles</option></select>
+                      </div>
+                  </div>
+                  <div>
+                      <label for="fuelUsed" class="block text-sm font-medium text-gray-700">Fuel Used</label>
+                      <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="number" id="fuelUsed" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300 p-3" placeholder="30" oninput="calculateAll()">
+                          <select id="fuelUnit" class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-100 text-gray-600 sm:text-sm" onchange="calculateAll()"><option value="liters">liters</option><option value="gallons">US gal</option></select>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- EV Manual Calculation -->
+              <div id="ev-manual-calc" class="hidden space-y-4">
+                  <p class="font-semibold text-gray-600">Manual Calculation:</p>
+                  <div>
+                      <label for="ev-distance" class="block text-sm font-medium text-gray-700">Distance Traveled</label>
+                      <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="number" id="ev-distance" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300 p-3" placeholder="350" oninput="calculateAll()">
+                          <select id="ev-distanceUnit" class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-100 text-gray-600 sm:text-sm" onchange="calculateAll()"><option value="km">km</option><option value="miles">miles</option></select>
+                      </div>
+                  </div>
+                  <div>
+                      <label for="ev-energyUsed" class="block text-sm font-medium text-gray-700">Energy Used (kWh)</label>
+                      <input type="number" id="ev-energyUsed" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="50" oninput="calculateAll()">
+                  </div>
+              </div>
+
+              <!-- OR Separator -->
+              <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-300"></div></div>
+                <div class="relative flex justify-center text-sm"><span class="px-2 bg-gray-50 text-gray-500">OR</span></div>
+              </div>
+
+              <!-- Vehicle Select -->
+              <div class="space-y-4">
+                  <p class="font-semibold text-gray-600">Select Average Vehicle:</p>
+                  <div id="fuel-vehicle-select-div">
+                      <select id="vehicleSelect" class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" onchange="handleVehicleSelect()"></select>
+                  </div>
+                  <div id="ev-vehicle-select-div" class="hidden">
+                      <select id="ev-vehicleSelect" class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" onchange="handleVehicleSelect()"></select>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Col 2: Economy & Trip Details -->
+          <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+              <h3 class="text-xl font-bold text-gray-700 mb-4">2. Your Economy & Trip Details</h3>
+              <p class="text-sm text-gray-500 mb-4">Your calculated or selected economy is shown below. Use it to plan your trip.</p>
+              <div id="economyResult" class="mb-6"></div>
+              
+              <div class="space-y-4 pt-4 border-t border-gray-200">
+                   <div>
+                      <label for="tripDistance" class="block text-sm font-medium text-gray-700">Trip Distance</label>
+                      <input type="number" id="tripDistance" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="500" oninput="calculateAll()">
+                  </div>
+                  <div class="flex items-center">
+                      <input id="roundTrip" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" onchange="calculateAll()">
+                      <label for="roundTrip" class="ml-2 block text-sm text-gray-900">This is a Round Trip</label>
+                  </div>
+                  <div id="fuel-price-input">
+                      <label for="fuelPrice" class="block text-sm font-medium text-gray-700">Price (per <span id="fuelPriceUnitLabel">liter</span>)</label>
+                      <input type="number" id="fuelPrice" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="1.50" oninput="calculateAll()">
+                  </div>
+                   <div id="ev-price-input" class="hidden">
+                      <label for="ev-price" class="block text-sm font-medium text-gray-700">Electricity Price (per kWh)</label>
+                      <input type="number" id="ev-price" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="0.15" oninput="calculateAll()">
+                  </div>
+                  <div id="fuel-type-input">
+                      <label for="fuelType" class="block text-sm font-medium text-gray-700">Fuel Type (for CO₂)</label>
+                      <select id="fuelType" class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" onchange="handleFuelTypeChange()">
+                        <option value="petrol">Petrol / Gasoline</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="cng">CNG</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Col 3: Results -->
+          <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+              <h3 class="text-xl font-bold text-gray-700 mb-4">3. Trip Estimation Results</h3>
+              <div id="tripResult" class="pt-2">
+                 <div class="text-center text-gray-500 py-8">Enter your details to see the results.</div>
+              </div>
+          </div>
+      </div>
+      <!-- End of Calculator Wrapper -->
+
+      <!-- Advanced Comparison Calculator -->
+      <div class="mt-8 pt-8 border-t border-gray-200">
+        <!-- ... (Comparison section remains the same) ... -->
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-bold text-gray-800">Advanced Comparison: Gas vs. EV vs. CNG</h2>
+            <p class="text-md text-gray-500 mt-2">A detailed, side-by-side analysis for all three major vehicle types.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <!-- Col 1: Common Details -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-gray-700">Trip Details</h3>
+                <div>
+                    <label for="comp-distance" class="block text-sm font-medium text-gray-600">Trip Distance (km)</label>
+                    <input type="number" id="comp-distance" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="500" oninput="calculateComparison()">
+                </div>
+                 <h3 class="text-lg font-semibold text-gray-700 pt-4">☁️ Environmental</h3>
+                 <div>
+                    <label for="comp-grid-intensity" class="block text-sm font-medium text-gray-600">EV Grid CO₂ (g/kWh)</label>
+                    <select id="comp-grid-intensity" class="mt-1 block w-full p-3 text-base border-gray-300 rounded-md" onchange="calculateComparison()">
+                      <option value="417">US Average</option>
+                      <option value="256">EU Average</option>
+                      <option value="50">Green Grid (Hydro/Solar)</option>
+                      <option value="0">Zero-Carbon Grid</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Col 2: Gas Car Details -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-gray-700">⛽ Gas Vehicle</h3>
+                <div>
+                    <label for="comp-gas-economy" class="block text-sm font-medium text-gray-600">Economy (L/100km)</label>
+                    <input type="number" id="comp-gas-economy" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="8.0" oninput="calculateComparison()">
+                </div>
+                <div>
+                    <label for="comp-gas-price" class="block text-sm font-medium text-gray-600">Gas Price (/liter)</label>
+                    <input type="number" id="comp-gas-price" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="1.50" oninput="calculateComparison()">
+                </div>
+                 <div>
+                    <label for="comp-refuel-time" class="block text-sm font-medium text-gray-600">Refuel Time (min)</label>
+                    <input type="number" id="comp-refuel-time" value="5" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" oninput="calculateComparison()">
+                </div>
+            </div>
+            <!-- Col 3: EV Details -->
+            <div class="space-y-4">
+                 <h3 class="text-lg font-semibold text-gray-700">⚡ Electric Vehicle</h3>
+                <div>
+                    <label for="comp-ev-economy" class="block text-sm font-medium text-gray-600">Efficiency (kWh/100km)</label>
+                    <input type="number" id="comp-ev-economy" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="17.0" oninput="calculateComparison()">
+                </div>
+                <div>
+                    <label for="comp-ev-price" class="block text-sm font-medium text-gray-600">Electricity Price (/kWh)</label>
+                    <input type="number" id="comp-ev-price" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="0.15" oninput="calculateComparison()">
+                </div>
+                 <div>
+                    <label for="comp-charge-power" class="block text-sm font-medium text-gray-600">Charging Power (kW)</label>
+                    <input type="number" id="comp-charge-power" value="50" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="e.g., 50 for DC" oninput="calculateComparison()">
+                </div>
+            </div>
+            <!-- Col 4: CNG Details -->
+            <div class="space-y-4">
+                 <h3 class="text-lg font-semibold text-gray-700">💨 CNG Vehicle</h3>
+                <div>
+                    <label for="comp-cng-economy" class="block text-sm font-medium text-gray-600">Economy (kg/100km)</label>
+                    <input type="number" id="comp-cng-economy" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="5.0" oninput="calculateComparison()">
+                </div>
+                 <div>
+                    <label for="comp-cng-price" class="block text-sm font-medium text-gray-600">CNG Price (/kg)</label>
+                    <input type="number" id="comp-cng-price" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" placeholder="1.00" oninput="calculateComparison()">
+                </div>
+                 <div>
+                    <label for="comp-cng-refuel-time" class="block text-sm font-medium text-gray-600">Refuel Time (min)</label>
+                    <input type="number" id="comp-cng-refuel-time" value="7" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-3" oninput="calculateComparison()">
+                </div>
+            </div>
+        </div>
+        <!-- Comparison Results -->
+        <div id="comparisonResult" class="mt-6"></div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="text-center mt-10">
+        <button onclick="resetAll()" class="py-3 px-8 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 btn">
+          Reset All Fields
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO-Friendly Article -->
+  <div class="article-section">
+    <!-- The long, detailed article remains the same -->
+    <h2 id="guide">The Ultimate Guide to Vehicle Fuel Consumption (Gas, EV & CNG)</h2>
+    <p>In an era of volatile energy prices and heightened environmental consciousness, mastering the art of vehicle energy management is no longer just for enthusiasts—it's a practical skill for every driver. Whether you're behind the wheel of a traditional gasoline-powered car, a modern electric vehicle (EV), or a cost-effective CNG car, understanding its consumption is the key to unlocking significant financial savings, reducing your ecological footprint, and ensuring your vehicle remains in peak condition. This comprehensive guide, paired with our powerful universal calculator, will walk you through everything you need to know.</p>
+    
+    <h3>Part 1: The Fundamentals of Fuel Consumption (Internal Combustion Engine)</h3>
+    <p>For decades, "fuel economy" has been the benchmark for vehicle efficiency. It’s a measure of how far a car can travel on a specific amount of fuel. Understanding the terminology is the first step.</p>
+    
+    <h4>Key Metrics Explained (Petrol/Diesel)</h4>
+    <ul>
+        <li><strong>Liters per 100 kilometers (L/100km):</strong> The standard in Europe, Canada, and Australia. It measures how many liters of fuel are needed to travel 100 kilometers. Here, a <strong>lower number is better</strong>. For example, a car with 7 L/100km is more efficient than one with 10 L/100km.</li>
+        <li><strong>Miles Per Gallon (MPG):</strong> The standard in the United States and the UK. It measures how many miles a car can travel on one gallon of fuel. Here, a <strong>higher number is better</strong>. A car with 40 MPG is more efficient than one with 25 MPG.</li>
+    </ul>
+    
+    <h4>The "Fill-Up" Method: Your Gold Standard for Accuracy</h4>
+    <p>Your car's dashboard provides a convenient estimate, but it can often be optimistic. To find your car's true, real-world fuel economy, use the tried-and-tested "fill-up" method:</p>
+    <ol>
+        <li>Go to the gas station and fill your tank completely.</li>
+        <li>Reset your trip meter (Trip A or B) to zero.</li>
+        <li>Drive your car as you normally would until the tank is at least half empty.</li>
+        <li>Return to the gas station and fill the tank completely again.</li>
+        <li>Note the exact distance on your trip meter (e.g., 452 km) and the exact amount of fuel you just added (e.g., 35.8 liters).</li>
+        <li>Enter these numbers into our calculator's "Manual Calculation" section to get your precise fuel economy.</li>
+    </ol>
+
+    <h3>Part 2: The New Frontier: Electric Vehicle (EV) Efficiency</h3>
+    <p>Electric vehicles don't use fuel, so their efficiency is measured differently. Instead of liters or gallons, the "fuel" is electricity, measured in kilowatt-hours (kWh).</p>
+
+    <h4>Key EV Metrics Explained</h4>
+    <ul>
+        <li><strong>Kilowatt-hours per 100 kilometers (kWh/100km):</strong> This is the most direct equivalent to L/100km. It tells you how many kWh of electricity are needed to travel 100 kilometers. Just like L/100km, a <strong>lower number is better</strong>. A typical EV might achieve 15-20 kWh/100km.</li>
+        <li><strong>Miles Per Gallon equivalent (MPGe):</strong> An EPA-created metric to help consumers compare EVs to gasoline cars. It’s based on the fact that one gallon of gasoline contains about 33.7 kWh of energy. While useful for a rough comparison, kWh/100km is far more practical for real-world cost calculations.</li>
+    </ul>
+    
+    <h3>Part 3: The Alternative - Compressed Natural Gas (CNG)</h3>
+    <p>CNG has emerged as a popular, cost-effective alternative to petrol and diesel in many parts of the world. It is essentially methane stored at high pressure.</p>
+
+    <h4>Key CNG Metrics Explained</h4>
+    <ul>
+        <li><strong>Kilograms per 100 kilometers (kg/100km):</strong> This is the standard efficiency metric for CNG vehicles. Unlike liquid fuels, CNG is dispensed and measured by mass (kilograms). Therefore, the metric shows how many kilograms of CNG are needed to travel 100 kilometers. As with L/100km and kWh/100km, a <strong>lower number is better</strong>. A typical CNG sedan might consume 4-6 kg/100km.</li>
+    </ul>
+    <h4>Pros and Cons of CNG</h4>
+    <ul>
+        <li><strong>Pros:</strong> Typically much cheaper per unit of energy than petrol. It also burns cleaner, producing about 25% less CO₂ than an equivalent petrol engine.</li>
+        <li><strong>Cons:</strong> Lower energy density (meaning less range from a full tank), the high-pressure tanks take up significant trunk space, and refueling infrastructure is less common than for petrol or even EV charging in many regions.</li>
+    </ul>
+
+    <h3>Part 4: How to Use Our All-in-One Calculator</h3>
+    <p>Our tool is designed to be both powerful and intuitive. Here’s a step-by-step guide.</p>
+    
+    <h4>Step 1: Select Your Vehicle Type (Fuel or EV)</h4>
+    <p>Start by clicking the <strong>"Fuel Vehicle"</strong> or <strong>"Electric Vehicle"</strong> toggle at the top. This customizes the main calculator for your needs. If you drive a CNG car, select "Fuel Vehicle".</p>
+    
+    <h4>Step 2: Determine Your Vehicle's Economy</h4>
+    <p>In the first column, you have two choices:</p>
+    <ul>
+        <li><strong>Manual Calculation:</strong> Use the "Fill-Up" method for gas/diesel/CNG or a recent trip's data for an EV to find your exact, real-world economy. For CNG, ensure you enter the fuel used in kilograms.</li>
+        <li><strong>Select Average Vehicle:</strong> Choose a vehicle type from our pre-populated list (which includes CNG models) to get a typical economy figure for quick estimates.</li>
+    </ul>
+    
+    <h4>Step 3: Plan Your Trip</h4>
+    <p>In the second column, enter your trip details. If using the "Fuel Vehicle" calculator, you can select your specific fuel type: **Petrol, Diesel, or CNG**. The calculator will automatically adjust the labels for price (e.g., "per kg" for CNG) and use the correct CO₂ factors.</p>
+
+    <h4>Step 4: Analyze the Results</h4>
+    <p>The third column instantly displays your trip estimates, including total fuel/energy needed, total cost, and the carbon footprint, all calculated using the correct metrics for your selected vehicle type.</p>
+    
+    <h4>Bonus: The Advanced Gas vs. EV vs. CNG Comparison Tool</h4>
+    <p>This powerful feature at the bottom of the page allows for a true apples-to-apples-to-oranges comparison. It analyzes a trip for all three vehicle types across four key metrics:</p>
+    <ul>
+        <li><strong>Cost:</strong> A direct comparison of the total cost for the trip.</li>
+        <li><strong>Time:</strong> Compares the time spent refueling or recharging.</li>
+        <li><strong>CO₂ Emissions:</strong> Provides a nuanced environmental comparison, even accounting for the carbon intensity of the local electricity grid for EVs.</li>
+        <li><strong>Winner Declaration:</strong> A clear summary at the end tells you which vehicle type is the most cost-effective for the journey you've planned.</li>
+    </ul>
+    
+    <h3>Part 5: Actionable Tips to Maximize Your Efficiency</h3>
+    <p>Calculating is the first step; improving is the goal. These strategies apply to all vehicle types.</p>
+
+    <h4>Driving Style Adjustments (The Biggest Impact)</h4>
+    <ul>
+        <li><strong>Drive Smoothly:</strong> Aggressive driving is the primary efficiency killer. It can lower your mileage by 15-30%. Pretend there's an egg under your accelerator pedal. Anticipate stops and coast.</li>
+        <li><strong>Obey Speed Limits:</strong> Fuel economy and EV efficiency plummet at high speeds. Driving at 120 km/h instead of 100 km/h can use up to 20% more energy.</li>
+    </ul>
+
+    <h4>Vehicle Maintenance is Non-Negotiable</h4>
+    <ul>
+        <li><strong>Proper Tire Inflation:</strong> This is the easiest fix. Under-inflated tires increase rolling resistance, forcing your engine or motor to work harder, which can reduce efficiency by 3-5%.</li>
+        <li><strong>Regular Service:</strong> A well-maintained vehicle runs more efficiently. This includes regular oil changes, replacing clogged air filters (for ICE/CNG), and tire rotations.</li>
+    </ul>
+
+    <h4>Reduce Weight and Aerodynamic Drag</h4>
+    <ul>
+        <li><strong>Remove Unnecessary Weight:</strong> Every extra 50 kg (110 lbs) can reduce efficiency by 1-2%.</li>
+        <li><strong>Ditch the Roof Rack:</strong> A roof rack creates massive wind resistance and can slash your efficiency by 5-25% at highway speeds.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions (FAQ)</h3>
+    <h4>Why is my car's real-world economy different from the manufacturer's rating?</h4>
+    <p>Manufacturer ratings are achieved in controlled lab conditions. Real-world driving involves traffic, hills, wind, varying temperatures, and your personal driving style, all of which affect efficiency.</p>
+
+    <h4>What is "grid carbon intensity"?</h4>
+    <p>This measures how much CO₂ is emitted to produce one kilowatt-hour (kWh) of electricity in a specific region. A grid powered by coal will have a high intensity, while a grid powered by renewables will have a low one. This is crucial for accurately comparing an EV's "well-to-wheel" emissions.</p>
+    
+    <h4>Petrol vs. Diesel vs. CNG: Which is best?</h4>
+    <p>It depends on your priorities. Diesel is often the most fuel-efficient but has higher local pollutant emissions. CNG is typically the cheapest to run and cleaner than petrol, but with range and availability drawbacks. Petrol offers a balance of performance and widespread availability. Our comparison tool is designed to help you answer this question based on your specific numbers.</p>
+
+    <h3>Conclusion: Take Command of Your Driving Costs</h3>
+    <p>A universal fuel consumption calculator is more than a math tool; it's a diagnostic device for your driving habits and a financial planner for your budget. By regularly tracking your vehicle's performance and using our comparison tools, you can gain firm control over one of your most significant recurring expenses. Bookmark this page, use it often, and start driving smarter today.</p>
+  </div>
+  
+  <footer class="bg-gray-100 mt-10 p-6 text-center text-gray-600">
+      <p>© 2023 OnePageTools.com. All Rights Reserved.</p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+<script>
+    // The JavaScript code remains exactly the same.
+    // --- CONSTANTS ---
+    const MILES_TO_KM = 1.60934;
+    const GALLONS_TO_LITERS = 3.78541;
+    const CO2_PER_LITER_PETROL = 2.31; // kg
+    const CO2_PER_LITER_DIESEL = 2.68; // kg
+    const CO2_PER_KG_CNG = 2.66; // kg
+
+    // --- STATE ---
+    let currentMode = 'fuel'; // 'fuel' or 'ev'
+    let selectedVehicleEconomy = { l100km: 0, kwh100km: 0, kg100km: 0 };
+
+    // --- MOCK VEHICLE DATA ---
+    const vehicleData = {
+        fuel: [
+            { name: "Petrol - Compact Car", l100km: 6.7 },
+            { name: "Petrol - Mid-Size SUV", l100km: 9.8 },
+            { name: "Diesel - Sedan", l100km: 5.5 },
+            { name: "CNG - Compact Sedan", kg100km: 4.2 },
+            { name: "CNG - Hatchback", kg100km: 5.0 },
+        ],
+        ev: [
+            { name: "Efficient EV (e.g., Tesla Model 3 RWD)", kwh100km: 14.5 },
+            { name: "Average EV (e.g., Hyundai Ioniq 5)", kwh100km: 16.8 },
+            { name: "SUV EV (e.g., Ford Mach-E)", kwh100km: 18.7 },
+        ]
+    };
+
+    // --- ELEMENT GETTERS ---
+    const getEl = (id) => document.getElementById(id);
+
+    // --- DOM READY ---
+    document.addEventListener('DOMContentLoaded', () => {
+        populateVehicleDropdowns();
+        setMode('fuel');
+    });
+
+    // --- INITIALIZATION ---
+    function populateVehicleDropdowns() {
+        const fuelSelect = getEl('vehicleSelect');
+        const evSelect = getEl('ev-vehicleSelect');
+        [fuelSelect, evSelect].forEach(s => s.innerHTML = ''); // Clear first
+
+        fuelSelect.add(new Option("-- Select a Fuel Vehicle --", "0"));
+        vehicleData.fuel.forEach(v => {
+            const val = v.l100km ? `l100km:${v.l100km}` : `kg100km:${v.kg100km}`;
+            fuelSelect.add(new Option(v.name, val));
+        });
+
+        evSelect.add(new Option("-- Select an Electric Vehicle --", "0"));
+        vehicleData.ev.forEach(v => {
+            evSelect.add(new Option(v.name, `kwh100km:${v.kwh100km}`));
+        });
+    }
+
+    // --- UI LOGIC ---
+    function setMode(mode) {
+        currentMode = mode;
+        const isFuelMode = mode === 'fuel';
+        
+        getEl('fuel-manual-calc').classList.toggle('hidden', !isFuelMode);
+        getEl('ev-manual-calc').classList.toggle('hidden', isFuelMode);
+        getEl('fuel-vehicle-select-div').classList.toggle('hidden', !isFuelMode);
+        getEl('ev-vehicle-select-div').classList.toggle('hidden', isFuelMode);
+        getEl('fuel-price-input').classList.toggle('hidden', !isFuelMode);
+        getEl('ev-price-input').classList.toggle('hidden', isFuelMode);
+        getEl('fuel-type-input').classList.toggle('hidden', !isFuelMode);
+
+        getEl('fuel-mode-btn').classList.toggle('active', isFuelMode);
+        getEl('ev-mode-btn').classList.toggle('active', !isFuelMode);
+        
+        resetAll();
+    }
+
+    function handleFuelTypeChange() {
+        const fuelType = getEl('fuelType').value;
+        const fuelUnitSelect = getEl('fuelUnit');
+        const fuelPriceUnitLabel = getEl('fuelPriceUnitLabel');
+        if (fuelType === 'cng') {
+            fuelUnitSelect.innerHTML = '<option value="kg">kg</option>';
+            fuelPriceUnitLabel.textContent = 'kg';
+        } else {
+            fuelUnitSelect.innerHTML = '<option value="liters">liters</option><option value="gallons">US gal</option>';
+            fuelPriceUnitLabel.textContent = 'liter';
+        }
+        calculateAll();
+    }
+  
+    function handleVehicleSelect() {
+        selectedVehicleEconomy = { l100km: 0, kwh100km: 0, kg100km: 0 };
+        let select;
+        if (currentMode === 'fuel') {
+            select = getEl('vehicleSelect');
+            if (select.value === "0") { calculateAll(); return; }
+            const [type, value] = select.value.split(':');
+            selectedVehicleEconomy[type] = parseFloat(value);
+            // Update fuel type dropdown to match selection
+            const fuelTypeSelect = getEl('fuelType');
+            if (type === 'kg100km') { fuelTypeSelect.value = 'cng'; }
+            else { fuelTypeSelect.value = 'petrol'; } // Default to petrol
+            handleFuelTypeChange();
+            getEl('comp-gas-economy').value = selectedVehicleEconomy.l100km?.toFixed(1) || '';
+            getEl('comp-cng-economy').value = selectedVehicleEconomy.kg100km?.toFixed(1) || '';
+        } else {
+            select = getEl('ev-vehicleSelect');
+            if (select.value === "0") { calculateAll(); return; }
+            const [type, value] = select.value.split(':');
+            selectedVehicleEconomy[type] = parseFloat(value);
+            getEl('comp-ev-economy').value = selectedVehicleEconomy.kwh100km.toFixed(1);
+        }
+        // Clear manual inputs
+        getEl('distance').value = '';
+        getEl('fuelUsed').value = '';
+        getEl('ev-distance').value = '';
+        getEl('ev-energyUsed').value = '';
+
+        calculateAll();
+        calculateComparison();
+    }
+
+    // --- CORE CALCULATION LOGIC ---
+    function calculateAll() {
+        let economyToUse, distanceUnit, price;
+        let resultHTML = '';
+
+        if (currentMode === 'fuel') {
+            const fuelType = getEl('fuelType').value;
+            const manDistance = parseFloat(getEl('distance').value) || 0;
+            const manFuel = parseFloat(getEl('fuelUsed').value) || 0;
+            
+            if (manDistance > 0 && manFuel > 0) { // Prioritize manual calculation
+                getEl('vehicleSelect').value = '0';
+                selectedVehicleEconomy = { l100km: 0, kwh100km: 0, kg100km: 0 };
+                const distKm = getEl('distanceUnit').value === 'km' ? manDistance : manDistance * MILES_TO_KM;
+                
+                if (fuelType === 'cng') {
+                    selectedVehicleEconomy.kg100km = (manFuel / distKm) * 100;
+                } else {
+                    const fuelL = getEl('fuelUnit').value === 'liters' ? manFuel : manFuel * GALLONS_TO_LITERS;
+                    selectedVehicleEconomy.l100km = (fuelL / distKm) * 100;
+                }
+            }
+
+            if (selectedVehicleEconomy.l100km > 0) {
+                economyToUse = selectedVehicleEconomy.l100km;
+                const mpg = 235.21 / economyToUse;
+                resultHTML = `<div class="result-card border-l-indigo-500">
+                    <p class="font-bold text-xl text-gray-800">${economyToUse.toFixed(2)} L/100km</p>
+                    <p class="text-sm text-gray-600">Equals ${mpg.toFixed(1)} MPG</p>
+                </div>`;
+            } else if (selectedVehicleEconomy.kg100km > 0) {
+                economyToUse = selectedVehicleEconomy.kg100km;
+                 resultHTML = `<div class="result-card border-l-yellow-500">
+                    <p class="font-bold text-xl text-gray-800">${economyToUse.toFixed(2)} kg/100km</p>
+                    <p class="text-sm text-gray-600">(CNG Economy)</p>
+                </div>`;
+            }
+
+            distanceUnit = getEl('distanceUnit').value;
+            price = parseFloat(getEl('fuelPrice').value) || 0;
+
+        } else { // EV
+            const manDistance = parseFloat(getEl('ev-distance').value) || 0;
+            const manEnergy = parseFloat(getEl('ev-energyUsed').value) || 0;
+            if (manDistance > 0 && manEnergy > 0) {
+                getEl('ev-vehicleSelect').value = '0';
+                selectedVehicleEconomy.kwh100km = (manEnergy / (getEl('ev-distanceUnit').value === 'km' ? manDistance : manDistance * MILES_TO_KM)) * 100;
+            }
+            economyToUse = selectedVehicleEconomy.kwh100km;
+            if(economyToUse > 0) {
+              const kwh100mi = economyToUse / (MILES_TO_KM / 100);
+              resultHTML = `<div class="result-card border-l-green-500">
+                  <p class="font-bold text-xl text-gray-800">${economyToUse.toFixed(2)} kWh/100km</p>
+                  <p class="text-sm text-gray-600">Equals ${kwh100mi.toFixed(1)} kWh/100mi</p>
+              </div>`;
+            }
+            distanceUnit = getEl('ev-distanceUnit').value;
+            price = parseFloat(getEl('ev-price').value) || 0;
+        }
+        
+        getEl('economyResult').innerHTML = resultHTML || '<div class="text-center text-gray-500 py-4">Awaiting economy data...</div>';
+
+        // Trip Calculation
+        const tripDistVal = parseFloat(getEl('tripDistance').value) || 0;
+        const isRoundTrip = getEl('roundTrip').checked;
+        const tripDistance = isRoundTrip ? tripDistVal * 2 : tripDistVal;
+
+        if (tripDistance > 0) {
+            const tripDistanceInKm = distanceUnit === 'km' ? tripDistance : tripDistance * MILES_TO_KM;
+            let tripResultHTML = '';
+            
+            if (currentMode === 'fuel') {
+                const fuelType = getEl('fuelType').value;
+                let cost = 0, co2 = 0;
+                let fuelNeededText = '';
+
+                if (fuelType === 'cng' && selectedVehicleEconomy.kg100km > 0) {
+                    const fuelNeededKg = (tripDistanceInKm / 100) * selectedVehicleEconomy.kg100km;
+                    cost = price > 0 ? fuelNeededKg * price : 0;
+                    co2 = fuelNeededKg * CO2_PER_KG_CNG;
+                    fuelNeededText = `${fuelNeededKg.toFixed(2)} kg`;
+                } else if (fuelType !== 'cng' && selectedVehicleEconomy.l100km > 0) {
+                    const fuelNeededLiters = (tripDistanceInKm / 100) * selectedVehicleEconomy.l100km;
+                    const fuelUnit = getEl('fuelUnit').value;
+                    const fuelNeededOrigUnit = fuelUnit === 'liters' ? fuelNeededLiters : fuelNeededLiters / GALLONS_TO_LITERS;
+                    cost = price > 0 ? fuelNeededOrigUnit * price : 0;
+                    co2 = fuelType === 'petrol' ? fuelNeededLiters * CO2_PER_LITER_PETROL : fuelNeededLiters * CO2_PER_LITER_DIESEL;
+                    fuelNeededText = `${fuelNeededOrigUnit.toFixed(2)} ${fuelUnit}`;
+                }
+
+                if (fuelNeededText) {
+                    tripResultHTML = `<div class="space-y-3">
+                        <p class="text-lg"><span class="font-semibold w-28 inline-block">⛽ Fuel Needed:</span> ${fuelNeededText}</p>
+                        ${cost > 0 ? `<p class="text-lg"><span class="font-semibold w-28 inline-block">💰 Est. Cost:</span> ${cost.toFixed(2)}</p>` : ''}
+                        <p class="text-lg"><span class="font-semibold w-28 inline-block">☁️ Est. CO₂:</span> ${co2.toFixed(2)} kg</p>
+                    </div>`;
+                }
+            } else { // EV
+                if(selectedVehicleEconomy.kwh100km > 0) {
+                    const energyNeededKwh = (tripDistanceInKm / 100) * selectedVehicleEconomy.kwh100km;
+                    const cost = price > 0 ? energyNeededKwh * price : 0;
+                    tripResultHTML = `<div class="space-y-3">
+                        <p class="text-lg"><span class="font-semibold w-32 inline-block">⚡ Energy Needed:</span> ${energyNeededKwh.toFixed(2)} kWh</p>
+                        ${cost > 0 ? `<p class="text-lg"><span class="font-semibold w-32 inline-block">💰 Est. Cost:</span> ${cost.toFixed(2)}</p>` : ''}
+                    </div>`;
+                }
+            }
+            getEl('tripResult').innerHTML = tripResultHTML || '<div class="text-center text-gray-500 py-8">Enter trip details to see results.</div>';
+        } else {
+            getEl('tripResult').innerHTML = '<div class="text-center text-gray-500 py-8">Enter trip details to see results.</div>';
+        }
+    }
+  
+    function calculateComparison() {
+        const distance = parseFloat(getEl('comp-distance').value) || 0;
+        const gridIntensity = parseFloat(getEl('comp-grid-intensity').value) || 0;
+
+        const results = [];
+        let valid = true;
+
+        // Gas
+        const gasEconomy = parseFloat(getEl('comp-gas-economy').value);
+        const gasPrice = parseFloat(getEl('comp-gas-price').value);
+        const refuelTime = parseFloat(getEl('comp-refuel-time').value);
+        if (gasEconomy > 0 && gasPrice > 0 && refuelTime >= 0) {
+            const gasFuelNeeded = (distance / 100) * gasEconomy;
+            const gasCost = gasFuelNeeded * gasPrice;
+            const gasCo2 = gasFuelNeeded * CO2_PER_LITER_PETROL;
+            results.push({ type: 'Gas', cost: gasCost, co2: gasCo2, time: refuelTime, icon: '⛽' });
+        }
+
+        // EV
+        const evEconomy = parseFloat(getEl('comp-ev-economy').value);
+        const evPrice = parseFloat(getEl('comp-ev-price').value);
+        const chargePower = parseFloat(getEl('comp-charge-power').value);
+        if (evEconomy > 0 && evPrice > 0 && chargePower > 0) {
+            const evEnergyNeeded = (distance / 100) * evEconomy;
+            const evCost = evEnergyNeeded * evPrice;
+            const evCo2 = (evEnergyNeeded * gridIntensity) / 1000; // to kg
+            const evChargeTime = (evEnergyNeeded / chargePower) * 60;
+            results.push({ type: 'EV', cost: evCost, co2: evCo2, time: evChargeTime, icon: '⚡' });
+        }
+        
+        // CNG
+        const cngEconomy = parseFloat(getEl('comp-cng-economy').value);
+        const cngPrice = parseFloat(getEl('comp-cng-price').value);
+        const cngRefuelTime = parseFloat(getEl('comp-cng-refuel-time').value);
+        if (cngEconomy > 0 && cngPrice > 0 && cngRefuelTime >= 0) {
+            const cngFuelNeeded = (distance / 100) * cngEconomy;
+            const cngCost = cngFuelNeeded * cngPrice;
+            const cngCo2 = cngFuelNeeded * CO2_PER_KG_CNG;
+            results.push({ type: 'CNG', cost: cngCost, co2: cngCo2, time: cngRefuelTime, icon: '💨' });
+        }
+
+        const resultDiv = getEl('comparisonResult');
+        if (!distance || results.length < 2) {
+            resultDiv.innerHTML = `<div class="text-center text-gray-500 p-4 col-span-full">Please fill all fields for at least two vehicle types to see the comparison.</div>`;
+            return;
+        }
+        
+        let resultHTML = '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">';
+        const colors = { Gas: 'red', EV: 'green', CNG: 'yellow' };
+
+        results.forEach(r => {
+            resultHTML += `
+                <div class="result-card border-l-${colors[r.type]}-500 p-4 space-y-3">
+                    <h4 class="text-xl font-bold text-${colors[r.type]}-700">${r.icon} ${r.type} Vehicle Analysis</h4>
+                    <p><span class="font-semibold w-32 inline-block">Trip Cost:</span> <strong>${r.cost.toFixed(2)}</strong></p>
+                    <p><span class="font-semibold w-32 inline-block">Trip CO₂:</span> ${r.co2.toFixed(2)} kg</p>
+                    <p><span class="font-semibold w-32 inline-block">Refuel/Charge Time:</span> ${r.time.toFixed(0)} min</p>
+                </div>
+            `;
+        });
+        resultHTML += '</div>';
+
+        // Summary Card
+        const winner = results.sort((a,b) => a.cost - b.cost)[0];
+        resultHTML += `
+            <div class="mt-6 result-card border-l-blue-500 bg-blue-50 p-6 text-center">
+                <h4 class="text-2xl font-bold text-blue-800">Trip Cost Winner: ${winner.icon} ${winner.type}</h4>
+                <p class="text-blue-700 mt-2">The ${winner.type} vehicle is the most cost-effective option for this trip with a total cost of <strong>${winner.cost.toFixed(2)}</strong>.</p>
+            </div>
+        `;
+        resultDiv.innerHTML = resultHTML;
+    }
+
+    // --- UTILITY ---
+    function resetAll() {
+        const inputs = document.querySelectorAll('input[type="number"], input[type="checkbox"]');
+        inputs.forEach(input => {
+            if (input.type === 'checkbox') input.checked = false;
+            else if(!input.id.startsWith('comp-refuel') && !input.id.startsWith('comp-charge') && !input.id.startsWith('comp-cng-refuel')) input.value = '';
+        });
+
+        populateVehicleDropdowns(); // Resets selects to default
+        getEl('fuelType').value = 'petrol';
+        handleFuelTypeChange();
+        
+        selectedVehicleEconomy = { l100km: 0, kwh100km: 0, kg100km: 0 };
+        calculateAll();
+        calculateComparison();
+    }
+</script>
+
+</body>
+</html>

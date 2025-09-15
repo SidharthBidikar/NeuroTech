@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encoder Converter Online - Free Tool to Convert to Base64</title>
+  <meta name="description" content="Convert text or files to Base64 online for free with our advanced Base64 encoder converter. Decode Base64 strings effortlessly with this free tool.">
+  <meta name="keywords" content="Base64 encoder converter, convert to Base64 online, free Base64 encoder tool, Base64 encoder free, Base64 decoder online, online Base64 converter, Base64 encode online">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Base64 Encoder Converter Team">
+  <meta property="og:title" content="Base64 Encoder Converter Online - Free Tool">
+  <meta property="og:description" content="Easily encode and decode text or files to Base64 with our free online Base64 encoder converter. Perfect for developers and data sharing.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Base64+Encoder+Converter">
+  <meta property="og:url" content="https://onepagetools.com/base64encoder.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .scale-in { animation: scaleIn 0.3s ease-out; }
+    .hover-scale { transition: transform 0.2s; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .progress-bar { background: linear-gradient(to right, #4f46e5, #7c3aed); }
+    .drop-zone { transition: all 0.3s ease; }
+    .drop-zone.dragover { border-color: #4f46e5; background-color: rgba(79, 70, 229, 0.1); }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .article-section { max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+    .article-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .article-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+    .article-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .article-section ul, .article-section ol { list-style-type: disc; margin-left: 2rem; margin-bottom: 1rem; }
+    .article-section ol { list-style-type: decimal; }
+    .gradient-bg { background: linear-gradient(135deg, #f3f4f6, #e0e7ff); }
+    textarea { min-height: 150px; }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Navigation -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://onepagetools.com/" class="flex items-center space-x-3">
+        <img src="One_Page-removebg-preview.png" alt="Base64 Encoder Converter Logo" style="height: 60px" />
+      </a>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+        </svg>
+      </button>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li><a href="./index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0">Home</a></li>
+          <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+          <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+          <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+              ALL CONVERTERS
+              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                <li><a href="./pdftoxml.html" class="block px-4 py-2 hover:bg-gray-100">PDF to XML</a></li>
+                <li><a href="./pdftoexcel.html" class="block px-4 py-2 hover:bg-gray-100">PDF to Excel</a></li>
+                <li><a href="./pdftojpg.html" class="block px-4 py-2 hover:bg-gray-100">PDF to JPG</a></li>
+                <li><a href="./xpstopdf.html" class="block px-4 py-2 hover:bg-gray-100">XPS to PDF</a></li>
+                <li><a href="./pdftodoc.html" class="block px-4 py-2 hover:bg-gray-100">PDF to DOC</a></li>
+                <li><a href="./dwgtopdf.html" class="block px-4 py-2 hover:bg-gray-100">DWG to PDF</a></li>
+                <li><a href="./rtftopdf.html" class="block px-4 py-2 hover:bg-gray-100">RTF to PDF</a></li>
+                <li><a href="./pdftopsd.html" class="block px-4 py-2 hover:bg-gray-100">PDF to PSD</a></li>
+                <li><a href="./flattenpdf.html" class="block px-4 py-2 hover:bg-gray-100">Flatten PDF</a></li>
+                <li><a href="./prntopdf.html" class="block px-4 py-2 hover:bg-gray-100">PRN to PDF</a></li>
+                <li><a href="./pdftoPPTX.html" class="block px-4 py-2 hover:bg-gray-100">PDF to PPTX</a></li>
+                <li><a href="./pptxtoPDF.html" class="block px-4 py-2 hover:bg-gray-100">PPTX to PDF</a></li>
+                <li><a href="./pdftoEPUB.html" class="block px-4 py-2 hover:bg-gray-100">PDF to EPUB</a></li>
+                <li><a href="./pdftoMOBI.html" class="block px-4 py-2 hover:bg-gray-100">PDF to MOBI</a></li>
+                <li><a href="./pdftoMarkdown.html" class="block px-4 py-2 hover:bg-gray-100">PDF to Markdown</a></li>
+                <li><a href="./base64encoder.html" class="block px-4 py-2 hover:bg-gray-100">Base64 Encoder</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex justify-center items-center min-h-screen pt-20">
+    <div class="container max-w-4xl p-6 bg-white rounded-lg shadow-lg fade-in">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">Base64 Encoder Converter</h1>
+      <p class="text-center text-gray-500 mb-6">Encode and decode text or files to Base64 online for free. Perfect for developers and secure data sharing.</p>
+
+      <!-- Input Tabs -->
+      <div class="mb-6">
+        <ul class="flex space-x-4 border-b">
+          <li class="pb-2"><a href="#" onclick="showTab('text')" class="text-indigo-600 border-b-2 border-indigo-600">Text Input</a></li>
+          <li class="pb-2"><a href="#" onclick="showTab('file')" class="text-gray-500 hover:text-gray-700">File Input</a></li>
+        </ul>
+      </div>
+
+      <!-- Text Input Section -->
+      <div id="textInput" class="block mb-6">
+        <textarea id="textInputArea" class="w-full p-3 border rounded-lg" placeholder="Enter text to encode or decode..." rows="5"></textarea>
+        <div class="mt-4 flex gap-2">
+          <button onclick="processText('encode')" class="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 btn hover-scale">Encode to Base64</button>
+          <button onclick="processText('decode')" class="py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 btn hover-scale">Decode from Base64</button>
+        </div>
+        <div id="textOutput" class="mt-4 p-3 bg-gray-100 rounded-lg hidden"></div>
+      </div>
+
+      <!-- File Input Section -->
+      <div id="fileInput" class="hidden mb-6">
+        <div class="drop-zone border-4 border-dashed border-gray-200 rounded-xl p-12 text-center mb-4 transition-colors duration-300 hover:border-blue-400" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="handleDragLeave(event)">
+          <label for="fileInputArea" class="inline-block w-full py-3 px-5 bg-indigo-600 text-white font-semibold rounded-full cursor-pointer hover:bg-indigo-700 btn hover-scale">
+            Choose Files
+          </label>
+          <input type="file" id="fileInputArea" multiple class="hidden" onchange="previewFiles()">
+          <p class="text-gray-500 mt-2">or drag and drop files here (supports multiple files, max 25MB each)</p>
+        </div>
+        <div id="previewContainer" class="mb-4"></div>
+        <div class="flex gap-2">
+          <button onclick="processFiles('encode')" class="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 btn hover-scale" id="encodeButton" disabled>Encode to Base64</button>
+          <button onclick="processFiles('decode')" class="py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 btn hover-scale" id="decodeButton" disabled>Decode from Base64</button>
+          <a id="downloadZipButton" href="#" download class="hidden py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 btn hover-scale">Download All (ZIP)</a>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div id="progressBar" class="hidden bg-gray-200 rounded-full h-2.5 mb-4">
+        <div class="bg-blue-600 h-2.5 rounded-full transition-all duration-300 progress-bar" style="width: 0%"></div>
+      </div>
+
+      <!-- Settings -->
+      <div class="bg-gray-50 p-4 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-3">Settings</h3>
+        <div class="space-y-4">
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="lineBreaks" checked>
+            <label class="text-gray-600">Add Line Breaks (every 76 characters)</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="prefix">
+            <label class="text-gray-600">Add 'data:' Prefix (e.g., data:image/jpeg;base64,)</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="customHeader">
+            <label class="text-gray-600">Add Custom Header</label>
+          </div>
+          <div class="flex items-center gap-2" id="headerInput" style="display: none;">
+            <input type="text" id="headerText" class="w-full p-2 border rounded-lg" placeholder="Enter header text (e.g., 'Encoded: ')">
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button onclick="copyOutput()" class="py-2 px-4 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 btn hover-scale">Copy Output</button>
+        <button onclick="resetAll()" class="py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 btn hover-scale">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO-Friendly Article -->
+  <div class="article-section">
+    <h2>Ultimate Guide to Using a Base64 Encoder Converter Online</h2>
+    <p>Converting text or files to Base64 is essential for developers, data sharing, and web applications. Our <strong>Base64 encoder converter</strong> is a free, browser-based tool designed to simplify this process, offering a seamless way to <strong>convert to Base64 online</strong>. This comprehensive guide explores the benefits of using a <strong>free Base64 encoder tool</strong>, how to use it effectively, and tips to optimize your <strong>Base64 encode online</strong> experience. Optimized with keywords like <strong>Base64 encoder converter</strong>, <strong>convert to Base64 online</strong>, and <strong>Base64 decoder online</strong>, this article ensures high visibility for search engine indexing.</p>
+
+    <h3>Why Use a Base64 Encoder Converter?</h3>
+    <p>Base64 encoding transforms binary data into an ASCII string format, making it ideal for embedding in HTML, JSON, or XML. Here’s why you should use a <strong>free Base64 encoder tool</strong>:</p>
+    <ul>
+      <li><strong>Data Transmission</strong>: Safely share binary data over text-only protocols.</li>
+      <li><strong>Web Development</strong>: Embed images or files in HTML using <strong>Base64 encode online</strong>.</li>
+      <li><strong>Security</strong>: Encode sensitive data for basic obfuscation.</li>
+      <li><strong>No Software Needed</strong>: Our <strong>Base64 encoder converter online</strong> works in your browser.</li>
+      <li><strong>Decoding Capability</strong>: Easily decode Base64 strings with our <strong>Base64 decoder online</strong>.</li>
+      <li><strong>Versatility</strong>: Supports text and files for encoding.</li>
+    </ul>
+    <p>Our <strong>online Base64 converter</strong> simplifies encoding and decoding tasks.</p>
+
+    <h3>How to Use Our Free Base64 Encoder Converter</h3>
+    <p>Our <strong>Base64 encoder converter</strong> is designed for ease and flexibility. Follow these steps to <strong>convert to Base64 online</strong>:</p>
+    <ol>
+      <li><strong>Select Input Type</strong>: Choose between text or file input using the tabs.</li>
+      <li><strong>Enter Text or Upload Files</strong>: Type text or drag and drop files (max 25MB each) into the upload area.</li>
+      <li><strong>Configure Settings</strong>: Enable line breaks, data prefix, or custom headers as needed.</li>
+      <li><strong>Encode or Decode</strong>: Click “Encode to Base64” or “Decode from Base64” to process the input.</li>
+      <li><strong>Download or Copy</strong>: Download encoded files as a ZIP or copy the output to the clipboard.</li>
+      <li><strong>Reset for New Conversion</strong>: Use the “Reset” button to clear all inputs.</li>
+    </ol>
+    <p>With these steps, our <strong>free Base64 encoder tool</strong> ensures a smooth <strong>Base64 encode online</strong> process.</p>
+
+    <h3>Who Benefits from a Base64 Encoder Converter?</h3>
+    <p>Our <strong>Base64 encoder converter online</strong> serves a wide range of users who need encoding solutions:</p>
+    <ul>
+      <li><strong>Developers</strong>: Encode data for APIs or web applications.</li>
+      <li><strong>Web Designers</strong>: Embed images in CSS or HTML using Base64.</li>
+      <li><strong>IT Professionals</strong>: Share binary files securely over email.</li>
+      <li><strong>Content Creators</strong>: Encode media for online distribution.</li>
+      <li><strong>Students</strong>: Learn Base64 encoding for programming projects.</li>
+    </ul>
+    <p>Our <strong>online Base64 converter</strong> caters to diverse encoding needs.</p>
+
+    <h3>Key Features of Our Base64 Encoder Converter</h3>
+    <p>Our <strong>Base64 encoder converter</strong> offers robust features to meet various requirements:</p>
+    <ul>
+      <li><strong>Text and File Support</strong>: Encode or decode text and multiple files.</li>
+      <li><strong>Batch Processing</strong>: Process up to 20 files at once and download as a ZIP.</li>
+      <li><strong>Line Breaks</strong>: Add breaks every 76 characters for readability.</li>
+      <li><strong>Data Prefix</strong>: Add ‘data:’ prefix for web embedding (e.g., images).</li>
+      <li><strong>Custom Headers</strong>: Include custom text at the start of the output.</li>
+      <li><strong>Copy to Clipboard</strong>: Easily copy encoded/decoded text.</li>
+      <li><strong>Drag-and-Drop Interface</strong>: Simplify file uploads with an intuitive design.</li>
+      <li><strong>Secure Processing</strong>: Local processing ensures data privacy.</li>
+      <li><strong>Progress Tracking</strong>: Visual progress bar for file conversions.</li>
+    </ul>
+    <p>These features make our tool a top choice for <strong>Base64 encode online</strong>.</p>
+
+    <h3>Tips for Optimizing Base64 Encoding</h3>
+    <p>To maximize the effectiveness of our <strong>Base64 encoder converter online</strong>, consider these tips:</p>
+    <ul>
+      <li><strong>Use Small Files</strong>: Limit file size to under 25MB for faster processing.</li>
+      <li><strong>Add Prefixes</strong>: Use ‘data:’ prefix for web-ready outputs.</li>
+      <li><strong>Enable Line Breaks</strong>: Improve readability for long strings.</li>
+      <li><strong>Custom Headers</strong>: Add context with custom text.</li>
+      <li><strong>Batch Process</strong>: Encode multiple files simultaneously.</li>
+      <li><strong>Validate Output</strong>: Test decoded results to ensure accuracy.</li>
+    </ul>
+
+    <h3>Why Base64 is Ideal for Data Conversion</h3>
+    <p>Base64 is a widely used encoding scheme for various applications. Here’s why:</p>
+    <ul>
+      <li><strong>Binary to Text</strong>: Converts binary data into ASCII for text transmission.</li>
+      <li><strong>Web Compatibility</strong>: Supports embedding in HTML, CSS, and JavaScript.</li>
+      <li><strong>Universal Standard</strong>: Recognized across platforms and languages.</li>
+      <li><strong>Reversible</strong>: Easily decoded with a <strong>Base64 decoder online</strong>.</li>
+      <li><strong>Efficiency</strong>: Reduces data corruption in text-based systems.</li>
+    </ul>
+    <p>Our <strong>free Base64 encoder tool</strong> leverages these advantages for seamless conversion.</p>
+
+    <h3>Comparing Base64 Encoder Converters</h3>
+    <p>Not all <strong>Base64 encoder converters</strong> offer the same functionality. Here’s how our tool stands out:</p>
+    <ul>
+      <li><strong>Free Access</strong>: No subscriptions, unlike some premium tools.</li>
+      <li><strong>Browser-Based</strong>: No software installation required, unlike desktop apps.</li>
+      <li><strong>Batch Processing</strong>: Convert up to 20 files at once, a rare feature in free tools.</li>
+      <li><strong>Customizable Output</strong>: Options for line breaks, prefixes, and headers provide flexibility.</li>
+      <li><strong>User-Friendly</strong>: Intuitive interface with drag-and-drop support.</li>
+      <li><strong>Secure</strong>: Local processing ensures data privacy.</li>
+    </ul>
+    <p>Our <strong>online Base64 converter</strong> combines functionality and accessibility.</p>
+
+    <h3>Frequently Asked Questions (FAQs)</h3>
+    <p>Here are answers to common questions about our <strong>Base64 encoder converter online</strong>:</p>
+    <h4>1. Is the Base64 encoder free?</h4>
+    <p>Yes, our <strong>free Base64 encoder tool</strong> has no hidden costs.</p>
+    <h4>2. Can I encode multiple files at once?</h4>
+    <p>Yes, upload up to 20 files and download them as a ZIP file.</p>
+    <h4>3. What is the file size limit?</h4>
+    <p>Each file must be under 25MB for processing.</p>
+    <h4>4. Can I decode Base64 strings?</h4>
+    <p>Yes, use the “Decode from Base64” option for text or files.</p>
+    <h4>5. Is my data secure?</h4>
+    <p>All processing is done locally in your browser, ensuring privacy.</p>
+    <h4>6. Can I add a prefix or header?</h4>
+    <p>Yes, enable data prefix or custom headers with custom text.</p>
+
+    <h3>Advanced Use Cases for Base64 Encoding</h3>
+    <p>Our <strong>Base64 encoder converter</strong> supports advanced scenarios:</p>
+    <ul>
+      <li><strong>API Development</strong>: Encode data for JSON payloads.</li>
+      <li><strong>Image Embedding</strong>: Convert images to Base64 for HTML/CSS.</li>
+      <li><strong>Data Sharing</strong>: Send binary files via email using Base64.</li>
+      <li><strong>Security Testing</strong>: Encode sensitive data for analysis.</li>
+      <li><strong>Cross-Platform Apps</strong>: Prepare assets for mobile or web apps.</li>
+    </ul>
+
+    <h3>How Base64 Encoding Enhances Productivity</h3>
+    <p>Our <strong>Base64 encoder converter online</strong> boosts productivity by:</p>
+    <ul>
+      <li>Eliminating manual encoding of binary data.</li>
+      <li>Enabling batch processing for multiple files.</li>
+      <li>Providing web-ready outputs with prefixes.</li>
+      <li>Supporting quick decoding for verification.</li>
+      <li>Ensuring efficient data handling for developers.</li>
+    </ul>
+    <p>With our <strong>free Base64 encoder tool</strong>, streamline your encoding workflow.</p>
+
+    <h3>Best Practices for Base64 Encoding</h3>
+    <p>Follow these best practices for <strong>Base64 encode online</strong>:</p>
+    <ul>
+      <li><strong>Use Small Files</strong>: Keep files under 25MB for performance.</li>
+      <li><strong>Validate Output</strong>: Decode and check results for accuracy.</li>
+      <li><strong>Add Line Breaks</strong>: Improve readability for long strings.</li>
+      <li><strong>Use Prefixes</strong>: Add ‘data:’ for web embedding.</li>
+      <li><strong>Secure Data</strong>: Avoid encoding sensitive data without encryption.</li>
+    </ul>
+
+    <h3>Conclusion</h3>
+    <p>Encoding and decoding with Base64 shouldn’t be complex. Our <strong>Base64 encoder converter online</strong> offers a free, secure, and user-friendly solution to <strong>convert to Base64 online</strong>. With features like batch processing, customizable output, and decoding options, our tool meets the needs of developers and professionals. Optimized for search engines with keywords like <strong>Base64 encoder converter</strong> and <strong>free Base64 encoder tool</strong>, this guide ensures you can find and use the best solution. Try our <strong>online Base64 converter</strong> today and enhance your data handling!</p>
+    <p><a href="https://onepagetools.com/base64encoder.html" class="text-indigo-600 hover:underline">Start encoding or decoding with Base64 now</a> and boost your productivity.</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    let files = [];
+    let currentTab = 'text';
+
+    function showTab(tab) {
+      currentTab = tab;
+      document.getElementById('textInput').classList.toggle('hidden', tab !== 'text');
+      document.getElementById('fileInput').classList.toggle('hidden', tab !== 'file');
+      document.querySelectorAll('ul.flex li a').forEach(a => a.classList.remove('text-indigo-600', 'border-b-2', 'border-indigo-600'));
+      document.querySelector(`ul.flex li a[onclick="showTab('${tab}')"]`).classList.add('text-indigo-600', 'border-b-2', 'border-indigo-600');
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.currentTarget.classList.add('dragover');
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('dragover');
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('dragover');
+      const uploadedFiles = e.dataTransfer.files;
+      if (uploadedFiles.length) {
+        document.getElementById('fileInputArea').files = uploadedFiles;
+        previewFiles();
+      }
+    }
+
+    function previewFiles() {
+      const fileInput = document.getElementById('fileInputArea');
+      const previewContainer = document.getElementById('previewContainer');
+      const encodeButton = document.getElementById('encodeButton');
+      const decodeButton = document.getElementById('decodeButton');
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      files = [];
+      previewContainer.innerHTML = '';
+      downloadZipButton.classList.add('hidden');
+
+      if (fileInput.files.length) {
+        Array.from(fileInput.files).forEach((file, index) => {
+          if (file.size > 25 * 1024 * 1024) {
+            Swal.fire('File Too Large', `${file.name} exceeds 25MB.`, 'error');
+            return;
+          }
+          const fileData = {
+            file,
+            name: file.name,
+            id: `file-${index}`,
+            status: 'Pending',
+            outputBlob: null
+          };
+          files.push(fileData);
+          renderPreview(fileData);
+        });
+      }
+      encodeButton.disabled = files.length === 0;
+      decodeButton.disabled = files.length === 0;
+    }
+
+    function renderPreview(fileData) {
+      const previewContainer = document.getElementById('previewContainer');
+      const div = document.createElement('div');
+      div.className = 'flex justify-between items-center bg-gray-50 p-4 rounded-lg mb-2 scale-in';
+      div.innerHTML = `
+        <p class="text-gray-600">${fileData.name} (${(fileData.file.size / 1024 / 1024).toFixed(2)}MB)</p>
+        <div class="flex items-center gap-2">
+          <p id="${fileData.id}-status" class="text-gray-500">${fileData.status}</p>
+          <a id="${fileData.id}-download" href="#" download="${fileData.name}.base64" class="hidden text-blue-600 hover:underline">Download</a>
+        </div>
+      `;
+      previewContainer.appendChild(div);
+    }
+
+    function processText(action) {
+      const input = document.getElementById('textInputArea').value;
+      const lineBreaks = document.getElementById('lineBreaks').checked;
+      const prefix = document.getElementById('prefix').checked;
+      const customHeader = document.getElementById('customHeader').checked;
+      const headerText = customHeader ? document.getElementById('headerText').value || 'Encoded: ' : '';
+
+      if (!input) {
+        Swal.fire('No Input', 'Please enter text to process.', 'error');
+        return;
+      }
+
+      let output;
+      if (action === 'encode') {
+        output = btoa(input);
+        if (lineBreaks) output = output.replace(/(.{76})/g, '$1\n');
+        if (prefix) output = `data:text/plain;base64,${output}`;
+        if (customHeader) output = `${headerText}${output}`;
+      } else {
+        try {
+          output = atob(input.replace(/^data:.*?;base64,/, ''));
+        } catch (e) {
+          Swal.fire('Decode Error', 'Invalid Base64 string.', 'error');
+          return;
+        }
+      }
+
+      const textOutput = document.getElementById('textOutput');
+      textOutput.textContent = output;
+      textOutput.classList.remove('hidden');
+    }
+
+    async function processFiles(action) {
+      if (!files.length) {
+        Swal.fire('No Files', 'Please upload at least one file.', 'error');
+        return;
+      }
+
+      const progressBar = document.getElementById('progressBar');
+      const progressFill = progressBar.querySelector('div');
+      const downloadZipButton = document.getElementById('downloadZipButton');
+      const lineBreaks = document.getElementById('lineBreaks').checked;
+      const prefix = document.getElementById('prefix').checked;
+      const customHeader = document.getElementById('customHeader').checked;
+      const headerText = customHeader ? document.getElementById('headerText').value || 'Encoded: ' : '';
+      const zip = new JSZip();
+      let progress = 0;
+      let hasValidOutputs = false;
+
+      progressBar.classList.remove('hidden');
+
+      function updateProgress() {
+        progress += 100 / files.length / 10;
+        progressFill.style.width = `${Math.min(progress, 100)}%`;
+        if (progress < 100) {
+          requestAnimationFrame(updateProgress);
+        }
+      }
+
+      requestAnimationFrame(updateProgress);
+
+      for (let i = 0; i < files.length; i++) {
+        const fileData = files[i];
+        try {
+          document.getElementById(`${fileData.id}-status`).textContent = 'Processing...';
+          const fileReader = new FileReader();
+          fileReader.onload = function (e) {
+            try {
+              const arrayBuffer = e.target.result;
+              const uint8Array = new Uint8Array(arrayBuffer);
+              let output = '';
+              if (action === 'encode') {
+                output = btoa(String.fromCharCode.apply(null, uint8Array));
+                if (lineBreaks) output = output.replace(/(.{76})/g, '$1\n');
+                if (prefix) output = `data:application/octet-stream;base64,${output}`;
+                if (customHeader) output = `${headerText}${output}`;
+              } else {
+                try {
+                  const decoded = atob(output.replace(/^data:.*?;base64,/, ''));
+                  const decodedArray = new Uint8Array(decoded.length);
+                  for (let j = 0; j < decoded.length; j++) decodedArray[j] = decoded.charCodeAt(j);
+                  output = decoded;
+                } catch (e) {
+                  throw new Error('Invalid Base64 string.');
+                }
+              }
+
+              const blob = new Blob([output], { type: action === 'encode' ? 'text/plain' : fileData.file.type });
+              fileData.outputBlob = blob;
+              zip.file(`${fileData.name}.${action === 'encode' ? 'base64' : fileData.name.split('.').pop()}`, blob);
+
+              const downloadLink = document.getElementById(`${fileData.id}-download`);
+              downloadLink.href = URL.createObjectURL(blob);
+              downloadLink.download = `${fileData.name}.${action === 'encode' ? 'base64' : fileData.name.split('.').pop()}`;
+              downloadLink.classList.remove('hidden');
+
+              document.getElementById(`${fileData.id}-status`).textContent = 'Converted';
+              hasValidOutputs = true;
+
+              if (i === files.length - 1 && hasValidOutputs) {
+                const zipBlob = zip.generateAsync({ type: 'blob' });
+                downloadZipButton.href = URL.createObjectURL(zipBlob);
+                downloadZipButton.download = 'converted-files.zip';
+                downloadZipButton.classList.remove('hidden');
+                Swal.fire('Success!', 'All files processed successfully.', 'success');
+              }
+            } catch (error) {
+              console.error(`Processing error for ${fileData.name}:`, error);
+              document.getElementById(`${fileData.id}-status`).textContent = 'Error';
+              Swal.fire('Error', `Failed to process ${fileData.name}: ${error.message || 'Unknown error'}`, 'error');
+            } finally {
+              if (i === files.length - 1) {
+                progressBar.classList.add('hidden');
+                progressFill.style.width = '0%';
+              }
+            }
+          };
+          fileReader.onerror = () => {
+            console.error(`File read error for ${fileData.name}`);
+            document.getElementById(`${fileData.id}-status`).textContent = 'Error';
+            Swal.fire('Error', `Failed to read ${fileData.name}.`, 'error');
+          };
+          fileReader.readAsArrayBuffer(fileData.file);
+        } catch (error) {
+          console.error(`Initial error for ${fileData.name}:`, error);
+          document.getElementById(`${fileData.id}-status`).textContent = 'Error';
+          Swal.fire('Error', `Failed to process ${fileData.name}: ${error.message}`, 'error');
+        }
+      }
+    }
+
+    function copyOutput() {
+      const textOutput = document.getElementById('textOutput');
+      if (currentTab === 'text' && !textOutput.classList.contains('hidden')) {
+        navigator.clipboard.writeText(textOutput.textContent).then(() => {
+          Swal.fire('Copied!', 'Text copied to clipboard.', 'success');
+        }).catch(err => {
+          Swal.fire('Error', 'Failed to copy text.', 'error');
+          console.error('Copy error:', err);
+        });
+      } else {
+        Swal.fire('No Output', 'Please process text or files first.', 'warning');
+      }
+    }
+
+    function resetAll() {
+      files = [];
+      document.getElementById('previewContainer').innerHTML = '';
+      document.getElementById('fileInputArea').value = '';
+      document.getElementById('textInputArea').value = '';
+      document.getElementById('textOutput').classList.add('hidden');
+      document.getElementById('downloadZipButton').classList.add('hidden');
+      document.getElementById('progressBar').classList.add('hidden');
+      document.getElementById('encodeButton').disabled = true;
+      document.getElementById('decodeButton').disabled = true;
+      document.getElementById('lineBreaks').checked = true;
+      document.getElementById('prefix').checked = false;
+      document.getElementById('customHeader').checked = false;
+      document.getElementById('headerInput').style.display = 'none';
+      document.getElementById('headerText').value = '';
+    }
+
+    document.getElementById('customHeader').addEventListener('change', function() {
+      document.getElementById('headerInput').style.display = this.checked ? 'block' : 'none';
+    });
+
+    // Initialize with text tab
+    showTab('text');
+  </script>
+</body>
+</html>

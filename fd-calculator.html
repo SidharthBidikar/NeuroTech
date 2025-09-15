@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for FD Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FD Calculator - Calculate Fixed Deposit Interest & Maturity</title>
+    <meta name="description" content="A powerful and free online FD calculator for India. Easily calculate the maturity amount and interest earned on your Fixed Deposit with various compounding frequencies.">
+    <meta name="keywords" content="fd calculator, fixed deposit calculator, calculate fd interest, fd returns calculator, online fd tool, fd interest rates, bank fd calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/fd-calculator.html">
+    <meta property="og:title" content="Advanced Fixed Deposit (FD) Calculator with Chart">
+    <meta property="og:description" content="Plan your Fixed Deposit investment with our accurate FD calculator. See your maturity amount, total interest, and a year-wise breakdown.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=FD+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/fd-calculator.html">
+    <meta property="twitter:title" content="Advanced Fixed Deposit (FD) Calculator with Chart">
+    <meta property="twitter:description" content="Plan your Fixed Deposit investment with our accurate FD calculator. See your maturity amount, total interest, and a year-wise breakdown.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=FD+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-7xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Fixed Deposit (FD) Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Calculate the maturity amount and interest earned on your FD investments.</p>
+              </div>
+        
+              <!-- Calculator Body -->
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Inputs -->
+                <div class="lg:col-span-1 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-700 mb-6">Investment Details</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="principal" class="block text-sm font-medium text-gray-700">Total Investment (₹)</label>
+                            <input type="number" id="principal" value="100000" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="rate" class="block text-sm font-medium text-gray-700">Annual Interest Rate (%)</label>
+                            <input type="number" id="rate" value="7" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="years" class="block text-sm font-medium text-gray-700">Time Period (Years)</label>
+                            <input type="number" id="years" value="5" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        </div>
+                         <div>
+                            <label for="compounding-frequency" class="block text-sm font-medium text-gray-700">Compounding Frequency</label>
+                            <select id="compounding-frequency" class="input-field mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="12">Monthly</option>
+                                <option value="4" selected>Quarterly</option>
+                                <option value="2">Semi-Annually</option>
+                                <option value="1">Annually</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center pt-2">
+                           <label class="relative inline-flex items-center cursor-pointer">
+                              <input type="checkbox" id="senior-citizen" class="sr-only peer">
+                              <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+                              <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Is investor a senior citizen? (+0.5%)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="lg:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
+                        <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <p class="text-sm text-gray-600">Invested Amount</p>
+                            <p id="total-investment" class="text-2xl font-bold text-blue-800">₹0</p>
+                        </div>
+                        <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <p class="text-sm text-gray-600">Est. Returns</p>
+                            <p id="est-returns" class="text-2xl font-bold text-yellow-800">₹0</p>
+                        </div>
+                        <div class="p-4 bg-green-100 rounded-lg border border-green-200">
+                            <p class="text-sm text-gray-600">Maturity Value</p>
+                            <p id="total-value" class="text-2xl font-bold text-green-800">₹0</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <canvas id="fd-chart"></canvas>
+                    </div>
+                </div>
+              </div>
+              
+              <!-- Yearly Breakdown Table -->
+              <div class="mt-12">
+                  <h3 class="text-2xl font-bold text-gray-800 text-center mb-4">Yearly Investment Breakdown</h3>
+                  <div class="overflow-x-auto">
+                      <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                          <thead>
+                              <tr class="bg-gray-50">
+                                  <th class="py-2 px-4 border-b text-center text-xs font-medium text-gray-500 uppercase">Year</th>
+                                  <th class="py-2 px-4 border-b text-right text-xs font-medium text-gray-500 uppercase">Opening Balance</th>
+                                  <th class="py-2 px-4 border-b text-right text-xs font-medium text-gray-500 uppercase">Interest Earned</th>
+                                  <th class="py-2 px-4 border-b text-right text-xs font-medium text-gray-500 uppercase">Closing Balance</th>
+                              </tr>
+                          </thead>
+                          <tbody id="breakdown-table-body"></tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to the Fixed Deposit (FD) Calculator</h2>
+      <p>Fixed Deposits (FDs) are one of the most popular and trusted investment instruments in India, known for their safety, stability, and guaranteed returns. Unlike market-linked investments, FDs offer a fixed interest rate for a specific tenure, making them ideal for risk-averse investors and for achieving specific financial goals. A <strong>FD calculator</strong> is an essential tool that helps you accurately forecast the maturity amount and the total interest you will earn. This guide will explain how FDs work, the factors affecting your returns, and how to use our powerful <strong>fixed deposit calculator</strong> to plan your investments.</p>
+    
+      <h3>How to Use Our Advanced FD Calculator</h3>
+      <p>Our tool is designed to provide precise calculations with options that reflect real-world banking scenarios.</p>
+      <ol>
+          <li><strong>Enter Total Investment:</strong> Input the principal amount you plan to invest in the Fixed Deposit.</li>
+          <li><strong>Enter Annual Interest Rate:</strong> Input the yearly interest rate offered by your bank.</li>
+          <li><strong>Select Time Period:</strong> Enter the tenure of your FD in years.</li>
+          <li><strong>Choose Compounding Frequency:</strong> This is a crucial setting. Select how often the bank compounds the interest (e.g., Monthly, Quarterly, Annually). Quarterly is the most common for Indian banks.</li>
+          <li><strong>Senior Citizen Option:</strong> If the investor is a senior citizen, check the box. Our calculator will automatically add the typical 0.5% preferential rate to your calculation.</li>
+          <li><strong>Analyze Your Results Instantly:</strong> The results update automatically, showing you:
+            <ul>
+              <li>A clear breakdown of your **Invested Amount**, the **Estimated Returns** (total interest), and the final **Maturity Value**.</li>
+              <li>A **pie chart** that visually represents the proportion of your principal versus the interest earned.</li>
+              <li>A **yearly breakdown table** detailing the growth of your investment year by year, showing the opening balance, interest earned, and closing balance for each year.</li>
+            </ul>
+          </li>
+      </ol>
+      
+      <h3>What is a Fixed Deposit (FD)?</h3>
+      <p>A Fixed Deposit is a financial instrument provided by banks and NBFCs where you can deposit a lump sum of money for a fixed period at a predetermined interest rate. At the end of the tenure, you receive the principal amount along with the accumulated interest. It is considered one of a safest investment options.</p>
+
+      <h3>The Core Formula: How to Calculate FD Interest</h3>
+      <p>The magic of an FD comes from the power of compounding. Our <strong>FD returns calculator</strong> uses the standard compound interest formula:</p>
+      <code>A = P * (1 + r/n)^(n*t)</code>
+      <p>Where:</p>
+      <ul>
+          <li><strong>A</strong> = Maturity Amount (the final value of the investment)</li>
+          <li><strong>P</strong> = Principal Amount (the initial investment)</li>
+          <li><strong>r</strong> = Annual Interest Rate (in decimal form, e.g., 7% = 0.07)</li>
+          <li><strong>n</strong> = Compounding Frequency per year (e.g., 4 for quarterly, 12 for monthly)</li>
+          <li><strong>t</strong> = Time Period in years</li>
+      </ul>
+      <p>The total interest earned is then calculated as: <code>Total Interest = A - P</code>.</p>
+      
+      <h4>How Compounding Frequency Affects Your Returns</h4>
+      <p>The more frequently interest is compounded, the faster your money grows. Let's see an example for a ₹1,00,000 investment for 1 year at 8%:</p>
+      <ul>
+          <li><strong>Annually (n=1):</strong> You earn ₹8,000.</li>
+          <li><strong>Semi-Annually (n=2):</strong> You earn ₹8,160.</li>
+          <li><strong>Quarterly (n=4):</strong> You earn ₹8,243.</li>
+          <li><strong>Monthly (n=12):</strong> You earn ₹8,300.</li>
+      </ul>
+      <p>As you can see, higher compounding frequency leads to higher returns. Most banks in India compound interest on a quarterly basis.</p>
+
+      <h3>Key Factors to Consider Before Investing in an FD</h3>
+      <ul>
+          <li><strong>Interest Rate:</strong> Compare rates across different banks and NBFCs. They can vary significantly.</li>
+          <li><strong>Tenure:</strong> FD tenures typically range from 7 days to 10 years. Longer tenures often offer higher interest rates.</li>
+          <li><strong>Senior Citizen Rates:</strong> Most banks offer an additional interest rate of 0.25% to 0.75% for senior citizens (age 60 and above). Our calculator includes a handy toggle for this.</li>
+          <li><strong>Taxation:</strong> The interest earned on an FD is taxable as per your income tax slab. TDS (Tax Deducted at Source) is applicable if the interest income exceeds ₹40,000 in a financial year (₹50,000 for senior citizens).</li>
+          <li><strong>Premature Withdrawal:</strong> If you need to break your FD before its maturity date, banks usually charge a penalty, typically by reducing the applicable interest rate by 0.5% to 1%.</li>
+      </ul>
+      
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>Is an FD a good investment?</h4>
+      <p>FDs are excellent for risk-averse investors seeking capital protection and guaranteed returns. They are ideal for short-to-medium term goals where you cannot afford to risk your principal. However, for long-term wealth creation, equity-based instruments like mutual funds may offer higher, albeit market-linked, returns.</p>
+      
+      <h4>What is the difference between cumulative and non-cumulative FD?</h4>
+      <p>In a **cumulative FD**, the interest is reinvested and paid out at maturity along with the principal (this is what our calculator computes). In a **non-cumulative FD**, the interest is paid out at regular intervals (monthly, quarterly, etc.) and does not get compounded.</p>
+      
+      <h4>Is this online FD calculator free?</h4>
+      <p>Yes, this tool is 100% free to use, with no limits.</p>
+
+      <h3>Conclusion</h3>
+      <p>A Fixed Deposit is a cornerstone of safe investment planning in India. Our <strong>FD Calculator</strong> is designed to be a comprehensive tool to help you make informed decisions. By allowing you to see the impact of different interest rates, tenures, and compounding frequencies, it provides a clear picture of your potential returns. Use this tool to compare different FD schemes, plan for your financial goals, and harness the power of compound interest with confidence.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Inputs
+        const principalInput = document.getElementById('principal');
+        const rateInput = document.getElementById('rate');
+        const yearsInput = document.getElementById('years');
+        const compoundingFrequencySelect = document.getElementById('compounding-frequency');
+        const seniorCitizenToggle = document.getElementById('senior-citizen');
+        
+        // Results
+        const totalInvestmentEl = document.getElementById('total-investment');
+        const estReturnsEl = document.getElementById('est-returns');
+        const totalValueEl = document.getElementById('total-value');
+        const breakdownTableBody = document.getElementById('breakdown-table-body');
+        
+        // Chart
+        const chartCanvas = document.getElementById('fd-chart');
+        let fdChart;
+
+        const formatCurrency = (value) => {
+            return value.toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+        };
+
+        const calculate = () => {
+            const P = parseFloat(principalInput.value) || 0;
+            let annualRate = parseFloat(rateInput.value) || 0;
+            const t = parseInt(yearsInput.value, 10) || 0;
+            const n = parseInt(compoundingFrequencySelect.value, 10);
+            const isSenior = seniorCitizenToggle.checked;
+
+            if (isSenior) {
+                annualRate += 0.5;
+            }
+            
+            const r = annualRate / 100;
+
+            if (P <= 0 || r <= 0 || t <= 0) {
+                resetResults();
+                return;
+            }
+            
+            const maturityValue = P * Math.pow((1 + r / n), n * t);
+            const totalInterest = maturityValue - P;
+
+            totalInvestmentEl.textContent = formatCurrency(P);
+            estReturnsEl.textContent = formatCurrency(totalInterest);
+            totalValueEl.textContent = formatCurrency(maturityValue);
+            
+            updateChart(P, totalInterest);
+            renderBreakdownTable(P, r, t, n);
+        };
+        
+        const resetResults = () => {
+            totalInvestmentEl.textContent = formatCurrency(0);
+            estReturnsEl.textContent = formatCurrency(0);
+            totalValueEl.textContent = formatCurrency(0);
+            breakdownTableBody.innerHTML = '';
+            if (fdChart) {
+                fdChart.data.datasets[0].data = [0, 0];
+                fdChart.update();
+            }
+        };
+        
+        const updateChart = (principal, interest) => {
+            const data = {
+                labels: ['Principal Amount', 'Total Interest'],
+                datasets: [{
+                    data: [principal, interest],
+                    backgroundColor: ['#4f46e5', '#10b981'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                }]
+            };
+
+            if (fdChart) {
+                fdChart.data = data;
+                fdChart.update();
+            } else {
+                fdChart = new Chart(chartCanvas, {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        cutout: '60%',
+                        plugins: {
+                            legend: { position: 'bottom' },
+                            tooltip: { callbacks: { label: (context) => `${context.label}: ${formatCurrency(context.raw)}` } }
+                        }
+                    }
+                });
+            }
+        };
+
+        const renderBreakdownTable = (principal, annualRate, years, compoundingPerYear) => {
+            breakdownTableBody.innerHTML = '';
+            let balance = principal;
+            for (let i = 1; i <= years; i++) {
+                const openingBalance = balance;
+                const interestThisYear = balance * (Math.pow((1 + annualRate / compoundingPerYear), compoundingPerYear) - 1);
+                balance += interestThisYear;
+                
+                const row = `
+                    <tr class="hover:bg-gray-100">
+                        <td class="py-2 px-4 border-b text-center font-medium">${i}</td>
+                        <td class="py-2 px-4 border-b text-right">${formatCurrency(openingBalance)}</td>
+                        <td class="py-2 px-4 border-b text-right text-green-600">${formatCurrency(interestThisYear)}</td>
+                        <td class="py-2 px-4 border-b text-right font-bold">${formatCurrency(balance)}</td>
+                    </tr>
+                `;
+                breakdownTableBody.innerHTML += row;
+            }
+        };
+
+        // Event Listeners
+        [principalInput, rateInput, yearsInput, compoundingFrequencySelect, seniorCitizenToggle].forEach(el => {
+            el.addEventListener('input', calculate);
+        });
+        
+        // Initial Calculation
+        calculate();
+      });
+    </script>
+</body>
+</html>

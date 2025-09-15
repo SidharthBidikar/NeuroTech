@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Discount Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator - Calculate Sale Price & Savings (₹, $)</title>
+    <meta name="description" content="A powerful and free online discount calculator for INR (₹) and USD ($). Find the final price after a discount and sales tax. Includes a reverse calculator to find the original price.">
+    <meta name="keywords" content="discount calculator, sale price calculator, percent off calculator, calculate discount, online sale calculator, percentage discount, savings calculator, indian currency">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/discount-calculator.html">
+    <meta property="og:title" content="Advanced Discount Calculator with Currency Support (₹, $)">
+    <meta property="og:description" content="Easily calculate the final price of a discounted item in INR or USD, including sales tax. Our free tool also lets you find the original price from the sale price.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Discount+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/discount-calculator.html">
+    <meta property="twitter:title" content="Advanced Discount Calculator with Currency Support (₹, $)">
+    <meta property="twitter:description" content="Easily calculate the final price of a discounted item in INR or USD, including sales tax. Our free tool also lets you find the original price from the sale price.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Discount+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-6xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Discount Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Quickly calculate the final price after discounts and taxes, and see how much you save.</p>
+              </div>
+              
+              <!-- Currency Selector -->
+              <div class="flex justify-center mb-6">
+                <div>
+                  <label for="currency-select" class="block text-sm font-medium text-gray-700 mb-1">Select Currency</label>
+                  <select id="currency-select" class="w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                      <option value="INR">Indian Rupee (₹)</option>
+                      <option value="USD">US Dollar ($)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Calculators Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  
+                  <!-- Main Discount Calculator -->
+                  <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                      <h3 class="text-xl font-bold text-gray-700 mb-4">Calculate Sale Price</h3>
+                      <div class="space-y-4">
+                          <div>
+                              <label for="original-price" class="block text-sm font-medium text-gray-700">Original Price (<span class="currency-symbol">₹</span>)</label>
+                              <input type="number" id="original-price" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 1500">
+                          </div>
+                          <div>
+                              <label for="discount-percent" class="block text-sm font-medium text-gray-700">Discount (%)</label>
+                              <input type="number" id="discount-percent" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 25">
+                          </div>
+                          <div>
+                              <label for="tax-percent" class="block text-sm font-medium text-gray-700">Sales Tax / GST (%)</label>
+                              <input type="number" id="tax-percent" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 18 (optional)">
+                          </div>
+                      </div>
+                      <div class="mt-6 text-center bg-indigo-600 text-white p-4 rounded-lg">
+                          <p class="text-sm">Final Price</p>
+                          <p id="final-price-result" class="text-4xl font-bold">₹0.00</p>
+                          <p class="text-sm mt-2">You Save: <span id="savings-result" class="font-bold">₹0.00</span></p>
+                      </div>
+                      <button id="clear1" class="btn w-full mt-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Clear</button>
+                  </div>
+
+                  <!-- Reverse Discount Calculator -->
+                  <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                      <h3 class="text-xl font-bold text-gray-700 mb-4">Find Original Price</h3>
+                      <div class="space-y-4">
+                          <div>
+                              <label for="sale-price" class="block text-sm font-medium text-gray-700">Sale Price (<span class="currency-symbol">₹</span>)</label>
+                              <input type="number" id="sale-price" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 750">
+                          </div>
+                          <div>
+                              <label for="reverse-discount-percent" class="block text-sm font-medium text-gray-700">Discount (%)</label>
+                              <input type="number" id="reverse-discount-percent" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 25">
+                          </div>
+                      </div>
+                      <div class="mt-6 text-center bg-green-600 text-white p-4 rounded-lg">
+                          <p class="text-sm">Original Price Was</p>
+                          <p id="original-price-result" class="text-4xl font-bold">₹0.00</p>
+                      </div>
+                      <button id="clear2" class="btn w-full mt-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Clear</button>
+                  </div>
+
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Using a Discount Calculator</h2>
+      <p>Everyone loves a good sale, but calculating the final price after a discount—and especially after sales tax—can sometimes be tricky. A <strong>discount calculator</strong> is a shopper's best friend, taking the guesswork out of sales and helping you stick to your budget. This guide will not only show you how to use our powerful <strong>sale price calculator</strong> but also explain the simple math behind it, so you can be a smarter shopper.</p>
+    
+      <h3>How to Use Our Discount Calculator</h3>
+      <p>Our tool features two main calculators and a currency selector to cover all your needs.</p>
+      
+      <h4>1. Select Your Currency</h4>
+      <p>Before you begin, use the dropdown menu at the top to select your currency, such as Indian Rupee (₹) or US Dollar ($). All calculations will use the selected currency symbol.</p>
+      
+      <h4>2. Calculate Sale Price</h4>
+      <p>This is the primary tool for figuring out what you'll actually pay for an item on sale.</p>
+      <ol>
+          <li><strong>Enter Original Price:</strong> Type the item's original price (before the discount) into the first box.</li>
+          <li><strong>Enter Discount Percentage:</strong> Input the percentage off (e.g., for 25% off, just enter `25`).</li>
+          <li><strong>Enter Sales Tax / GST (Optional):</strong> If you want the most accurate final cost, enter your local sales tax or GST percentage. The calculator will apply this tax *after* the discount has been calculated, which is the correct method.</li>
+          <li><strong>View Your Results Instantly:</strong> The calculator will immediately show you the **Final Price** you'll pay and, just as importantly, the total amount that **You Save**.</li>
+      </ol>
+
+      <h4>3. Find Original Price</h4>
+      <p>Ever see a sale price and wonder what the item cost before the discount? This reverse calculator is for you.</p>
+      <ol>
+        <li><strong>Enter Sale Price:</strong> Input the price you paid or see on the tag.</li>
+        <li><strong>Enter Discount Percentage:</strong> Input the percentage that was taken off.</li>
+        <li><strong>View the Original Price:</strong> The tool will instantly calculate and show you the item's original, pre-discount price.</li>
+      </ol>
+      
+      <h3>The Math Behind the Savings: How to Calculate Discounts</h3>
+      <p>Understanding the formulas our <strong>percent off calculator</strong> uses can empower you to do quick mental estimates while shopping.</p>
+      
+      <h4>Formula 1: Calculating the Final Price</h4>
+      <p>There are two simple steps to finding the final price.</p>
+      <ol>
+        <li><strong>Calculate the Savings:</strong> Convert the discount percentage to a decimal and multiply it by the original price.
+        <br><code>Savings = Original Price × (Discount % / 100)</code>
+        <br>For a ₹1500 item with a 25% discount: `1500 × (25 / 100) = 1500 × 0.25 = ₹375` in savings.</li>
+        <li><strong>Calculate the Sale Price:</strong> Subtract the savings from the original price.
+        <br><code>Sale Price = Original Price - Savings</code>
+        <br>Continuing the example: `1500 - 375 = ₹1125`.</li>
+      </ol>
+      
+      <h4>Formula 2: Adding Sales Tax Correctly</h4>
+      <p>A crucial step that many forget is sales tax. **Tax is always calculated on the discounted price, not the original price.**</p>
+      <ol>
+          <li><strong>Calculate the Tax Amount:</strong> Convert the tax percentage to a decimal and multiply it by the sale price.
+          <br><code>Tax Amount = Sale Price × (Tax % / 100)</code>
+          <br>If the sale price is ₹1125 and tax is 18%: `1125 × 0.18 = ₹202.50`.</li>
+          <li><strong>Calculate the Final Price:</strong> Add the tax amount to the sale price.
+          <br><code>Final Price = Sale Price + Tax Amount</code>
+          <br>Final cost: `1125 + 202.50 = ₹1327.50`.</li>
+      </ol>
+      
+      <h4>Formula 3: Calculating the Original Price (Reverse Calculation)</h4>
+      <p>To find the original price from a sale price, you need to determine what percentage of the original price you actually paid.</p>
+      <code>Original Price = Sale Price / (1 - (Discount % / 100))</code>
+      <p>If you paid ₹750 for an item that was 25% off: `750 / (1 - (25 / 100)) = 750 / 0.75 = ₹1000`.</p>
+
+      <h3>Advanced Shopping Scenarios</h3>
+      <p>Sometimes deals are more complicated. Here's how to tackle them:</p>
+      
+      <h4>Double Discounts (e.g., "40% off + an extra 20% off")</h4>
+      <p>A common mistake is to simply add the percentages together (40% + 20% = 60%). This is incorrect. The second discount is applied to the *already discounted price*. </p>
+      <ul>
+        <li><strong>Step 1:</strong> Apply the first discount. For a ₹1000 item at 40% off: `₹1000 - ₹400 = ₹600`.</li>
+        <li><strong>Step 2:</strong> Apply the second discount to the new price. 20% of ₹600 is ₹120. So, `₹600 - ₹120 = ₹480`.</li>
+        <li><strong>Result:</strong> The final price is ₹480, which is a 52% total discount, not 60%.</li>
+      </ul>
+
+      <h3>Why a Discount Calculator is an Essential Tool</h3>
+      <ul>
+          <li><strong>Budgeting with Confidence:</strong> Know the exact final cost before you get to the checkout, helping you stay within your budget.</li>
+          <li><strong>Saves Time and Effort:</strong> Instantly get accurate results without doing complex math in your head or on a phone's basic calculator.</li>
+          <li><strong>Compare Deals Effectively:</strong> Quickly compare different offers (e.g., 25% off at one store vs. ₹200 off at another) to find the true best deal.</li>
+          <li><strong>Avoid Checkout Surprises:</strong> By including sales tax, our calculator ensures there are no unexpected costs when it's time to pay.</li>
+      </ul>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>How do you calculate 20 percent off?</h4>
+      <p>To calculate 20% off a price, you can multiply the price by 0.20 to find the discount amount, then subtract that from the original price. An even faster way is to multiply the price by `(1 - 0.20)`, which is 0.80. So, for a ₹500 item, `₹500 * 0.80 = ₹400`.</p>
+      
+      <h4>Is sales tax calculated before or after a discount?</h4>
+      <p>In virtually all retail situations, the discount is applied first, and then sales tax is calculated on the lower, discounted price. This is beneficial for the consumer. Our calculator follows this correct order of operations.</p>
+      
+      <h4>Is this online sale calculator free?</h4>
+      <p>Yes, this tool is 100% free to use, with no limits on the number of calculations you can perform.</p>
+
+      <h3>Conclusion</h3>
+      <p>Being a savvy shopper means being an informed shopper. A <strong>discount calculator</strong> is a simple yet powerful tool that provides the clarity needed to make smart financial decisions. It demystifies sales, accounts for taxes, and ultimately helps you keep more money in your pocket. Bookmark this <strong>percent off calculator</strong> and make it your go-to companion for every shopping trip.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Currency Selector
+        const currencySelect = document.getElementById('currency-select');
+        const currencySymbols = document.querySelectorAll('.currency-symbol');
+
+        // Main Calculator Elements
+        const originalPriceInput = document.getElementById('original-price');
+        const discountPercentInput = document.getElementById('discount-percent');
+        const taxPercentInput = document.getElementById('tax-percent');
+        const finalPriceResultEl = document.getElementById('final-price-result');
+        const savingsResultEl = document.getElementById('savings-result');
+        const clear1Btn = document.getElementById('clear1');
+
+        // Reverse Calculator Elements
+        const salePriceInput = document.getElementById('sale-price');
+        const reverseDiscountPercentInput = document.getElementById('reverse-discount-percent');
+        const originalPriceResultEl = document.getElementById('original-price-result');
+        const clear2Btn = document.getElementById('clear2');
+        
+        let currentCurrency = 'INR';
+
+        const updateCurrency = () => {
+            currentCurrency = currencySelect.value;
+            const symbol = currentCurrency === 'INR' ? '₹' : '$';
+            currencySymbols.forEach(el => el.textContent = symbol);
+            calculateDiscount();
+            calculateOriginalPrice();
+        };
+
+        const formatCurrency = (value) => {
+            return value.toLocaleString('en-US', { 
+                style: 'currency', 
+                currency: currentCurrency,
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        };
+
+        const calculateDiscount = () => {
+            const price = parseFloat(originalPriceInput.value) || 0;
+            const discount = parseFloat(discountPercentInput.value) || 0;
+            const tax = parseFloat(taxPercentInput.value) || 0;
+
+            if (price <= 0) {
+                finalPriceResultEl.textContent = formatCurrency(0);
+                savingsResultEl.textContent = formatCurrency(0);
+                return;
+            }
+
+            const discountAmount = price * (discount / 100);
+            const salePrice = price - discountAmount;
+            const taxAmount = salePrice * (tax / 100);
+            const finalPrice = salePrice + taxAmount;
+
+            finalPriceResultEl.textContent = formatCurrency(finalPrice);
+            savingsResultEl.textContent = formatCurrency(discountAmount);
+        };
+
+        const calculateOriginalPrice = () => {
+            const salePrice = parseFloat(salePriceInput.value) || 0;
+            const discount = parseFloat(reverseDiscountPercentInput.value) || 0;
+
+            if (salePrice <= 0 || discount < 0 || discount >= 100) {
+                originalPriceResultEl.textContent = formatCurrency(0);
+                return;
+            }
+            
+            const originalPrice = salePrice / (1 - (discount / 100));
+            originalPriceResultEl.textContent = formatCurrency(originalPrice);
+        };
+
+        // Event Listeners for Currency
+        currencySelect.addEventListener('change', updateCurrency);
+
+        // Event Listeners for Main Calculator
+        [originalPriceInput, discountPercentInput, taxPercentInput].forEach(el => {
+            el.addEventListener('input', calculateDiscount);
+        });
+        clear1Btn.addEventListener('click', () => {
+            originalPriceInput.value = '';
+            discountPercentInput.value = '';
+            taxPercentInput.value = '';
+            calculateDiscount();
+        });
+
+        // Event Listeners for Reverse Calculator
+        [salePriceInput, reverseDiscountPercentInput].forEach(el => {
+            el.addEventListener('input', calculateOriginalPrice);
+        });
+        clear2Btn.addEventListener('click', () => {
+            salePriceInput.value = '';
+            reverseDiscountPercentInput.value = '';
+            calculateOriginalPrice();
+        });
+        
+        // Initial setup
+        updateCurrency();
+      });
+    </script>
+</body>
+</html>

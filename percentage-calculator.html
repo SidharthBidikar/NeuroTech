@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Percentage Calculator -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator - Free Online Tool</title>
+    <meta name="description" content="A versatile and free online percentage calculator with a simple interface. Calculate percentage additions, subtractions, discounts, and more with ease. Includes history and keyboard support.">
+    <meta name="keywords" content="percentage calculator, calculate percentage, percentage change calculator, online percent tool, how to calculate percentage, math percentage, percent calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/percentage-calculator.html">
+    <meta property="og:title" content="Interactive Percentage Calculator - Free Online Tool">
+    <meta property="og:description" content="Easily calculate percentages, discounts, tips, and more with our simple and powerful online calculator that works just like a real one.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Percentage+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/percentage-calculator.html">
+    <meta property="twitter:title" content="Interactive Percentage Calculator - Free Online Tool">
+    <meta property="twitter:description" content="Easily calculate percentages, discounts, tips, and more with our simple and powerful online calculator that works just like a real one.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Percentage+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      
+      .calculator-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+      .calc-btn { transition: background-color 0.2s; }
+      .calc-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-4xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Percentage Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">An intuitive online calculator for all your percentage-based math needs.</p>
+              </div>
+        
+              <!-- Calculator Body -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div class="md:col-span-2">
+                    <div class="bg-gray-800 text-white p-4 rounded-t-lg">
+                        <div id="expression-display" class="text-right h-6 text-gray-400 text-lg break-all"></div>
+                        <div id="current-display" class="text-right text-5xl font-bold break-all">0</div>
+                    </div>
+                    <div class="calculator-grid p-4 bg-gray-100 rounded-b-lg">
+                        <button class="calc-btn p-4 bg-red-500 text-white text-xl font-bold rounded-lg" data-action="clear">C</button>
+                        <button class="calc-btn p-4 bg-gray-300 text-gray-800 text-xl font-bold rounded-lg" data-action="clear-entry">CE</button>
+                        <button class="calc-btn p-4 bg-green-500 text-white text-xl font-bold rounded-lg" data-action="percent">%</button>
+                        <button class="calc-btn p-4 bg-yellow-500 text-white text-xl font-bold rounded-lg" data-operator="divide">/</button>
+                        
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="7">7</button>
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="8">8</button>
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="9">9</button>
+                        <button class="calc-btn p-4 bg-yellow-500 text-white text-xl font-bold rounded-lg" data-operator="multiply">*</button>
+                        
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="4">4</button>
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="5">5</button>
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="6">6</button>
+                        <button class="calc-btn p-4 bg-yellow-500 text-white text-xl font-bold rounded-lg" data-operator="subtract">-</button>
+                        
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="1">1</button>
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="2">2</button>
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-number="3">3</button>
+                        <button class="calc-btn p-4 bg-yellow-500 text-white text-xl font-bold rounded-lg" data-operator="add">+</button>
+                        
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg col-span-2" data-number="0">0</button>
+                        <button class="calc-btn p-4 bg-white text-gray-800 text-xl font-bold rounded-lg" data-action="decimal">.</button>
+                        <button class="calc-btn p-4 bg-indigo-600 text-white text-xl font-bold rounded-lg" data-action="equals">=</button>
+                    </div>
+                  </div>
+                  
+                  <!-- History Column -->
+                  <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                      <div class="flex justify-between items-center mb-2">
+                          <h3 class="text-lg font-bold text-gray-700">History</h3>
+                          <button id="clear-history-btn" class="text-sm text-gray-500 hover:text-red-600">Clear</button>
+                      </div>
+                      <div id="history-list" class="space-y-2 max-h-96 overflow-y-auto">
+                          <p class="text-gray-500 text-center text-sm py-4">No calculations yet.</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Guide to Understanding and Using a Percentage Calculator</h2>
+      <p>Percentages are one of the most common mathematical concepts we encounter in our daily lives, yet they can often be a source of confusion. From calculating a tip at a restaurant to understanding a discount or analyzing statistical data, percentages are everywhere. A reliable <strong>percentage calculator</strong> is an invaluable tool that simplifies these tasks. This comprehensive guide will not only show you how to use our versatile <strong>online percent tool</strong> but also explain the fundamental concepts behind all types of percentage calculations.</p>
+    
+      <h3>How to Use Our Interactive Percentage Calculator</h3>
+      <p>Our tool functions like a standard calculator but with a powerful `%` button that makes percentage calculations intuitive and fast.</p>
+      
+      <h4>Example 1: Calculating a Tip (e.g., 15% of $80)</h4>
+      <ol>
+          <li>Type `80`</li>
+          <li>Press the `*` (multiply) button.</li>
+          <li>Type `15`</li>
+          <li>Press the `%` button.</li>
+          <li><strong>Result:</strong> The display will instantly show `12`. So, 15% of 80 is 12.</li>
+      </ol>
+      
+      <h4>Example 2: Adding a Percentage (e.g., $500 + 7% tax)</h4>
+      <ol>
+          <li>Type `500`</li>
+          <li>Press the `+` (add) button.</li>
+          <li>Type `7`</li>
+          <li>Press the `%` button.</li>
+          <li><strong>Result:</strong> The display will show `535`. The calculator automatically computes 7% of 500 (which is 35) and adds it to the original 500.</li>
+      </ol>
+      
+      <h4>Example 3: Calculating a Discount (e.g., 25% off a $120 item)</h4>
+      <ol>
+          <li>Type `120`</li>
+          <li>Press the `-` (subtract) button.</li>
+          <li>Type `25`</li>
+          <li>Press the `%` button.</li>
+          <li><strong>Result:</strong> The display will show `90`. The calculator finds 25% of 120 (which is 30) and subtracts it.</li>
+      </ol>
+      
+      <h4>Advanced Features:</h4>
+      <ul>
+          <li><strong>History Tape:</strong> Every calculation you complete is saved in the "History" panel, allowing you to review your work.</li>
+          <li><strong>Keyboard Support:</strong> Use your keyboard for faster calculations, including the `%` key!</li>
+          <li><strong>Clear Controls:</strong> `C` clears everything, while `CE` clears only the last number you entered.</li>
+      </ul>
+      
+      <h3>The Core Concepts of Percentage Calculation</h3>
+      <p>To truly master percentages, it's helpful to understand the simple formulas our <strong>math percentage</strong> tool uses behind the scenes.</p>
+      
+      <h4>What is a Percentage?</h4>
+      <p>The word "percent" literally means "per hundred." A percentage is a fraction of 100. So, 25% is the same as 25/100, or 0.25. This simple concept is the key to all percentage math.</p>
+      
+      <h4>The Main Types of Percentage Problems</h4>
+      <ol>
+        <li><strong>Finding a part of a whole:</strong> This is the "What is X% of Y?" problem. The formula is `(X / 100) * Y`.</li>
+        <li><strong>Finding the percentage:</strong> This is the "X is what percent of Y?" problem. The formula is `(X / Y) * 100`.</li>
+        <li><strong>Finding the whole from a part:</strong> This is the "X is Y% of what?" problem. The formula is `(X / Y) * 100`.</li>
+      </ol>
+      <p>Our interactive calculator handles these scenarios seamlessly. For instance, to solve "30 is what percent of 150?", you can simply type `30 / 150` and the calculator will show `0.2`. You can mentally convert this to 20% or use another tool for that final step. The main strength of this calculator is in applying percentages directly, like for taxes and discounts.</p>
+
+      <h3>Practical Applications of a Percentage Calculator</h3>
+      <p>A <strong>percent calculator</strong> is a versatile tool with endless real-world uses:</p>
+      <ul>
+          <li><strong>Shopping & Retail:</strong> Calculating discounts and sales tax is the most common use. If a $200 jacket is 30% off, you can quickly calculate `200 - 30%` to find the final price of $140.</li>
+          <li><strong>Finance & Investment:</strong> Tracking the percentage increase or decrease of stocks, calculating interest rates, and understanding your portfolio's performance.</li>
+          <li><strong>Health & Fitness:</strong> Calculating the percentage of your daily calorie intake or tracking your percentage weight loss over time.</li>
+          <li><strong>Academics:</strong> Determining your grade on a test or understanding statistical data presented in research papers.</li>
+          <li><strong>Work & Business:</strong> Analyzing sales growth, calculating commission rates, or understanding market share changes.</li>
+      </ul>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>How does the `%` button work on this calculator?</h4>
+      <p>Our `%` button works like it does on most standard calculators. When used with addition or subtraction, it calculates the percentage of the first number and then adds or subtracts that result. For example, `100 + 10%` is interpreted as `100 + (10% of 100)`, which equals 110. When used with multiplication or division, it converts the second number into its decimal form. For example, `200 * 50%` is interpreted as `200 * 0.50`, which equals 100.</p>
+      
+      <h4>How do I calculate percentage increase or decrease?</h4>
+      <p>You can do this in two steps. First, find the difference: `New Value - Old Value`. Then, divide the difference by the original old value and multiply by 100. For example, for a change from 50 to 70: `(70 - 50) / 50 * 100 = 40%` increase.</p>
+      
+      <h4>Is this tool free to use?</h4>
+      <p>Yes, our <strong>online percentage calculator</strong> is completely free, with no limits on its use.</p>
+      
+      <h4>Is my calculation data saved?</h4>
+      <p>All calculations are performed within your browser. The history is stored locally on your device for your current session only. Nothing is sent to our servers, ensuring your privacy.</p>
+
+      <h3>Conclusion</h3>
+      <p>Percentages are an integral part of how we interpret data and make decisions every day. While the math can sometimes feel tricky, having a reliable and comprehensive tool makes it effortless. Our interactive <strong>percentage calculator</strong> is designed to handle all the common scenarios you'll encounter in a familiar, easy-to-use interface. Bookmark this page and empower yourself to handle any percentage problem with speed and confidence.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const currentDisplay = document.getElementById('current-display');
+        const expressionDisplay = document.getElementById('expression-display');
+        const historyList = document.getElementById('history-list');
+        const clearHistoryBtn = document.getElementById('clear-history-btn');
+        const buttons = document.querySelector('.calculator-grid');
+
+        let currentOperand = '0';
+        let previousOperand = '';
+        let operation = null;
+        let shouldResetDisplay = false;
+        let history = [];
+
+        const updateDisplay = () => {
+            currentDisplay.textContent = parseFloat(currentOperand).toLocaleString('en-US', { maximumFractionDigits: 10 });
+            if (currentDisplay.textContent.length > 9) {
+                currentDisplay.classList.remove('text-5xl');
+                currentDisplay.classList.add('text-3xl');
+            } else {
+                currentDisplay.classList.remove('text-3xl');
+                currentDisplay.classList.add('text-5xl');
+            }
+            expressionDisplay.textContent = `${previousOperand} ${operation || ''}`;
+        };
+
+        const appendNumber = (number) => {
+            if (currentOperand.length > 15) return;
+            if (currentOperand === '0' || shouldResetDisplay) {
+                currentOperand = number;
+                shouldResetDisplay = false;
+            } else {
+                currentOperand += number;
+            }
+        };
+
+        const chooseOperation = (op) => {
+            if (currentOperand === 'Error') return;
+            if (previousOperand !== '') {
+                calculate();
+            }
+            if (currentOperand === '0' && previousOperand === '') return;
+            
+            operation = op;
+            previousOperand = currentOperand;
+            shouldResetDisplay = true;
+        };
+
+        const calculate = () => {
+            let result;
+            const prev = parseFloat(previousOperand);
+            const current = parseFloat(currentOperand);
+            if (isNaN(prev) || isNaN(current) || !operation) return;
+
+            const expression = `${previousOperand} ${operation} ${currentOperand}`;
+
+            switch (operation) {
+                case '+': result = prev + current; break;
+                case '-': result = prev - current; break;
+                case '*': result = prev * current; break;
+                case '/': 
+                    if (current === 0) {
+                        clear();
+                        currentOperand = 'Error';
+                        return;
+                    }
+                    result = prev / current;
+                    break;
+                default: return;
+            }
+            addToHistory(expression, result);
+            currentOperand = result.toString();
+            operation = null;
+            previousOperand = '';
+            shouldResetDisplay = true;
+        };
+
+        const handlePercent = () => {
+            if (previousOperand === '' || !operation) {
+                currentOperand = '0';
+                return;
+            }
+            const prev = parseFloat(previousOperand);
+            const current = parseFloat(currentOperand);
+            
+            const expression = `${previousOperand} ${operation} ${current}%`;
+            let result;
+
+            switch (operation) {
+                case '+': result = prev + (prev * current / 100); break;
+                case '-': result = prev - (prev * current / 100); break;
+                case '*': result = prev * (current / 100); break;
+                case '/': result = prev / (current / 100); break;
+            }
+
+            addToHistory(expression, result);
+            currentOperand = result.toString();
+            operation = null;
+            previousOperand = '';
+            shouldResetDisplay = true;
+        };
+
+        const clear = () => {
+            currentOperand = '0';
+            previousOperand = '';
+            operation = null;
+            shouldResetDisplay = false;
+        };
+
+        const clearEntry = () => {
+            currentOperand = '0';
+        };
+
+        const backspace = () => {
+            currentOperand = currentOperand.slice(0, -1);
+            if (currentOperand === '') currentOperand = '0';
+        };
+
+        const appendDecimal = () => {
+            if (shouldResetDisplay) clear();
+            if (currentOperand.includes('.')) return;
+            currentOperand += '.';
+        };
+
+        const addToHistory = (expression, result) => {
+            if(history.length === 0) historyList.innerHTML = '';
+            history.unshift({ expression, result });
+            if (history.length > 20) history.pop();
+            renderHistory();
+        };
+
+        const renderHistory = () => {
+            historyList.innerHTML = '';
+            if (history.length === 0) {
+                historyList.innerHTML = '<p class="text-gray-500 text-center text-sm py-4">No calculations yet.</p>';
+                return;
+            }
+            history.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'text-right p-2 rounded-md hover:bg-gray-200 cursor-pointer';
+                li.innerHTML = `<div class="text-xs text-gray-500">${item.expression} =</div><div class="font-bold text-gray-800">${parseFloat(item.result).toLocaleString('en-US', { maximumFractionDigits: 10 })}</div>`;
+                li.addEventListener('click', () => {
+                    clear();
+                    currentOperand = item.result.toString();
+                    updateDisplay();
+                });
+                historyList.appendChild(li);
+            });
+        };
+
+        const handleButtonClick = (e) => {
+            const button = e.target;
+            if (button.hasAttribute('data-number')) appendNumber(button.dataset.number);
+            if (button.hasAttribute('data-operator')) chooseOperation(button.textContent);
+            if (button.dataset.action === 'decimal') appendDecimal();
+            if (button.dataset.action === 'equals') calculate();
+            if (button.dataset.action === 'clear') clear();
+            if (button.dataset.action === 'clear-entry') clearEntry();
+            if (button.dataset.action === 'backspace') backspace();
+            if (button.dataset.action === 'percent') handlePercent();
+            updateDisplay();
+        };
+        
+        const handleKeyPress = (e) => {
+            if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
+            if (e.key === '.') appendDecimal();
+            if (e.key === 'Enter' || e.key === '=') calculate();
+            if (e.key === 'Backspace') backspace();
+            if (e.key === 'Escape') clear();
+            if (['+', '-', '*', '/'].includes(e.key)) chooseOperation(e.key);
+            if (e.key === '%') handlePercent();
+            updateDisplay();
+        };
+
+        buttons.addEventListener('click', handleButtonClick);
+        document.addEventListener('keydown', handleKeyPress);
+        clearHistoryBtn.addEventListener('click', () => {
+            history = [];
+            renderHistory();
+        });
+        
+        updateDisplay();
+        renderHistory();
+      });
+    </script>
+</body>
+</html>

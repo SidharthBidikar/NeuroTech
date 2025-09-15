@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts (IMPORTANT: Use only ONE correct AdSense ID) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <!-- <meta name="google-adsense-account" content="ca-pub-6275528006958350" /> --> <!-- I have commented out the second AdSense ID. Please use only one. -->
+    
+    <!-- SEO Meta Tags for Decimal to Binary Converter -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decimal to Binary Converter | Convert Base-10 to Base-2 Online</title>
+    <meta name="description" content="A free and fast online decimal to binary converter. Instantly convert any base-10 number to its base-2 equivalent and see the step-by-step calculation process.">
+    <meta name="keywords" content="decimal to binary converter, convert decimal to binary, decimal to binary, base-10 to base-2 converter, dec to bin, online converter, binary number system, decimal to binary formula">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="OnePageTools.com">
+    <link rel="canonical" href="https://onepagetools.com/decimal-to-binary-converter.html" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onepagetools.com/decimal-to-binary-converter.html">
+    <meta property="og:title" content="Instant Decimal to Binary Converter with Steps">
+    <meta property="og:description" content="Effortlessly convert decimal numbers to binary and understand the conversion logic with our detailed, step-by-step guide.">
+    <meta property="og:image" content="https://onepagetools.com/images/decimal-to-binary-og.png"> <!-- **IMPORTANT: Replace with your actual image URL** -->
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://onepagetools.com/decimal-to-binary-converter.html">
+    <meta property="twitter:title" content="Instant Decimal to Binary Converter with Steps">
+    <meta property="twitter:description" content="Effortlessly convert decimal numbers to binary and understand the conversion logic with our detailed, step-by-step guide.">
+    <meta property="twitter:image" content="https://onepagetools.com/images/decimal-to-binary-og.png"> <!-- **IMPORTANT: Replace with your actual image URL** -->
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles (Consistent with previous design) -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .mono { font-family: 'Fira Code', monospace; }
+      .input-field { @apply w-full p-3 text-lg border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500; }
+      .btn { @apply px-6 py-3 font-semibold text-white rounded-md shadow-sm transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2; }
+      .btn-primary { @apply bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500; }
+      .btn-secondary { @apply bg-gray-600 hover:bg-gray-700 focus:ring-gray-500; }
+      
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2.5rem; background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4 { text-align: left; }
+      .article-section h2 { font-size: 2.25rem; font-weight: 800; margin-bottom: 1.5rem; color: #111827; border-bottom: 3px solid #e5e7eb; padding-bottom: 0.75rem; }
+      .article-section h3 { font-size: 1.75rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.25rem; color: #1f2937; }
+      .article-section p, .article-section li { margin-bottom: 1.25rem; line-height: 1.8; color: #374151; font-size: 1.125rem; }
+      .article-section strong { color: #4f46e5; font-weight: 600; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.5rem; border-radius: 6px; font-family: 'Fira Code', monospace; color:#1e293b; font-size: 1rem; }
+      .article-section table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+      .article-section th, .article-section td { border: 1px solid #d1d5db; padding: 0.75rem; text-align: left; }
+      .article-section th { background-color: #f9fafb; font-weight: 600; }
+    </style>
+
+    <!-- JSON-LD Schema Markup remains the same -->
+
+</head>
+<body class="antialiased">
+    <!-- FULL HEADER FROM INDEX.HTML -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img style="height: 60px" src="/One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li><a href="/index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:text-black md:p-0 md:dark:text-blue-500" aria-current="page">Home</a></li>
+            <li><a href="/about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a></li>
+            <li><a href="/contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a></li>
+            <li>
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                ALL PDF TOOLS<svg style="margin-top: 5px" class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                  <!-- All your PDF tools links go here -->
+                  <li><a href="/pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                  <li><a href="/wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                Text & Content Tools ✒️<svg style="margin-top: 5px" class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                  <!-- All your Text tools links go here -->
+                  <li><a href="/textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                   <!-- All your Calculator links go here -->
+                  <li><a href="/income-tax-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Income Tax Calculator</a></li>
+                  <li><a href="/decimal-to-binary-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Decimal to Binary Converter</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-4xl">
+              <!-- Calculator Card -->
+              <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl border border-gray-200">
+                <!-- Tool Header -->
+                <div class="text-center mb-8">
+                  <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Decimal to Binary Converter</h1>
+                  <p class="text-lg text-gray-600 max-w-3xl mx-auto">Instantly convert any decimal (base-10) number into its binary (base-2) equivalent and see the full calculation steps.</p>
+                </div>
+              
+                <!-- Converter Interface -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                  <!-- Input -->
+                  <div>
+                    <label for="decimal-input" class="block text-lg font-medium text-gray-700 mb-2">Enter Decimal Number (Base-10)</label>
+                    <input type="text" id="decimal-input" class="input-field mono" placeholder="e.g., 29" autocomplete="off" inputmode="numeric">
+                    <p id="error-message" class="text-red-500 text-sm mt-2 h-5"></p>
+                  </div>
+                  <!-- Output -->
+                  <div>
+                    <label for="binary-output" class="block text-lg font-medium text-gray-700 mb-2">Binary Result (Base-2)</label>
+                    <div class="relative">
+                      <input type="text" id="binary-output" class="input-field mono bg-gray-100 cursor-not-allowed" readonly placeholder="e.g., 11101">
+                      <button id="copy-btn" class="absolute inset-y-0 right-0 px-4 text-sm font-medium text-gray-600 hover:text-indigo-600 opacity-0 transition-opacity">Copy</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-6 flex justify-center">
+                  <button id="reset-btn" class="btn btn-secondary w-full md:w-auto">Reset</button>
+                </div>
+              </div>
+
+              <!-- Step-by-step Explanation Card -->
+              <div id="steps-container" class="bg-white mt-8 p-6 md:p-8 rounded-xl shadow-xl border border-gray-200 hidden">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Calculation Steps</h3>
+                <p class="text-center text-gray-600 mb-6">Here's how we convert the decimal number using the "Division by 2" method.</p>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-center mono" id="steps-table">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="p-3 font-semibold">Operation</th>
+                        <th class="p-3 font-semibold">Result (Quotient)</th>
+                        <th class="p-3 font-semibold">Remainder</th>
+                      </tr>
+                    </thead>
+                    <tbody><!-- Steps will be dynamically inserted here --></tbody>
+                  </table>
+                </div>
+                <p class="mt-6 text-center text-lg text-gray-700">Read the remainders from bottom to top to get the binary equivalent: <strong id="final-binary-steps" class="text-indigo-600 mono"></strong></p>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <!-- Article content remains the same -->
+      <h2>Understanding Number Systems: A Deep Dive into Decimal and Binary</h2>
+      <p>In our daily lives, we use the decimal number system without a second thought. But in the world of computers and digital electronics, the binary system reigns supreme. A <strong>decimal to binary converter</strong> is a fundamental tool that bridges the gap between how humans count and how machines "think." This guide will explore these two number systems, explain the conversion process in detail, and highlight why this conversion is so crucial in modern technology.</p>
+    
+      <h3>What is the Decimal (Base-10) Number System?</h3>
+      <p>The decimal system, also known as base-10, is the number system we use every day. It's called base-10 because it uses ten unique digits: <strong>0, 1, 2, 3, 4, 5, 6, 7, 8, and 9</strong>. The defining feature of the decimal system is its positional value. Each digit in a number has a value based on its position, which is a power of 10. Let's take the number <strong>345</strong> as an example:</p>
+      <ul>
+          <li>The digit <strong>5</strong> is in the ones (10<sup>0</sup>) place, so its value is 5 x 1 = 5.</li>
+          <li>The digit <strong>4</strong> is in the tens (10<sup>1</sup>) place, so its value is 4 x 10 = 40.</li>
+          <li>The digit <strong>3</strong> is in the hundreds (10<sup>2</sup>) place, so its value is 3 x 100 = 300.</li>
+      </ul>
+      <p>Adding these values together gives us the number: <code>300 + 40 + 5 = 345</code>. This positional system is intuitive for humans but less so for digital hardware.</p>
+      
+      <h3>What is the Binary (Base-2) Number System?</h3>
+      <p>The binary system, or base-2, is the language of computers. It uses only two digits: <strong>0 and 1</strong>. These digits are called "bits". Every piece of data in a computer—from text and images to software instructions—is ultimately stored and processed as long sequences of 0s and 1s.</p>
+      
+      <h4>Why Do Computers Use Binary?</h4>
+      <p>Computers use binary because their fundamental building blocks, transistors, are essentially tiny electronic switches. A switch can be in one of two states: <strong>ON</strong> or <strong>OFF</strong>. These two states are perfectly represented by the binary digits 1 (ON) and 0 (OFF). This simple, two-state system is far more reliable and easier to build in hardware than a system that would need to manage ten different states for the decimal system.</p>
+      
+      <h3>How to Convert Decimal to Binary: The Manual Method</h3>
+      <p>The most common method to <strong>convert a decimal number to binary</strong> is the "Division by 2" or "Remainder" method. Our online converter uses this exact logic to show you the steps. Let's walk through an example by converting the decimal number <strong>29</strong> to binary.</p>
+      
+      <h4>Step-by-Step Example: Converting 29 (Decimal) to Binary</h4>
+      <ol>
+          <li><strong>Step 1:</strong> Divide the decimal number (29) by 2. This gives <code>14</code> with a remainder of <strong>1</strong>.</li>
+          <li><strong>Step 2:</strong> Divide the new quotient (14) by 2. This gives <code>7</code> with a remainder of <strong>0</strong>.</li>
+          <li><strong>Step 3:</strong> Divide 7 by 2. This gives <code>3</code> with a remainder of <strong>1</strong>.</li>
+          <li><strong>Step 4:</strong> Divide 3 by 2. This gives <code>1</code> with a remainder of <strong>1</strong>.</li>
+          <li><strong>Step 5:</strong> Divide 1 by 2. This gives <code>0</code> with a remainder of <strong>1</strong>.</li>
+          <li><strong>Step 6:</strong> The process stops because the quotient is now 0.</li>
+      </ol>
+      <p>To get the final binary number, you read the remainders from the <strong>bottom up</strong>. In our example, the remainders are 1, 0, 1, 1, 1. Reading them in reverse gives us <strong>11101</strong>.</p>
+      <p>Therefore, the decimal number <strong>29</strong> is equal to the binary number <strong>11101</strong>.</p>
+
+      <h3>Decimal to Binary Conversion Chart</h3>
+      <p>Here is a quick reference table for converting the first 16 decimal numbers to their binary equivalents.</p>
+      <table>
+        <thead><tr><th>Decimal (Base-10)</th><th>Binary (Base-2)</th></tr></thead>
+        <tbody>
+            <tr><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td></tr><tr><td>2</td><td>10</td></tr><tr><td>3</td><td>11</td></tr><tr><td>4</td><td>100</td></tr><tr><td>5</td><td>101</td></tr><tr><td>6</td><td>110</td></tr><tr><td>7</td><td>111</td></tr><tr><td>8</td><td>1000</td></tr><tr><td>9</td><td>1001</td></tr><tr><td>10</td><td>1010</td></tr><tr><td>11</td><td>1011</td></tr><tr><td>12</td><td>1100</td></tr><tr><td>13</td><td>1101</td></tr><tr><td>14</td><td>1110</td></tr><tr><td>15</td><td>1111</td></tr>
+        </tbody>
+      </table>
+      
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>What is the decimal to binary formula?</h4>
+      <p>While there isn't a single mathematical formula, the process of repeated division by 2 is the standard algorithm. For any decimal number `N`, the process is: 1. `R = N mod 2` (find remainder). 2. `N = floor(N / 2)` (update N). 3. Repeat until `N = 0`. The sequence of remainders `R` in reverse order is the binary equivalent.</p>
+
+      <h4>How do you represent negative decimal numbers in binary?</h4>
+      <p>Negative numbers are typically represented in binary using a method called <strong>Two's Complement</strong>. This involves inverting all the bits of the positive binary number (changing 0s to 1s and 1s to 0s) and then adding 1. This method allows computers to perform subtraction using addition, which simplifies hardware design.</p>
+      
+      <h4>How is this conversion used in the real world?</h4>
+      <p>Decimal to binary conversion is fundamental to all digital technology. Every time you type on a keyboard, the character is converted to its binary representation (like ASCII or Unicode). In networking, IP addresses are strings of binary numbers that are often displayed in decimal for human readability.</p>
+
+      <h3>Conclusion</h3>
+      <p>Understanding the bridge between the decimal and binary systems is key to understanding the digital world. Our <strong>dec to bin converter</strong> is designed not just to give you a quick answer, but to educate you on the process. Whether you're a student, developer, or just a curious mind, we hope this tool simplifies the fundamental concept of number system conversion.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 mt-10"><!-- Your standard footer content goes here --></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      // The JavaScript code remains exactly the same as the previous version.
+      document.addEventListener('DOMContentLoaded', () => {
+        const decimalInput = document.getElementById('decimal-input');
+        const binaryOutput = document.getElementById('binary-output');
+        const errorMessage = document.getElementById('error-message');
+        const copyBtn = document.getElementById('copy-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const stepsContainer = document.getElementById('steps-container');
+        const stepsTableBody = document.querySelector('#steps-table tbody');
+        const finalBinarySteps = document.getElementById('final-binary-steps');
+
+        const convertAndDisplay = () => {
+            const inputValue = decimalInput.value.trim();
+
+            if (inputValue === '') {
+                binaryOutput.value = '';
+                errorMessage.textContent = '';
+                stepsContainer.classList.add('hidden');
+                copyBtn.classList.add('opacity-0');
+                return;
+            }
+
+            if (!/^\d+$/.test(inputValue)) {
+                binaryOutput.value = '';
+                errorMessage.textContent = 'Please enter a valid non-negative integer.';
+                stepsContainer.classList.add('hidden');
+                copyBtn.classList.add('opacity-0');
+                return;
+            }
+
+            errorMessage.textContent = '';
+            const decimalNumber = parseInt(inputValue, 10);
+            
+            if (decimalNumber > 9007199254740991) {
+                binaryOutput.value = (decimalNumber).toString(2);
+                stepsContainer.classList.add('hidden');
+                copyBtn.classList.remove('opacity-0');
+                return;
+            }
+
+            if (decimalNumber === 0) {
+                binaryOutput.value = '0';
+                stepsTableBody.innerHTML = `<tr><td>0 ÷ 2</td><td>0</td><td class="font-bold text-indigo-600">0</td></tr>`;
+                finalBinarySteps.textContent = '0';
+                stepsContainer.classList.remove('hidden');
+                copyBtn.classList.remove('opacity-0');
+                return;
+            }
+
+            let tempDecimal = decimalNumber;
+            let binaryString = '';
+            let stepsHTML = '';
+            
+            while (tempDecimal > 0) {
+                const remainder = tempDecimal % 2;
+                const quotient = Math.floor(tempDecimal / 2);
+                
+                stepsHTML = `<tr><td>${tempDecimal} ÷ 2</td><td>${quotient}</td><td class="font-bold text-indigo-600">${remainder}</td></tr>` + stepsHTML;
+                
+                binaryString = remainder + binaryString;
+                tempDecimal = quotient;
+            }
+
+            binaryOutput.value = binaryString;
+            stepsTableBody.innerHTML = stepsHTML;
+            finalBinarySteps.textContent = binaryString;
+            stepsContainer.classList.remove('hidden');
+            copyBtn.classList.remove('opacity-0');
+        };
+
+        decimalInput.addEventListener('input', convertAndDisplay);
+
+        copyBtn.addEventListener('click', () => {
+            if (binaryOutput.value) {
+                navigator.clipboard.writeText(binaryOutput.value).then(() => {
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+                });
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            decimalInput.value = '';
+            binaryOutput.value = '';
+            errorMessage.textContent = '';
+            stepsContainer.classList.add('hidden');
+            copyBtn.classList.add('opacity-0');
+        });
+      });
+    </script>
+</body>
+</html>

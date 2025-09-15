@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts (IMPORTANT: Use only ONE correct AdSense ID) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <!-- <meta name="google-adsense-account" content="ca-pub-6275528006958350" /> --> <!-- I have commented out the second AdSense ID. Please use only one. -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Decimal Converter - With Step-by-Step Explanation</title>
+    <meta name="description" content="Use our free Binary to Decimal converter to instantly convert binary numbers to decimal and vice versa. See a detailed, step-by-step breakdown of the calculation and learn everything about number systems.">
+    <meta name="keywords" content="binary to decimal converter, convert binary to decimal, binary to decimal, decimal to binary, number base converter, base-2 to base-10, binary number system, how to convert binary, dec to bin, bin to dec">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools">
+    <meta property="og:title" content="The Ultimate Binary to Decimal & Decimal to Binary Converter">
+    <meta property="og:description" content="A real-time, two-way converter for binary and decimal numbers. Includes a clear, step-by-step explanation and a comprehensive guide to number systems.">
+    <meta property="og:image" content="/images/og-binary-decimal.png"> <!-- Use your actual image URL -->
+    <meta property="og:url" content="https://onepagetools.com/binary-to-decimal-converter.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+        .font-code { font-family: 'Fira Code', monospace; }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        
+        .article-section { max-width: 800px; margin: 4rem auto; padding: 2.5rem; background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+        .article-section h2, .article-section h3, .article-section h4 { text-align: left; }
+        .article-section h2 { font-size: 2.25rem; font-weight: 800; margin-bottom: 1.5rem; margin-top: 3rem; color: #111827; border-bottom: 3px solid #e5e7eb; padding-bottom: 0.75rem; }
+        .article-section h3 { font-size: 1.75rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1f2937; }
+        .article-section p, .article-section li { margin-bottom: 1.25rem; line-height: 1.8; color: #374151; font-size: 1.125rem; }
+        .article-section strong { color: #4f46e5; font-weight: 600; }
+        .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.5rem; border-radius: 6px; font-family: 'Fira Code', monospace; color:#1e293b; font-size: 1rem; }
+        .article-section table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+        .article-section th, .article-section td { border: 1px solid #d1d5db; padding: 0.75rem; text-align: left; }
+        .article-section th { background-color: #f9fafb; font-weight: 600; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- FULL HEADER FROM INDEX.HTML -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img style="height: 60px" src="/One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li><a href="/index.html" class="block py-2 px-3 text-black rounded md:bg-transparent md:text-black md:p-0" aria-current="page">Home</a></li>
+            <li><a href="/about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a></li>
+            <li><a href="/contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a></li>
+            <li>
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                ALL PDF TOOLS<svg style="margin-top: 5px" class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                  <li><a href="/pdftoword.html" class="block px-4 py-2 hover:bg-gray-100">PDF TO WORD</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                Text & Content Tools ✒️<svg style="margin-top: 5px" class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="textToolsDropdownLink">
+                  <li><a href="/textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100">Text Case Converter</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+              </button>
+              <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="calculatorToolsDropdownLink">
+                  <li><a href="/income-tax-calculator.html" class="block px-4 py-2 hover:bg-gray-100">Income Tax Calculator</a></li>
+                  <li><a href="/decimal-to-binary-converter.html" class="block px-4 py-2 hover:bg-gray-100">Decimal to Binary</a></li>
+                  <li><a href="/binary-to-decimal-converter.html" class="block px-4 py-2 hover:bg-gray-100">Binary to Decimal</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 pt-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <!-- Calculator Form -->
+            <div class="card p-8 lg:sticky lg:top-24">
+                <h1 class="text-3xl font-bold mb-2 text-indigo-700">Binary ⇔ Decimal Converter</h1>
+                <p class="text-gray-500 mb-6">Instantly convert between binary (base-2) and decimal (base-10) systems and see the detailed calculation.</p>
+                <div class="space-y-6">
+                    <div>
+                        <label for="binary-input" class="block text-sm font-medium text-gray-700">Binary (Base-2)</label>
+                        <input type="text" id="binary-input" class="font-code mt-1 bg-gray-50 block w-full p-3 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 1101">
+                        <p id="binary-error" class="hidden text-red-500 text-sm mt-1">Please enter only 0s and 1s.</p>
+                    </div>
+                     <div>
+                        <label for="decimal-input" class="block text-sm font-medium text-gray-700">Decimal (Base-10)</label>
+                        <input type="text" id="decimal-input" class="font-code mt-1 bg-gray-50 block w-full p-3 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 13" inputmode="numeric">
+                         <p id="decimal-error" class="hidden text-red-500 text-sm mt-1">Please enter a valid non-negative integer.</p>
+                    </div>
+                </div>
+                 <button onclick="clearInputs()" class="mt-6 w-full text-indigo-600 font-semibold py-2 rounded-md hover:bg-indigo-50">Clear</button>
+            </div>
+            
+            <!-- Results Display -->
+            <div id="results-section" class="card p-8">
+                <div id="results-placeholder"><h2 class="text-2xl font-bold mb-4 text-indigo-700">Calculation Breakdown</h2><p class="text-gray-500">Enter a number in either box to see the conversion and a step-by-step explanation here.</p></div>
+                <div id="results-content" class="hidden">
+                     <h2 class="text-2xl font-bold mb-4 text-indigo-700">Result</h2>
+                     <p class="text-lg bg-indigo-50 p-4 rounded-md">Binary <code id="result-binary" class="text-xl font-bold"></code> is equal to Decimal <code id="result-decimal" class="text-xl font-bold"></code></p>
+                     <hr class="my-6">
+                     <h3 class="text-xl font-bold mb-3">Step-by-Step Explanation</h3>
+                     <div id="calculation-steps" class="space-y-2 text-sm bg-gray-50 p-4 rounded-md font-code"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPANDED SEO Article -->
+        <div class="article-section card p-8 mt-12 max-w-4xl mx-auto">
+            <h2>The Definitive Guide to Binary and Decimal Conversion</h2>
+            <p>At the heart of every computer, smartphone, and digital device is a language of just two digits: 0 and 1. This is the <strong>binary system</strong>, the fundamental language of computing. While machines thrive on binary, humans operate in the <strong>decimal system</strong>, using ten digits (0-9). The ability to translate between these two number systems is a crucial skill for anyone in programming, computer science, or electronics. Our powerful <strong>binary to decimal converter</strong> is designed not just to give you the answer, but to teach you the process with a clear, step-by-step breakdown.</p>
+            
+            <h3>A Brief History of Number Systems</h3>
+            <p>The <strong>decimal system (base-10)</strong> has its roots in ancient civilizations, most notably with the Hindu-Arabic numeral system developed in India around the 1st to 4th centuries. Its use of ten digits is widely believed to have originated from the simple fact that humans have ten fingers. This system, with its revolutionary concept of zero and positional notation, spread through the Arab world and eventually to Europe, becoming the global standard for mathematics and commerce.</p>
+            <p>The <strong>binary system (base-2)</strong>, while seemingly modern, also has a long history. The Indian scholar Pingala described a binary system in the 3rd century BC. However, it was the German mathematician and philosopher Gottfried Wilhelm Leibniz in the 17th century who documented the modern binary system in detail. He believed it represented the essence of creation, with '1' symbolizing God and '0' symbolizing the void. It wasn't until the 20th century, with the advent of electronic computers, that Leibniz's system found its ultimate application.</p>
+            
+            <h3>Understanding the Core Concept: Positional Notation</h3>
+            <p>The key to understanding any number system is grasping the concept of positional notation. This means that a digit's value depends on its position within the number. In the decimal system, each position represents a power of 10. For example, the number <strong>345</strong> means:</p>
+            <p><code>(3 × 10²) + (4 × 10¹) + (5 × 10⁰) = 300 + 40 + 5 = 345</code></p>
+            <p>The binary system works the same way, but each position represents a power of 2. For the binary number <strong>1101</strong>, the calculation is:</p>
+            <p><code>(1 × 2³) + (1 × 2²) + (0 × 2¹) + (1 × 2⁰) = 8 + 4 + 0 + 1 = 13</code></p>
+            <p>This is precisely the calculation our <strong>base-2 to base-10 converter</strong> performs for you.</p>
+
+            <h3>How to Convert Binary to Decimal (The Manual Method)</h3>
+            <p>Let's take a slightly larger example, like the binary number <code>101101</code>. Here’s the manual conversion process:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li><strong>Write down the binary number and its positions:</strong> Start from the rightmost digit, which is position 0.
+                <br><code>1    0    1    1    0    1</code>
+                <br><code>(Pos 5, Pos 4, Pos 3, Pos 2, Pos 1, Pos 0)</code>
+                </li>
+                <li><strong>Calculate the power of 2 for each position:</strong>
+                <br><code>2⁵=32, 2⁴=16, 2³=8, 2²=4, 2¹=2, 2⁰=1</code>
+                </li>
+                <li><strong>Multiply each binary digit by its corresponding power of 2:</strong>
+                <br><code>(1 × 32) + (0 × 16) + (1 × 8) + (1 × 4) + (0 × 2) + (1 × 1)</code>
+                </li>
+                <li><strong>Sum the results:</strong>
+                <br><code>32 + 0 + 8 + 4 + 0 + 1 = 45</code>
+                </li>
+            </ol>
+            <p>Thus, the binary number <code>101101</code> is equal to <strong>45</strong> in the decimal system.</p>
+
+            <h3>How to Convert Decimal to Binary (The Manual Method)</h3>
+            <p>To go from decimal to binary, we use the "repeated division-by-2" method. Let's convert the decimal number <strong>45</strong> back to binary:</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li><strong>45 ÷ 2</strong> = 22 with a remainder of <strong>1</strong></li>
+                <li><strong>22 ÷ 2</strong> = 11 with a remainder of <strong>0</strong></li>
+                <li><strong>11 ÷ 2</strong> = 5 with a remainder of <strong>1</strong></li>
+                <li><strong>5 ÷ 2</strong> = 2 with a remainder of <strong>1</strong></li>
+                <li><strong>2 ÷ 2</strong> = 1 with a remainder of <strong>0</strong></li>
+                <li><strong>1 ÷ 2</strong> = 0 with a remainder of <strong>1</strong></li>
+            </ol>
+            <p>The process stops when the quotient is 0. Now, you must <strong>read the remainders from the bottom up</strong> to get the final binary number: <code>101101</code>. This confirms our previous conversion.</p>
+
+            <h2>Beyond the Basics: Other Number Systems</h2>
+            <p>While binary and decimal are the most common, programmers and engineers often use two other systems as a convenient shorthand for binary: Octal (base-8) and Hexadecimal (base-16).</p>
+            <h3>Octal (Base-8)</h3>
+            <p>The octal system uses 8 digits (0-7). It's useful because one octal digit can represent exactly three binary digits (since 2³=8). For example, the binary <code>111</code> is <code>7</code> in octal, and <code>101101</code> can be grouped as <code>(101)(101)</code> which is <code>55</code> in octal.</p>
+            <h3>Hexadecimal (Base-16)</h3>
+            <p>The hexadecimal system is even more common in programming. It uses 16 symbols: 0-9 and A-F, where A=10, B=11, C=12, D=13, E=14, and F=15. One hexadecimal digit can represent exactly four binary digits (2⁴=16). This makes it incredibly efficient for representing long binary strings. For example, a byte (8 bits), like <code>11101011</code>, can be written concisely as <code>EB</code> in hexadecimal.</p>
+            
+            <h2>The Hierarchy of Data: From Bits to Terabytes</h2>
+            <p>Understanding binary is the first step to understanding how data is measured.</p>
+            <ul>
+                <li><strong>Bit:</strong> A single binary digit (0 or 1). The smallest unit of data.</li>
+                <li><strong>Byte:</strong> A group of 8 bits. A byte is the standard unit used to represent a character, like the letter 'A'.</li>
+                <li><strong>Kilobyte (KB):</strong> 1,024 bytes.</li>
+                <li><strong>Megabyte (MB):</strong> 1,024 kilobytes.</li>
+                <li><strong>Gigabyte (GB):</strong> 1,024 megabytes.</li>
+                <li><strong>Terabyte (TB):</strong> 1,024 gigabytes.</li>
+            </ul>
+
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <h4 class="font-bold mt-4">1. Is this binary to decimal converter free?</h4><p>Yes, this tool is 100% free and works entirely in your browser. Your data is never sent to a server.</p>
+            <h4 class="font-bold mt-4">2. What is the largest number I can convert?</h4><p>You can convert very large numbers. JavaScript can handle integers up to about 9 quadrillion (<code>2^53 - 1</code>) with perfect precision, which is more than enough for most practical applications.</p>
+            <h4 class="font-bold mt-4">3. What does "base-2" and "base-10" mean?</h4><p>"Base" refers to the number of unique digits used in a number system. Base-2 (binary) uses two digits (0, 1). Base-10 (decimal) uses ten digits (0-9). The base determines the value of each position in a number (powers of 2 for binary, powers of 10 for decimal).</p>
+            <h4 class="font-bold mt-4">4. How are letters and symbols converted to binary?</h4><p>Letters and symbols are converted using character encoding standards like <strong>ASCII</strong> and <strong>Unicode</strong>. Each character is assigned a unique decimal number, which is then converted to binary. For example, in ASCII, the uppercase letter 'A' is decimal 65, which is <code>01000001</code> in binary.</p>
+
+            <h2>Conclusion</h2>
+            <p>Bridging the gap between human-readable decimal numbers and machine-readable binary code is fundamental to digital literacy. Our <strong>binary to decimal converter</strong> is more than just a utility; it's an educational tool designed to make these concepts clear and accessible. With real-time, two-way conversion and a detailed step-by-step breakdown, it's the perfect companion for students, developers, and tech enthusiasts alike. Bookmark this page and simplify your number base conversions today.</p>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 mt-10 p-6 text-center text-gray-600">
+        <p>© 2023 OnePageTools.com. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+        const binaryInput = document.getElementById('binary-input');
+        const decimalInput = document.getElementById('decimal-input');
+        const binaryError = document.getElementById('binary-error');
+        const decimalError = document.getElementById('decimal-error');
+        const resultsPlaceholder = document.getElementById('results-placeholder');
+        const resultsContent = document.getElementById('results-content');
+        const resultBinary = document.getElementById('result-binary');
+        const resultDecimal = document.getElementById('result-decimal');
+        const calculationSteps = document.getElementById('calculation-steps');
+
+        let isTyping = false;
+
+        binaryInput.addEventListener('input', () => {
+            if (isTyping) return;
+            isTyping = true;
+            handleBinaryInput();
+            isTyping = false;
+        });
+
+        decimalInput.addEventListener('input', () => {
+            if (isTyping) return;
+            isTyping = true;
+            handleDecimalInput();
+            isTyping = false;
+        });
+        
+        function handleBinaryInput() {
+            const binaryValue = binaryInput.value.trim();
+            hideError('decimal');
+
+            if (binaryValue === "") {
+                clearDependent('decimal');
+                return;
+            }
+
+            if (!/^[01]+$/.test(binaryValue)) {
+                showError('binary');
+                clearDependent('decimal');
+            } else {
+                hideError('binary');
+                const decimalValue = parseInt(binaryValue, 2);
+                decimalInput.value = decimalValue;
+                showCalculation(binaryValue, decimalValue, 'binaryToDecimal');
+            }
+        }
+
+        function handleDecimalInput() {
+            const decimalValue = decimalInput.value.trim();
+            hideError('binary');
+
+            if (decimalValue === "" || !/^\d+$/.test(decimalValue) || parseInt(decimalValue) > Number.MAX_SAFE_INTEGER) {
+                showError('decimal', 'Please enter a valid non-negative integer.');
+                clearDependent('binary');
+                return;
+            }
+            
+            hideError('decimal');
+            const numberValue = parseInt(decimalValue, 10);
+            const binaryValue = numberValue.toString(2);
+            binaryInput.value = binaryValue;
+            showCalculation(binaryValue, numberValue, 'decimalToBinary');
+        }
+
+        function showCalculation(binaryStr, decimalResult, direction) {
+            resultsPlaceholder.classList.add('hidden');
+            resultsContent.classList.remove('hidden');
+            
+            resultBinary.textContent = binaryStr;
+            resultDecimal.textContent = decimalResult;
+
+            calculationSteps.innerHTML = ''; 
+            const h3 = document.createElement('h3');
+            h3.className = "text-base font-semibold text-gray-800 mb-2";
+            calculationSteps.appendChild(h3);
+
+            if (direction === 'binaryToDecimal') {
+                h3.textContent = "To convert binary to decimal:"
+                let sumParts = [];
+                for (let i = 0; i < binaryStr.length; i++) {
+                    const bit = parseInt(binaryStr[i]);
+                    const power = binaryStr.length - 1 - i;
+                    const value = bit * Math.pow(2, power);
+                    if (bit === 1) { // Only show calculation for bits that are '1'
+                        sumParts.push(value);
+                    }
+                    const p = document.createElement('p');
+                    p.innerHTML = `Pos ${power} (2<sup>${power}</sup>): ${bit} × 2<sup>${power}</sup> = <span class="font-bold">${value}</span>`;
+                    calculationSteps.appendChild(p);
+                }
+                const finalP = document.createElement('p');
+                finalP.className = "mt-4 border-t pt-2";
+                finalP.innerHTML = `<strong>Total =</strong> ${sumParts.join(' + ')} = <strong class="text-indigo-600">${decimalResult}</strong>`;
+                calculationSteps.appendChild(finalP);
+            } else { // decimalToBinary
+                h3.textContent = "To convert decimal to binary:"
+                if (decimalResult === 0) {
+                    calculationSteps.innerHTML += `<p>0 / 2 = 0 with Remainder <strong>0</strong></p>`;
+                    return;
+                }
+                let tempDecimal = decimalResult;
+                let steps = [];
+                while (tempDecimal > 0) {
+                    const remainder = tempDecimal % 2;
+                    const quotient = Math.floor(tempDecimal / 2);
+                    steps.unshift(`<p>${tempDecimal} / 2 = ${quotient} with Remainder <strong class="text-indigo-600">${remainder}</strong></p>`);
+                    tempDecimal = quotient;
+                }
+                calculationSteps.innerHTML += steps.join('');
+            }
+        }
+
+        function showError(type, message = "Please enter only 0s and 1s.") {
+            if (type === 'binary') {
+                 binaryError.textContent = message;
+                 binaryError.classList.remove('hidden');
+            }
+            if (type === 'decimal') {
+                decimalError.textContent = message;
+                decimalError.classList.remove('hidden');
+            }
+        }
+
+        function hideError(type) {
+            if (type === 'binary') binaryError.classList.add('hidden');
+            if (type === 'decimal') decimalError.classList.add('hidden');
+        }
+        
+        function clearDependent(type) {
+            if (type === 'decimal') decimalInput.value = "";
+            if (type === 'binary') binaryInput.value = "";
+            resultsPlaceholder.classList.remove('hidden');
+            resultsContent.classList.add('hidden');
+        }
+
+        function clearInputs() {
+            isTyping = true;
+            binaryInput.value = "";
+            decimalInput.value = "";
+            hideError('binary');
+            hideError('decimal');
+            resultsPlaceholder.classList.remove('hidden');
+            resultsContent.classList.add('hidden');
+            isTyping = false;
+        }
+    </script>
+</body>
+</html>

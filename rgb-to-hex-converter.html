@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB to Hex Converter - Instant Color Code Converter</title>
+    <meta name="description" content="Use our free RGB to Hex converter to instantly convert RGB color values to hexadecimal codes and vice versa. Includes a live color picker, sliders, and copy-to-clipboard functionality.">
+    <meta name="keywords" content="rgb to hex converter, convert rgb to hex, rgb color to hex, hex to rgb, color code converter, hex from rgb, rgb values, hexadecimal color, css color converter">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools">
+    <meta property="og:title" content="Free RGB to Hex & Hex to RGB Converter">
+    <meta property="og:description" content="An intuitive tool to convert colors between RGB and Hex formats in real-time. Perfect for web designers, developers, and artists.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=RGB+to+Hex+Converter">
+    <meta property="og:url" content="https://onepagetools.com/rgb-to-hex-converter.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.8.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .primary-btn { background-color: #4f46e5; transition: background-color 0.3s; }
+        .primary-btn:hover { background-color: #4338ca; }
+        .color-preview { transition: background-color 0.3s ease; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #fff; border: 2px solid #4f46e5; border-radius: 50%; cursor: pointer; }
+        .slider::-moz-range-thumb { width: 20px; height: 20px; background: #fff; border: 2px solid #4f46e5; border-radius: 50%; cursor: pointer; }
+        .article-content h2, .article-content h3 { font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #4338ca; }
+        .article-content ul, .article-content code { margin-bottom: 1rem; }
+        .article-content code { background-color: #eef2ff; color: #3730a3; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center p-4">
+             <a href="https://onepagetools.com/" class="flex items-center space-x-2"><img src="One_Page-removebg-preview.png" alt="Logo" class="h-12"></a>
+            <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+                <a href="#" class="hover:text-indigo-600">Home</a><a href="#" class="hover:text-indigo-600">About</a><a href="#" class="hover:text-indigo-600">Contact</a>
+                <button id="pdf-tools-button" data-dropdown-toggle="pdf-tools-dropdown" class="hover:text-indigo-600 flex items-center">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <button id="text-tools-button" data-dropdown-toggle="text-tools-dropdown" class="hover:text-indigo-600 flex items-center">Text & Content Tools <span class="ml-1.5">✒️</span><svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <button id="calculators-button" data-dropdown-toggle="calculators-dropdown" class="hover:text-indigo-600 flex items-center">Calculators <span class="ml-1.5">🧮</span><svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="pdf-tools-dropdown" class="z-10 hidden bg-white rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">PDF Tools</a></li></ul></div>
+                <div id="text-tools-dropdown" class="z-10 hidden bg-white rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Text Tools</a></li></ul></div>
+                <div id="calculators-dropdown" class="z-10 hidden bg-white rounded-lg shadow w-44"><ul class="py-2 text-sm text-gray-700"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Calorie Calculator</a></li></ul></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <!-- Calculator Form -->
+            <div class="card p-8 lg:sticky lg:top-24">
+                <h1 class="text-3xl font-bold mb-2 text-indigo-700">Color Converter</h1>
+                <p class="text-gray-500 mb-6">Instantly convert between RGB and Hex color codes.</p>
+                <div class="space-y-6">
+                    <div><label for="color-picker" class="block text-sm font-medium text-gray-700 mb-2">Pick a Color</label><input type="color" id="color-picker" class="w-full h-12 p-1 border border-gray-200 rounded-md cursor-pointer"></div>
+                    <!-- RGB Sliders & Inputs (Primary) -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">RGB (Red, Green, Blue)</label>
+                        <div class="mt-2 space-y-3">
+                            <div class="flex items-center gap-4"><span class="font-mono text-red-600">R</span><input type="range" id="r-slider" min="0" max="255" class="slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"><input type="number" id="r-input" min="0" max="255" class="w-20 bg-gray-100 p-1 border border-gray-200 rounded-md text-center"></div>
+                            <div class="flex items-center gap-4"><span class="font-mono text-green-600">G</span><input type="range" id="g-slider" min="0" max="255" class="slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"><input type="number" id="g-input" min="0" max="255" class="w-20 bg-gray-100 p-1 border border-gray-200 rounded-md text-center"></div>
+                            <div class="flex items-center gap-4"><span class="font-mono text-blue-600">B</span><input type="range" id="b-slider" min="0" max="255" class="slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"><input type="number" id="b-input" min="0" max="255" class="w-20 bg-gray-100 p-1 border border-gray-200 rounded-md text-center"></div>
+                        </div>
+                    </div>
+                     <!-- Hex Input (Secondary) -->
+                     <div><label for="hex-input" class="block text-sm font-medium text-gray-700">Hex Code</label><div class="relative mt-1"><span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">#</span><input type="text" id="hex-input" class="pl-7 bg-gray-100 block w-full p-2 border border-gray-200 rounded-md" placeholder="ff0000"></div></div>
+                </div>
+            </div>
+            
+            <!-- Results Display -->
+            <div class="card p-8">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-700">Color Preview & Codes</h2>
+                <div id="color-preview" class="w-full h-48 rounded-lg mb-6 border color-preview"></div>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-md">
+                        <div><label class="font-semibold">RGB</label><p id="rgb-output" class="font-mono text-gray-600">rgb(0, 0, 0)</p></div>
+                        <button onclick="copyToClipboard('rgb-output')" class="p-2 rounded-md hover:bg-gray-200"><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
+                    </div>
+                     <div class="flex justify-between items-center bg-gray-50 p-3 rounded-md">
+                        <div><label class="font-semibold">Hex</label><p id="hex-output" class="font-mono text-gray-600">#000000</p></div>
+                        <button onclick="copyToClipboard('hex-output')" class="p-2 rounded-md hover:bg-gray-200"><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Article -->
+        <div class="article-content card p-8 mt-12 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold">The Ultimate Guide to RGB and Hex Color Codes</h2>
+            <p>Color is the cornerstone of digital design. For anyone working on the web—be it designers, developers, or content creators—a solid grasp of color models is non-negotiable. The two most prevalent systems you'll encounter are RGB and Hex. While they can represent the exact same colors, they are written and used differently. Our intuitive <strong>RGB to Hex converter</strong> is designed as a complete color toolkit, allowing you to seamlessly translate between these formats in real-time and perfect your color palettes.</p>
+            <h3>What is an RGB Color Code?</h3>
+            <p>RGB stands for Red, Green, and Blue. This is an "additive" color model, meaning that these three primary colors of light are mixed together to create a full spectrum of colors. Think of it like the lights on your computer screen or TV. When all three lights are off, you see black. When all three are at full intensity, they combine to create white.</p>
+            <p>An RGB value is written as <code>rgb(red, green, blue)</code>. Each of the three parameters is a decimal number ranging from 0 (no intensity) to 255 (full intensity). This gives us 256 possible values for each channel, resulting in 256 x 256 x 256 = 16,777,216 possible colors. For example:</p>
+            <ul><li><code>rgb(255, 0, 0)</code> is pure, bright Red.</li><li><code>rgb(0, 0, 255)</code> is pure, bright Blue.</li><li><code>rgb(80, 160, 220)</code> is a specific shade of light blue.</li></ul>
+            <h3>What is a Hex Color Code?</h3>
+            <p>A hexadecimal (or Hex) color code is simply another way to write an RGB color. It's the most common format used in web development (HTML and CSS). A Hex code is a six-character string preceded by a hash symbol (<code>#</code>).</p>
+            <p>It follows the format <code>#RRGGBB</code>. The first two characters represent Red, the next two represent Green, and the final two represent Blue. Instead of using decimal numbers (base-10), it uses hexadecimal numbers (base-16), which include 0-9 and the letters A-F (where A=10, B=11, ..., F=15). Just like in RGB, <code>00</code> is the lowest intensity and <code>FF</code> is the highest (255 in decimal).</p>
+            <p>So, a <strong>hex code from an RGB value</strong> is a direct translation. The <strong>color converter online</strong> simply performs this mathematical conversion for you.</p>
+            <h3 class="text-2xl font-bold mt-6">Why Do You Need to Convert RGB to Hex?</h3>
+            <p>If they represent the same colors, why bother converting? There are several practical reasons why developers and designers frequently <strong>convert RGB to Hex</strong>:</p>
+            <ul><li><strong>Conciseness and Speed:</strong> A hex code like <code>#FFFFFF</code> is often faster to type and easier to copy and paste than its equivalent, <code>rgb(255, 255, 255)</code>. This makes for cleaner and more compact CSS code.</li><li><strong>Industry Standard:</strong> Hex codes are the traditional and most widely used format for defining colors in web design. Most design software (like Adobe Photoshop, Figma, Sketch) and online color palette generators display Hex codes prominently.</li><li><strong>No Opacity Ambiguity:</strong> While RGB has a counterpart, RGBA, for adding opacity, the standard 6-digit Hex code is always fully opaque. This can make it simpler to work with when transparency isn't needed.</li></ul>
+            <h3 class="text-2xl font-bold mt-6">How to Use Our Color Converter Tool</h3>
+            <p>Our tool is built for speed and interactivity. Every change you make updates all other fields instantly.</p>
+            <ol class="list-decimal list-inside space-y-2">
+                <li><strong>Enter RGB Values:</strong> The primary way to use this tool. Type numbers from 0 to 255 into the R, G, and B input boxes. You will see the Hex code and color preview change in real-time.</li>
+                <li><strong>Use the RGB Sliders:</strong> For a more visual approach, drag the R, G, or B sliders. This is a great way to explore different shades and find the perfect color.</li>
+                <li><strong>Enter a Hex Code:</strong> Our tool works both ways! You can type a Hex code (e.g., <code>3b82f6</code>) into the Hex input field to see its corresponding RGB values.</li>
+                <li><strong>Use the Color Picker:</strong> The most intuitive method. Click the color bar at the top and visually select any color. All RGB and Hex values will update instantly.</li>
+                <li><strong>Copy Any Code:</strong> Click the copy icon next to the RGB or Hex code to copy it to your clipboard for use in your project.</li>
+            </ol>
+            <h2 class="text-3xl font-bold mt-8">The Math Behind RGB to Hex Conversion</h2>
+            <p>The conversion process is a straightforward conversion from a decimal (base-10) number system to a hexadecimal (base-16) system for each of the three color channels.</p>
+            <p>Let's take the RGB value <code>rgb(23, 162, 184)</code> and convert it to a Hex code:</p>
+            <ol><li><strong>Convert the Red value (23):</strong>
+                <ul><li>Divide 23 by 16: 23 / 16 = 1 with a remainder of 7.</li><li>The first hex digit is the quotient (1). The second is the remainder (7).</li><li>So, Red = <code>17</code>.</li></ul></li>
+                <li><strong>Convert the Green value (162):</strong>
+                <ul><li>Divide 162 by 16: 162 / 16 = 10 with a remainder of 2.</li><li>The first hex digit is 10, which is 'A' in hexadecimal. The second is the remainder (2).</li><li>So, Green = <code>A2</code>.</li></ul></li>
+                <li><strong>Convert the Blue value (184):</strong>
+                <ul><li>Divide 184 by 16: 184 / 16 = 11 with a remainder of 8.</li><li>The first hex digit is 11, which is 'B' in hexadecimal. The second is the remainder (8).</li><li>So, Blue = <code>B8</code>.</li></ul></li>
+            </ol>
+            <p>Combine them together, and you get the final Hex code: <code>#17A2B8</code>. Our <strong>RGB to Hex tool</strong> performs these calculations instantly.</p>
+            <h2 class="text-3xl font-bold mt-8">Frequently Asked Questions (FAQ)</h2>
+            <h4 class="font-bold mt-4">1. Is this RGB to Hex converter free?</h4><p>Yes, this tool is 100% free to use, without any limits or subscriptions.</p>
+            <h4 class="font-bold mt-4">2. Can this tool also convert Hex to RGB?</h4><p>Absolutely! Although its primary title is "RGB to Hex," it's a fully bi-directional tool. Simply type a Hex code into the input field, and the RGB values will update automatically.</p>
+            <h4 class="font-bold mt-4">3. What is the difference between rgb(0,0,0) and #000?</h4><p>They represent the same color (black). <code>#000</code> is a shorthand version of the full Hex code <code>#000000</code>. In CSS, the browser understands that if you provide a 3-digit hex code, each digit should be duplicated. So, <code>#f0c</code> is the same as <code>#ff00cc</code>.</p>
+            <h4 class="font-bold mt-4">4. What about transparency/opacity?</h4><p>This tool converts between the core opaque color models. To add transparency, you would use the RGBA format. You can take the RGB value from our converter, for example <code>rgb(67, 56, 202)</code>, and add an alpha value between 0.0 (fully transparent) and 1.0 (fully opaque). For example: <code>rgba(67, 56, 202, 0.5)</code> would be the same color at 50% transparency.</p>
+            <h3 class="text-2xl font-bold mt-6">Conclusion</h3>
+            <p>Mastering digital color is a key skill for anyone in the creative digital space. Our powerful and intuitive <strong>RGB to Hex converter</strong> removes the friction of manual conversion, allowing you to move seamlessly between color models. With real-time updates, sliders, and a color picker, it serves as an indispensable utility for finding and refining the perfect colors for your projects. Bookmark this page and let it be your go-to resource for all your color code conversion needs.</p>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.8.1/dist/flowbite.min.js"></script>
+    <script>
+        // --- DOM Elements ---
+        const colorPicker = document.getElementById('color-picker');
+        const hexInput = document.getElementById('hex-input');
+        const rSlider = document.getElementById('r-slider');
+        const gSlider = document.getElementById('g-slider');
+        const bSlider = document.getElementById('b-slider');
+        const rInput = document.getElementById('r-input');
+        const gInput = document.getElementById('g-input');
+        const bInput = document.getElementById('b-input');
+        const colorPreview = document.getElementById('color-preview');
+        const hexOutput = document.getElementById('hex-output');
+        const rgbOutput = document.getElementById('rgb-output');
+
+        // --- Event Listeners ---
+        colorPicker.addEventListener('input', handleColorPicker);
+        hexInput.addEventListener('input', handleHexInput);
+        rSlider.addEventListener('input', handleRGBSlider);
+        gSlider.addEventListener('input', handleRGBSlider);
+        bSlider.addEventListener('input', handleRGBSlider);
+        rInput.addEventListener('input', handleRGBInput);
+        gInput.addEventListener('input', handleRGBInput);
+        bInput.addEventListener('input', handleRGBInput);
+
+        function initialize() {
+            const initialColor = '#22c55e'; // A nice green
+            updateUI(hexToRgb(initialColor));
+        }
+
+        function handleColorPicker(e) {
+            updateUI(hexToRgb(e.target.value));
+        }
+        
+        function handleHexInput(e) {
+            updateUI(hexToRgb(`#${e.target.value}`));
+        }
+
+        function handleRGBSlider() {
+            updateUI({
+                r: parseInt(rSlider.value),
+                g: parseInt(gSlider.value),
+                b: parseInt(bSlider.value)
+            });
+        }
+
+        function handleRGBInput() {
+            updateUI({
+                r: parseInt(rInput.value) || 0,
+                g: parseInt(gInput.value) || 0,
+                b: parseInt(bInput.value) || 0
+            });
+        }
+
+        function updateUI(rgb) {
+            if (!isValidRgb(rgb)) return;
+            const hex = rgbToHex(rgb);
+            
+            hexInput.value = hex.substring(1);
+            colorPicker.value = hex;
+            rSlider.value = rgb.r; gSlider.value = rgb.g; bSlider.value = rgb.b;
+            rInput.value = rgb.r; gInput.value = rgb.g; bInput.value = rgb.b;
+
+            colorPreview.style.backgroundColor = hex;
+            hexOutput.textContent = hex;
+            rgbOutput.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+        }
+        
+        function hexToRgb(hex) {
+            if (!hex) return null;
+            hex = hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => r + r + g + g + b + b);
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : null;
+        }
+
+        function rgbToHex({ r, g, b }) {
+            const toHex = c => ("0" + Number(c).toString(16)).slice(-2);
+            return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+        }
+
+        function isValidRgb(rgb) {
+            if(!rgb) return false;
+            const r = parseInt(rgb.r); const g = parseInt(rgb.g); const b = parseInt(rgb.b);
+            return !isNaN(r) && r >= 0 && r <= 255 && !isNaN(g) && g >= 0 && g <= 255 && !isNaN(b) && b >= 0 && b <= 255;
+        }
+        
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Copied!', showConfirmButton: false, timer: 1500 });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initialize);
+    </script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- User's Tracking and Ad Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565993964252995" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22X7NY7QJF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22X7NY7QJF');
+    </script>
+    <meta name="google-site-verification" content="1j2lyC3ZbnmSQySbsIoQep4DWrnDkwLE2euIB_jOb-M" />
+    <meta name="google-adsense-account" content="ca-pub-6275528006958350" />
+    
+    <!-- SEO Meta Tags for Health Calculators -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI, BMR & Calorie Calculator - Advanced Health Tool</title>
+    <meta name="description" content="A free, all-in-one health calculator. Calculate your BMI, BMR (Basal Metabolic Rate), and daily calorie needs for weight loss, maintenance, or gain. Supports metric and imperial units.">
+    <meta name="keywords" content="bmi calculator, bmr calculator, calorie calculator, calculate bmi, body mass index, basal metabolic rate, daily calorie needs, healthy weight calculator, online health tool">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="One Page Tools Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/health-calculator.html">
+    <meta property="og:title" content="All-in-One Health Calculator (BMI, BMR, Calories)">
+    <meta property="og:description" content="Calculate your Body Mass Index (BMI), Basal Metabolic Rate (BMR), and daily calorie requirements with our comprehensive and easy-to-use online tool.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Health+Calculator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/health-calculator.html">
+    <meta property="twitter:title" content="All-in-One Health Calculator (BMI, BMR, Calories)">
+    <meta property="twitter:description" content="Calculate your Body Mass Index (BMI), Basal Metabolic Rate (BMR), and daily calorie requirements with our comprehensive and easy-to-use online tool.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Health+Calculator">
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f5f5fa; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.2s ease-in-out; }
+      .article-section { max-width: 800px; margin: 4rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .article-section h2, .article-section h3, .article-section h4, .article-section p, .article-section li, .article-section strong, .article-section code { text-align: left; }
+      .article-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #d1d5db; padding-bottom: 0.5rem; }
+      .article-section h3 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111827; }
+      .article-section h4 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #1f2937; font-weight: 600; border-left: 3px solid #6366f1; padding-left: 0.75rem;}
+      .article-section p, .article-section li { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+      .article-section strong { color: #4f46e5; }
+      .article-section code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color:#1e293b; }
+      .unit-btn.active { background-color: #4f46e5; color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER FROM USER'S index.html -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="https://onepagetools.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img style="height: 60px" src="./One_Page-removebg-preview.png" alt="OnePageTools Logo" />
+          </a>
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+            </button>
+          </div>
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li><a href="./index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a></li>
+              <li><a href="./about.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a></li>
+              <li><a href="./contact.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a></li>
+              <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">ALL PDF TOOLS<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li><a href="./pdftoword.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF TO WORD</a></li>
+                    <li><a href="./wordtopdf.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word to PDF</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="textToolsDropdownLink" data-dropdown-toggle="textToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Text & Content Tools ✒️<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="textToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="textToolsDropdownLink">
+                    <li><a href="./textcaseconverter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Text Case Converter</a></li>
+                    <li><a href="./wordcounter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Word Counter</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <button id="calculatorToolsDropdownLink" data-dropdown-toggle="calculatorToolsDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Calculators 🧮<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                <div id="calculatorToolsDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="calculatorToolsDropdownLink">
+                    <li><a href="./age-calculator.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Age Calculator</a></li>
+                    <li><a href="./speed-converter.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Speed Converter</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END OF HEADER -->
+    
+    <!-- Main Tool Content -->
+    <main class="pt-24">
+        <div class="flex flex-col justify-center items-center py-10 px-4">
+            <div class="w-full max-w-4xl p-6 md:p-8 bg-white rounded-xl shadow-xl">
+              <!-- Tool Header -->
+              <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Health & Fitness Calculator</h1>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">Calculate your BMI, BMR, and Daily Calorie Needs to better understand your health and fitness.</p>
+              </div>
+              
+              <!-- Inputs Section -->
+              <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <div class="flex justify-center mb-6">
+                    <div class="inline-flex rounded-md shadow-sm">
+                        <button id="metric-btn" class="unit-btn active px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-l-md">Metric (kg, cm)</button>
+                        <button id="imperial-btn" class="unit-btn -ml-px px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-r-md">Imperial (lbs, ft, in)</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                     <div>
+                        <label for="age" class="block text-sm font-medium text-gray-700">Age (years)</label>
+                        <input type="number" id="age" min="5" max="120" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 25">
+                     </div>
+                     <div>
+                        <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                        <select id="gender" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                     </div>
+                      <div id="metric-inputs">
+                        <label for="height-cm" class="block text-sm font-medium text-gray-700">Height (cm)</label>
+                        <input type="number" id="height-cm" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 175">
+                      </div>
+                      <div id="imperial-inputs" class="hidden">
+                         <label class="block text-sm font-medium text-gray-700">Height</label>
+                         <div class="flex space-x-2 mt-1">
+                            <input type="number" id="height-ft" class="block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="ft">
+                            <input type="number" id="height-in" class="block w-1/2 p-2 border border-gray-300 rounded-md" placeholder="in">
+                         </div>
+                      </div>
+                      <div id="metric-weight-input">
+                        <label for="weight-kg" class="block text-sm font-medium text-gray-700">Weight (kg)</label>
+                        <input type="number" id="weight-kg" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 70">
+                      </div>
+                      <div id="imperial-weight-input" class="hidden">
+                        <label for="weight-lbs" class="block text-sm font-medium text-gray-700">Weight (lbs)</label>
+                        <input type="number" id="weight-lbs" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 154">
+                      </div>
+                       <div>
+                        <label for="activity-level" class="block text-sm font-medium text-gray-700">Activity Level</label>
+                        <select id="activity-level" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                            <option value="1.2">Sedentary (little or no exercise)</option>
+                            <option value="1.375">Lightly Active (light exercise/sports 1-3 days/week)</option>
+                            <option value="1.55" selected>Moderately Active (moderate exercise 3-5 days/week)</option>
+                            <option value="1.725">Very Active (hard exercise 6-7 days/week)</option>
+                            <option value="1.9">Extra Active (very hard exercise & physical job)</option>
+                        </select>
+                      </div>
+                </div>
+                 <p id="error-message" class="text-red-600 text-sm mt-4 h-5"></p>
+                 <div class="mt-4 flex gap-4">
+                    <button id="calculate-btn" class="btn w-full py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Calculate Health Metrics</button>
+                    <button id="clear-btn" class="btn w-1/3 py-3 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400">Clear</button>
+                </div>
+              </div>
+
+              <!-- Results Section -->
+              <div id="result-section" class="mt-8 pt-8 border-t border-gray-200 hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- BMI Result -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-lg border">
+                        <h3 class="text-xl font-bold text-gray-800">Body Mass Index (BMI)</h3>
+                        <p id="bmi-value" class="text-5xl font-bold text-gray-800 my-2">0.0</p>
+                        <p id="bmi-category" class="text-lg font-semibold px-4 py-1 rounded-full"></p>
+                        <div class="w-full max-w-sm mt-4">
+                            <div class="h-2 w-full bg-gray-200 rounded-full relative">
+                                <div class="h-full bg-blue-400 w-1/4 absolute top-0 left-0 rounded-l-full"></div>
+                                <div class="h-full bg-green-400 w-1/4 absolute top-0 left-1/4"></div>
+                                <div class="h-full bg-yellow-400 w-1/4 absolute top-0 left-2/4"></div>
+                                <div class="h-full bg-red-400 w-1/4 absolute top-0 left-3/4 rounded-r-full"></div>
+                                <div id="bmi-indicator" class="w-4 h-4 bg-gray-800 absolute -top-1 rounded-full border-2 border-white transition-all duration-500 ease-out"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 mt-1 px-1">
+                                <span>16</span><span>18.5</span><span>25</span><span>30</span><span>40</span>
+                            </div>
+                        </div>
+                        <div id="healthy-weight-range" class="w-full mt-4 text-center text-sm text-gray-700 bg-indigo-100 p-3 rounded-md"></div>
+                    </div>
+                    <!-- BMR & Calorie Results -->
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-50 rounded-lg border">
+                            <h4 class="font-semibold text-gray-700">Basal Metabolic Rate (BMR)</h4>
+                            <p class="text-sm text-gray-500">Calories your body needs at rest.</p>
+                            <p id="bmr-result" class="text-2xl font-bold text-indigo-600 mt-1">0 Calories/day</p>
+                        </div>
+                         <div class="p-4 bg-gray-50 rounded-lg border">
+                            <h4 class="font-semibold text-gray-700">Daily Calorie Needs</h4>
+                            <p class="text-sm text-gray-500">To maintain your current weight.</p>
+                            <p id="calorie-maintenance" class="text-2xl font-bold text-indigo-600 mt-1">0 Calories/day</p>
+                        </div>
+                        <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                            <h4 class="font-semibold text-green-800">For Weight Loss</h4>
+                            <p class="text-sm text-green-700">Recommended daily intake.</p>
+                            <p id="calorie-loss" class="text-2xl font-bold text-green-800 mt-1">0 Calories/day</p>
+                        </div>
+                         <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <h4 class="font-semibold text-yellow-800">For Weight Gain</h4>
+                            <p class="text-sm text-yellow-700">Recommended daily intake.</p>
+                            <p id="calorie-gain" class="text-2xl font-bold text-yellow-800 mt-1">0 Calories/day</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO-Friendly Article -->
+    <div class="article-section">
+      <h2>The Ultimate Health & Fitness Calculator: BMI, BMR, and Calorie Needs</h2>
+      <p>Understanding your body is the first step towards a healthier lifestyle. Metrics like Body Mass Index (BMI), Basal Metabolic Rate (BMR), and daily calorie needs are fundamental pillars of health and fitness planning. A comprehensive <strong>health calculator</strong> combines these tools, providing you with a holistic view of your body's status and requirements. This guide will explain each of these concepts, their importance, and how to use our advanced all-in-one calculator to take control of your health journey.</p>
+    
+      <h3>How to Use Our All-in-One Health Calculator</h3>
+      <p>Our tool is designed to give you a complete picture with one simple calculation.</p>
+      <ol>
+          <li><strong>Select Your Units:</strong> Choose between "Metric (kg, cm)" or "Imperial (lbs, ft, in)".</li>
+          <li><strong>Enter Your Personal Details:</strong> Input your age, gender, height, and weight.</li>
+          <li><strong>Choose Your Activity Level:</strong> Select the option that best describes your weekly physical activity, from sedentary to extra active. This is crucial for an accurate calorie calculation.</li>
+          <li><strong>Calculate Your Health Metrics:</strong> Click the "Calculate" button.</li>
+          <li><strong>Analyze Your Comprehensive Results:</strong> The tool will instantly display three key areas:
+            <ul>
+              <li><strong>BMI Section:</strong> Your BMI value, your category (e.g., Normal Weight), a visual BMI gauge, and your personal healthy weight range.</li>
+              <li><strong>BMR Result:</strong> The number of calories your body burns at complete rest.</li>
+              <li><strong>Daily Calorie Needs:</strong> A breakdown of the calories needed to maintain, lose, or gain weight based on your activity level.</li>
+            </ul>
+          </li>
+      </ol>
+      
+      <h3>Part 1: Body Mass Index (BMI) - Your Weight Status</h3>
+      <p>A <strong>BMI calculator</strong> is a tool to gauge whether your weight is healthy in proportion to your height. The standard BMI categories for adults are:</p>
+      <ul>
+        <li><strong>Below 18.5:</strong> Underweight</li>
+        <li><strong>18.5 – 24.9:</strong> Normal or Healthy Weight</li>
+        <li><strong>25.0 – 29.9:</strong> Overweight</li>
+        <li><strong>30.0 and Above:</strong> Obesity</li>
+      </ul>
+      <p>While BMI is a useful screening tool, it's important to remember its limitations. It doesn't distinguish between fat and muscle, so very muscular individuals may have a high BMI without being overweight. It should be used as a starting point for a health conversation, not a final diagnosis.</p>
+
+      <h3>Part 2: Basal Metabolic Rate (BMR) - Your Body's Base Energy</h3>
+      <p>Your BMR is the number of calories your body needs to perform its most basic, life-sustaining functions, such as breathing, circulation, and cell production, while at rest. Our <strong>BMR calculator</strong> uses the widely accepted Mifflin-St Jeor equation, which is considered more accurate than older formulas.</p>
+      <h4>Why is BMR Important?</h4>
+      <p>Knowing your BMR is the foundation of any weight management plan. It tells you your baseline calorie expenditure. To lose weight, you need to consume fewer calories than your total daily expenditure (BMR + activity). To gain weight, you need to consume more.</p>
+
+      <h3>Part 3: Daily Calorie Needs - Your Personalized Goal</h3>
+      <p>Our <strong>calorie calculator</strong> takes your BMR and multiplies it by an "activity factor" to determine your Total Daily Energy Expenditure (TDEE). This is a much more accurate estimate of how many calories you actually burn in a day.</p>
+      <h4>The Activity Levels:</h4>
+      <ul>
+          <li><strong>Sedentary:</strong> Desk job with little to no exercise.</li>
+          <li><strong>Lightly Active:</strong> Light exercise or sports 1-3 days a week.</li>
+          <li><strong>Moderately Active:</strong> Moderate exercise 3-5 days a week.</li>
+          <li><strong>Very Active:</strong> Hard exercise 6-7 days a week.</li>
+          <li><strong>Extra Active:</strong> Very hard exercise and a physical job.</li>
+      </ul>
+      <p>Based on this, the tool provides you with clear calorie targets for:</p>
+      <ul>
+        <li><strong>Weight Maintenance:</strong> The calories needed to stay at your current weight.</li>
+        <li><strong>Weight Loss:</strong> A sensible calorie deficit (typically ~500 calories less) for sustainable weight loss.</li>
+        <li><strong>Weight Gain:</strong> A calorie surplus (typically ~500 calories more) for building muscle or gaining weight.</li>
+      </ul>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+      <h4>Which is more important, BMI or BMR?</h4>
+      <p>They serve different purposes. BMI is a measure of your weight status, while BMR is a measure of your metabolism. Both are important pieces of your overall health puzzle. BMI tells you *where you are*, and BMR helps you figure out *how to get where you want to go* (in terms of weight management).</p>
+      
+      <h4>How accurate are the calorie recommendations?</h4>
+      <p>The calculations are based on scientifically validated formulas (Mifflin-St Jeor) and are a very good starting point. However, individual metabolisms can vary. The best approach is to use this number as a baseline, track your weight for a few weeks, and adjust your calorie intake up or down as needed to meet your goals.</p>
+      
+      <h4>Is this BMI calculator suitable for children?</h4>
+      <p>This specific calculator is optimized for adults (ages 18 and up) because BMR and calorie need calculations are different for growing children. For children and teens, it's best to consult a pediatrician and use BMI-for-age percentile charts.</p>
+
+      <h3>Conclusion</h3>
+      <p>Taking control of your health begins with understanding your body's unique needs. Our all-in-one <strong>Health & Fitness Calculator</strong> provides you with the three most critical metrics—BMI, BMR, and Daily Calorie Needs—in one easy-to-use tool. By using this information, you can move beyond guesswork and start making informed decisions about your diet and exercise. Bookmark this page as your personal health dashboard and take the first step towards a healthier you.</p>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-gray-100"><!-- Footer content --></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const metricBtn = document.getElementById('metric-btn');
+            const imperialBtn = document.getElementById('imperial-btn');
+            const metricInputs = document.getElementById('metric-inputs');
+            const imperialInputs = document.getElementById('imperial-inputs');
+            const metricWeightInput = document.getElementById('metric-weight-input');
+            const imperialWeightInput = document.getElementById('imperial-weight-input');
+
+            const calculateBtn = document.getElementById('calculate-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const ageInput = document.getElementById('age');
+            const genderSelect = document.getElementById('gender');
+            const activityLevelSelect = document.getElementById('activity-level');
+            
+            const resultSection = document.getElementById('result-section');
+            const bmiValueEl = document.getElementById('bmi-value');
+            const bmiCategoryEl = document.getElementById('bmi-category');
+            const bmiIndicator = document.getElementById('bmi-indicator');
+            const healthyWeightRangeEl = document.getElementById('healthy-weight-range');
+            
+            const bmrResultEl = document.getElementById('bmr-result');
+            const calorieMaintenanceEl = document.getElementById('calorie-maintenance');
+            const calorieLossEl = document.getElementById('calorie-loss');
+            const calorieGainEl = document.getElementById('calorie-gain');
+            const errorMessage = document.getElementById('error-message');
+
+            let currentUnit = 'metric';
+
+            const switchUnits = (unit) => {
+                currentUnit = unit;
+                if (unit === 'metric') {
+                    metricBtn.classList.add('active'); imperialBtn.classList.remove('active');
+                    metricInputs.classList.remove('hidden'); imperialInputs.classList.add('hidden');
+                    metricWeightInput.classList.remove('hidden'); imperialWeightInput.classList.add('hidden');
+                } else {
+                    imperialBtn.classList.add('active'); metricBtn.classList.remove('active');
+                    imperialInputs.classList.remove('hidden'); metricInputs.classList.add('hidden');
+                    imperialWeightInput.classList.remove('hidden'); metricWeightInput.classList.add('hidden');
+                }
+            };
+
+            const showError = (message) => {
+                errorMessage.textContent = message;
+            };
+
+            const calculateAll = () => {
+                showError('');
+                let heightMeters, weightKg;
+                const age = parseInt(ageInput.value, 10);
+                const gender = genderSelect.value;
+                const activityFactor = parseFloat(activityLevelSelect.value);
+
+                if (isNaN(age) || age < 5 || age > 120) {
+                    showError('Please enter a valid age (5-120).');
+                    return;
+                }
+
+                if (currentUnit === 'metric') {
+                    const heightCm = parseFloat(document.getElementById('height-cm').value);
+                    const weight = parseFloat(document.getElementById('weight-kg').value);
+                    if (isNaN(heightCm) || isNaN(weight) || heightCm <= 0 || weight <= 0) { showError('Please enter valid height and weight.'); return; }
+                    heightMeters = heightCm / 100;
+                    weightKg = weight;
+                } else {
+                    const heightFt = parseFloat(document.getElementById('height-ft').value) || 0;
+                    const heightIn = parseFloat(document.getElementById('height-in').value) || 0;
+                    const weightLbs = parseFloat(document.getElementById('weight-lbs').value);
+                    if (isNaN(weightLbs) || (heightFt <= 0 && heightIn <= 0) || weightLbs <= 0) { showError('Please enter valid height and weight.'); return; }
+                    const totalInches = (heightFt * 12) + heightIn;
+                    heightMeters = totalInches * 0.0254;
+                    weightKg = weightLbs * 0.453592;
+                }
+
+                const bmi = weightKg / (heightMeters * heightMeters);
+                displayBMIResult(bmi, heightMeters);
+                
+                let bmr;
+                if(gender === 'male'){
+                    bmr = (10 * weightKg) + (6.25 * (heightMeters * 100)) - (5 * age) + 5;
+                } else {
+                    bmr = (10 * weightKg) + (6.25 * (heightMeters * 100)) - (5 * age) - 161;
+                }
+                bmrResultEl.textContent = `${bmr.toFixed(0)} Calories/day`;
+                
+                const tdee = bmr * activityFactor;
+                calorieMaintenanceEl.textContent = `${tdee.toFixed(0)} Calories/day`;
+                calorieLossEl.textContent = `${(tdee - 500).toFixed(0)} Calories/day`;
+                calorieGainEl.textContent = `${(tdee + 500).toFixed(0)} Calories/day`;
+            };
+            
+            const displayBMIResult = (bmi, heightMeters) => {
+                resultSection.classList.remove('hidden');
+                bmiValueEl.textContent = bmi.toFixed(1);
+
+                let category, colorClass, indicatorPosition;
+                if (bmi < 18.5) {
+                    category = 'Underweight'; colorClass = 'bg-blue-400 text-white'; indicatorPosition = (bmi / 18.5) * 25;
+                } else if (bmi < 25) {
+                    category = 'Normal Weight'; colorClass = 'bg-green-500 text-white'; indicatorPosition = 25 + ((bmi - 18.5) / (25 - 18.5)) * 25;
+                } else if (bmi < 30) {
+                    category = 'Overweight'; colorClass = 'bg-yellow-500 text-white'; indicatorPosition = 50 + ((bmi - 25) / (30 - 25)) * 25;
+                } else {
+                    category = 'Obesity'; colorClass = 'bg-red-500 text-white'; indicatorPosition = 75 + ((bmi - 30) / (40 - 30)) * 25;
+                }
+                bmiCategoryEl.textContent = category;
+                bmiCategoryEl.className = `text-lg font-semibold px-4 py-1 rounded-full ${colorClass}`;
+                bmiIndicator.style.left = `calc(${Math.min(98, Math.max(2, indicatorPosition))}% - 8px)`;
+
+                const lowerWeight = 18.5 * (heightMeters * heightMeters);
+                const upperWeight = 24.9 * (heightMeters * heightMeters);
+                
+                if (currentUnit === 'metric') {
+                     healthyWeightRangeEl.textContent = `Your healthy weight range is ${lowerWeight.toFixed(1)} kg - ${upperWeight.toFixed(1)} kg.`;
+                } else {
+                    const lowerWeightLbs = lowerWeight / 0.453592;
+                    const upperWeightLbs = upperWeight / 0.453592;
+                    healthyWeightRangeEl.textContent = `Your healthy weight range is ${lowerWeightLbs.toFixed(1)} lbs - ${upperWeightLbs.toFixed(1)} lbs.`;
+                }
+            };
+
+            const clearFields = () => {
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = '');
+                resultSection.classList.add('hidden');
+                showError('');
+            };
+
+            metricBtn.addEventListener('click', () => switchUnits('metric'));
+            imperialBtn.addEventListener('click', () => switchUnits('imperial'));
+            calculateBtn.addEventListener('click', calculateAll);
+            clearBtn.addEventListener('click', clearFields);
+        });
+    </script>
+</body>
+</html>
